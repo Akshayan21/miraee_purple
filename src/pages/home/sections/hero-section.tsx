@@ -3,12 +3,39 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
 
+/**
+ * Decorative backdrop: an organic plum shape bleeding off the right edge, a lighter shape inside it for depth, and the
+ * brand's orange Line tracing its edge.
+ */
+function HeroBackdrop() {
+  return (
+    <div className="hero__backdrop" aria-hidden="true">
+      <svg
+        className="hero__blob"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        focusable="false"
+      >
+        <path
+          className="hero__blob-back"
+          d="M 30 0 C 22 12, 8 18, 14 34 C 20 48, 0 54, 4 68 C 8 82, 22 84, 18 100 L 100 100 L 100 0 Z"
+        />
+        <path
+          className="hero__blob-line"
+          d="M 27 -2 C 19 10, 4 16, 10 34 C 16 48, -4 54, 0 68"
+          vectorEffect="non-scaling-stroke"
+        />
+      </svg>
+    </div>
+  )
+}
+
 export function HeroSection() {
   return (
-    <section className="mr-plum hero" aria-labelledby="hero-h">
+    <section className="mr-paper hero hero--blob" aria-labelledby="hero-h">
+      <HeroBackdrop />
       <div className="mr-container hero__grid">
         <div className="hero__copy">
-          <p className="mr-eyebrow">Business travel and expense software</p>
           <h1 className="mr-display" id="hero-h">
             See where your travel money goes, and where you can spend less.
           </h1>
@@ -32,16 +59,13 @@ export function HeroSection() {
               <Link to="/how-it-works">See how it works</Link>
             </Button>
           </div>
-          <ul className="hero__points" aria-label="Why teams start with Miraee">
-            <li>Free to sign up and onboard</li>
-            <li>Policy on every booking</li>
-            <li>Keep your corporate cards</li>
-          </ul>
           <p className="mr-small hero__trust">
-            Built by Tabhi, the company behind the Mondee travel marketplace.
+            Built by Tabhi, the company behind the Mondee travel marketplace. Keep the corporate
+            cards you already use.
           </p>
         </div>
         <figure className="hero__visual" style={{ margin: '0' }}>
+          <span className="hero__orb" aria-hidden="true" />
           <picture>
             <source srcSet="/img/px3932459-traveler-phone.webp" type="image/webp" />{' '}
             <img
@@ -112,7 +136,7 @@ export function HeroSection() {
               </tbody>
             </table>
           </div>
-          <div className="hero__toast mr-paper card-shadow" role="status">
+          <div className="hero__toast mr-paper card-shadow">
             <span className="hero__toast-mark" aria-hidden="true" />
             <p className="hero__toast-text">
               <strong>Approved</strong>

@@ -8,4 +8,6 @@ export type PageStyleSheet = 'trust' | 'core' | 'longform'
 
 export type RouteHandle = {
   styles?: PageStyleSheet[]
+  /** `light` swaps the plum header for a paper one, for pages that open on a light hero. */
+  headerTone?: 'light'
 }

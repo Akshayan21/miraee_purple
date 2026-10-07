@@ -28,3 +28,23 @@
   .mo-progress { display: none; }
   .site-head { transition: none; }
 }
+
+/* ---- Home: horizontal "how it works" ---- */
+.mo-h { padding: 56px 0 40px; }
+.mo-h .steps { display: flex; flex-wrap: nowrap; width: max-content; gap: 32px; margin-top: 28px; will-change: transform; }
+.mo-h .step { flex: 0 0 min(600px, 44vw); }
+.mo-h .step__view { height: 330px; margin-bottom: 16px !important; }
+.mo-h .views-caption, .mo-h .link-row { margin-top: 12px; }
+.mo-hbar { height: 2px; margin-top: 20px; background: var(--mr-orange); will-change: transform; }
+
+/* ---- Home: hairlines driven by --p ---- */
+.mo-rules li { position: relative; padding-bottom: 10px; }
+.mo-rules li::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+  background: var(--rule-strong, currentColor); opacity: 0.5; transform: scaleX(var(--p, 1)); transform-origin: left;
+}
+.mo-underline { position: relative; padding-bottom: 16px; }
+.mo-underline::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
+  background: var(--mr-orange-light, currentColor); transform: scaleX(var(--p, 1)); transform-origin: left;
+}
