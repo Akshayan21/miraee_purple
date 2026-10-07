@@ -1,10 +1,13 @@
+import { VisualComposition } from '@/components/sections/product-preview'
+import { Section, Container } from '@/components/layout/content-layout'
+import { ProductCard, LedgerTable } from '@/components/sections/product-preview'
 import { Button } from '@/components/ui/button'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
 
 export function HeroSection() {
   return (
-    <section className="mr-paper core-hero section-bleed" aria-labelledby="hero-h">
-      <div className="mr-container split">
+    <Section className="mr-paper core-hero section-bleed" aria-labelledby="hero-h">
+      <Container className="mr-container split">
         <div className="split__copy">
           <h1 className="mr-h1" id="hero-h">
             Find out where last year's travel budget went.
@@ -27,7 +30,10 @@ export function HeroSection() {
             </Button>
           </div>
         </div>
-        <figure className="split__visual compose compose--review" style={{ margin: '0' }}>
+        <VisualComposition
+          className="split__visual compose compose--review"
+          style={{ margin: '0' }}
+        >
           <picture>
             <source srcSet="/img/px37409441-finance-leader.webp" type="image/webp" />
             <img
@@ -39,12 +45,12 @@ export function HeroSection() {
               fetchpriority="high"
             />
           </picture>
-          <div className="compose__card mr-ledger-wrap card-shadow">
+          <ProductCard className="compose__card mr-ledger-wrap card-shadow">
             <div className="mr-ledger-wrap__head">
               <p className="mr-ledger-wrap__title">Spend review findings</p>
               <span className="mr-label">Last year</span>
             </div>
-            <table className="mr-ledger">
+            <LedgerTable className="mr-ledger">
               <caption>Product view with illustrative data.</caption>
               <thead>
                 <tr>
@@ -92,10 +98,10 @@ export function HeroSection() {
                   <td className="mr-num">$21,760.00</td>
                 </tr>
               </tbody>
-            </table>
-          </div>
-        </figure>
-      </div>
-    </section>
+            </LedgerTable>
+          </ProductCard>
+        </VisualComposition>
+      </Container>
+    </Section>
   )
 }

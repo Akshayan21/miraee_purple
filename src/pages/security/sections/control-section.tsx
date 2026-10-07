@@ -1,7 +1,9 @@
+import { Section, Container } from '@/components/layout/content-layout'
+import { ProductCard, LedgerTable } from '@/components/sections/product-preview'
 export function ControlSection() {
   return (
-    <section className="mr-section" aria-labelledby="control-h">
-      <div className="mr-container split">
+    <Section className="mr-section" aria-labelledby="control-h">
+      <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="control-h">
             The assistant suggests. Your approvers decide what gets booked.
@@ -12,13 +14,17 @@ export function ControlSection() {
           </p>
         </div>
         <figure className="split__visual" style={{ margin: '0' }}>
-          <div className="log-card" role="img" aria-label="Audit log of bookings and changes.">
+          <ProductCard
+            className="log-card"
+            role="img"
+            aria-label="Audit log of bookings and changes."
+          >
             <div aria-hidden="true">
               <div className="log-card__head">
                 <p className="log-card__title">Audit log</p>
                 <span className="mr-label">October</span>
               </div>
-              <table className="mr-ledger">
+              <LedgerTable className="mr-ledger">
                 <thead>
                   <tr>
                     <th>Time</th>
@@ -48,14 +54,14 @@ export function ControlSection() {
                     <td>Miraee</td>
                   </tr>
                 </tbody>
-              </table>
+              </LedgerTable>
             </div>
-          </div>
+          </ProductCard>
           <figcaption className="mr-caption fig-caption">
             Product view with illustrative data.
           </figcaption>
         </figure>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

@@ -1,7 +1,8 @@
+import { Section, Container } from '@/components/layout/content-layout'
 export function WhatYouSendSection() {
   return (
-    <section className="step-sec hr-top" aria-labelledby="send-h">
-      <div className="mr-container split">
+    <Section className="step-sec hr-top" aria-labelledby="send-h">
+      <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="send-h">
             One file you already have.
@@ -33,7 +34,7 @@ export function WhatYouSendSection() {
             </ul>
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

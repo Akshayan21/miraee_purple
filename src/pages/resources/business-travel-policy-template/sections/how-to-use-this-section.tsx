@@ -1,7 +1,8 @@
+import { Container } from '@/components/layout/content-layout'
 export function HowToUseThisSection() {
   return (
     <div className="mr-section lf-article">
-      <div className="mr-container lf-grid">
+      <Container className="mr-container lf-grid">
         <nav className="lf-toc" aria-label="On this page">
           <p className="lf-toc__h">On this page</p>
           <ol>
@@ -514,7 +515,7 @@ export function HowToUseThisSection() {
             </p>
           </div>
         </div>
-      </div>
+      </Container>
     </div>
   )
 }

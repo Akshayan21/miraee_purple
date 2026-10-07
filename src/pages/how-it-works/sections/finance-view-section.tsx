@@ -1,11 +1,13 @@
+import { Section, Container } from '@/components/layout/content-layout'
+import { ProductCard, LedgerTable } from '@/components/sections/product-preview'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 
 export function FinanceViewSection() {
   return (
-    <section className="step-sec mr-paper" aria-labelledby="s6-h">
-      <div className="mr-container split split--rev">
+    <Section className="step-sec mr-paper" aria-labelledby="s6-h">
+      <Container className="mr-container split split--rev">
         <div className="split__copy">
           <p className="mr-eyebrow">Step 6</p>
           <h2 className="mr-h2" id="s6-h">
@@ -22,7 +24,7 @@ export function FinanceViewSection() {
           </p>
         </div>
         <figure className="split__visual" style={{ margin: '0' }}>
-          <div
+          <ProductCard
             className="mr-ledger-wrap card-shadow ledger-panel"
             role="img"
             aria-label="A finance ledger of October trips with amounts, budgets, policy status and GL codes."
@@ -32,7 +34,7 @@ export function FinanceViewSection() {
                 <p className="mr-ledger-wrap__title">October trips</p>
                 <span className="mr-label">4 trips</span>
               </div>
-              <table className="mr-ledger">
+              <LedgerTable className="mr-ledger">
                 <thead>
                   <tr>
                     <th scope="col">Trip</th>
@@ -99,14 +101,14 @@ export function FinanceViewSection() {
                     <td className="mr-num">6210</td>
                   </tr>
                 </tbody>
-              </table>
+              </LedgerTable>
             </div>
-          </div>
+          </ProductCard>
           <figcaption className="mr-caption fig-cap">
             Product view with illustrative data.
           </figcaption>
         </figure>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

@@ -1,7 +1,8 @@
+import { Section, Container } from '@/components/layout/content-layout'
 export function WhyNowSection() {
   return (
-    <section className="mr-section" aria-label="Why now">
-      <div className="mr-container why">
+    <Section className="mr-section" aria-label="Why now">
+      <Container className="mr-container why">
         <p>
           Business travel spending is forecast to rise 7.2% in 2026, while the number of trips rises
           1.3%.
@@ -19,7 +20,7 @@ export function WhyNowSection() {
             </a>
           </sup>
         </p>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

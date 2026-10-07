@@ -1,10 +1,11 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { Button } from '@/components/ui/button'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
 
 export function ProofOnYourNumbersSection() {
   return (
-    <section className="mr-plum plum-band" aria-labelledby="proof-h">
-      <div className="mr-container">
+    <Section className="mr-plum plum-band" aria-labelledby="proof-h">
+      <Container className="mr-container">
         <div className="inner">
           <h2 className="mr-h2" id="proof-h">
             Want proof first? See last year's travel, trip by trip.
@@ -22,7 +23,7 @@ export function ProofOnYourNumbersSection() {
             </Button>
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

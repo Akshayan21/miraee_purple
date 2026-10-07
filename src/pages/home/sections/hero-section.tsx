@@ -1,3 +1,6 @@
+import styles from './hero-section.module.css'
+import { Section, Container } from '@/components/layout/content-layout'
+import { ProductCard, LedgerTable } from '@/components/sections/product-preview'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -10,18 +13,7 @@ import { DialogLink } from '@/components/forms/form-dialogs-context'
 function HeroBackdrop() {
   return (
     <div className="hero__backdrop" aria-hidden="true">
-      {/* Photo: Briana Tozour on Unsplash (Unsplash License). Cut to the shape's wavy edge by a mask in site.css. */}
-      <picture>
-        <source srcSet="/img/hero-airport-terminal.webp" type="image/webp" />
-        <img
-          className="hero__photo"
-          src="/img/hero-airport-terminal.jpg"
-          width="1600"
-          height="1067"
-          alt="Business travelers with carry-on bags walk through a sunlit airport terminal."
-          fetchpriority="high"
-        />
-      </picture>
+      <HeroPhoto />
       <svg
         className="hero__blob"
         viewBox="0 0 100 100"
@@ -42,11 +34,29 @@ function HeroBackdrop() {
   )
 }
 
+/** The stacked hero keeps its photograph inside the visual, clear of the copy. */
+function HeroPhoto({ mobile = false }: { mobile?: boolean }) {
+  return (
+    <picture>
+      <source srcSet="/img/hero-airport-terminal.webp" type="image/webp" />
+      <img
+        className={mobile ? 'hero__photo hero__photo--stacked' : 'hero__photo'}
+        src="/img/hero-airport-terminal.jpg"
+        width="1600"
+        height="1067"
+        alt=""
+        aria-hidden="true"
+        fetchpriority="high"
+      />
+    </picture>
+  )
+}
+
 export function HeroSection() {
   return (
-    <section className="mr-paper hero hero--blob" aria-labelledby="hero-h">
+    <Section className={`mr-paper hero hero--blob ${styles.hero}`} aria-labelledby="hero-h">
       <HeroBackdrop />
-      <div className="mr-container hero__grid">
+      <Container className="mr-container hero__grid">
         <div className="hero__copy">
           <h1 className="mr-display" id="hero-h">
             See where your travel money goes, and where you can spend less.
@@ -77,13 +87,14 @@ export function HeroSection() {
           </p>
         </div>
         <figure className="hero__visual" style={{ margin: '0' }}>
+          <HeroPhoto mobile />
           <span className="hero__orb" aria-hidden="true" />
-          <div className="hero__card mr-paper mr-ledger-wrap card-shadow">
+          <ProductCard className="hero__card mr-paper mr-ledger-wrap card-shadow">
             <div className="mr-ledger-wrap__head">
               <p className="mr-ledger-wrap__title">October trips</p>
               <span className="mr-label">3 trips</span>
             </div>
-            <table className="mr-ledger">
+            <LedgerTable className="mr-ledger">
               <caption>Product view with illustrative data.</caption>
               <thead>
                 <tr>
@@ -136,8 +147,8 @@ export function HeroSection() {
                   <td className="mr-num">6200</td>
                 </tr>
               </tbody>
-            </table>
-          </div>
+            </LedgerTable>
+          </ProductCard>
           <div className="hero__toast mr-paper card-shadow">
             <span className="hero__toast-mark" aria-hidden="true" />
             <p className="hero__toast-text">
@@ -146,7 +157,7 @@ export function HeroSection() {
             </p>
           </div>
         </figure>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

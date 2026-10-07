@@ -1,10 +1,11 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { Button } from '@/components/ui/button'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
 
 export function ProofFirstSection() {
   return (
-    <section className="mr-paper mr-section" aria-labelledby="proof-h">
-      <div className="mr-container answer">
+    <Section className="mr-paper mr-section" aria-labelledby="proof-h">
+      <Container className="mr-container answer">
         <h2 className="mr-h2" id="proof-h">
           Want proof first?
         </h2>
@@ -19,7 +20,7 @@ export function ProofFirstSection() {
             </DialogLink>
           </Button>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

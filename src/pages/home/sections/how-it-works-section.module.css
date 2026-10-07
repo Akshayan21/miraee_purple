@@ -1,0 +1,17 @@
+.section :global(.step__view) {
+  min-width: 0;
+}
+@media (max-width: 1199px) {
+  .section:global(.mo-swipe) :global(.step__view) {
+    height: auto;
+    min-height: 300px;
+  }
+}
+@media (max-width: 639px) {
+  .section :global(.step__view) {
+    padding: 16px;
+  }
+  .section:global(.mo-swipe) :global(.step) {
+    flex-basis: 92%;
+  }
+}

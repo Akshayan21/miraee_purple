@@ -1,3 +1,4 @@
+import { Container } from '@/components/layout/content-layout'
 import type { ReactNode } from 'react'
 
 import { SkipLink } from '@/components/layout/skip-link'
@@ -17,18 +18,18 @@ export function LandingLayout({ tone = 'light', footer, children }: LandingLayou
     <>
       <SkipLink />
       <header className={cn('lp-head', tone === 'plum' && 'mr-plum lp-head--plum')}>
-        <div className="mr-container">
+        <Container className="mr-container">
           <img src="/img/miraee-logo-orange.svg" alt="Miraee" width={121} height={30} />
-        </div>
+        </Container>
       </header>
       {children}
       <footer className="mr-footer lp-foot">
-        <div className="mr-container">
+        <Container className="mr-container">
           {footer}
           <div className="mr-footer__legal" style={{ marginTop: 24 }}>
             <span>© 2026 Miraee</span>
           </div>
-        </div>
+        </Container>
       </footer>
     </>
   )

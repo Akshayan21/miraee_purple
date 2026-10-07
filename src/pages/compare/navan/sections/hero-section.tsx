@@ -1,12 +1,13 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
 
 export function HeroSection() {
   return (
-    <section className="mr-plum lf-hero lf-hero--cutout" aria-labelledby="hero-h">
+    <Section className="mr-plum lf-hero lf-hero--cutout" aria-labelledby="hero-h">
       <nav className="crumbs" aria-label="Breadcrumb">
-        <div className="mr-container">
+        <Container className="mr-container">
           <ol>
             <li>
               <Link to="/">Home</Link>
@@ -18,9 +19,9 @@ export function HeroSection() {
               <span aria-current="page">Miraee vs Navan</span>
             </li>
           </ol>
-        </div>
+        </Container>
       </nav>
-      <div className="mr-container split">
+      <Container className="mr-container split">
         <div className="split__copy lf-hero__copy">
           <p className="mr-eyebrow">Comparison</p>
           <h1 className="mr-h1" id="hero-h">
@@ -65,7 +66,7 @@ export function HeroSection() {
             />
           </picture>
         </figure>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

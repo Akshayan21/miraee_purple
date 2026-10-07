@@ -1,7 +1,9 @@
+import { Section, Container } from '@/components/layout/content-layout'
+import { ProductCard } from '@/components/sections/product-preview'
 export function ForThePeopleWhoBookForOthersSection() {
   return (
-    <section className="step-sec" aria-labelledby="ea-h">
-      <div className="mr-container split">
+    <Section className="step-sec" aria-labelledby="ea-h">
+      <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="ea-h">
             Book for your team in a few steps, inside policy.
@@ -17,7 +19,7 @@ export function ForThePeopleWhoBookForOthersSection() {
             role="img"
             aria-label="Booking screen with a colleague's name selected."
           >
-            <div className="mock" aria-hidden="true">
+            <ProductCard className="mock" aria-hidden="true">
               <div className="mock__head">
                 <div>
                   <p className="mock__title">New trip</p>
@@ -40,13 +42,13 @@ export function ForThePeopleWhoBookForOthersSection() {
                   <span>Solutions consultant</span>
                 </li>
               </ul>
-            </div>
+            </ProductCard>
           </div>
           <figcaption className="mr-caption fig-cap">
             Product view with illustrative data.
           </figcaption>
         </figure>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

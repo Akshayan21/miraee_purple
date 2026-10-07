@@ -13,7 +13,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 import { HOME_SECTIONS, type Kit } from '@/lib/home-motion'
 
-const EASE = 'expo.out'
+const EASE = 'power3.out'
 const HERO = 'section[aria-labelledby="hero-h"]'
 /** Hero pieces animated by CSS keyframes in site.css; the intro below leaves them alone. */
 const CSS_ANIMATED = '.hero__person, .hero__card, .hero__toast'
@@ -45,7 +45,11 @@ export function initScrollMotion(): () => void {
 
   const ctx = gsap.context(() => {})
   /** Run later (inside a ScrollTrigger callback) while keeping the tweens it makes revertable. */
-  const rec = (fn: () => void) => ctx.add(fn)
+  const rec = (fn: () => void) => {
+    // A batch can enter synchronously inside a matchMedia context. Detach it before
+    // recording in the route context so GSAP never nests an ancestor in its child.
+    ctx.ignore(() => ctx.add(fn))
+  }
 
   ctx.add(() => {
     root.classList.add('mo')
@@ -169,11 +173,11 @@ export function initScrollMotion(): () => void {
       if (h1) gsap.set(h1, { opacity: 1 })
       if (words.length) {
         gsap.set(words, { yPercent: 115 })
-        tl.to(words, { yPercent: 0, duration: 1.15, stagger: 0.045 }, 0)
+        tl.to(words, { yPercent: 0, duration: 0.7, stagger: 0.035 }, 0)
       }
       if (lines.length) {
         gsap.set(lines, { opacity: 0, y: 22 })
-        tl.to(lines, { opacity: 1, y: 0, duration: 1, stagger: 0.09 }, 0.25)
+        tl.to(lines, { opacity: 1, y: 0, duration: 1, stagger: 0.06 }, 0.25)
       }
       visuals.forEach((v, i) => {
         gsap.set(v, { opacity: 0, x: 40, scale: 1.03, transformOrigin: '50% 100%' })
@@ -194,7 +198,7 @@ export function initScrollMotion(): () => void {
         start: 'top 88%',
         once: true,
         onEnter: () =>
-          rec(() => void gsap.to(w, { yPercent: 0, duration: 1.05, ease: EASE, stagger: 0.04 })),
+          rec(() => void gsap.to(w, { yPercent: 0, duration: 0.65, ease: EASE, stagger: 0.04 })),
       })
     })
 
@@ -246,11 +250,12 @@ export function initScrollMotion(): () => void {
       el.matches('.step, .task, .lf-card, .match__card, .mock, .compare-wrap, .gtable')
 
     reveal.forEach((el) => {
-      gsap.set(el, { opacity: 0, y: isBlock(el) ? 44 : 26 })
+      gsap.set(el, { opacity: 0, y: 20 })
       /* blocks (steps, tasks, cards) lift up from a slight backward tilt */
       if (isBlock(el))
-        gsap.set(el, { transformPerspective: 1000, transformOrigin: '50% 100%', rotationX: 10 })
-      gsap.set(qa(INNER, el), { opacity: 0 })
+        gsap.set(el, { transformPerspective: 1000, transformOrigin: '50% 100%', rotationX: 4 })
+      const inner = qa(INNER, el)
+      if (inner.length) gsap.set(inner, { opacity: 0 })
     })
     ScrollTrigger.batch(reveal, {
       start: 'top 90%',
@@ -263,9 +268,9 @@ export function initScrollMotion(): () => void {
             opacity: 1,
             y: 0,
             rotationX: 0,
-            duration: 1.1,
+            duration: 0.65,
             ease: EASE,
-            stagger: 0.09,
+            stagger: 0.06,
             overwrite: 'auto',
           })
           batch.forEach((el) => {
@@ -333,9 +338,9 @@ export function initScrollMotion(): () => void {
       const rows = qa(INNER, card)
       const host = card.closest<HTMLElement>('.compose') ?? card
       const person = host.querySelector<HTMLElement>('.compose__person')
-      gsap.set(card, { opacity: 0, y: 56 })
-      if (person) gsap.set(person, { opacity: 0, y: 40, scale: 1.04, transformOrigin: '50% 100%' })
-      gsap.set(rows, { opacity: 0 })
+      gsap.set(card, { opacity: 0, y: 24 })
+      if (person) gsap.set(person, { opacity: 0, y: 20, scale: 1.04, transformOrigin: '50% 100%' })
+      if (rows.length) gsap.set(rows, { opacity: 0 })
       ScrollTrigger.create({
         trigger: host,
         start: 'top 78%',
@@ -366,7 +371,7 @@ export function initScrollMotion(): () => void {
         gsap.set(card, {
           transformPerspective: 1000,
           transformOrigin: '50% 100%',
-          rotationX: 30,
+          rotationX: 8,
           '--s': 0,
         })
         gsap.to(card, {
@@ -380,7 +385,7 @@ export function initScrollMotion(): () => void {
           card,
           {
             transformPerspective: 1100,
-            rotationY: window.matchMedia('(max-width: 1023px)').matches ? -10 : -18,
+            rotationY: window.matchMedia('(max-width: 1023px)').matches ? 0 : -8,
           },
           {
             rotationY: 0,
@@ -394,7 +399,7 @@ export function initScrollMotion(): () => void {
     if (hero) {
       qa('.hero__card', hero).forEach((card) => {
         const rows = qa('.mr-ledger tbody tr', card)
-        gsap.set(rows, { opacity: 0 })
+        if (rows.length) gsap.set(rows, { opacity: 0 })
         gsap.to(rows, { opacity: 1, duration: 0.7, ease: 'power3.out', stagger: 0.12, delay: 0.9 })
         gsap.delayedCall(0.9, () => rec(() => countUp(card)))
       })
@@ -412,7 +417,7 @@ export function initScrollMotion(): () => void {
             () =>
               void gsap.to(line, {
                 clipPath: 'inset(-20% -10% -20% -10%)',
-                duration: 1.1,
+                duration: 0.65,
                 ease: 'power2.inOut',
                 delay,
               }),
@@ -448,7 +453,7 @@ export function initScrollMotion(): () => void {
       }
       if (fr.classList.contains('closing__photo')) {
         /* the closing photograph stands up from a tilted plane */
-        gsap.set(fr, { transformPerspective: 1300, transformOrigin: '50% 100%', rotationX: 18 })
+        gsap.set(fr, { transformPerspective: 1300, transformOrigin: '50% 100%', rotationX: 6 })
         gsap.to(fr, {
           rotationX: 0,
           ease: 'none',
@@ -457,7 +462,7 @@ export function initScrollMotion(): () => void {
       }
       gsap.fromTo(
         img,
-        { scale: 1.16 },
+        { scale: 1.06 },
         {
           scale: 1,
           ease: 'none',
@@ -492,9 +497,9 @@ export function initScrollMotion(): () => void {
       const cap = phone.querySelector<HTMLElement>('.phone__cap')
       const tl = gsap.timeline({
         defaults: { ease: 'power2.out' },
-        scrollTrigger: { trigger: host, start: 'top 60%', end: 'bottom 55%', scrub: 0.7 },
+        scrollTrigger: { trigger: host, start: 'top 85%', once: true },
       })
-      gsap.set(phone, { transformPerspective: 1100, rotationY: -30 })
+      gsap.set(phone, { transformPerspective: 1100, rotationY: -8 })
       tl.to(phone, { rotationY: 0, duration: 1.2 }, 0)
       if (alert) {
         gsap.set(alert, { opacity: 0, y: -24, animation: 'none' })
@@ -502,7 +507,7 @@ export function initScrollMotion(): () => void {
       }
       if (opts.length) {
         gsap.set(opts, { opacity: 0, y: 24 })
-        tl.to(opts, { opacity: 1, y: 0, duration: 1, stagger: 0.6 }, '>-0.3')
+        tl.to(opts, { opacity: 1, y: 0, duration: 0.5, stagger: 0.12 }, '>-0.3')
       }
       if (tick) {
         gsap.set(tick, { clipPath: 'inset(0 100% 0 0)' })
@@ -519,32 +524,14 @@ export function initScrollMotion(): () => void {
     })
 
     /* ---- 12. Depth: parallax on large screens only ---- */
-    /* Phones and tablets: the hero stack keeps a light tilt in depth (no vertical parallax in the stacked layout). */
-    mm.add('(max-width: 1023px)', () => {
-      if (!hero) return
-      const stage = hero.querySelector<HTMLElement>(
-        '.hero__visual, .compose, .split__visual, .lf-hero__visual, .page-hero__visual',
-      )
-      if (!stage) return
-      gsap.set(stage, { transformPerspective: 1100, transformOrigin: '50% 80%' })
-      /* composed photo + card pairs (a person leaning on a card) must stay in one plane, so only the home hero gets depth */
-      if (stage.matches('.hero__visual')) gsap.set(qa('.hero__card', stage), { z: 36 })
-      gsap.set(qa('.hero__toast', stage), { z: 60 })
-      gsap.to(stage, {
-        rotationY: -5,
-        rotationX: 2,
-        ease: 'none',
-        scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: 0.6 },
-      })
-    })
-    mm.add('(min-width: 1024px)', () => {
+    mm.add('(min-width: 1200px) and (hover: hover) and (pointer: fine)', () => {
       if (hero) {
         const trigger = { trigger: hero, start: 'top top', end: 'bottom top', scrub: 0.6 }
         qa('.hero__person, .lf-hero__person', hero).forEach((p) =>
-          gsap.to(p, { y: 70, ease: 'none', scrollTrigger: trigger }),
+          gsap.to(p, { y: 24, ease: 'none', scrollTrigger: trigger }),
         )
         qa('.hero__card, .hero__toast', hero).forEach((c) =>
-          gsap.to(c, { y: -36, ease: 'none', scrollTrigger: trigger }),
+          gsap.to(c, { y: -12, ease: 'none', scrollTrigger: trigger }),
         )
         /* The hero composition is a real stack in depth (photo, ledger, toast); it turns slightly as you scroll past. */
         const stage = hero.querySelector<HTMLElement>('.hero__visual')
@@ -552,21 +539,21 @@ export function initScrollMotion(): () => void {
           gsap.set(stage, { transformPerspective: 1500, transformOrigin: '35% 70%' })
           gsap.set(qa('.hero__card', stage), { z: 70 })
           gsap.set(qa('.hero__toast', stage), { z: 110 })
-          gsap.to(stage, { rotationY: -9, rotationX: 3, ease: 'none', scrollTrigger: trigger })
+          gsap.to(stage, { rotationY: -4, rotationX: 1.5, ease: 'none', scrollTrigger: trigger })
         } else {
           const alt = hero.querySelector<HTMLElement>(
             '.compose, .split__visual, .lf-hero__visual, .page-hero__visual',
           )
           if (alt) {
             gsap.set(alt, { transformPerspective: 1500, transformOrigin: '40% 70%' })
-            gsap.to(alt, { rotationY: -7, rotationX: 2, ease: 'none', scrollTrigger: trigger })
+            gsap.to(alt, { rotationY: -3, rotationX: 2, ease: 'none', scrollTrigger: trigger })
           }
         }
         const copy = hero.querySelector<HTMLElement>('.hero__copy, .lf-hero__copy')
         if (copy)
           gsap.to(copy, {
-            y: -40,
-            opacity: 0.35,
+            y: -16,
+            opacity: 0.85,
             ease: 'none',
             scrollTrigger: { trigger: hero, start: '35% top', end: 'bottom top', scrub: 0.6 },
           })
@@ -606,11 +593,15 @@ export function initScrollMotion(): () => void {
   })
 
   /* Fonts and images move the page; recalculate once they settle. */
-  const refresh = () => ScrollTrigger.refresh()
+  let disposed = false
+  const refresh = () => {
+    if (!disposed) ScrollTrigger.refresh()
+  }
   void document.fonts?.ready.then(refresh)
   window.addEventListener('load', refresh)
 
   return () => {
+    disposed = true
     window.removeEventListener('load', refresh)
     ctx.revert()
     restore.reverse().forEach((fn) => fn())

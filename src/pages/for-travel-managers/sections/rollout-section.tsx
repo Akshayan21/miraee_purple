@@ -1,9 +1,11 @@
+import { Section, Container } from '@/components/layout/content-layout'
+import { ProductCard } from '@/components/sections/product-preview'
 import { Badge } from '@/components/ui/badge'
 
 export function RolloutSection() {
   return (
-    <section className="mr-paper mr-section" aria-labelledby="roll-h">
-      <div className="mr-container split">
+    <Section className="mr-paper mr-section" aria-labelledby="roll-h">
+      <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="roll-h">
             Onboarding is free, including your policy and your people.
@@ -14,7 +16,7 @@ export function RolloutSection() {
           </p>
         </div>
         <figure className="split__visual" style={{ margin: '0' }}>
-          <div
+          <ProductCard
             className="mock mock--wide"
             role="img"
             aria-label="Onboarding checklist with six completed steps."
@@ -54,12 +56,12 @@ export function RolloutSection() {
                 </li>
               </ul>
             </div>
-          </div>
+          </ProductCard>
           <p className="mr-caption fig-cap" style={{ textAlign: 'right' }}>
             Product view with illustrative data.
           </p>
         </figure>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

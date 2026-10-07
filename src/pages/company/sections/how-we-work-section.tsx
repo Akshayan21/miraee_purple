@@ -1,9 +1,10 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { Link } from 'react-router-dom'
 
 export function HowWeWorkSection() {
   return (
-    <section className="mr-section" aria-labelledby="work-h">
-      <div className="mr-container">
+    <Section className="mr-section" aria-labelledby="work-h">
+      <Container className="mr-container">
         <h2 className="mr-h2" id="work-h">
           We show our work.
         </h2>
@@ -23,7 +24,7 @@ export function HowWeWorkSection() {
             <Link to="/resources">Resources</Link>
           </li>
         </ul>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

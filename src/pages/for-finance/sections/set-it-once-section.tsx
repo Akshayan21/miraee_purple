@@ -1,7 +1,9 @@
+import { Section, Container } from '@/components/layout/content-layout'
+import { ProductCard, LedgerTable } from '@/components/sections/product-preview'
 export function SetItOnceSection() {
   return (
-    <section className="step-sec hr-top" aria-labelledby="once-h">
-      <div className="mr-container split">
+    <Section className="step-sec hr-top" aria-labelledby="once-h">
+      <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="once-h">
             Set your travel policy, GL codes and budgets once.
@@ -17,7 +19,7 @@ export function SetItOnceSection() {
             role="img"
             aria-label="Settings screen for GL codes and travel budgets."
           >
-            <div className="mock mock--wide" aria-hidden="true">
+            <ProductCard className="mock mock--wide" aria-hidden="true">
               <div className="mock__head">
                 <div>
                   <p className="mock__title">GL codes and budgets</p>
@@ -25,7 +27,7 @@ export function SetItOnceSection() {
                 </div>
                 <span className="mr-label">Finance settings</span>
               </div>
-              <table className="mr-ledger">
+              <LedgerTable className="mr-ledger">
                 <thead>
                   <tr>
                     <th>Cost center</th>
@@ -50,14 +52,14 @@ export function SetItOnceSection() {
                     <td className="mr-num">$1,200.00</td>
                   </tr>
                 </tbody>
-              </table>
-            </div>
+              </LedgerTable>
+            </ProductCard>
           </div>
           <figcaption className="mr-caption fig-cap">
             Product view with illustrative data.
           </figcaption>
         </figure>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

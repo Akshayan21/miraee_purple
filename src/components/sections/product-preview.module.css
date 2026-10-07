@@ -1,0 +1,49 @@
+.card {
+  min-width: 0;
+}
+.phone,
+.document {
+  min-width: 0;
+  max-width: 100%;
+}
+.row {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+.viewport {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
+}
+.viewport:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+@media (max-width: 639px) {
+  .table {
+    min-width: 280px;
+  }
+}
+
+.composition {
+  min-width: 0;
+}
+.composition > * {
+  min-width: 0;
+}
+@media (max-width: 1023px) {
+  .composition.composition :global(.compose__person) {
+    max-width: 100%;
+    object-fit: contain;
+  }
+  .composition :global(.compose__card) {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .composition:global(.mo-stack)::before,
+  .composition:global(.mo-stack)::after {
+    display: none;
+  }
+}

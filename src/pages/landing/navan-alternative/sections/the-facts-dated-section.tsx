@@ -1,7 +1,8 @@
+import { Section, Container } from '@/components/layout/content-layout'
 export function TheFactsDatedSection() {
   return (
-    <section className="mr-section" aria-labelledby="facts-h">
-      <div className="mr-container">
+    <Section className="mr-section" aria-labelledby="facts-h">
+      <Container className="mr-container">
         <p className="dateline">
           Last updated <time dateTime="2026-09-30">September 30, 2026</time>
         </p>
@@ -41,7 +42,7 @@ export function TheFactsDatedSection() {
             </tbody>
           </table>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

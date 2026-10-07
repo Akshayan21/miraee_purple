@@ -1,11 +1,13 @@
+import { Section, Container } from '@/components/layout/content-layout'
+import { ProductPhone } from '@/components/sections/product-preview'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 
 export function WhenPlansChangeSection() {
   return (
-    <section className="mr-plum alert-band" aria-labelledby="plans-h">
-      <div className="mr-container split split--rev">
+    <Section className="mr-plum alert-band" aria-labelledby="plans-h">
+      <Container className="mr-container split split--rev">
         <div className="split__copy">
           <h2 className="mr-h2" id="plans-h">
             When plans change, your traveler gets new options to confirm.
@@ -34,7 +36,7 @@ export function WhenPlansChangeSection() {
           role="img"
           aria-label="Phone alert about a delayed flight with new options."
         >
-          <div className="phone phone--alert" aria-hidden="true">
+          <ProductPhone className="phone phone--alert" aria-hidden="true">
             <div className="phone__screen mr-plum">
               <div className="phone__bar">
                 <span className="mr-fig">5:53</span>
@@ -87,12 +89,12 @@ export function WhenPlansChangeSection() {
               </Button>
               <p className="phone__cap">Your travel lead sees the change in the audit log.</p>
             </div>
-          </div>
+          </ProductPhone>
           <p className="mr-caption fig-cap" aria-hidden="true">
             Product view with illustrative data.
           </p>
         </figure>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

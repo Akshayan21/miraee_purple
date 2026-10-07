@@ -1,7 +1,9 @@
+import { Section, Container } from '@/components/layout/content-layout'
+import { ProductCard, LedgerTable } from '@/components/sections/product-preview'
 export function WhatYouGetSection() {
   return (
-    <section className="mr-paper mr-section" aria-labelledby="get-h">
-      <div className="mr-container split">
+    <Section className="mr-paper mr-section" aria-labelledby="get-h">
+      <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="get-h">
             Four findings, measured from your own data.
@@ -9,12 +11,12 @@ export function WhatYouGetSection() {
           <p className="mr-body">The report is yours to keep.</p>
         </div>
         <div className="split__visual split__visual--wide">
-          <div className="mr-ledger-wrap card-shadow findings">
+          <ProductCard className="mr-ledger-wrap card-shadow findings">
             <div className="mr-ledger-wrap__head">
               <p className="mr-ledger-wrap__title">Spend review findings</p>
               <span className="mr-label">Last year</span>
             </div>
-            <table className="mr-ledger">
+            <LedgerTable className="mr-ledger">
               <caption>Product view with illustrative data.</caption>
               <thead>
                 <tr>
@@ -60,10 +62,10 @@ export function WhatYouGetSection() {
                   <td className="mr-num">$21,760.00</td>
                 </tr>
               </tbody>
-            </table>
-          </div>
+            </LedgerTable>
+          </ProductCard>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

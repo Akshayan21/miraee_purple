@@ -1,7 +1,8 @@
+import { Section, Container } from '@/components/layout/content-layout'
 export function SpendReviewDataSection() {
   return (
-    <section className="mr-section" aria-labelledby="data-h">
-      <div className="mr-container duo">
+    <Section className="mr-section" aria-labelledby="data-h">
+      <Container className="mr-container duo">
         <div className="duo__head">
           <h2 className="mr-h2" id="data-h">
             You choose what to share.
@@ -14,7 +15,7 @@ export function SpendReviewDataSection() {
             keep.
           </p>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

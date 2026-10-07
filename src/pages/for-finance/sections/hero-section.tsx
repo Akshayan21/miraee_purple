@@ -1,11 +1,14 @@
+import { VisualComposition } from '@/components/sections/product-preview'
+import { Section, Container } from '@/components/layout/content-layout'
+import { ProductCard, LedgerTable } from '@/components/sections/product-preview'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
 
 export function HeroSection() {
   return (
-    <section className="mr-paper core-hero section-bleed" aria-labelledby="hero-h">
-      <div className="mr-container split">
+    <Section className="mr-paper core-hero section-bleed" aria-labelledby="hero-h">
+      <Container className="mr-container split">
         <div className="split__copy">
           <h1 className="mr-h1" id="hero-h">
             Travel and expense management for finance teams
@@ -28,7 +31,7 @@ export function HeroSection() {
           </div>
           <p className="mr-small hero__trust">Keep the corporate cards you already use.</p>
         </div>
-        <figure className="split__visual compose compose--fin" style={{ margin: '0' }}>
+        <VisualComposition className="split__visual compose compose--fin" style={{ margin: '0' }}>
           <picture>
             <source srcSet="/img/px5918389-controller.webp" type="image/webp" />
             <img
@@ -40,12 +43,12 @@ export function HeroSection() {
               fetchpriority="high"
             />
           </picture>
-          <div className="compose__card mr-ledger-wrap card-shadow">
+          <ProductCard className="compose__card mr-ledger-wrap card-shadow">
             <div className="mr-ledger-wrap__head">
               <p className="mr-ledger-wrap__title">October trips</p>
               <span className="mr-label">4 trips</span>
             </div>
-            <table className="mr-ledger">
+            <LedgerTable className="mr-ledger">
               <thead>
                 <tr>
                   <th scope="col">Trip</th>
@@ -112,13 +115,13 @@ export function HeroSection() {
                   <td className="mr-num">6210</td>
                 </tr>
               </tbody>
-            </table>
+            </LedgerTable>
             <p className="mr-caption" style={{ margin: '10px 0 0' }}>
               Product view with illustrative data.
             </p>
-          </div>
-        </figure>
-      </div>
-    </section>
+          </ProductCard>
+        </VisualComposition>
+      </Container>
+    </Section>
   )
 }

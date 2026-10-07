@@ -1,3 +1,4 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
@@ -5,8 +6,8 @@ import { COMPARISONS } from '../data'
 
 export function ComparisonsSection() {
   return (
-    <section className="mr-paper py-20 md:py-24" aria-labelledby="side-by-side-comparisons">
-      <div className="mr-container">
+    <Section className="mr-paper py-20 md:py-24" aria-labelledby="side-by-side-comparisons">
+      <Container className="mr-container">
         <h2 className="mr-h2 scroll-mt-32" id="side-by-side-comparisons">
           Side-by-side comparisons
         </h2>
@@ -32,7 +33,7 @@ export function ComparisonsSection() {
             </li>
           ))}
         </ul>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

@@ -1,3 +1,4 @@
+import { Container } from '@/components/layout/content-layout'
 import { Link } from 'react-router-dom'
 
 import { cn } from '@/lib/utils'
@@ -13,7 +14,7 @@ type BreadcrumbsProps = {
 export function Breadcrumbs({ current, className }: BreadcrumbsProps) {
   return (
     <nav className={cn('crumbs', className)} aria-label="Breadcrumb">
-      <div className="mr-container">
+      <Container className="mr-container">
         <ol>
           <li>
             <Link to="/">Home</Link>
@@ -22,7 +23,7 @@ export function Breadcrumbs({ current, className }: BreadcrumbsProps) {
             <span aria-current="page">{current}</span>
           </li>
         </ol>
-      </div>
+      </Container>
     </nav>
   )
 }

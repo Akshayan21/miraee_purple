@@ -1,12 +1,14 @@
+import { Section, Container } from '@/components/layout/content-layout'
+import { DocumentPreview } from '@/components/sections/product-preview'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
 
 export function HeroSection() {
   return (
-    <section className="mr-paper lf-hero lf-hero--frame" aria-labelledby="hero-h">
+    <Section className="mr-paper lf-hero lf-hero--frame" aria-labelledby="hero-h">
       <nav className="crumbs" aria-label="Breadcrumb">
-        <div className="mr-container">
+        <Container className="mr-container">
           <ol>
             <li>
               <Link to="/">Home</Link>
@@ -18,9 +20,9 @@ export function HeroSection() {
               <span aria-current="page">Business travel policy template</span>
             </li>
           </ol>
-        </div>
+        </Container>
       </nav>
-      <div className="mr-container split">
+      <Container className="mr-container split">
         <div className="split__copy lf-hero__copy">
           <p className="mr-eyebrow">Free template</p>
           <h1 className="mr-h1" id="hero-h">
@@ -48,7 +50,7 @@ export function HeroSection() {
           </p>
         </div>
         <figure className="lf-hero__visual lf-hero__visual--doc" style={{ margin: '0' }}>
-          <div className="doc-cover">
+          <DocumentPreview className="doc-cover">
             <div className="doc-cover__top">
               <img src="/img/miraee-logo-orange.svg" alt="" width="84" height="21" />
             </div>
@@ -69,9 +71,9 @@ export function HeroSection() {
               The Business Travel Policy Template for Growing Companies
             </p>
             <p className="doc-cover__s">Travel and expense policy · Rollout checklist</p>
-          </div>
+          </DocumentPreview>
         </figure>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

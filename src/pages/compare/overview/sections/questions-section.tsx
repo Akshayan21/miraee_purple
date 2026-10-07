@@ -1,13 +1,14 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { QUESTION_GROUPS } from '../data'
 
 export function QuestionsSection() {
   return (
-    <section
+    <Section
       className="mr-paper py-20 md:py-24"
       aria-labelledby="twelve-questions-to-ask-every-vendor-including-us"
     >
-      <div className="mr-container">
+      <Container className="mr-container">
         <h2 className="mr-h2 scroll-mt-32" id="twelve-questions-to-ask-every-vendor-including-us">
           Twelve questions to ask every vendor, including us
         </h2>
@@ -57,7 +58,7 @@ export function QuestionsSection() {
             stage.
           </p>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

@@ -1,11 +1,12 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
 
 export function ContactSection() {
   return (
-    <section className="mr-plum plum-band" aria-labelledby="close-h">
-      <div className="mr-container">
+    <Section className="mr-plum plum-band" aria-labelledby="close-h">
+      <Container className="mr-container">
         <div className="inner">
           <h2 className="mr-h2" id="close-h">
             Talk to us
@@ -24,7 +25,7 @@ export function ContactSection() {
             </Button>
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

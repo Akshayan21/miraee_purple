@@ -1,10 +1,11 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { Button } from '@/components/ui/button'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
 
 export function FreeStartSection() {
   return (
-    <section className="mr-paper mr-section" aria-labelledby="free-h">
-      <div className="mr-container">
+    <Section className="mr-paper mr-section" aria-labelledby="free-h">
+      <Container className="mr-container">
         <div className="inner" style={{ maxWidth: '760px' }}>
           <h2 className="mr-h2" id="free-h">
             Free to sign up and onboard, at any company size.
@@ -26,7 +27,7 @@ export function FreeStartSection() {
             </Button>
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

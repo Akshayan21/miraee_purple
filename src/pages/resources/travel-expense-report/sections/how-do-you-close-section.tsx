@@ -1,3 +1,4 @@
+import { Container } from '@/components/layout/content-layout'
 import { InlineFaq } from '@/components/sections/faq'
 import { faq } from '../faq'
 import { Link } from 'react-router-dom'
@@ -6,7 +7,7 @@ import { Badge } from '@/components/ui/badge'
 export function HowDoYouCloseSection() {
   return (
     <div className="mr-section lf-article">
-      <div className="mr-container lf-grid">
+      <Container className="mr-container lf-grid">
         <nav className="lf-toc" aria-label="On this page">
           <p className="lf-toc__h">On this page</p>
           <ol>
@@ -381,7 +382,7 @@ export function HowDoYouCloseSection() {
           </div>
           <InlineFaq items={faq} />
         </div>
-      </div>
+      </Container>
     </div>
   )
 }

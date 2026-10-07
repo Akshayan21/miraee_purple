@@ -1,3 +1,4 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { Link } from 'react-router-dom'
 
 import { DialogLink } from '@/components/forms/form-dialogs-context'
@@ -5,8 +6,8 @@ import { Button } from '@/components/ui/button'
 
 export function ProofSection() {
   return (
-    <section className="bg-white py-20 md:py-24" aria-labelledby="want-proof-before-you-choose">
-      <div className="mr-container">
+    <Section className="bg-white py-20 md:py-24" aria-labelledby="want-proof-before-you-choose">
+      <Container className="mr-container">
         <div className="mr-paper grid gap-8 rounded-xl p-8 lg:grid-cols-12 lg:items-center md:p-12">
           <div className="lg:col-span-8">
             <h2 className="mr-h2 scroll-mt-32" id="want-proof-before-you-choose">
@@ -34,7 +35,7 @@ export function ProofSection() {
             </p>
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

@@ -1,10 +1,11 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { Button } from '@/components/ui/button'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
 
 export function OptionalAlwaysSection() {
   return (
-    <section className="mr-plum mr-section optional" aria-labelledby="opt-h">
-      <div className="mr-container split">
+    <Section className="mr-plum mr-section optional" aria-labelledby="opt-h">
+      <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="opt-h">
             The review is optional.
@@ -39,7 +40,7 @@ export function OptionalAlwaysSection() {
             />
           </picture>
         </figure>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

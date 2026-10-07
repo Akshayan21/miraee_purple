@@ -1,10 +1,11 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 
 export function WhoIsBehindMiraeeSection() {
   return (
-    <section className="mr-section hr-top" aria-labelledby="who-h">
-      <div className="mr-container duo">
+    <Section className="mr-section hr-top" aria-labelledby="who-h">
+      <Container className="mr-container duo">
         <div className="duo__head">
           <h2 className="mr-h2" id="who-h">
             Who is behind Miraee
@@ -20,7 +21,7 @@ export function WhoIsBehindMiraeeSection() {
             </Button>
           </p>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

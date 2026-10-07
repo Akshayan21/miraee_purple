@@ -1,3 +1,5 @@
+import { Container } from '@/components/layout/content-layout'
+import { ProductCard, LedgerTable } from '@/components/sections/product-preview'
 import { InlineFaq } from '@/components/sections/faq'
 import { faq } from '../faq'
 import { Link } from 'react-router-dom'
@@ -8,7 +10,7 @@ import { DialogLink } from '@/components/forms/form-dialogs-context'
 export function HowDoesMiraeeCompareSection() {
   return (
     <div className="mr-section lf-article">
-      <div className="mr-container lf-grid">
+      <Container className="mr-container lf-grid">
         <nav className="lf-toc" aria-label="On this page">
           <p className="lf-toc__h">On this page</p>
           <ol>
@@ -147,7 +149,7 @@ export function HowDoesMiraeeCompareSection() {
             See <Link to="/finance">the finance view</Link> for the screens.
           </p>
           <figure className="lf-view mr-paper">
-            <div
+            <ProductCard
               className="mr-ledger-wrap card-shadow ledger-card"
               style={{ background: 'var(--mr-white)' }}
             >
@@ -155,7 +157,7 @@ export function HowDoesMiraeeCompareSection() {
                 <p className="mr-ledger-wrap__title">October trips</p>
                 <span className="mr-label">3 trips</span>
               </div>
-              <table
+              <LedgerTable
                 className="mr-ledger"
                 aria-label="A finance ledger of trips with budgets, policy status and GL codes."
               >
@@ -216,8 +218,8 @@ export function HowDoesMiraeeCompareSection() {
                     <td className="mr-num">6200</td>
                   </tr>
                 </tbody>
-              </table>
-            </div>
+              </LedgerTable>
+            </ProductCard>
             <figcaption className="mr-caption">Product view with illustrative data.</figcaption>
           </figure>
           <h2 className="mr-h2" id="what-happens-when-plans-change">
@@ -314,7 +316,7 @@ export function HowDoesMiraeeCompareSection() {
           </div>
           <InlineFaq items={faq} />
         </div>
-      </div>
+      </Container>
     </div>
   )
 }

@@ -1,12 +1,13 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
 
 export function HeroSection() {
   return (
-    <section className="mr-plum page-hero page-hero--frame" aria-labelledby="hero-h">
+    <Section className="mr-plum page-hero page-hero--frame" aria-labelledby="hero-h">
       <nav className="crumbs" style={{ paddingTop: '0' }} aria-label="Breadcrumb">
-        <div className="mr-container">
+        <Container className="mr-container">
           <ol>
             <li>
               <Link to="/">Home</Link>
@@ -15,9 +16,9 @@ export function HeroSection() {
               <span aria-current="page">Pricing</span>
             </li>
           </ol>
-        </div>
+        </Container>
       </nav>
-      <div className="mr-container page-hero__grid">
+      <Container className="mr-container page-hero__grid">
         <div className="page-hero__copy">
           <h1 className="mr-display" id="hero-h">
             Free to sign up and onboard, at any company size
@@ -53,7 +54,7 @@ export function HeroSection() {
             />
           </picture>
         </figure>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

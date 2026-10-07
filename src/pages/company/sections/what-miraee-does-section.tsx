@@ -1,10 +1,11 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 
 export function WhatMiraeeDoesSection() {
   return (
-    <section className="mr-section" aria-labelledby="does-h">
-      <div className="mr-container duo">
+    <Section className="mr-section" aria-labelledby="does-h">
+      <Container className="mr-container duo">
         <div className="duo__head">
           <h2 className="mr-h2" id="does-h">
             Travel your finance team can see.
@@ -22,7 +23,7 @@ export function WhatMiraeeDoesSection() {
             </Button>
           </p>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

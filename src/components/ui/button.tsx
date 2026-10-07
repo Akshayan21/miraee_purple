@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils'
  */
 const buttonVariants = cva(
   [
-    'mr-btn inline-flex h-(--h) cursor-pointer items-center justify-center gap-2 whitespace-nowrap',
+    'mr-btn max-w-full min-w-0 inline-flex h-(--h) cursor-pointer items-center justify-center gap-2 whitespace-nowrap',
     'rounded-md border-[1.5px] border-solid px-6 py-0 [line-height:1] font-semibold no-underline',
     'font-sans text-[length:var(--mr-fs-ui)] [--h:var(--mr-control-h)]',
     'transition-colors duration-[120ms] ease-[cubic-bezier(.2,0,0,1)]',
@@ -27,7 +27,7 @@ const buttonVariants = cva(
         secondary:
           'mr-btn--secondary border-btn2-border bg-transparent text-btn2 hover:border-btn2-border hover:bg-surface-raised',
         tertiary: [
-          'mr-btn--tertiary border-transparent bg-transparent px-1 text-content',
+          'mr-btn--tertiary h-auto min-h-(--h) whitespace-normal border-transparent bg-transparent px-1 text-left text-content',
           'underline decoration-1 underline-offset-[5px]',
           "after:ml-0.5 after:inline-block after:no-underline after:content-['→']",
           'hover:border-transparent hover:bg-transparent hover:text-link',
