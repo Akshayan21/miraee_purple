@@ -5,7 +5,7 @@ import { FAQ_LINK, type FaqItem } from '@/lib/faq'
 
 export type { FaqItem }
 
-function FaqAnswer({ answer }: { answer: string }) {
+export function FaqAnswer({ answer }: { answer: string }) {
   const parts: React.ReactNode[] = []
   let last = 0
   for (const match of answer.matchAll(FAQ_LINK)) {

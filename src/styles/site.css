@@ -41,30 +41,29 @@ sup a { text-decoration: none; padding: 0 1px; }
 .hero--blob { isolation: isolate; }
 .hero__backdrop { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
 /* The shape starts where the man's column starts and runs off the right edge of the page. */
-.hero__blob { position: absolute; top: 0; right: 0; bottom: 0; width: 58%; height: 100%; overflow: visible; }
-.hero__blob-back { fill: var(--mr-plum); }
+.hero__blob { position: absolute; top: 0; right: 0; bottom: 0; width: 58%; height: 100%; overflow: visible; z-index: 1; }
+.hero__blob-back { fill: none; }
+/* The travel photograph fills the same box as the shape and is cut to the same wavy edge by a mask. */
+.hero__photo { background: var(--mr-plum); position: absolute; top: 0; right: 0; bottom: 0; width: 58%; height: 100%; object-fit: cover; object-position: 100% 50%;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M30 0C22 12 8 18 14 34C20 48 0 54 4 68C8 82 22 84 18 100L100 100L100 0Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M30 0C22 12 8 18 14 34C20 48 0 54 4 68C8 82 22 84 18 100L100 100L100 0Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat; }
 .hero__blob-line { fill: none; stroke: var(--mr-orange); stroke-width: 3; stroke-linecap: round; }
 /* One small sphere echoes the reference. Static, one shadow, lit from the top left. */
 .hero__orb { position: absolute; z-index: 0; top: 18px; left: 40px; width: 26px; height: 26px; border-radius: 50%; box-shadow: 0 10px 18px rgba(37, 9, 24, .28); background: radial-gradient(circle at 32% 26%, #fff 0 5%, var(--mr-mist) 7% 42%, var(--mr-plum-edge) 100%); }
 @media (max-width: 1199px) {
   .hero--blob { padding-bottom: 32px; }
-  .hero__blob { top: auto; bottom: 0; height: 680px; width: 100%; }
+  /* Stacked layout: the photo becomes a rounded panel behind the cards, and the wavy outline is dropped. */
+  .hero__blob, .hero__trail { display: none; }
+  .hero__photo { top: auto; bottom: 0; left: 20px; right: 20px; width: auto; height: 560px; border-radius: var(--mr-r-xl);
+    -webkit-mask: none; mask: none; object-position: 82% 50%; }
 }
-/* Cards are anchored to the bottom, like the man, so they keep their place against him however tall the hero gets. */
-/* Visual: no container. The man stands on the bottom edge of the hero, flush with the right edge of the page content;
-   the ledger card and the approval toast sit against his left side. */
+/* Visual: the ledger card and the approval toast sit on the left edge of the photo, anchored to the bottom of the hero. */
 .hero__visual { grid-column: 7 / span 6; position: relative; align-self: stretch; min-height: 640px;
-  /* Man and cards are one composition. These numbers are coupled (the card must stop short of his face), so they live
-     here, and the breakpoints below only change this block. Offsets are from the bottom-right of the column. */
-  --man-w: 134%; --man-right: -120px;
+  /* Card geometry lives here; the breakpoints below only change this block. Offsets are from the bottom-left of the column. */
   --card-w: 364px; --card-left: -178px; --card-bottom: 150px;
   --toast-w: 312px; --toast-left: -120px; --toast-bottom: 60px; }
 /* Large, pinned to the bottom-right. `max-width: none` matters: the global `img { max-width: 100% }` would otherwise
    squeeze him horizontally whenever he is wider than the column. */
-/* He overhangs the column on the right so his face lands clear of the cards; the last 70px of his far sleeve fade out
-   instead of ending on a hard vertical cut. */
-.hero__person { position: absolute; z-index: 1; bottom: 0; right: var(--man-right); width: var(--man-w); max-width: none; height: auto;
-  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 70px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 70px), transparent); }
 .hero__card { position: absolute; left: var(--card-left); bottom: var(--card-bottom); width: var(--card-w); z-index: 2; padding: 14px 16px 8px; font-size: 12px; overflow: visible; }
 .hero__card .mr-ledger th, .hero__card .mr-ledger td { padding-right: 8px; }
 .hero__card .mr-ledger th:last-child, .hero__card .mr-ledger td:last-child { padding-right: 0; }
@@ -77,14 +76,15 @@ sup a { text-decoration: none; padding: 0 1px; }
 .hero__toast-text span { color: var(--mr-slate); }
 /* Entrance: photo first, then the ledger, then the approval toast. Off for reduced motion. */
 @keyframes hero-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
-.hero__person { animation: hero-rise 700ms var(--mr-ease) backwards; }
+@keyframes hero-fade { from { opacity: 0; } to { opacity: 1; } }
+.hero__photo { animation: hero-fade 900ms var(--mr-ease) backwards; }
 .hero__card { animation: hero-rise 600ms var(--mr-ease) 250ms backwards; }
 .hero__toast { animation: hero-rise 600ms var(--mr-ease) 500ms backwards; }
-@media (prefers-reduced-motion: reduce) { .hero__person, .hero__card, .hero__toast { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .hero__photo, .hero__card, .hero__toast { animation: none; } }
 /* Narrow desktops (1200-1399px, or a zoomed-in browser): the container is narrower but the cards keep their size,
    so they sit a little further in. */
 @media (min-width: 1200px) and (max-width: 1399px) {
-  .hero__visual { --man-w: 148%; --man-right: -200px; --card-left: -150px; --toast-left: -110px; --toast-w: 288px; }
+  .hero__visual { --card-left: -150px; --toast-left: -110px; --toast-w: 288px; }
   .hero__copy .mr-lead { max-width: min(400px, calc(100% - 72px)); }
 }
 @media (max-width: 1199px) {
@@ -92,16 +92,15 @@ sup a { text-decoration: none; padding: 0 1px; }
   .hero__copy .mr-lead { max-width: 40em; }
   .hero__trust { max-width: 34em; }
   .hero__copy { grid-column: 1 / -1; padding: 0 0 40px; }
-  .hero__visual { grid-column: 1 / -1; min-height: 0; display: grid; gap: 16px; }
-  .hero__person { position: relative; right: auto; bottom: auto; height: auto; width: min(100%, 420px); margin: 24px 0 0 auto; }
-  .hero__card { position: relative; left: auto; top: auto; bottom: auto; width: auto; max-width: none; margin: -110px 16px 0; }
-  .hero__toast { position: relative; left: auto; top: auto; bottom: auto; margin: 0 16px 16px; width: auto; max-width: none; }
+  .hero__visual { grid-column: 1 / -1; min-height: 340px; display: grid; gap: 16px; align-content: end; }
+  .hero__card { position: relative; left: auto; top: auto; bottom: auto; width: auto; max-width: none; margin: 0 36px 0; }
+  .hero__toast { position: relative; left: auto; top: auto; bottom: auto; margin: 0 36px 16px; width: auto; max-width: none; }
 }
 @media (max-width: 639px) {
   .hero { padding-top: 40px; }
   .hero__copy .mr-btn-row { flex-direction: column; align-items: stretch; }
   .hero__copy .mr-btn-row .mr-btn--tertiary { align-self: flex-start; }
-  .hero__card { margin-top: -72px; max-width: none; margin-right: 16px; }
+  .hero__card { max-width: none; }
 }
 
 /* Ledger inside cards: allow the trip name to wrap */

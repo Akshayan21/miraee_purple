@@ -48,3 +48,34 @@
   content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
   background: var(--mr-orange-light, currentColor); transform: scaleX(var(--p, 1)); transform-origin: left;
 }
+
+/* ---- 3D: hero stage keeps its children in one depth space ---- */
+.mo .hero__visual { transform-style: preserve-3d; }
+
+/* ---- 3D: two earlier records fan out behind the finance trip card (driven by --s) ---- */
+.mo-stack { --s: 0; }
+.mo-stack::before, .mo-stack::after {
+  content: ""; position: absolute; inset: 0 auto auto 0; width: 100%; height: 100%;
+  box-sizing: border-box; z-index: -1;
+  background: var(--mr-paper-raised); border: var(--mr-bw-hair) solid var(--mr-paper-rule);
+  border-radius: var(--mr-r-lg); box-shadow: var(--shadow);
+  transform-origin: 50% 100%; pointer-events: none;
+}
+.mo-stack::before { transform: translate3d(0, calc(var(--s) * -14px), calc(var(--s) * -40px)) scale(calc(1 - var(--s) * 0.04)); opacity: calc(var(--s) * 0.75); }
+.mo-stack::after  { transform: translate3d(0, calc(var(--s) * -28px), calc(var(--s) * -80px)) scale(calc(1 - var(--s) * 0.08)); opacity: calc(var(--s) * 0.45); }
+
+/* ---- 3D: inner-page hero visuals share one depth space ---- */
+.mo section[aria-labelledby="hero-h"] :is(.compose, .split__visual, .lf-hero__visual, .page-hero__visual) { transform-style: preserve-3d; }
+
+/* ---- Phones, tablets and short windows: "how it works" becomes a swipeable coverflow row ---- */
+.mo-swipe .steps {
+  display: flex; flex-wrap: nowrap; gap: 16px; overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  margin-inline: calc(var(--mr-grid-margin, 20px) * -1); padding: 8px var(--mr-grid-margin, 20px) 20px;
+}
+.mo-swipe .steps::-webkit-scrollbar { display: none; }
+.mo-swipe .step { flex: 0 0 min(82%, 520px); scroll-snap-align: center; will-change: transform; }
+.mo-swipe .step__view { min-height: 260px; }
+
+/* Scaled photographs must not widen the page's scrollable area (clip-path alone does not contain them) */
+.mo .closing__photo, .mo .free__img, .mo .lf-card__img { overflow: hidden; }
