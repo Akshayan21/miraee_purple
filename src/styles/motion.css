@@ -1,0 +1,30 @@
+/*
+ * Scroll motion support (see lib/scroll-motion.ts).
+ * .mo-pre is set by an inline script in index.html before first paint, so the hero copy is already hidden when the
+ * pre-rendered HTML shows; the motion script removes it as it takes over. The keyframe at the bottom is a fail-safe:
+ * if the script never runs, everything fades in after 3.5s.
+ */
+.site-head { transition: box-shadow 0.3s ease; }
+.site-head.is-scrolled { box-shadow: 0 10px 30px -18px rgba(37, 9, 24, 0.7); }
+[id] { scroll-margin-top: 96px; }
+
+.mo-progress {
+  position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 100;
+  background: var(--mr-orange); pointer-events: none; will-change: transform;
+}
+
+/* Masked word reveal; padding keeps ascenders and descenders from being clipped */
+.mo-w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0.12em 0 0.16em; margin: -0.12em 0 -0.16em; }
+.mo-wi { display: inline-block; will-change: transform; }
+
+.mo-pre section[aria-labelledby="hero-h"] :is(h1, .crumbs, .mr-eyebrow, .mr-lead, .mr-btn-row, .hero__points, .hero__trust, .lf-meta, .lf-hero__person, .lf-hero__visual, .page-hero__visual, .compose__person, .compose__card),
+.mo-pre section[aria-labelledby="hero-h"].core-hero .split__visual {
+  opacity: 0;
+  animation: mo-failsafe 1ms 3.5s forwards;
+}
+@keyframes mo-failsafe { to { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .mo-progress { display: none; }
+  .site-head { transition: none; }
+}

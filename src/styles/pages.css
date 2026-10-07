@@ -1,0 +1,6 @@
+/* Page-specific adjustments carried over from inline <style> blocks in the static site. */
+
+/* /lp/cfo: cutout framing, face kept clear of the ledger card */
+@media (min-width: 1024px) { .compose--lp .compose__person { height: 96%; right: -40px; } .compose--lp .compose__card { left: -24px; width: 420px; } }
+/* below 1024px the source frame's clipped left side bleeds off the page edge instead of showing as a straight cut */
+@media (max-width: 1023px) { .compose--lp .compose__person { justify-self: start; margin-left: -32px; clip-path: inset(0 0 64px 0); } }

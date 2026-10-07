@@ -1,0 +1,31 @@
+# Miraee
+
+> Miraee is business travel and expense software, built by Tabhi, the company behind the Mondee travel marketplace. Employees ask the Miraee assistant for a trip and choose flights and hotels inside company policy. Finance sees every booking with its budget and GL code. Signing up and onboarding are free at any company size.
+
+## Product
+- [How it works](https://miraee.ai/how-it-works): booking inside policy, approvals only when something is out of policy, the finance view, and what happens when plans change
+- [For finance](https://miraee.ai/finance): budgets, GL codes, finance dashboard, audit log, receipts matched to card charges
+- [For travel managers](https://miraee.ai/travel-managers): travel policy on every booking, approvals, booking on behalf
+- [When plans change](https://miraee.ai/when-plans-change): alerts and new options the traveler confirms
+- [Pricing](https://miraee.ai/pricing): what is free (sign-up and onboarding, at any company size)
+- [Spend review](https://miraee.ai/spend-review): an optional trip-by-trip review of last year's travel from one booking report
+- [Security](https://miraee.ai/security): sign-in, data handling and the security pack
+
+## Company
+- [About Miraee](https://miraee.ai/company): built by Tabhi, the company behind the Mondee travel marketplace
+
+## Compare
+- [Compare corporate travel management software](https://miraee.ai/compare): how to compare tools for a company of 300 to 1,500 people on cost to start, policy controls, the finance view and changes
+- [Miraee vs Navan](https://miraee.ai/compare/navan): cost to start, policy controls, the finance view and changes, with every Navan fact dated
+- [Miraee vs SAP Concur](https://miraee.ai/compare/sap-concur): onboarding, travel policy, approvals and the finance view
+- [Miraee vs Perk](https://miraee.ai/compare/perk): cost to start, the finance view of each trip and how changes are confirmed
+- [Miraee with Ramp](https://miraee.ai/compare/ramp): keep the Ramp card and add travel booking with policy on every trip
+
+## Resources
+- [Resources](https://miraee.ai/resources): guides, a policy template and checklists for finance and travel leads
+- [Business travel policy](https://miraee.ai/resources/business-travel-policy): how to write a policy people follow, with booking rules, approvals and limits
+- [Business travel policy template](https://miraee.ai/resources/business-travel-policy-template): a template with a one-page rollout checklist, in Word and PDF
+- [Travel and expense policy](https://miraee.ai/resources/travel-and-expense-policy): what to include, with example wording for limits, receipts and GL codes
+- [Travel policy compliance](https://miraee.ai/resources/travel-policy-compliance): keeping bookings inside policy by making the right option the easy one
+- [Travel expense reports](https://miraee.ai/resources/travel-expense-report): closing month-end on travel, with a close checklist
+- [Corporate travel manager guide](https://miraee.ai/resources/corporate-travel-manager): running company travel on top of your day job

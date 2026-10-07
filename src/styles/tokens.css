@@ -1,0 +1,147 @@
+/* Miraee design system: Dusk + Line. Tokens v1.1, 30 September 2026.
+   Generated from src/palette.py and src/gen_tokens.py. Link with fonts.css and components.css. */
+:root {
+  /* Raw palette: dark grounds (plum, OKLCH hue 350; night is for footers only) */
+  --mr-night: #250918;
+  --mr-plum: #43162E;
+  --mr-twilight: #542B3F;
+  --mr-plum-rule: #664454;
+  --mr-plum-edge: #A68B97;
+  --mr-mist: #DECED4;
+  --mr-white: #FFFFFF;
+  /* Raw palette: light grounds (lilac paper finance surface) */
+  --mr-paper: #F0E5F8;
+  --mr-paper-raised: #F9F5FC;
+  --mr-paper-rule: #DAD1E1;
+  --mr-paper-edge: #847381;
+  --mr-ink: #1D1418;
+  --mr-ink-hover: #3C2E34;
+  --mr-slate: #68555D;
+  /* Orange: the logo orange is a light and a stroke, never a wash */
+  --mr-orange: #E55602;
+  --mr-orange-light: #FF9861;
+  --mr-orange-text: #B04302;
+  /* Semantic */
+  --mr-success: #1D7648; --mr-success-tint: #E3F0E7; --mr-success-dark: #7DD3A0;
+  --mr-warning: #855700; --mr-warning-tint: #F6ECD6; --mr-warning-dark: #F2C46D;
+  --mr-error: #B3261E; --mr-error-tint: #FAE7E5; --mr-error-dark: #FF9A8C;
+  --mr-info: #2E5C85; --mr-info-tint: #E6EDF4; --mr-info-dark: #9CC3EC;
+  /* Data viz, light surfaces (reference only: chart builders) */
+  --mr-dv-1: #E55602;
+  --mr-dv-2: #1D1418;
+  --mr-dv-3: #2E5C85;
+  --mr-dv-4: #2F7A5A;
+  --mr-dv-5: #8C6410;
+  --mr-dv-6: #826E77;
+  /* Data viz, dark surfaces (reference only: chart builders) */
+  --mr-dv-1-dark: #FF9861;
+  --mr-dv-2-dark: #F4EEF1;
+  --mr-dv-3-dark: #8FB6E8;
+  --mr-dv-4-dark: #6CC9A4;
+  --mr-dv-5-dark: #E8C06A;
+  --mr-dv-6-dark: #DECED4;
+
+  /* Type: one family, Archivo. The width axis is the voice */
+  --mr-font-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --mr-font-text: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --mr-font-figures: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --mr-display-weight: 720;
+  --mr-display-width: 80%;
+  --mr-display-tracking: -0.012em;
+  --mr-figure-width: 62%;
+  --mr-text-width: 100%;
+
+  /* Web scale */
+  --mr-fs-display: 72px; --mr-lh-display: 1.0;
+  --mr-fs-h1: 56px; --mr-lh-h1: 1.04;
+  --mr-fs-h2: 40px; --mr-lh-h2: 1.1;
+  --mr-fs-h3: 24px; --mr-lh-h3: 1.25;
+  --mr-fs-lead: 20px; --mr-lh-lead: 1.5;
+  --mr-fs-body: 17px; --mr-lh-body: 1.6;
+  --mr-fs-card-title: 18px;
+  --mr-fs-ui: 16px;
+  --mr-fs-nav: 15px;
+  --mr-fs-small: 14px; --mr-lh-small: 1.45;
+  --mr-fs-meta: 13px;
+  --mr-fs-caption: 12px; --mr-lh-caption: 1.4;
+  --mr-fs-stat: 96px; --mr-lh-stat: .92;
+  /* Dense UI tier: rows 38px, compact 32px, 1px rule included */
+  --mr-fs-table: 13px; --mr-lh-table: 18px;
+  --mr-fs-label: 12px; --mr-lh-label: 16px;
+  --mr-row-h: 38px; --mr-row-h-compact: 32px;
+  /* Controls */
+  --mr-control-h-sm: 40px; --mr-control-h-input: 48px; --mr-control-h: 52px; --mr-control-h-lg: 60px;
+  --mr-touch-min: 44px; --mr-dot: 6px;
+  /* Reference only below this line to the Space group: deck, social and email builders */
+  /* Deck (1920 x 1080) */
+  --mr-deck-title: 104px; --mr-deck-h2: 60px; --mr-deck-figure: 160px; --mr-deck-body: 28px; --mr-deck-table: 22px; --mr-deck-caption: 18px;
+  /* Social */
+  --mr-social-headline: 76px; --mr-social-sub: 32px; --mr-social-figure: 132px; --mr-social-footnote: 20px;
+  /* Email */
+  --mr-email-headline: 34px; --mr-email-body: 17px; --mr-email-caption: 13px;
+
+  /* Space (4px base) */
+  --mr-s-1: 4px; --mr-s-2: 8px; --mr-s-3: 12px; --mr-s-4: 16px; --mr-s-5: 24px;
+  --mr-s-6: 32px; --mr-s-7: 48px; --mr-s-8: 64px; --mr-s-9: 96px; --mr-s-10: 128px;
+  /* Radius */
+  --mr-r-xs: 4px; --mr-r-sm: 6px; --mr-r-md: 8px; --mr-r-lg: 12px; --mr-r-xl: 20px; --mr-r-pill: 999px;
+  /* Borders and focus */
+  --mr-bw-hair: 1px; --mr-bw-control: 1.5px; --mr-focus-width: 2px; --mr-focus-offset: 2px;
+  /* Elevation (light surfaces only) */
+  --mr-shadow-1: 0 1px 2px rgba(28,21,24,.08), 0 4px 12px rgba(28,21,24,.06);
+  --mr-shadow-2: 0 2px 4px rgba(28,21,24,.08), 0 12px 32px rgba(28,21,24,.12);
+  /* The Line: stroke = 0.1135 x logo height, 3px to 10px */
+  --mr-line-ratio: 0.1135;
+  --mr-logo-h: 30px; /* web default = navigation logo; set per frame (deck 48px, email 32px, social 44px) */
+  --mr-line-w: clamp(3px, calc(var(--mr-logo-h) * var(--mr-line-ratio)), 10px);
+  --mr-line-color: var(--mr-orange);
+  /* Motion */
+  --mr-dur-fast: 120ms; --mr-dur-base: 200ms; --mr-dur-slow: 320ms; --mr-dur-line: 900ms;
+  --mr-ease: cubic-bezier(.2,0,0,1); --mr-ease-line: cubic-bezier(.65,0,.35,1);
+  /* Grid (web) */
+  --mr-grid-cols: 12; --mr-grid-gutter: 24px; --mr-grid-margin: 80px; --mr-grid-max: 1280px;
+}
+@media (max-width: 1023px) { :root { --mr-grid-cols: 8; --mr-grid-margin: 40px; --mr-fs-display: 56px; --mr-fs-h1: 44px; --mr-fs-h2: 34px; } }
+@media (max-width: 639px)  { :root { --mr-grid-cols: 4; --mr-grid-gutter: 16px; --mr-grid-margin: 20px; --mr-fs-display: 44px; --mr-fs-h1: 36px; --mr-fs-h2: 28px; --mr-fs-h3: 21px; --mr-fs-lead: 18px; } }
+
+/* Surface roles. Light (white) is the default; add a class to switch. */
+:root, .mr-light {
+  --surface: var(--mr-white); --surface-raised: var(--mr-paper-raised); --surface-sunken: var(--mr-paper);
+  --text: var(--mr-ink); --text-2: var(--mr-slate); --text-accent: var(--mr-orange-text); --link: var(--mr-orange-text);
+  --rule: var(--mr-paper-rule); --rule-strong: var(--mr-ink); --control-border: var(--mr-paper-edge);
+  --focus: var(--mr-ink); --field: var(--mr-white);
+  --btn-bg: var(--mr-ink); --btn-fg: var(--mr-white); --btn-bg-hover: var(--mr-ink-hover); --btn-underline: var(--mr-orange);
+  --btn2-border: var(--mr-ink); --btn2-fg: var(--mr-ink);
+  --success: var(--mr-success); --warning: var(--mr-warning); --error: var(--mr-error); --info: var(--mr-info);
+  --success-bg: var(--mr-success-tint); --warning-bg: var(--mr-warning-tint); --error-bg: var(--mr-error-tint); --info-bg: var(--mr-info-tint);
+  --shadow: var(--mr-shadow-1);
+  --badge-ring: none; --badge-ring-neutral: inset 0 0 0 1px var(--rule); --badge-neutral-bg: var(--surface-sunken);
+  color-scheme: light;
+}
+.mr-paper {
+  --surface: var(--mr-paper); --surface-raised: var(--mr-paper-raised); --surface-sunken: var(--mr-paper);
+  --text: var(--mr-ink); --text-2: var(--mr-slate); --text-accent: var(--mr-orange-text); --link: var(--mr-orange-text);
+  --rule: var(--mr-paper-rule); --rule-strong: var(--mr-ink); --control-border: var(--mr-paper-edge);
+  --focus: var(--mr-ink); --field: var(--mr-white);
+  --btn-bg: var(--mr-ink); --btn-fg: var(--mr-white); --btn-bg-hover: var(--mr-ink-hover); --btn-underline: var(--mr-orange);
+  --btn2-border: var(--mr-ink); --btn2-fg: var(--mr-ink);
+  --success: var(--mr-success); --warning: var(--mr-warning); --error: var(--mr-error); --info: var(--mr-info);
+  --success-bg: var(--mr-success-tint); --warning-bg: var(--mr-warning-tint); --error-bg: var(--mr-error-tint); --info-bg: var(--mr-info-tint);
+  --shadow: var(--mr-shadow-1);
+  --badge-ring: none; --badge-ring-neutral: inset 0 0 0 1px var(--rule); --badge-neutral-bg: var(--surface-sunken);
+  color-scheme: light;
+}
+.mr-dark, .mr-plum, .mr-night {
+  --surface: var(--mr-plum); --surface-raised: var(--mr-twilight); --surface-sunken: var(--mr-night);
+  --text: var(--mr-white); --text-2: var(--mr-mist); --text-accent: var(--mr-orange-light); --link: var(--mr-orange-light);
+  --rule: var(--mr-plum-rule); --rule-strong: var(--mr-mist); --control-border: var(--mr-plum-edge);
+  --focus: var(--mr-white); --field: var(--mr-night);
+  --btn-bg: var(--mr-orange); --btn-fg: var(--mr-night); --btn-bg-hover: var(--mr-orange-light); --btn-underline: transparent;
+  --btn2-border: var(--mr-mist); --btn2-fg: var(--mr-white);
+  --success: var(--mr-success-dark); --warning: var(--mr-warning-dark); --error: var(--mr-error-dark); --info: var(--mr-info-dark);
+  --success-bg: transparent; --warning-bg: transparent; --error-bg: transparent; --info-bg: transparent;
+  --shadow: none;
+  --badge-ring: inset 0 0 0 1px currentColor; --badge-ring-neutral: inset 0 0 0 1px currentColor; --badge-neutral-bg: transparent;
+  color-scheme: dark;
+}
+.mr-night { --surface: var(--mr-night); --surface-raised: var(--mr-plum); --surface-sunken: var(--mr-plum); --field: var(--mr-night); }

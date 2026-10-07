@@ -1,0 +1,92 @@
+/*
+ * Tailwind v4 entry.
+ *
+ * Preflight is intentionally NOT imported: the Miraee design system (src/styles/*) was written against
+ * browser defaults, so resetting them would shift every page. Theme + utilities are all Tailwind needs.
+ * Layer order: Tailwind theme/utilities sit in layers; the page-layout CSS ported from the HTML site is
+ * unlayered, so its page-specific overrides keep winning over component utilities, as they did originally.
+ */
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+@import 'tw-animate-css';
+
+@import './assets/fonts/fonts.css';
+@import './styles/tokens.css';
+@import './styles/components.css';
+@import './styles/site.css';
+@import './styles/site-trust.css';
+@import './styles/site-core.css';
+@import './styles/site-longform.css';
+@import './styles/pages.css';
+@import './styles/motion.css';
+
+/*
+ * Miraee tokens exposed as Tailwind theme values. `inline` keeps the var() references live, so every
+ * colour below follows the surface the element sits on (.mr-paper / .mr-plum / .mr-night re-theme them).
+ */
+@theme inline {
+  --font-sans: var(--mr-font-text);
+  --font-display: var(--mr-font-display);
+
+  /* Raw palette */
+  --color-night: var(--mr-night);
+  --color-plum: var(--mr-plum);
+  --color-twilight: var(--mr-twilight);
+  --color-mist: var(--mr-mist);
+  --color-paper: var(--mr-paper);
+  --color-ink: var(--mr-ink);
+  --color-slate: var(--mr-slate);
+  --color-orange: var(--mr-orange);
+  --color-orange-light: var(--mr-orange-light);
+
+  /* Surface roles */
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-content: var(--text);
+  --color-content-2: var(--text-2);
+  --color-link: var(--link);
+  --color-rule: var(--rule);
+  --color-control: var(--control-border);
+  --color-field: var(--field);
+  --color-focus: var(--focus);
+  --color-btn: var(--btn-bg);
+  --color-btn-fg: var(--btn-fg);
+  --color-btn-hover: var(--btn-bg-hover);
+  --color-btn2: var(--btn2-fg);
+  --color-btn2-border: var(--btn2-border);
+  --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+  --color-error: var(--error);
+  --color-error-bg: var(--error-bg);
+  --color-info: var(--info);
+  --color-info-bg: var(--info-bg);
+
+  /* shadcn/ui semantic names -> Miraee roles */
+  --color-background: var(--surface);
+  --color-foreground: var(--text);
+  --color-primary: var(--btn-bg);
+  --color-primary-foreground: var(--btn-fg);
+  --color-muted: var(--surface-sunken);
+  --color-muted-foreground: var(--text-2);
+  --color-border: var(--rule);
+  --color-input: var(--control-border);
+  --color-ring: var(--focus);
+  --color-destructive: var(--error);
+
+  /* Radius scale = --mr-r-* */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+
+  --shadow-1: var(--mr-shadow-1);
+  --shadow-2: var(--mr-shadow-2);
+
+  --breakpoint-sm: 640px;
+  --breakpoint-lg: 1024px;
+}
