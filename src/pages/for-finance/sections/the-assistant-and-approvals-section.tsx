@@ -11,13 +11,8 @@ export function TheAssistantAndApprovalsSection() {
             The assistant suggests. Your approvers decide.
           </h2>
           <p className="mr-body">
-            Most finance leaders want AI to recommend, with a person approving.
-            <sup>
-              <a href="#src-2" aria-label="Source 2">
-                2
-              </a>
-            </sup>{' '}
-            Miraee works that way on every booking.
+            Most finance leaders want AI to recommend, with a person approving. Miraee works that
+            way on every booking.
           </p>
         </div>
         <div className="split__visual">
