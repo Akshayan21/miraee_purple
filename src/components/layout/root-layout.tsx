@@ -27,11 +27,19 @@ function ScrollMotion() {
   React.useEffect(() => {
     let cleanup: (() => void) | undefined
     // Wait a frame so the new route (and any scroll-to-top / anchor jump) has settled before measuring.
-    const raf = requestAnimationFrame(() => {
+    const preference = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const desktop = window.matchMedia('(min-width: 1200px) and (hover: hover) and (pointer: fine)')
+    const updateMotion = () => {
+      cleanup?.()
       cleanup = initScrollMotion()
-    })
+    }
+    const raf = requestAnimationFrame(updateMotion)
+    preference.addEventListener('change', updateMotion)
+    desktop.addEventListener('change', updateMotion)
     return () => {
       cancelAnimationFrame(raf)
+      preference.removeEventListener('change', updateMotion)
+      desktop.removeEventListener('change', updateMotion)
       cleanup?.()
     }
   }, [pathname])

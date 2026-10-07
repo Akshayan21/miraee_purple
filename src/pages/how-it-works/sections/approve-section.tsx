@@ -1,9 +1,11 @@
+import { Section, Container } from '@/components/layout/content-layout'
+import { ProductCard } from '@/components/sections/product-preview'
 import { Badge } from '@/components/ui/badge'
 
 export function ApproveSection() {
   return (
-    <section className="step-sec" aria-labelledby="s3-h">
-      <div className="mr-container split">
+    <Section className="step-sec" aria-labelledby="s3-h">
+      <Container className="mr-container split">
         <div className="split__copy">
           <p className="mr-eyebrow">Step 3</p>
           <h2 className="mr-h2" id="s3-h">
@@ -20,7 +22,7 @@ export function ApproveSection() {
             role="img"
             aria-label="An approval request for a hotel above the policy limit."
           >
-            <div className="mock approval" aria-hidden="true">
+            <ProductCard className="mock approval" aria-hidden="true">
               <div className="mock__head">
                 <div>
                   <p className="mock__title">Sales kickoff, Denver</p>
@@ -40,11 +42,11 @@ export function ApproveSection() {
                 <span className="mock__btn mock__btn--ink">Approve</span>
                 <span className="mock__btn mock__btn--line">Decline</span>
               </div>
-            </div>
+            </ProductCard>
           </figure>
           <p className="mr-caption fig-cap">Product view with illustrative data.</p>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

@@ -1,3 +1,5 @@
+import styles from './hero-section.module.css'
+import { Section, Container } from '@/components/layout/content-layout'
 import { Check } from 'lucide-react'
 
 import { DialogLink } from '@/components/forms/form-dialogs-context'
@@ -7,11 +9,11 @@ import { CRITERIA } from '../data'
 
 export function HeroSection() {
   return (
-    <section className="mr-paper" aria-labelledby="hero-h">
+    <Section className="mr-paper" aria-labelledby="hero-h">
       <Breadcrumbs current="Compare" />
-      <div className="mr-container grid gap-12 pt-10 pb-20 lg:grid-cols-12 lg:items-center lg:gap-6">
-        <div className="lg:col-span-7 lg:pr-10">
-          <h1 className="mr-h1" id="hero-h">
+      <Container className={styles.layout}>
+        <div className={styles.copy}>
+          <h1 className={`mr-h1 ${styles.title}`} id="hero-h">
             Compare corporate travel management software
           </h1>
           <div className="mt-6">
@@ -22,7 +24,7 @@ export function HeroSection() {
               dated facts on the tools buyers shortlist most.
             </p>
           </div>
-          <div className="mr-btn-row mt-8">
+          <div className={`mr-btn-row ${styles.actions}`}>
             <Button asChild>
               <DialogLink to="/sign-up" dialog="signup">
                 <span className="mr-btn__u">Sign up free</span>
@@ -40,8 +42,8 @@ export function HeroSection() {
           </p>
         </div>
 
-        <aside aria-label="What to compare" className="lg:col-span-5">
-          <div className="mr-plum rounded-xl p-7 shadow-2 md:p-8">
+        <aside aria-label="What to compare" className={styles.aside}>
+          <div className={`mr-plum rounded-xl shadow-2 ${styles.summary}`}>
             <p className="m-0 text-[length:var(--mr-fs-card-title)] font-semibold">
               Four things decide most evaluations
             </p>
@@ -55,7 +57,7 @@ export function HeroSection() {
                     <span className="grid size-11 flex-none place-content-center rounded-md bg-twilight text-orange-light">
                       <criterion.icon className="size-5" strokeWidth={1.75} aria-hidden="true" />
                     </span>
-                    <span className="grid gap-0.5">
+                    <span className={`grid gap-0.5 ${styles.criterionText}`}>
                       <span className="text-[17px] font-semibold text-white group-hover:text-orange-light">
                         {criterion.title}
                       </span>
@@ -71,7 +73,7 @@ export function HeroSection() {
             </p>
           </div>
         </aside>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

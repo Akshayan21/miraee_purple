@@ -1,3 +1,4 @@
+import styles from './sections/page-nav.module.css'
 import { Seo } from '@/components/common/seo'
 import { meta } from './meta'
 import { HeroSection } from './sections/hero-section'
@@ -17,7 +18,7 @@ export function Component() {
   return (
     <>
       <Seo meta={meta} />
-      <main id="main">
+      <main id="main" className={styles.page}>
         <HeroSection />
         <PageNav />
         <CriteriaSection />

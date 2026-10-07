@@ -1,3 +1,4 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { FaqAnswer } from '@/components/sections/faq'
 import {
   Accordion,
@@ -9,8 +10,8 @@ import { faq } from '../faq'
 
 export function FaqSection() {
   return (
-    <section className="mr-paper py-20 md:py-24" aria-labelledby="faq">
-      <div className="mr-container grid gap-10 lg:grid-cols-12">
+    <Section className="mr-paper py-20 md:py-24" aria-labelledby="faq">
+      <Container className="mr-container grid gap-10 lg:grid-cols-12">
         <h2 className="mr-h2 scroll-mt-32 lg:col-span-4" id="faq">
           Questions
         </h2>
@@ -24,7 +25,7 @@ export function FaqSection() {
             </AccordionItem>
           ))}
         </Accordion>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

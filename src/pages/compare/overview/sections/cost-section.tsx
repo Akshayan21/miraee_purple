@@ -1,13 +1,14 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { cn } from '@/lib/utils'
 import { VENDORS } from '../data'
 
 export function CostSection() {
   return (
-    <section
+    <Section
       className="bg-white py-20 md:py-24"
       aria-labelledby="cost-to-start-as-each-vendor-states-it"
     >
-      <div className="mr-container">
+      <Container className="mr-container">
         <h2 className="mr-h2 scroll-mt-32" id="cost-to-start-as-each-vendor-states-it">
           Cost to start, as each vendor states it
         </h2>
@@ -41,7 +42,7 @@ export function CostSection() {
             </li>
           ))}
         </ul>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

@@ -1,3 +1,4 @@
+import { Container } from '@/components/layout/content-layout'
 import { useMatches } from 'react-router-dom'
 
 import { Navbar } from '@/components/layout/navbar'
@@ -11,9 +12,9 @@ export function SiteHeader() {
   )
   return (
     <header className={cn('site-head', light ? 'mr-paper' : 'mr-plum')}>
-      <div className="mr-container">
+      <Container className="mr-container">
         <Navbar />
-      </div>
+      </Container>
     </header>
   )
 }

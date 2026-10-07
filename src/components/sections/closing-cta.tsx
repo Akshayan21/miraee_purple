@@ -1,3 +1,4 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import type { ReactNode } from 'react'
 
 import { CtaActions, type SecondaryAction } from '@/components/sections/cta-actions'
@@ -15,8 +16,8 @@ type ClosingCtaProps = {
 /** Plum closing band: headline, copy, buttons, and the Brooklyn Bridge photo with the Line across it. */
 export function ClosingCta({ title, children, secondary, lazyPhoto = true }: ClosingCtaProps) {
   return (
-    <section className="mr-plum closing" aria-labelledby="close-h">
-      <div className="mr-container">
+    <Section className="mr-plum closing" aria-labelledby="close-h">
+      <Container className="mr-container">
         <div className="closing__grid">
           <h2 className="mr-h2" id="close-h">
             {title}
@@ -26,7 +27,7 @@ export function ClosingCta({ title, children, secondary, lazyPhoto = true }: Clo
             <CtaActions secondary={secondary} />
           </div>
         </div>
-      </div>
+      </Container>
       <figure className="closing__photo" style={{ margin: '64px 0 0' }}>
         <ResponsiveImage
           src="/img/px7823010-brooklyn-bridge.jpg"
@@ -45,6 +46,6 @@ export function ClosingCta({ title, children, secondary, lazyPhoto = true }: Clo
           <path d="M-12 296 C 220 292 480 272 610 236 C 660 222 690 196 704 160"></path>
         </svg>
       </figure>
-    </section>
+    </Section>
   )
 }

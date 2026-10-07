@@ -1,11 +1,12 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
 
 export function FreeAtAnySizeSection() {
   return (
-    <section className="mr-section hr-top free" aria-labelledby="free-h">
-      <div className="mr-container split">
+    <Section className="mr-section hr-top free" aria-labelledby="free-h">
+      <Container className="mr-container split">
         <figure className="split__visual free__img mr-frame" style={{ margin: '0' }}>
           <picture>
             <source srcSet="/img/px4623080-team.webp" type="image/webp" />{' '}
@@ -37,7 +38,7 @@ export function FreeAtAnySizeSection() {
             </Button>
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

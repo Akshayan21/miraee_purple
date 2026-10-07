@@ -16,14 +16,6 @@ sup a { text-decoration: none; padding: 0 1px; }
 
 /* Header: stays pinned while scrolling */
 .site-head { position: sticky; top: 0; z-index: 40; }
-.site-head .mr-nav { border-bottom-color: var(--mr-plum-rule); }
-.site-head.mr-paper .mr-nav { border-bottom-color: transparent; }
-.site-head .mr-nav__links { gap: 28px; }
-.mr-nav__links a { white-space: nowrap; }
-@media (min-width: 1100px) and (max-width: 1279px) { .site-head .mr-nav__links { gap: 18px; } .site-head .mr-nav { gap: var(--mr-s-5); } }
-.mr-nav__logo img { height: 100%; width: auto; }
-@media (max-width: 1099px) { .mr-nav__end { margin-left: auto; } .mr-nav__menu { order: 3; } }
-
 /* Hero */
 .hero { position: relative; padding: 0; overflow: hidden; }
 .hero__grid { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: var(--mr-grid-gutter); align-items: stretch; }
@@ -75,11 +67,10 @@ sup a { text-decoration: none; padding: 0 1px; }
 .hero__toast-text { margin: 0; display: grid; font-size: 13px; line-height: 1.35; }
 .hero__toast-text span { color: var(--mr-slate); }
 /* Entrance: photo first, then the ledger, then the approval toast. Off for reduced motion. */
-@keyframes hero-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 @keyframes hero-fade { from { opacity: 0; } to { opacity: 1; } }
 .hero__photo { animation: hero-fade 900ms var(--mr-ease) backwards; }
-.hero__card { animation: hero-rise 600ms var(--mr-ease) 250ms backwards; }
-.hero__toast { animation: hero-rise 600ms var(--mr-ease) 500ms backwards; }
+.hero__card { animation: hero-fade 600ms var(--mr-ease) 250ms backwards; }
+.hero__toast { animation: hero-fade 600ms var(--mr-ease) 500ms backwards; }
 @media (prefers-reduced-motion: reduce) { .hero__photo, .hero__card, .hero__toast { animation: none; } }
 /* Narrow desktops (1200-1399px, or a zoomed-in browser): the container is narrower but the cards keep their size,
    so they sit a little further in. */
@@ -358,4 +349,3 @@ sup a { text-decoration: none; padding: 0 1px; }
 @media (max-width: 639px) { .col-budget { display: none; } }
 .compose--lp .mr-ledger td.col-budget, .compose--lp .mr-ledger th.col-budget { padding-right: 30px; }
 /* Form dialog headings (Radix dialog content, see components/ui/dialog.tsx) keep the original sizing. */
-[data-slot='dialog-content'] h2 { font-size: 32px; line-height: 1.1; margin: 0; }

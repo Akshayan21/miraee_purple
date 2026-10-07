@@ -1,3 +1,4 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { CtaActions, type SecondaryAction } from '@/components/sections/cta-actions'
 import { ResponsiveImage } from '@/components/sections/responsive-image'
 import { cn } from '@/lib/utils'
@@ -13,7 +14,7 @@ type ClosingBandProps = {
 /** Plum closing band with an optional full-width photo above the headline and buttons. */
 export function ClosingBand({ title, body, secondary, photo }: ClosingBandProps) {
   return (
-    <section
+    <Section
       className={cn('mr-plum closing-band', !photo && 'closing-band--plain')}
       aria-labelledby="close-h"
     >
@@ -22,7 +23,7 @@ export function ClosingBand({ title, body, secondary, photo }: ClosingBandProps)
           <ResponsiveImage {...photo} loading="lazy" decoding="async" />
         </figure>
       ) : null}
-      <div className="mr-container">
+      <Container className="mr-container">
         <div className="closing__grid">
           <h2 className="mr-h2" id="close-h">
             {title}
@@ -32,7 +33,7 @@ export function ClosingBand({ title, body, secondary, photo }: ClosingBandProps)
             <CtaActions secondary={secondary} />
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

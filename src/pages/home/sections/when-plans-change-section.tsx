@@ -1,11 +1,14 @@
+import { VisualComposition } from '@/components/sections/product-preview'
+import { Section, Container } from '@/components/layout/content-layout'
+import { ProductPhone } from '@/components/sections/product-preview'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 
 export function WhenPlansChangeSection() {
   return (
-    <section className="mr-plum mr-section section-bleed" aria-labelledby="plans-h">
-      <div className="mr-container split split--rev">
+    <Section className="mr-plum mr-section section-bleed" aria-labelledby="plans-h">
+      <Container className="mr-container split split--rev">
         <div className="split__copy">
           <p className="mr-eyebrow">When plans change</p>
           <h2 className="mr-h2" id="plans-h">
@@ -29,7 +32,7 @@ export function WhenPlansChangeSection() {
             </Button>
           </p>
         </div>
-        <figure className="split__visual compose compose--plans" style={{ margin: '0' }}>
+        <VisualComposition className="split__visual compose compose--plans" style={{ margin: '0' }}>
           <picture>
             <source srcSet="/img/px4173228-traveler-suitcase.webp" type="image/webp" />{' '}
             <img
@@ -40,7 +43,7 @@ export function WhenPlansChangeSection() {
               alt="A traveler in a camel coat takes a call beside her suitcase, beside a phone alert offering two new flight options."
             />
           </picture>
-          <div className="compose__card phone phone--alert" aria-hidden="true">
+          <ProductPhone className="compose__card phone phone--alert" aria-hidden="true">
             <div className="phone__screen mr-plum">
               <div className="phone__bar">
                 <span className="mr-fig">5:53</span>
@@ -93,7 +96,7 @@ export function WhenPlansChangeSection() {
               </Button>
               <p className="phone__cap">Your travel lead sees the change in the audit log.</p>
             </div>
-          </div>
+          </ProductPhone>
           <p
             className="mr-caption"
             style={{
@@ -106,8 +109,8 @@ export function WhenPlansChangeSection() {
           >
             Product view with illustrative data.
           </p>
-        </figure>
-      </div>
-    </section>
+        </VisualComposition>
+      </Container>
+    </Section>
   )
 }

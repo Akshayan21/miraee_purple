@@ -1,10 +1,11 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { Button } from '@/components/ui/button'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
 
 export function TheSecurityPackSection() {
   return (
-    <section className="mr-plum mr-section" id="pack" aria-labelledby="pack-h">
-      <div className="mr-container duo">
+    <Section className="mr-plum mr-section" id="pack" aria-labelledby="pack-h">
+      <Container className="mr-container duo">
         <div className="duo__head">
           <h2 className="mr-h2" id="pack-h">
             Everything your security review needs, in one pack.
@@ -36,7 +37,7 @@ export function TheSecurityPackSection() {
             </Button>
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

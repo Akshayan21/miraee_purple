@@ -184,37 +184,6 @@
 }
 @keyframes mr-line-draw { to { stroke-dashoffset: 0; } }
 
-/* ---------- Navigation ---------- */
-.mr-nav { --mr-logo-h: 30px; position: relative; display: flex; align-items: center; gap: var(--mr-s-6); height: 76px; border-bottom: var(--mr-bw-hair) solid var(--rule); }
-.mr-nav__logo { display: block; height: var(--mr-logo-h); flex: none; }
-.mr-nav__logo img, .mr-nav__logo svg { height: 100%; width: auto; }
-.mr-nav__links { display: flex; gap: var(--mr-s-6); list-style: none; margin: 0; padding: 0; }
-.mr-nav__links a { color: var(--text); text-decoration: none; font-size: var(--mr-fs-nav); font-weight: 500; }
-.mr-nav__links a:hover, .mr-nav__links a[aria-current="page"] { text-decoration: underline; text-underline-offset: 6px; }
-.mr-nav__end { margin-left: auto; display: flex; align-items: center; gap: var(--mr-s-5); }
-.mr-nav__end > a:not(.mr-btn) { color: var(--text); text-decoration: none; font-weight: 600; font-size: var(--mr-fs-nav); }
-/* Mobile menu: a disclosure button that shows the links below 900px. Script contract: toggle aria-expanded on click */
-.mr-nav__menu {
-  display: none; order: 1; flex: none; align-items: center; justify-content: center; gap: var(--mr-s-2);
-  min-width: var(--mr-touch-min); height: var(--mr-touch-min); padding: 0 12px;
-  background: transparent; color: var(--text); border: var(--mr-bw-control) solid var(--control-border); border-radius: var(--mr-r-sm);
-  font: 600 var(--mr-fs-nav) / 1 var(--mr-font-text); cursor: pointer;
-}
-.mr-nav__menu-bars { position: relative; width: 16px; height: 10px; border-top: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; }
-@media (max-width: 1099px) {
-  .mr-nav { gap: var(--mr-s-4); }
-  .mr-nav__menu { display: inline-flex; }
-  .mr-nav__links { display: none; }
-  .mr-nav__menu[aria-expanded="true"] ~ .mr-nav__links {
-    display: flex; flex-direction: column; gap: 0; position: absolute; z-index: 20; top: 100%; left: 0; right: 0;
-    background: var(--surface); border: var(--mr-bw-hair) solid var(--rule); border-radius: 0 0 var(--mr-r-sm) var(--mr-r-sm);
-    box-shadow: var(--mr-shadow-2); padding: var(--mr-s-2) 0;
-    animation: mr-fade var(--mr-dur-base) var(--mr-ease) 1 both;
-  }
-  .mr-nav__menu[aria-expanded="true"] ~ .mr-nav__links a { display: flex; align-items: center; min-height: var(--mr-touch-min); padding: 0 var(--mr-s-5); }
-  .mr-nav__end > a:not(.mr-btn) { display: none; }
-}
-
 /* ---------- Footer (always night) ---------- */
 .mr-footer { --mr-logo-h: 28px; background: var(--mr-night); color: var(--mr-white); padding: var(--mr-s-8) 0 var(--mr-s-6); }
 .mr-footer a { color: var(--mr-mist); text-decoration: none; font-size: var(--mr-fs-small); }

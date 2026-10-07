@@ -1,7 +1,8 @@
+import { Section, Container } from '@/components/layout/content-layout'
 export function WhyLookBackSection() {
   return (
-    <section className="mr-section" aria-label="Why look back">
-      <div className="mr-container figs">
+    <Section className="mr-section" aria-label="Why look back">
+      <Container className="mr-container figs">
         <p>
           Business travel spending is forecast to rise 7.2% in 2026, while the number of trips rises
           1.3%.
@@ -19,7 +20,7 @@ export function WhyLookBackSection() {
             </a>
           </sup>
         </p>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

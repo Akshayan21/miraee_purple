@@ -1,7 +1,8 @@
+import { Section, Container } from '@/components/layout/content-layout'
 export function SignInSection() {
   return (
-    <section className="mr-paper mr-section" aria-labelledby="signin-h">
-      <div className="mr-container duo">
+    <Section className="mr-paper mr-section" aria-labelledby="signin-h">
+      <Container className="mr-container duo">
         <div className="duo__head">
           <img
             className="duo__icon"
@@ -20,7 +21,7 @@ export function SignInSection() {
             Single sign-on is on our roadmap. Ask us and we'll share the date in writing.
           </p>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

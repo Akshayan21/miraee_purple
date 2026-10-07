@@ -1,11 +1,12 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
 
 export function HeroSection() {
   return (
-    <section className="core-hero core-hero--frame" aria-labelledby="hero-h">
-      <div className="mr-container split">
+    <Section className="core-hero core-hero--frame" aria-labelledby="hero-h">
+      <Container className="mr-container split">
         <div className="split__copy">
           <h1 className="mr-h1" id="hero-h">
             A corporate travel booking tool that runs your policy on every booking
@@ -48,7 +49,7 @@ export function HeroSection() {
             </svg>
           </div>
         </figure>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

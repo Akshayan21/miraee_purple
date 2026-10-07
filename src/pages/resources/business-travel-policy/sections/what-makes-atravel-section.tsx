@@ -1,3 +1,5 @@
+import { Container } from '@/components/layout/content-layout'
+import { ProductRow } from '@/components/sections/product-preview'
 import { InlineFaq } from '@/components/sections/faq'
 import { faq } from '../faq'
 import { Link } from 'react-router-dom'
@@ -6,7 +8,7 @@ import { Badge } from '@/components/ui/badge'
 export function WhatMakesATravelSection() {
   return (
     <div className="mr-section lf-article">
-      <div className="mr-container lf-grid">
+      <Container className="mr-container lf-grid">
         <nav className="lf-toc" aria-label="On this page">
           <p className="lf-toc__h">On this page</p>
           <ol>
@@ -380,7 +382,7 @@ export function WhatMakesATravelSection() {
               <div className="ui-card" aria-hidden="true">
                 <p className="ui-card__title">Travel policy</p>
                 <p className="ui-card__sub">Applies to every employee</p>
-                <div className="ui-rule">
+                <ProductRow className="ui-rule">
                   <span>
                     <span className="ui-rule__k">Hotels</span>
                     <span className="ui-rule__v">Up to $250 a night</span>
@@ -388,8 +390,8 @@ export function WhatMakesATravelSection() {
                   <Badge variant="success" tick>
                     Set
                   </Badge>
-                </div>
-                <div className="ui-rule">
+                </ProductRow>
+                <ProductRow className="ui-rule">
                   <span>
                     <span className="ui-rule__k">Flights</span>
                     <span className="ui-rule__v">Economy for flights under 6 hours</span>
@@ -397,8 +399,8 @@ export function WhatMakesATravelSection() {
                   <Badge variant="success" tick>
                     Set
                   </Badge>
-                </div>
-                <div className="ui-rule">
+                </ProductRow>
+                <ProductRow className="ui-rule">
                   <span>
                     <span className="ui-rule__k">Approvals</span>
                     <span className="ui-rule__v">Out of policy goes to an approver</span>
@@ -406,14 +408,14 @@ export function WhatMakesATravelSection() {
                   <Badge variant="success" tick>
                     Set
                   </Badge>
-                </div>
+                </ProductRow>
               </div>
               <figcaption className="mr-caption">Product view with illustrative data.</figcaption>
             </figure>
           </div>
           <InlineFaq items={faq} />
         </div>
-      </div>
+      </Container>
     </div>
   )
 }

@@ -1,7 +1,9 @@
+import { Section, Container } from '@/components/layout/content-layout'
+import { ProductCard, LedgerTable } from '@/components/sections/product-preview'
 export function FinanceDashboardAndAuditLogSection() {
   return (
-    <section className="mr-paper mr-section" aria-labelledby="audit-h">
-      <div className="mr-container split split--rev">
+    <Section className="mr-paper mr-section" aria-labelledby="audit-h">
+      <Container className="mr-container split split--rev">
         <div className="split__copy">
           <h2 className="mr-h2" id="audit-h">
             A finance dashboard and a full audit log.
@@ -11,7 +13,7 @@ export function FinanceDashboardAndAuditLogSection() {
           </p>
         </div>
         <figure className="split__visual" style={{ margin: '0' }}>
-          <div
+          <ProductCard
             className="mr-ledger-wrap card-shadow audit-card"
             role="img"
             aria-label="Audit log showing who booked, approved and changed a trip, and when."
@@ -21,7 +23,7 @@ export function FinanceDashboardAndAuditLogSection() {
                 <p className="mr-ledger-wrap__title">Audit log</p>
                 <span className="mr-label">October</span>
               </div>
-              <table className="mr-ledger">
+              <LedgerTable className="mr-ledger">
                 <thead>
                   <tr>
                     <th>Date</th>
@@ -71,14 +73,14 @@ export function FinanceDashboardAndAuditLogSection() {
                     <td className="col-by">Miraee</td>
                   </tr>
                 </tbody>
-              </table>
+              </LedgerTable>
             </div>
-          </div>
+          </ProductCard>
           <figcaption className="mr-caption fig-cap">
             Product view with illustrative data.
           </figcaption>
         </figure>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

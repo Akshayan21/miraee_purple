@@ -1,9 +1,11 @@
+import { Section, Container } from '@/components/layout/content-layout'
+import { ProductPhone, ProductRow } from '@/components/sections/product-preview'
 import { Badge } from '@/components/ui/badge'
 
 export function PolicySection() {
   return (
-    <section className="step-sec mr-paper" aria-labelledby="pol-h">
-      <div className="mr-container split">
+    <Section className="step-sec mr-paper" aria-labelledby="pol-h">
+      <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="pol-h">
             Every option your people see already fits your policy.
@@ -15,7 +17,7 @@ export function PolicySection() {
         </div>
         <figure className="split__visual" style={{ margin: '0' }}>
           <div className="view" role="img" aria-label="Hotel options marked in policy.">
-            <div className="phone phone--lg" aria-hidden="true">
+            <ProductPhone className="phone phone--lg" aria-hidden="true">
               <div className="phone__screen mr-plum">
                 <div className="phone__bar">
                   <span className="mr-fig">9:41</span>
@@ -23,32 +25,32 @@ export function PolicySection() {
                 </div>
                 <p className="phone__title">Chicago, 2 nights</p>
                 <p className="phone__meta">Oct 6 to Oct 8 · Policy up to $250 a night</p>
-                <div className="ho">
+                <ProductRow className="ho">
                   <span className="ho__name">West Loop hotel</span>
                   <span className="ho__rate">$219 a night</span>
                   <span className="ho__meta">0.4 mi from the client office</span>
                   <Badge variant="success">In policy</Badge>
-                </div>
-                <div className="ho">
+                </ProductRow>
+                <ProductRow className="ho">
                   <span className="ho__name">Fulton Market hotel</span>
                   <span className="ho__rate">$236 a night</span>
                   <span className="ho__meta">0.9 mi from the client office</span>
                   <Badge variant="success">In policy</Badge>
-                </div>
-                <div className="ho">
+                </ProductRow>
+                <ProductRow className="ho">
                   <span className="ho__name">Union Station hotel</span>
                   <span className="ho__rate">$204 a night</span>
                   <span className="ho__meta">1.1 mi from the client office</span>
                   <Badge variant="success">In policy</Badge>
-                </div>
+                </ProductRow>
               </div>
-            </div>
+            </ProductPhone>
           </div>
           <figcaption className="mr-caption fig-cap">
             Product view with illustrative data.
           </figcaption>
         </figure>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

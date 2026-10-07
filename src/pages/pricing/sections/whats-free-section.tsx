@@ -1,7 +1,8 @@
+import { Section, Container } from '@/components/layout/content-layout'
 export function WhatsFreeSection() {
   return (
-    <section className="mr-section" aria-labelledby="free-h">
-      <div className="mr-container">
+    <Section className="mr-section" aria-labelledby="free-h">
+      <Container className="mr-container">
         <h2 className="mr-h2" id="free-h">
           What's free
         </h2>
@@ -58,7 +59,7 @@ export function WhatsFreeSection() {
             </tr>
           </tbody>
         </table>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

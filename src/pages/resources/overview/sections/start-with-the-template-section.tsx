@@ -1,17 +1,19 @@
+import { Container } from '@/components/layout/content-layout'
+import { DocumentPreview } from '@/components/sections/product-preview'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 
 export function StartWithTheTemplateSection() {
   return (
     <div className="mr-section lf-hubbody">
-      <div className="mr-container lf-grid">
+      <Container className="mr-container lf-grid">
         <div className="lf-prose">
           <h2 className="mr-h2" id="start-with-the-template">
             Start with the template
           </h2>
           <div className="lf-feature mr-paper">
             <div className="lf-feature__doc" aria-hidden="true">
-              <div className="doc-cover">
+              <DocumentPreview className="doc-cover">
                 <div className="doc-cover__top">
                   <img src="/img/miraee-logo-orange.svg" alt="" width="84" height="21" />
                 </div>
@@ -32,7 +34,7 @@ export function StartWithTheTemplateSection() {
                   The Business Travel Policy Template for Growing Companies
                 </p>
                 <p className="doc-cover__s">Travel and expense policy · Rollout checklist</p>
-              </div>
+              </DocumentPreview>
             </div>
             <div className="lf-feature__copy">
               <p className="lf-callout__k">Free template</p>
@@ -212,7 +214,7 @@ export function StartWithTheTemplateSection() {
             <Link to="/compare">Compare corporate travel management software</Link>
           </p>
         </div>
-      </div>
+      </Container>
     </div>
   )
 }

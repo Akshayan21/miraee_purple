@@ -1,3 +1,4 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { Fragment, useEffect, useId, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -111,8 +112,8 @@ function FaqList({ items }: { items: FaqItem[] }) {
 /** Question-and-answer list. Feed the same `items` to `faqPageJsonLd` so markup and structured data stay in sync. */
 function FaqAccordion({ heading, items, sectionClassName }: Omit<FaqProps, 'listClassName'>) {
   return (
-    <section className={sectionClassName} aria-labelledby="faq-h">
-      <div className="mr-container faq-acc">
+    <Section className={sectionClassName} aria-labelledby="faq-h">
+      <Container className="mr-container faq-acc">
         <div className="faq-acc__head">
           <h2 className="mr-h2" id="faq-h">
             {heading}
@@ -122,8 +123,8 @@ function FaqAccordion({ heading, items, sectionClassName }: Omit<FaqProps, 'list
           </p>
         </div>
         <FaqList items={items} />
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }
 
@@ -137,8 +138,8 @@ export function Faq({
     return <FaqAccordion heading={heading} items={items} sectionClassName={sectionClassName} />
   }
   return (
-    <section className={sectionClassName} aria-labelledby="faq-h">
-      <div className="mr-container">
+    <Section className={sectionClassName} aria-labelledby="faq-h">
+      <Container className="mr-container">
         <h2 className="mr-h2" id="faq-h">
           {heading}
         </h2>
@@ -150,19 +151,19 @@ export function Faq({
             </div>
           ))}
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }
 
 /** Question list nested inside a long-form page section (compare and resource pages). */
 export function InlineFaq({ items }: { items: FaqItem[] }) {
   return (
-    <section className="lf-faq" aria-labelledby="questions">
+    <Section className="lf-faq" aria-labelledby="questions">
       <h2 className="mr-h2" id="questions">
         Questions
       </h2>
       <FaqList items={items} />
-    </section>
+    </Section>
   )
 }

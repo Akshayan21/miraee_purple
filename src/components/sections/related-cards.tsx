@@ -1,3 +1,4 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { Link } from 'react-router-dom'
 
 import { ResponsiveImage } from '@/components/sections/responsive-image'
@@ -28,8 +29,8 @@ type RelatedCardsProps = {
 /** "More comparisons" / "Related guides" card grid. */
 export function RelatedCards({ heading, cards, more }: RelatedCardsProps) {
   return (
-    <section className="mr-section hr-top lf-related" aria-labelledby="more-h">
-      <div className="mr-container">
+    <Section className="mr-section hr-top lf-related" aria-labelledby="more-h">
+      <Container className="mr-container">
         <h2 className="mr-h2" id="more-h">
           {heading}
         </h2>
@@ -64,7 +65,7 @@ export function RelatedCards({ heading, cards, more }: RelatedCardsProps) {
             </Button>
           </p>
         ) : null}
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

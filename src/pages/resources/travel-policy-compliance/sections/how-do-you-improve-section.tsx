@@ -1,3 +1,5 @@
+import { Container } from '@/components/layout/content-layout'
+import { ProductPhone, ProductRow } from '@/components/sections/product-preview'
 import { InlineFaq } from '@/components/sections/faq'
 import { faq } from '../faq'
 import { Link } from 'react-router-dom'
@@ -7,7 +9,7 @@ import { Badge } from '@/components/ui/badge'
 export function HowDoYouImproveSection() {
   return (
     <div className="mr-section lf-article">
-      <div className="mr-container lf-grid">
+      <Container className="mr-container lf-grid">
         <nav className="lf-toc" aria-label="On this page">
           <p className="lf-toc__h">On this page</p>
           <ol>
@@ -373,7 +375,7 @@ export function HowDoYouImproveSection() {
               role="img"
               aria-label="Flight options from Austin to Chicago, each marked in policy or out of policy"
             >
-              <div className="phone" aria-hidden="true">
+              <ProductPhone className="phone" aria-hidden="true">
                 <div className="phone__screen mr-plum">
                   <div className="phone__bar">
                     <span className="mr-fig">9:41</span>
@@ -381,32 +383,32 @@ export function HowDoYouImproveSection() {
                   </div>
                   <p className="phone__title">Austin to Chicago</p>
                   <p className="phone__meta">Wed, Oct 14 · 1 traveler</p>
-                  <div className="fl">
+                  <ProductRow className="fl">
                     <span className="fl__time">7:05 a.m.</span>
                     <span className="fl__fare">$312.40</span>
                     <span className="fl__meta">Nonstop</span>
                     <Badge variant="success">In policy</Badge>
-                  </div>
-                  <div className="fl">
+                  </ProductRow>
+                  <ProductRow className="fl">
                     <span className="fl__time">9:30 a.m.</span>
                     <span className="fl__fare">$298.10</span>
                     <span className="fl__meta">Nonstop</span>
                     <Badge variant="success">In policy</Badge>
-                  </div>
-                  <div className="fl">
+                  </ProductRow>
+                  <ProductRow className="fl">
                     <span className="fl__time">12:15 p.m.</span>
                     <span className="fl__fare">$684.90</span>
                     <span className="fl__meta">Nonstop</span>
                     <Badge variant="error">Out of policy</Badge>
-                  </div>
+                  </ProductRow>
                 </div>
-              </div>
+              </ProductPhone>
               <figcaption className="mr-caption">Product view with illustrative data.</figcaption>
             </figure>
           </div>
           <InlineFaq items={faq} />
         </div>
-      </div>
+      </Container>
     </div>
   )
 }

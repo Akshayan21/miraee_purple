@@ -1,9 +1,11 @@
+import { Section, Container } from '@/components/layout/content-layout'
+import { ProductCard, ProductRow } from '@/components/sections/product-preview'
 import { Badge } from '@/components/ui/badge'
 
 export function SetUpSection() {
   return (
-    <section className="step-sec mr-paper" aria-labelledby="s1-h">
-      <div className="mr-container split">
+    <Section className="step-sec mr-paper" aria-labelledby="s1-h">
+      <Container className="mr-container split">
         <div className="split__copy">
           <p className="mr-eyebrow">Step 1</p>
           <h2 className="mr-h2" id="s1-h">
@@ -21,14 +23,14 @@ export function SetUpSection() {
             role="img"
             aria-label="Company setup screen with travel policy, employees and payment settings."
           >
-            <div className="mock" aria-hidden="true">
+            <ProductCard className="mock" aria-hidden="true">
               <div className="mock__head">
                 <div>
                   <p className="mock__title">Company setup</p>
                   <p className="mock__sub">Your company account</p>
                 </div>
               </div>
-              <div className="ui-rule">
+              <ProductRow className="ui-rule">
                 <span>
                   <span className="ui-rule__k">Travel policy</span>
                   <span className="ui-rule__v">Uploaded, applies to every employee</span>
@@ -36,8 +38,8 @@ export function SetUpSection() {
                 <Badge variant="success" tick>
                   Done
                 </Badge>
-              </div>
-              <div className="ui-rule">
+              </ProductRow>
+              <ProductRow className="ui-rule">
                 <span>
                   <span className="ui-rule__k">Employees</span>
                   <span className="ui-rule__v">
@@ -47,8 +49,8 @@ export function SetUpSection() {
                 <Badge variant="success" tick>
                   Done
                 </Badge>
-              </div>
-              <div className="ui-rule">
+              </ProductRow>
+              <ProductRow className="ui-rule">
                 <span>
                   <span className="ui-rule__k">Payment settings</span>
                   <span className="ui-rule__v">
@@ -58,14 +60,14 @@ export function SetUpSection() {
                 <Badge variant="success" tick>
                   Done
                 </Badge>
-              </div>
-            </div>
+              </ProductRow>
+            </ProductCard>
           </div>
           <figcaption className="mr-caption fig-cap">
             Product view with illustrative data.
           </figcaption>
         </figure>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

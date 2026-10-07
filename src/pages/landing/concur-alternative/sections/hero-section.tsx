@@ -1,10 +1,11 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { Button } from '@/components/ui/button'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
 
 export function HeroSection() {
   return (
-    <section className="mr-plum lp-plum-hero lp-plum-hero--photo" aria-labelledby="hero-h">
-      <div className="mr-container split">
+    <Section className="mr-plum lp-plum-hero lp-plum-hero--photo" aria-labelledby="hero-h">
+      <Container className="mr-container split">
         <div className="split__copy">
           <h1 className="mr-display" id="hero-h">
             Comparing SAP Concur alternatives? Start with free onboarding.
@@ -37,7 +38,7 @@ export function HeroSection() {
             />
           </picture>
         </figure>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

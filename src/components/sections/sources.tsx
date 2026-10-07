@@ -1,3 +1,4 @@
+import { Section, Container } from '@/components/layout/content-layout'
 export type Source = {
   /** Anchor id, targeted by the numbered footnote links (`#src-1`). */
   id: string
@@ -12,8 +13,8 @@ export type Source = {
 /** Numbered "Sources" list at the foot of a page. */
 export function Sources({ items }: { items: Source[] }) {
   return (
-    <section className="sources" aria-labelledby="src-h">
-      <div className="mr-container">
+    <Section className="sources" aria-labelledby="src-h">
+      <Container className="mr-container">
         <h2 id="src-h">Sources</h2>
         <ol>
           {items.map((source) => (
@@ -30,7 +31,7 @@ export function Sources({ items }: { items: Source[] }) {
             </li>
           ))}
         </ol>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

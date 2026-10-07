@@ -1,11 +1,19 @@
+import styles from './how-it-works-section.module.css'
+import { Section, Container } from '@/components/layout/content-layout'
+import {
+  ProductRow,
+  ProductPhone,
+  ProductCard,
+  LedgerTable,
+} from '@/components/sections/product-preview'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 
 export function HowItWorksSection() {
   return (
-    <section className="mr-section" aria-labelledby="how-h">
-      <div className="mr-container">
+    <Section className={`mr-section ${styles.section}`} aria-labelledby="how-h">
+      <Container className="mr-container">
         <h2 className="mr-h2" id="how-h">
           How it works
         </h2>
@@ -20,7 +28,7 @@ export function HowItWorksSection() {
               <div className="ui-card" aria-hidden="true">
                 <p className="ui-card__title">Travel policy</p>
                 <p className="ui-card__sub">Applies to every employee</p>
-                <div className="ui-rule">
+                <ProductRow className="ui-rule">
                   <span>
                     <span className="ui-rule__k">Hotels</span>
                     <span className="ui-rule__v">Up to $250 a night</span>
@@ -28,8 +36,8 @@ export function HowItWorksSection() {
                   <Badge variant="success" tick>
                     Set
                   </Badge>
-                </div>
-                <div className="ui-rule">
+                </ProductRow>
+                <ProductRow className="ui-rule">
                   <span>
                     <span className="ui-rule__k">Flights</span>
                     <span className="ui-rule__v">Economy for flights under 6 hours</span>
@@ -37,8 +45,8 @@ export function HowItWorksSection() {
                   <Badge variant="success" tick>
                     Set
                   </Badge>
-                </div>
-                <div className="ui-rule">
+                </ProductRow>
+                <ProductRow className="ui-rule">
                   <span>
                     <span className="ui-rule__k">Approvals</span>
                     <span className="ui-rule__v">Out of policy goes to an approver</span>
@@ -46,7 +54,7 @@ export function HowItWorksSection() {
                   <Badge variant="success" tick>
                     Set
                   </Badge>
-                </div>
+                </ProductRow>
               </div>
             </figure>
             <h3 className="mr-h3">
@@ -64,7 +72,7 @@ export function HowItWorksSection() {
               aria-label="Flight options marked in policy or out of policy"
               style={{ margin: '0 0 24px' }}
             >
-              <div className="phone" aria-hidden="true">
+              <ProductPhone className="phone" aria-hidden="true">
                 <div className="phone__screen mr-plum">
                   <div className="phone__bar">
                     <span className="mr-fig">9:41</span>
@@ -72,26 +80,26 @@ export function HowItWorksSection() {
                   </div>
                   <p className="phone__title">Austin to Chicago</p>
                   <p className="phone__meta">Wed, Oct 14 · 1 traveler</p>
-                  <div className="fl">
+                  <ProductRow className="fl">
                     <span className="fl__time">7:05 a.m.</span>
                     <span className="fl__fare">$312.40</span>
                     <span className="fl__meta">Nonstop</span>
                     <Badge variant="success">In policy</Badge>
-                  </div>
-                  <div className="fl">
+                  </ProductRow>
+                  <ProductRow className="fl">
                     <span className="fl__time">9:30 a.m.</span>
                     <span className="fl__fare">$298.10</span>
                     <span className="fl__meta">Nonstop</span>
                     <Badge variant="success">In policy</Badge>
-                  </div>
-                  <div className="fl">
+                  </ProductRow>
+                  <ProductRow className="fl">
                     <span className="fl__time">12:15 p.m.</span>
                     <span className="fl__fare">$684.90</span>
                     <span className="fl__meta">Nonstop</span>
                     <Badge variant="error">Out of policy</Badge>
-                  </div>
+                  </ProductRow>
                 </div>
-              </div>
+              </ProductPhone>
             </figure>
             <h3 className="mr-h3">
               <span className="step__n">2.</span> Your people book
@@ -108,12 +116,12 @@ export function HowItWorksSection() {
               aria-label="Finance dashboard listing trips with budget and GL code"
               style={{ margin: '0 0 24px' }}
             >
-              <div className="dash" aria-hidden="true">
+              <ProductCard className="dash" aria-hidden="true">
                 <div className="dash__head">
                   <p className="dash__title">Finance dashboard</p>
                   <span className="mr-label">October</span>
                 </div>
-                <table className="mr-ledger mr-ledger--compact">
+                <LedgerTable className="mr-ledger mr-ledger--compact">
                   <thead>
                     <tr>
                       <th>Trip</th>
@@ -138,7 +146,7 @@ export function HowItWorksSection() {
                       <td className="mr-num">6200</td>
                     </tr>
                   </tbody>
-                </table>
+                </LedgerTable>
                 <ul className="audit">
                   <li className="audit__h">Audit log</li>
                   <li>
@@ -154,7 +162,7 @@ export function HowItWorksSection() {
                     <span>Receipt matched</span>
                   </li>
                 </ul>
-              </div>
+              </ProductCard>
             </figure>
             <h3 className="mr-h3">
               <span className="step__n">3.</span> Finance sees every trip
@@ -171,7 +179,7 @@ export function HowItWorksSection() {
             <Link to="/how-it-works">See how it works</Link>
           </Button>
         </p>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

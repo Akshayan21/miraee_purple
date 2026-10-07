@@ -1,0 +1,68 @@
+.hero :global(.hero__grid) > * {
+  min-width: 0;
+}
+.hero :global(.hero__photo--stacked) {
+  display: none;
+}
+.hero :global(.hero__toast-text) {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.hero :global(.hero__toast-mark) {
+  flex-shrink: 0;
+}
+@media (max-width: 1199px) {
+  .hero :global(.hero__backdrop) {
+    display: none;
+  }
+  .hero :global(.hero__visual) {
+    isolation: isolate;
+    min-height: 460px;
+    padding: 120px 24px 24px;
+    align-content: end;
+    border-radius: var(--mr-r-xl);
+  }
+  .hero :global(.hero__visual .hero__photo--stacked) {
+    display: block;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    border-radius: inherit;
+    object-fit: cover;
+    object-position: 82% 50%;
+    mask: none;
+    -webkit-mask: none;
+  }
+  .hero :global(.hero__card),
+  .hero :global(.hero__toast) {
+    margin: 0;
+    width: 100%;
+    min-width: 0;
+  }
+  .hero :global(.hero__orb) {
+    display: none;
+  }
+  .hero :global(.hero__copy) {
+    padding-bottom: 32px;
+  }
+}
+@media (max-width: 639px) {
+  .hero :global(.hero__copy .mr-display) {
+    font-size: clamp(32px, 9.5vw, 44px);
+  }
+  .hero :global(.hero__visual) {
+    min-height: 400px;
+    padding: 100px 12px 16px;
+  }
+  .hero :global(.hero__card),
+  .hero :global(.hero__toast) {
+    padding: 12px;
+  }
+  .hero :global(.hero__card .mr-ledger) {
+    min-width: 300px;
+  }
+  .hero :global(.hero__card .mr-ledger td:first-child) {
+    min-width: 80px;
+  }
+}

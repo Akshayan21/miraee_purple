@@ -1,11 +1,12 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 
 export function HeroSection() {
   return (
-    <section className="mr-paper lf-hero lf-hero--frame" aria-labelledby="hero-h">
+    <Section className="mr-paper lf-hero lf-hero--frame" aria-labelledby="hero-h">
       <nav className="crumbs" aria-label="Breadcrumb">
-        <div className="mr-container">
+        <Container className="mr-container">
           <ol>
             <li>
               <Link to="/">Home</Link>
@@ -14,9 +15,9 @@ export function HeroSection() {
               <span aria-current="page">Resources</span>
             </li>
           </ol>
-        </div>
+        </Container>
       </nav>
-      <div className="mr-container split">
+      <Container className="mr-container split">
         <div className="split__copy lf-hero__copy">
           <p className="mr-eyebrow">Guides and templates</p>
           <h1 className="mr-h1" id="hero-h">
@@ -50,7 +51,7 @@ export function HeroSection() {
             />
           </picture>
         </figure>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

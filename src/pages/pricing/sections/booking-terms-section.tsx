@@ -1,10 +1,11 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 
 export function BookingTermsSection() {
   return (
-    <section className="mr-section hr-top" aria-labelledby="terms-h">
-      <div className="mr-container duo">
+    <Section className="mr-section hr-top" aria-labelledby="terms-h">
+      <Container className="mr-container duo">
         <div className="duo__head">
           <h2 className="mr-h2" id="terms-h">
             Booking terms
@@ -21,7 +22,7 @@ export function BookingTermsSection() {
             </Button>
           </p>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

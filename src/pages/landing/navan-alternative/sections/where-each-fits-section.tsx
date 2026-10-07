@@ -1,7 +1,8 @@
+import { Section, Container } from '@/components/layout/content-layout'
 export function WhereEachFitsSection() {
   return (
-    <section className="mr-section" aria-labelledby="fits-h">
-      <div className="mr-container">
+    <Section className="mr-section" aria-labelledby="fits-h">
+      <Container className="mr-container">
         <h2 className="mr-h2" id="fits-h">
           Where each fits
         </h2>
@@ -21,7 +22,7 @@ export function WhereEachFitsSection() {
             </p>
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

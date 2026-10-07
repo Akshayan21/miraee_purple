@@ -1,9 +1,11 @@
+import { Section, Container } from '@/components/layout/content-layout'
+import { ProductCard, LedgerTable } from '@/components/sections/product-preview'
 import { Badge } from '@/components/ui/badge'
 
 export function WhatYouGetWithMiraeeSection() {
   return (
-    <section className="mr-paper mr-section" aria-labelledby="gets-h">
-      <div className="mr-container split">
+    <Section className="mr-paper mr-section" aria-labelledby="gets-h">
+      <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="gets-h">
             What you get with Miraee
@@ -30,7 +32,7 @@ export function WhatYouGetWithMiraeeSection() {
           </ul>
         </div>
         <figure className="split__visual" style={{ margin: '0' }}>
-          <div
+          <ProductCard
             className="mr-ledger-wrap card-shadow ledger-card"
             style={{ background: 'var(--mr-white)' }}
           >
@@ -38,7 +40,7 @@ export function WhatYouGetWithMiraeeSection() {
               <p className="mr-ledger-wrap__title">October trips</p>
               <span className="mr-label">3 trips</span>
             </div>
-            <table
+            <LedgerTable
               className="mr-ledger"
               aria-label="A finance ledger of trips with budgets, policy status and GL codes."
             >
@@ -100,10 +102,10 @@ export function WhatYouGetWithMiraeeSection() {
                   <td className="mr-num">6200</td>
                 </tr>
               </tbody>
-            </table>
-          </div>
+            </LedgerTable>
+          </ProductCard>
         </figure>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

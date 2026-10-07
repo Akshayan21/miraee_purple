@@ -1,7 +1,9 @@
+import { Section, Container } from '@/components/layout/content-layout'
+import { ProductCard, LedgerTable } from '@/components/sections/product-preview'
 export function WhatFinanceGetsSection() {
   return (
-    <section className="mr-section hr-top" aria-labelledby="gets-h">
-      <div className="mr-container split">
+    <Section className="mr-section hr-top" aria-labelledby="gets-h">
+      <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="gets-h">
             Every booking inside your policy, with its budget and GL code.
@@ -14,7 +16,7 @@ export function WhatFinanceGetsSection() {
           </ul>
         </div>
         <figure className="split__visual" style={{ margin: '0' }}>
-          <div
+          <ProductCard
             className="dash dash--lg"
             role="img"
             aria-label="Finance dashboard with trips, budgets and GL codes."
@@ -38,7 +40,7 @@ export function WhatFinanceGetsSection() {
                   <strong>2</strong>
                 </div>
               </div>
-              <table className="mr-ledger mr-ledger--compact">
+              <LedgerTable className="mr-ledger mr-ledger--compact">
                 <thead>
                   <tr>
                     <th>Trip</th>
@@ -73,7 +75,7 @@ export function WhatFinanceGetsSection() {
                     <td className="mr-num">6210</td>
                   </tr>
                 </tbody>
-              </table>
+              </LedgerTable>
               <ul className="audit">
                 <li className="audit__h">Audit log</li>
                 <li>
@@ -90,12 +92,12 @@ export function WhatFinanceGetsSection() {
                 </li>
               </ul>
             </div>
-          </div>
+          </ProductCard>
           <figcaption className="mr-caption" style={{ marginTop: '12px' }}>
             Product view with illustrative data.
           </figcaption>
         </figure>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

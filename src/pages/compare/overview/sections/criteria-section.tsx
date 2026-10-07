@@ -1,12 +1,13 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { CRITERIA } from '../data'
 
 export function CriteriaSection() {
   return (
-    <section
+    <Section
       className="bg-white py-20 md:py-24"
       aria-labelledby="what-should-a-company-of-300-to-1-500-people-compare"
     >
-      <div className="mr-container">
+      <Container className="mr-container">
         <div className="grid gap-6 lg:grid-cols-12">
           <h2
             className="mr-h2 scroll-mt-32 lg:col-span-6"
@@ -54,7 +55,7 @@ export function CriteriaSection() {
             </li>
           ))}
         </ul>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

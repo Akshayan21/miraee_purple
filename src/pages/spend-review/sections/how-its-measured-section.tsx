@@ -1,7 +1,8 @@
+import { Section, Container } from '@/components/layout/content-layout'
 export function HowItsMeasuredSection() {
   return (
-    <section className="mr-section" aria-labelledby="measure-h">
-      <div className="mr-container answer">
+    <Section className="mr-section" aria-labelledby="measure-h">
+      <Container className="mr-container answer">
         <h2 className="mr-h2" id="measure-h">
           We show our work.
         </h2>
@@ -12,7 +13,7 @@ export function HowItsMeasuredSection() {
         <p className="mr-body">
           Any savings figure is a dollar range, with the method and the data period beside it.
         </p>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

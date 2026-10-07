@@ -1,7 +1,8 @@
+import { Section, Container } from '@/components/layout/content-layout'
 export function CoverageSection() {
   return (
-    <section className="mr-paper mr-section" aria-labelledby="cov-h">
-      <div className="mr-container">
+    <Section className="mr-paper mr-section" aria-labelledby="cov-h">
+      <Container className="mr-container">
         <h2 className="mr-h2" id="cov-h" style={{ maxWidth: '16em' }}>
           Global flight and hotel coverage from the Mondee travel marketplace.
         </h2>
@@ -74,7 +75,7 @@ export function CoverageSection() {
             </figure>
           </li>
         </ul>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

@@ -1,11 +1,13 @@
+import { VisualComposition } from '@/components/sections/product-preview'
+import { Section, Container } from '@/components/layout/content-layout'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 
 export function ForFinanceSection() {
   return (
-    <section className="mr-paper mr-section section-bleed" aria-labelledby="fin-h">
-      <div className="mr-container split">
+    <Section className="mr-paper mr-section section-bleed" aria-labelledby="fin-h">
+      <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="fin-h">
             Every trip, with its budget and GL code.
@@ -30,7 +32,10 @@ export function ForFinanceSection() {
             </Button>
           </p>
         </div>
-        <figure className="split__visual compose compose--finance" style={{ margin: '0' }}>
+        <VisualComposition
+          className="split__visual compose compose--finance"
+          style={{ margin: '0' }}
+        >
           <picture>
             <source srcSet="/img/px5918389-controller.webp" type="image/webp" />{' '}
             <img
@@ -80,8 +85,8 @@ export function ForFinanceSection() {
               </p>
             </div>
           </div>
-        </figure>
-      </div>
-    </section>
+        </VisualComposition>
+      </Container>
+    </Section>
   )
 }

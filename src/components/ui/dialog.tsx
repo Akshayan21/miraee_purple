@@ -1,3 +1,4 @@
+import styles from './dialog.module.css'
 import * as React from 'react'
 import { Dialog as DialogPrimitive } from 'radix-ui'
 
@@ -23,9 +24,10 @@ function DialogContent({
         data-slot="dialog-content"
         className={cn(
           // `mr-light` re-applies the white surface roles, as the original <dialog class="form-dialog mr-light"> did.
-          'mr-light fixed top-1/2 left-1/2 z-50 max-h-[calc(100vh-32px)] w-[min(480px,calc(100vw-32px))] -translate-x-1/2 -translate-y-1/2',
+          'mr-light fixed top-1/2 left-1/2 z-50 max-h-[calc(100dvh-32px)] w-[min(480px,calc(100vw-32px))] -translate-x-1/2 -translate-y-1/2',
           'overflow-y-auto rounded-lg border-0 bg-white p-0 text-ink shadow-2',
           'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0',
+          styles.content,
           className,
         )}
         {...props}

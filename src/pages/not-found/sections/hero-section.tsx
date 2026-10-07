@@ -1,10 +1,11 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 
 export function HeroSection() {
   return (
-    <section className="mr-plum nf" aria-labelledby="hero-h">
-      <div className="mr-container">
+    <Section className="mr-plum nf" aria-labelledby="hero-h">
+      <Container className="mr-container">
         <p className="mr-eyebrow">Error 404</p>
         <h1 className="mr-display" id="hero-h">
           We can't find that page.
@@ -42,7 +43,7 @@ export function HeroSection() {
             <path d="M-80 120 C 180 118 420 96 560 70 C 640 55 690 40 720 22"></path>
           </svg>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

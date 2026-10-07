@@ -1,9 +1,10 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { Badge } from '@/components/ui/badge'
 
 export function ExpenseSection() {
   return (
-    <section className="step-sec" aria-labelledby="exp-h">
-      <div className="mr-container split">
+    <Section className="step-sec" aria-labelledby="exp-h">
+      <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="exp-h">
             Receipts matched to card charges and checked against policy.
@@ -42,7 +43,7 @@ export function ExpenseSection() {
           </figure>
           <p className="mr-caption fig-cap">Product view with illustrative data.</p>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

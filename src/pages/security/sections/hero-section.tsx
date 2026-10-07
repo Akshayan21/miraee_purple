@@ -1,11 +1,12 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
 
 export function HeroSection() {
   return (
-    <section className="page-hero page-hero--bleed" aria-labelledby="hero-h">
-      <div className="mr-container page-hero__grid">
+    <Section className="page-hero page-hero--bleed" aria-labelledby="hero-h">
+      <Container className="mr-container page-hero__grid">
         <div className="page-hero__copy">
           <h1 className="mr-display" id="hero-h">
             Security at Miraee
@@ -38,7 +39,7 @@ export function HeroSection() {
             />
           </picture>
         </figure>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

@@ -1,11 +1,12 @@
+import { Section, Container } from '@/components/layout/content-layout'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
 
 export function DownloadsSection() {
   return (
-    <section className="mr-plum plum-band" id="download" aria-labelledby="dl-h">
-      <div className="mr-container">
+    <Section className="mr-plum plum-band" id="download" aria-labelledby="dl-h">
+      <Container className="mr-container">
         <div className="inner">
           <h2 className="mr-h2" id="dl-h">
             Download the editable template
@@ -35,7 +36,7 @@ export function DownloadsSection() {
             </li>
           </ul>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

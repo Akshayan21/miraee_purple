@@ -1,10 +1,12 @@
+import { Section, Container } from '@/components/layout/content-layout'
+import { ProductCard, LedgerTable } from '@/components/sections/product-preview'
 import { Button } from '@/components/ui/button'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
 
 export function SpendReviewSection() {
   return (
-    <section className="mr-paper mr-section section-bleed" aria-labelledby="spend-h">
-      <div className="mr-container split">
+    <Section className="mr-paper mr-section section-bleed" aria-labelledby="spend-h">
+      <Container className="mr-container split">
         <div className="split__copy">
           <p className="context">
             Business travel spending is forecast to rise 7.2% in 2026, while the number of trips
@@ -57,12 +59,12 @@ export function SpendReviewSection() {
               alt="A finance leader in a tweed blazer smiles in the office."
             />
           </picture>
-          <div className="compose__card mr-ledger-wrap card-shadow">
+          <ProductCard className="compose__card mr-ledger-wrap card-shadow">
             <div className="mr-ledger-wrap__head">
               <p className="mr-ledger-wrap__title">Spend review findings</p>
               <span className="mr-label">Last year</span>
             </div>
-            <table className="mr-ledger">
+            <LedgerTable className="mr-ledger">
               <caption>Product view with illustrative data.</caption>
               <thead>
                 <tr>
@@ -110,10 +112,10 @@ export function SpendReviewSection() {
                   <td className="mr-num">$21,760.00</td>
                 </tr>
               </tbody>
-            </table>
-          </div>
+            </LedgerTable>
+          </ProductCard>
         </figure>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }
