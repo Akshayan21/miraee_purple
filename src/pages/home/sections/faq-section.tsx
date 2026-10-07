@@ -7,7 +7,7 @@ export function FAQSection() {
       heading="Questions buyers ask"
       items={faq}
       listClassName="faq"
-      sectionClassName="mr-section hr-top"
+      sectionClassName="mr-paper mr-section hr-top"
     />
   )
 }

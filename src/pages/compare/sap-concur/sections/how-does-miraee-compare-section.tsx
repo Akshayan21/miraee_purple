@@ -215,11 +215,6 @@ export function HowDoesMiraeeCompareSection() {
             confirm, in the app. The change and any fare difference are recorded in the audit log.
             Changes and cancellations are a common sore point: 64% of travel managers say they are
             hard in their booking tool.
-            <sup>
-              <a href="#src-1" rel="noopener" aria-label="Source 1">
-                1
-              </a>
-            </sup>
           </p>
           <h2 className="mr-h2" id="check-last-year-s-travel-from-your-concur-extract">
             Check last year's travel from your Concur extract

@@ -283,11 +283,6 @@ sup a { text-decoration: none; padding: 0 1px; }
 @media (max-width: 1023px) { .closing__grid .mr-h2, .closing__side { grid-column: 1 / -1; } .closing__photo { height: 220px; } }
 @media (max-width: 639px) { .closing__side .mr-btn-row { flex-direction: column; align-items: stretch; } .closing__photo { height: 180px; } }
 
-/* Sources */
-.sources { padding: var(--mr-s-7) 0; }
-.sources h2 { font-size: var(--mr-fs-small); font-weight: 650; margin: 0 0 var(--mr-s-3); }
-.sources ol { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
-.sources li { font-size: var(--mr-fs-caption); line-height: var(--mr-lh-caption); color: var(--text-2); }
 
 /* Footer */
 .mr-footer__cols--two { grid-template-columns: 2fr 1fr 1fr; }
@@ -349,3 +344,9 @@ sup a { text-decoration: none; padding: 0 1px; }
 @media (max-width: 639px) { .col-budget { display: none; } }
 .compose--lp .mr-ledger td.col-budget, .compose--lp .mr-ledger th.col-budget { padding-right: 30px; }
 /* Form dialog headings (Radix dialog content, see components/ui/dialog.tsx) keep the original sizing. */
+
+/* Sources */
+.sources { padding: var(--mr-s-7) 0; }
+.sources h2 { font-size: var(--mr-fs-small); font-weight: 650; margin: 0 0 var(--mr-s-3); }
+.sources ol { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+.sources li { font-size: var(--mr-fs-caption); line-height: var(--mr-lh-caption); color: var(--text-2); }

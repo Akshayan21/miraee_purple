@@ -57,6 +57,10 @@ All forms validate natively and show their confirmation state. To deliver submis
 
 `dist/` is plain static files (`/how-it-works/index.html`, ...). Any static host works. Serve `dist/404.html` for unknown URLs. Netlify and Vercel do this automatically.
 
+## Image credits
+
+- Home hero photo: [Briana Tozour on Unsplash](https://unsplash.com/photos/people-walking-through-sunlit-airport-terminal-rUXh5USKfUQ), used under the Unsplash License. Cut-out portraits elsewhere on the site are stock images carried over from the original static site.
+
 ## Known gaps carried over from the static site
 
 - `/when-plans-change`, `/privacy` and `/terms` are linked but do not exist yet (they render the 404 page).

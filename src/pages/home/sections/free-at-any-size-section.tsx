@@ -5,7 +5,7 @@ import { DialogLink } from '@/components/forms/form-dialogs-context'
 
 export function FreeAtAnySizeSection() {
   return (
-    <Section className="mr-section hr-top free" aria-labelledby="free-h">
+    <Section tone="plum" accent className="mr-section hr-top free" aria-labelledby="free-h">
       <Container className="mr-container split">
         <figure className="split__visual free__img mr-frame" style={{ margin: '0' }}>
           <picture>

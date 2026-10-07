@@ -1,24 +1,15 @@
 import { Seo } from '@/components/common/seo'
+import { StaticHtml } from '@/components/common/static-html'
+import content from './content.html?raw'
 import { meta } from './meta'
-import { HeroSection } from './sections/hero-section'
-import { WhatShouldATravelSection } from './sections/what-should-atravel-section'
-import { RelatedSection } from './sections/related-section'
-import { SourcesSection } from './sections/sources-section'
-import { ClosingSection } from './sections/closing-section'
 
 /** Route: /resources/travel-and-expense-policy */
 export function Component() {
   return (
     <>
       <Seo meta={meta} />
-      <main id="main">
-        <HeroSection />
-        <WhatShouldATravelSection />
-        <RelatedSection />
-        <SourcesSection />
-        <ClosingSection />
-      </main>
+      <StaticHtml html={content} />
     </>
   )
 }
-Component.displayName = 'ResourcesTravelAndExpensePolicyPage'
+Component.displayName = 'TravelAndExpensePolicyPage'

@@ -10,7 +10,6 @@ import { YourCardsYourControlsSection } from './sections/your-cards-your-control
 import { TheAssistantAndApprovalsSection } from './sections/the-assistant-and-approvals-section'
 import { ProofFirstSection } from './sections/proof-first-section'
 import { ClosingCallToActionSection } from './sections/closing-call-to-action-section'
-import { SourcesSection } from './sections/sources-section'
 
 /** Route: /finance */
 export function Component() {
@@ -28,7 +27,6 @@ export function Component() {
         <TheAssistantAndApprovalsSection />
         <ProofFirstSection />
         <ClosingCallToActionSection />
-        <SourcesSection />
       </main>
     </>
   )

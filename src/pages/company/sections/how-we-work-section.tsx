@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export function HowWeWorkSection() {
   return (
-    <Section className="mr-section" aria-labelledby="work-h">
+    <Section tone="plum" accent className="mr-section" aria-labelledby="work-h">
       <Container className="mr-container">
         <h2 className="mr-h2" id="work-h">
           We show our work.

@@ -7,8 +7,8 @@ export type Criterion = {
   title: string
   summary: string
   body: string
-  /** A sourced figure shown under the text. */
-  stat?: { text: string; source: { id: string; label: string } }
+  /** A figure shown under the text. */
+  stat?: { text: string }
 }
 
 export const CRITERIA: Criterion[] = [
@@ -34,7 +34,6 @@ export const CRITERIA: Criterion[] = [
     body: 'Controllers want each trip with its budget and GL code, receipts matched to card charges, and an audit log of who booked what, and when. Ask to see a month of trips in the finance view, not a slide.',
     stat: {
       text: 'Only 12% of travel programs have their data in one place.',
-      source: { id: 'src-1', label: 'Source 1' },
     },
   },
   {
@@ -45,7 +44,6 @@ export const CRITERIA: Criterion[] = [
     body: 'A delayed or canceled flight is the moment travelers judge the tool. Ask what the traveler sees first, who confirms the new option, and where the change is recorded.',
     stat: {
       text: '89% of travel buyers want help rebooking when plans change.',
-      source: { id: 'src-2', label: 'Source 2' },
     },
   },
 ]

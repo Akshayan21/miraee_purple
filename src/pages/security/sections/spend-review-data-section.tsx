@@ -1,7 +1,7 @@
 import { Section, Container } from '@/components/layout/content-layout'
 export function SpendReviewDataSection() {
   return (
-    <Section className="mr-section" aria-labelledby="data-h">
+    <Section tone="plum" accent className="mr-section" aria-labelledby="data-h">
       <Container className="mr-container duo">
         <div className="duo__head">
           <h2 className="mr-h2" id="data-h">

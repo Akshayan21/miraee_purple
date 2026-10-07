@@ -12,14 +12,12 @@ export function WhyNowSection() {
             </a>
           </sup>
         </p>
-        <p>
-          Only 12% of travel programs have their data in one place.
-          <sup>
-            <a href="#src-2" aria-label="Source 2">
-              2
-            </a>
-          </sup>
-        </p>
+        <p>Only 12% of travel programs have their data in one place.
+<sup>
+<a href="#src-2" aria-label="Source 2">
+2
+</a>
+</sup></p>
       </Container>
     </Section>
   )

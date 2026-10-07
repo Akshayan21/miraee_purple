@@ -4,7 +4,7 @@ import { DialogLink } from '@/components/forms/form-dialogs-context'
 
 export function TheSpendReviewSection() {
   return (
-    <Section className="mr-section" aria-labelledby="review-h">
+    <Section tone="plum" accent className="mr-section" aria-labelledby="review-h">
       <Container className="mr-container duo">
         <div className="duo__head">
           <h2 className="mr-h2" id="review-h">

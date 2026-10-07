@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 
 export function SecuritySection() {
   return (
-    <Section className="mr-section" aria-labelledby="sec-h">
+    <Section className="mr-plum mr-section" aria-labelledby="sec-h">
       <Container className="mr-container">
         <SplitLayout className="security split">
           <h2 className="mr-h2 split__copy" id="sec-h" style={{ alignSelf: 'start' }}>

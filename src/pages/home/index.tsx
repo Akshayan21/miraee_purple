@@ -1,3 +1,4 @@
+import { TravelJourney } from '@/components/motion/travel-journey'
 import { Seo } from '@/components/common/seo'
 import { meta } from './meta'
 import { HeroSection } from './sections/hero-section'
@@ -9,7 +10,6 @@ import { SecuritySection } from './sections/security-section'
 import { FreeAtAnySizeSection } from './sections/free-at-any-size-section'
 import { FAQSection } from './sections/faq-section'
 import { ClosingCallToActionSection } from './sections/closing-call-to-action-section'
-import { SourcesSection } from './sections/sources-section'
 
 /** Route: / */
 export function Component() {
@@ -18,6 +18,7 @@ export function Component() {
       <Seo meta={meta} />
       <main id="main">
         <HeroSection />
+        <TravelJourney />
         <HowItWorksSection />
         <SpendReviewSection />
         <WhenPlansChangeSection />
@@ -26,7 +27,6 @@ export function Component() {
         <FreeAtAnySizeSection />
         <FAQSection />
         <ClosingCallToActionSection />
-        <SourcesSection />
       </main>
     </>
   )

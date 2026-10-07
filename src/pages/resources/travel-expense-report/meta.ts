@@ -1,6 +1,4 @@
 import type { SeoMeta } from '@/components/common/seo'
-import { faqPageJsonLd } from '@/lib/json-ld'
-import { faq } from './faq'
 
 export const meta: SeoMeta = {
   title: 'Travel expense reports: close month-end with fewer chases',
@@ -89,7 +87,52 @@ export const meta: SeoMeta = {
             },
           ],
         },
-        faqPageJsonLd('https://miraee.ai/resources/travel-expense-report#faq', faq),
+        {
+          '@type': 'FAQPage',
+          '@id': 'https://miraee.ai/resources/travel-expense-report#faq',
+          mainEntity: [
+            {
+              '@type': 'Question',
+              name: 'What is a travel expense report?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'A travel expense report lists the costs of a business trip, with a receipt, category and code for each line, so the company can check, post and reimburse them.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'How long should a travel expense report take to approve?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'A report with codes attached at booking, receipts matched to charges and a policy status on each line can be approved in one pass. Reports that need codes and receipts chased take the longest.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'What should be on a travel month-end close checklist?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Coding every trip, matching card charges to receipts, chasing missing receipts, recording unused tickets, booking accruals, comparing spend with budget, releasing reimbursements and locking the period. The checklist above covers each step by close day.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Can travelers submit receipts from their phone?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Most modern tools let travelers upload a photo of the receipt during the trip. The sooner the receipt arrives, the sooner it can be matched to the card charge.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Do we need a separate expense tool for travel?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Many companies keep one tool for booking and another for expense. When booking and expense share one trip record, the codes and receipts stay together, and month-end has less to reconcile.',
+              },
+            },
+          ],
+        },
       ],
     },
   ],

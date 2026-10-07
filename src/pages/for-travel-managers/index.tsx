@@ -8,7 +8,6 @@ import { ForThePeopleWhoBookForOthersSection } from './sections/for-the-people-w
 import { WhenPlansChangeSection } from './sections/when-plans-change-section'
 import { RolloutSection } from './sections/rollout-section'
 import { ClosingCallToActionSection } from './sections/closing-call-to-action-section'
-import { SourcesSection } from './sections/sources-section'
 
 /** Route: /travel-managers */
 export function Component() {
@@ -24,7 +23,6 @@ export function Component() {
         <WhenPlansChangeSection />
         <RolloutSection />
         <ClosingCallToActionSection />
-        <SourcesSection />
       </main>
     </>
   )

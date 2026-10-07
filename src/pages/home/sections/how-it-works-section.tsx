@@ -12,7 +12,7 @@ import { Badge } from '@/components/ui/badge'
 
 export function HowItWorksSection() {
   return (
-    <Section className={`mr-section ${styles.section}`} aria-labelledby="how-h">
+    <Section className={`mr-paper mr-section ${styles.section}`} aria-labelledby="how-h">
       <Container className="mr-container">
         <h2 className="mr-h2" id="how-h">
           How it works
