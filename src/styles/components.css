@@ -201,7 +201,7 @@
   font: 600 var(--mr-fs-nav) / 1 var(--mr-font-text); cursor: pointer;
 }
 .mr-nav__menu-bars { position: relative; width: 16px; height: 10px; border-top: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; }
-@media (max-width: 900px) {
+@media (max-width: 1099px) {
   .mr-nav { gap: var(--mr-s-4); }
   .mr-nav__menu { display: inline-flex; }
   .mr-nav__links { display: none; }

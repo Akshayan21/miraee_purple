@@ -11,6 +11,8 @@
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+import { HOME_SECTIONS, type Kit } from '@/lib/home-motion'
+
 const EASE = 'expo.out'
 const HERO = 'section[aria-labelledby="hero-h"]'
 /** Hero pieces animated by CSS keyframes in site.css; the intro below leaves them alone. */
@@ -19,10 +21,13 @@ const CSS_ANIMATED = '.hero__person, .hero__card, .hero__toast'
 const qa = <T extends Element = HTMLElement>(sel: string, root: ParentNode = document): T[] =>
   Array.from(root.querySelectorAll<T>(sel))
 
-const skip = (el: Element) => !!el.closest('dialog, [role="dialog"], .mo-skip, .faq-acc__list')
+/** Dialogs, the FAQ accordion (own reveal) and sections with their own choreography (home-motion.ts) are left to their owners. */
+const skip = (el: Element) =>
+  !!el.closest('dialog, [role="dialog"], .mo-skip, .faq-acc__list, [data-mo-custom]')
 
 /** Elements that nest inside another match are dropped, so a card and its rows are never both revealed. */
-const outermost = (els: HTMLElement[]) => els.filter((e) => !els.some((o) => o !== e && o.contains(e)))
+const outermost = (els: HTMLElement[]) =>
+  els.filter((e) => !els.some((o) => o !== e && o.contains(e)))
 
 export function initScrollMotion(): () => void {
   if (typeof window === 'undefined') return () => {}
@@ -42,6 +47,16 @@ export function initScrollMotion(): () => void {
 
   ctx.add(() => {
     root.classList.add('mo')
+    const mm = gsap.matchMedia()
+    restore.push(() => mm.revert())
+
+    /* Home sections that get bespoke choreography are tagged first, so the generic passes below leave them alone. */
+    const isHome = window.location.pathname === '/'
+    const customs = isHome
+      ? qa('section[aria-labelledby]').filter((sec) => HOME_SECTIONS[sec.getAttribute('aria-labelledby') ?? ''])
+      : []
+    customs.forEach((sec) => sec.setAttribute('data-mo-custom', ''))
+    restore.push(() => customs.forEach((sec) => sec.removeAttribute('data-mo-custom')))
 
     const hero = document.querySelector<HTMLElement>(HERO)
     const inHero = (el: Element) => !!hero && hero.contains(el)
@@ -94,7 +109,12 @@ export function initScrollMotion(): () => void {
       let shown = true
       const show = (v: boolean) => {
         shown = v
-        gsap.to(head, { yPercent: v ? 0 : -100, duration: 0.5, ease: 'power3.out', overwrite: 'auto' })
+        gsap.to(head, {
+          yPercent: v ? 0 : -100,
+          duration: 0.5,
+          ease: 'power3.out',
+          overwrite: 'auto',
+        })
       }
       ScrollTrigger.create({
         start: 0,
@@ -103,7 +123,12 @@ export function initScrollMotion(): () => void {
           const y = self.scroll()
           head.classList.toggle('is-scrolled', y > 24)
           const menuOpen = !!head.querySelector('[aria-expanded="true"]')
-          const want = !(self.direction === 1 && y > 360 && !menuOpen && !head.contains(document.activeElement))
+          const want = !(
+            self.direction === 1 &&
+            y > 360 &&
+            !menuOpen &&
+            !head.contains(document.activeElement)
+          )
           if (want !== shown) show(want)
         },
       })
@@ -124,7 +149,10 @@ export function initScrollMotion(): () => void {
       const h1 = hero.querySelector<HTMLElement>('h1')
       const words = h1 ? splitWords(h1) : []
       const lines = outermost(
-        qa('.crumbs, .mr-eyebrow, .mr-lead, .mr-btn-row, .hero__points, .hero__trust, .lf-meta', hero),
+        qa(
+          '.crumbs, .mr-eyebrow, .mr-lead, .mr-btn-row, .hero__points, .hero__trust, .lf-meta',
+          hero,
+        ),
       )
       const visuals = outermost(
         qa(
@@ -161,26 +189,57 @@ export function initScrollMotion(): () => void {
         trigger: h,
         start: 'top 88%',
         once: true,
-        onEnter: () => rec(() => void gsap.to(w, { yPercent: 0, duration: 1.05, ease: EASE, stagger: 0.04 })),
+        onEnter: () =>
+          rec(() => void gsap.to(w, { yPercent: 0, duration: 1.05, ease: EASE, stagger: 0.04 })),
       })
     })
 
     /* ---- 5. Generic reveals: fade and rise, batched so siblings cascade ---- */
     const REVEAL = [
-      '.mr-eyebrow', '.mr-h3', '.mr-body', '.mr-lead', '.context', '.list-title', '.list li', '.stat-line',
-      '.link-row', '.mr-btn-row', '.icon-row li', '.sources li', '.crumbs', '.lf-prose > *', '.lf-card', '.lf-toc',
-      '.qa', '.compare-wrap', '.gtable', '.small-print', '.mr-caption', '.fig-cap', '.step', '.task',
-      '.match__card', '.mock', '.duo__head', '.duo__body', '.faq-acc__head', '.mr-footer__brand', '.mr-footer nav',
+      '.mr-eyebrow',
+      '.mr-h3',
+      '.mr-body',
+      '.mr-lead',
+      '.context',
+      '.list-title',
+      '.list li',
+      '.stat-line',
+      '.link-row',
+      '.mr-btn-row',
+      '.icon-row li',
+      '.sources li',
+      '.crumbs',
+      '.lf-prose > *',
+      '.lf-card',
+      '.lf-toc',
+      '.qa',
+      '.compare-wrap',
+      '.gtable',
+      '.small-print',
+      '.mr-caption',
+      '.fig-cap',
+      '.step',
+      '.task',
+      '.match__card',
+      '.mock',
+      '.duo__head',
+      '.duo__body',
+      '.faq-acc__head',
+      '.mr-footer__brand',
+      '.mr-footer nav',
       '.mr-h2:not([data-mo])',
     ].join(',')
     const INNER =
       '.ui-rule, .fl, .audit li, .mr-ledger tbody tr, .mr-trip-tag dl > *, .mock__btn, .match__label, .dash__head'
 
-    const candidates = qa(REVEAL).filter((el) => !skip(el) && !inHero(el) && !el.hasAttribute('data-mo'))
+    const candidates = qa(REVEAL).filter(
+      (el) => !skip(el) && !inHero(el) && !el.hasAttribute('data-mo'),
+    )
     candidates.forEach((el) => el.setAttribute('data-mo', ''))
     restore.push(() => qa('[data-mo]').forEach((el) => el.removeAttribute('data-mo')))
     const reveal = candidates.filter((el) => !el.parentElement?.closest('[data-mo]'))
-    const isBlock = (el: Element) => el.matches('.step, .task, .lf-card, .match__card, .mock, .compare-wrap, .gtable')
+    const isBlock = (el: Element) =>
+      el.matches('.step, .task, .lf-card, .match__card, .mock, .compare-wrap, .gtable')
 
     reveal.forEach((el) => {
       gsap.set(el, { opacity: 0, y: isBlock(el) ? 44 : 26 })
@@ -193,7 +252,14 @@ export function initScrollMotion(): () => void {
       batchMax: 6,
       onEnter: (batch) =>
         rec(() => {
-          gsap.to(batch, { opacity: 1, y: 0, duration: 1.1, ease: EASE, stagger: 0.09, overwrite: 'auto' })
+          gsap.to(batch, {
+            opacity: 1,
+            y: 0,
+            duration: 1.1,
+            ease: EASE,
+            stagger: 0.09,
+            overwrite: 'auto',
+          })
           batch.forEach((el) => {
             const rows = qa(INNER, el as HTMLElement)
             if (rows.length)
@@ -255,7 +321,7 @@ export function initScrollMotion(): () => void {
         (el) => !skip(el) && !inHero(el) && !el.closest('[data-mo]'),
       ),
     )
-    cards.forEach((card) => {
+    const setupCard = (card: HTMLElement) => {
       const rows = qa(INNER, card)
       const host = card.closest<HTMLElement>('.compose') ?? card
       const person = host.querySelector<HTMLElement>('.compose__person')
@@ -272,11 +338,16 @@ export function initScrollMotion(): () => void {
             if (person) t.to(person, { opacity: 1, y: 0, scale: 1, duration: 1.4 }, 0)
             t.to(card, { opacity: 1, y: 0, duration: 1.2 }, person ? 0.25 : 0)
             if (rows.length)
-              t.to(rows, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.08 }, '>-0.6')
+              t.to(
+                rows,
+                { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.08 },
+                '>-0.6',
+              )
             countUp(card)
           }),
       })
-    })
+    }
+    cards.forEach(setupCard)
     /* hero ledger: its own cascade once the CSS entrance has finished */
     if (hero) {
       qa('.hero__card', hero).forEach((card) => {
@@ -288,8 +359,7 @@ export function initScrollMotion(): () => void {
     }
 
     /* ---- 8. Circled figures: the hand-drawn Line is wiped in left to right ---- */
-    qa<SVGElement>('.mr-circled > .mr-line').forEach((line) => {
-      if (skip(line)) return
+    const setupCircle = (line: SVGElement, delay = 1.2) => {
       gsap.set(line, { clipPath: 'inset(-20% 100% -20% -10%)' })
       ScrollTrigger.create({
         trigger: line.parentElement as Element,
@@ -302,10 +372,14 @@ export function initScrollMotion(): () => void {
                 clipPath: 'inset(-20% -10% -20% -10%)',
                 duration: 1.1,
                 ease: 'power2.inOut',
-                delay: inHero(line) ? 1.4 : 1.2,
+                delay,
               }),
           ),
       })
+    }
+    qa<SVGElement>('.mr-circled > .mr-line').forEach((line) => {
+      if (skip(line)) return
+      setupCircle(line, inHero(line) ? 1.4 : 1.2)
     })
 
     /* ---- 9. Photographs: wipe open, then settle with a slow scale ---- */
@@ -319,13 +393,25 @@ export function initScrollMotion(): () => void {
           trigger: fr,
           start: 'top 85%',
           once: true,
-          onEnter: () => rec(() => void gsap.to(fr, { clipPath: 'inset(0 0 0% 0)', duration: 1.3, ease: 'expo.inOut' })),
+          onEnter: () =>
+            rec(
+              () =>
+                void gsap.to(fr, {
+                  clipPath: 'inset(0 0 0% 0)',
+                  duration: 1.3,
+                  ease: 'expo.inOut',
+                }),
+            ),
         })
       }
       gsap.fromTo(
         img,
         { scale: 1.16 },
-        { scale: 1, ease: 'none', scrollTrigger: { trigger: fr, start: 'top bottom', end: 'center center', scrub: 0.6 } },
+        {
+          scale: 1,
+          ease: 'none',
+          scrollTrigger: { trigger: fr, start: 'top bottom', end: 'center center', scrub: 0.6 },
+        },
       )
     })
 
@@ -335,7 +421,12 @@ export function initScrollMotion(): () => void {
       gsap.to(line, {
         clipPath: 'inset(0 0% 0 0)',
         ease: 'none',
-        scrollTrigger: { trigger: line.parentElement as Element, start: 'top 85%', end: 'bottom 55%', scrub: 0.8 },
+        scrollTrigger: {
+          trigger: line.parentElement as Element,
+          start: 'top 85%',
+          end: 'bottom 55%',
+          scrub: 0.8,
+        },
       })
     })
 
@@ -375,7 +466,6 @@ export function initScrollMotion(): () => void {
     })
 
     /* ---- 12. Depth: parallax on large screens only ---- */
-    const mm = gsap.matchMedia()
     mm.add('(min-width: 1024px)', () => {
       if (hero) {
         const trigger = { trigger: hero, start: 'top top', end: 'bottom top', scrub: 0.6 }
@@ -409,7 +499,11 @@ export function initScrollMotion(): () => void {
           )
       })
     })
-    restore.push(() => mm.revert())
+
+    /* ---- 13. Bespoke choreography, one per home section ---- */
+    const kit: Kit = { gsap, ScrollTrigger, qa, words: splitWords, rec, mm, restore, added, setupCard, setupCircle, EASE }
+    customs.forEach((sec) => HOME_SECTIONS[sec.getAttribute('aria-labelledby') ?? '']?.(sec, kit))
+    ScrollTrigger.sort()
   })
 
   /* Fonts and images move the page; recalculate once they settle. */

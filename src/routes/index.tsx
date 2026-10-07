@@ -28,7 +28,11 @@ export const routes: RouteRecord[] = [
       {
         Component: SiteLayout,
         children: [
-          { index: true, lazy: () => import('@/pages/home') },
+          {
+            index: true,
+            handle: { headerTone: 'light' } satisfies RouteHandle,
+            lazy: () => import('@/pages/home'),
+          },
           { path: 'how-it-works', ...CORE, lazy: () => import('@/pages/how-it-works') },
           { path: 'spend-review', ...CORE, lazy: () => import('@/pages/spend-review') },
           { path: 'finance', ...CORE, lazy: () => import('@/pages/for-finance') },

@@ -17,46 +17,61 @@ sup a { text-decoration: none; padding: 0 1px; }
 /* Header: stays pinned while scrolling */
 .site-head { position: sticky; top: 0; z-index: 40; }
 .site-head .mr-nav { border-bottom-color: var(--mr-plum-rule); }
+.site-head.mr-paper .mr-nav { border-bottom-color: transparent; }
 .site-head .mr-nav__links { gap: 28px; }
+.mr-nav__links a { white-space: nowrap; }
+@media (min-width: 1100px) and (max-width: 1279px) { .site-head .mr-nav__links { gap: 18px; } .site-head .mr-nav { gap: var(--mr-s-5); } }
 .mr-nav__logo img { height: 100%; width: auto; }
-@media (max-width: 900px) { .mr-nav__end { margin-left: auto; } .mr-nav__menu { order: 3; } }
+@media (max-width: 1099px) { .mr-nav__end { margin-left: auto; } .mr-nav__menu { order: 3; } }
 
 /* Hero */
 .hero { position: relative; padding: 0; overflow: hidden; }
 .hero__grid { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: var(--mr-grid-gutter); align-items: stretch; }
 /* Layout follows the sketch: copy on the left, a photo container flush under the nav on the right, and the UI cards
    straddling the container's left edge. Column 6 stays empty so the cards never touch the copy. */
-.hero__copy { grid-column: 1 / span 5; padding: 64px 0; align-self: center; }
+.hero__copy { grid-column: 1 / span 5; padding: 40px 0 120px; align-self: center; }
 /* Headline steps down with the viewport instead of filling the column edge to edge */
 .hero__copy .mr-display { margin-bottom: var(--mr-s-5); font-size: clamp(40px, 3.9vw, 56px); line-height: 1.04; }
-.hero__copy .mr-lead { margin-bottom: var(--mr-s-6); max-width: 440px; }
-/* Eyebrow with an orange marker dot: the Line's colour as a light, not a wash */
-.hero .mr-eyebrow { display: inline-flex; align-items: center; gap: 10px; margin-bottom: var(--mr-s-5); letter-spacing: .01em; }
-.hero .mr-eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--mr-orange-light); }
-/* Three proof points under the buttons, all taken from the page's own claims */
-.hero__points { list-style: none; margin: var(--mr-s-6) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 20px; }
-.hero__points li { display: inline-flex; align-items: center; gap: 8px; font-size: var(--mr-fs-small); font-weight: 600; color: var(--text); }
-.hero__points li::before { content: ""; flex: none; width: 16px; height: 16px; background-color: var(--mr-orange-light);
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") no-repeat center / contain;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") no-repeat center / contain; }
-.hero__trust { margin: var(--mr-s-4) 0 0; max-width: 34em; }
+/* The ledger card reaches back into the empty column beside the copy. Text keeps a 72px inset from the column edge so the
+   two can never touch, whatever the viewport width or zoom. */
+.hero__copy .mr-lead { margin-bottom: var(--mr-s-6); max-width: min(440px, calc(100% - 72px)); }
+.hero__trust { margin: var(--mr-s-4) 0 0; max-width: min(34em, calc(100% - 72px)); }
+
+/* ---- Home hero: light ground, a plum organic shape bleeding off the right edge (layout after the Cat's Home reference) ---- */
+.hero--blob { isolation: isolate; }
+.hero__backdrop { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+/* The shape starts where the man's column starts and runs off the right edge of the page. */
+.hero__blob { position: absolute; top: 0; right: 0; bottom: 0; width: 58%; height: 100%; overflow: visible; }
+.hero__blob-back { fill: var(--mr-plum); }
+.hero__blob-line { fill: none; stroke: var(--mr-orange); stroke-width: 3; stroke-linecap: round; }
+/* One small sphere echoes the reference. Static, one shadow, lit from the top left. */
+.hero__orb { position: absolute; z-index: 0; top: 18px; left: 40px; width: 26px; height: 26px; border-radius: 50%; box-shadow: 0 10px 18px rgba(37, 9, 24, .28); background: radial-gradient(circle at 32% 26%, #fff 0 5%, var(--mr-mist) 7% 42%, var(--mr-plum-edge) 100%); }
+@media (max-width: 1199px) {
+  .hero--blob { padding-bottom: 32px; }
+  .hero__blob { top: auto; bottom: 0; height: 680px; width: 100%; }
+}
 /* Cards are anchored to the bottom, like the man, so they keep their place against him however tall the hero gets. */
 /* Visual: no container. The man stands on the bottom edge of the hero, flush with the right edge of the page content;
    the ledger card and the approval toast sit against his left side. */
-.hero__visual { grid-column: 7 / span 6; position: relative; align-self: stretch; min-height: 640px; }
+.hero__visual { grid-column: 7 / span 6; position: relative; align-self: stretch; min-height: 640px;
+  /* Man and cards are one composition. These numbers are coupled (the card must stop short of his face), so they live
+     here, and the breakpoints below only change this block. Offsets are from the bottom-right of the column. */
+  --man-w: 134%; --man-right: -120px;
+  --card-w: 364px; --card-left: -178px; --card-bottom: 150px;
+  --toast-w: 312px; --toast-left: -120px; --toast-bottom: 60px; }
 /* Large, pinned to the bottom-right. `max-width: none` matters: the global `img { max-width: 100% }` would otherwise
    squeeze him horizontally whenever he is wider than the column. */
 /* He overhangs the column on the right so his face lands clear of the cards; the last 70px of his far sleeve fade out
    instead of ending on a hard vertical cut. */
-.hero__person { position: absolute; z-index: 1; bottom: 0; right: -150px; width: 144%; max-width: none; height: auto;
+.hero__person { position: absolute; z-index: 1; bottom: 0; right: var(--man-right); width: var(--man-w); max-width: none; height: auto;
   -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 70px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 70px), transparent); }
-.hero__card { position: absolute; left: -150px; bottom: 150px; width: 336px; z-index: 2; padding: 14px 16px 8px; font-size: 12px; overflow: visible; }
+.hero__card { position: absolute; left: var(--card-left); bottom: var(--card-bottom); width: var(--card-w); z-index: 2; padding: 14px 16px 8px; font-size: 12px; overflow: visible; }
 .hero__card .mr-ledger th, .hero__card .mr-ledger td { padding-right: 8px; }
 .hero__card .mr-ledger th:last-child, .hero__card .mr-ledger td:last-child { padding-right: 0; }
-.hero__card .mr-ledger { font-size: 12px; line-height: 16px; }
+.hero__card .mr-ledger { font-size: 13px; line-height: 18px; }
 .hero__card .mr-ledger-wrap__title { font-size: 14px; }
 .hero__card .mr-ledger td:first-child { min-width: 84px; }
-.hero__toast { position: absolute; left: -120px; bottom: 60px; width: 312px; box-sizing: border-box; z-index: 2; display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: var(--mr-r-lg); color: var(--mr-ink); }
+.hero__toast { position: absolute; left: var(--toast-left); bottom: var(--toast-bottom); width: var(--toast-w); box-sizing: border-box; z-index: 2; display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: var(--mr-r-lg); color: var(--mr-ink); }
 .hero__toast-mark { flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--mr-success) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center / 14px no-repeat; }
 .hero__toast-text { margin: 0; display: grid; font-size: 13px; line-height: 1.35; }
 .hero__toast-text span { color: var(--mr-slate); }
@@ -69,13 +84,13 @@ sup a { text-decoration: none; padding: 0 1px; }
 /* Narrow desktops (1200-1399px, or a zoomed-in browser): the container is narrower but the cards keep their size,
    so they sit a little further in. */
 @media (min-width: 1200px) and (max-width: 1399px) {
-  .hero__person { width: 158%; right: -206px; }
-  .hero__card { left: -150px; }
-  .hero__toast { left: -110px; width: 288px; }
-  .hero__copy .mr-lead { max-width: 400px; }
+  .hero__visual { --man-w: 148%; --man-right: -200px; --card-left: -150px; --toast-left: -110px; --toast-w: 288px; }
+  .hero__copy .mr-lead { max-width: min(400px, calc(100% - 72px)); }
 }
 @media (max-width: 1199px) {
   .hero { padding-top: 48px; }
+  .hero__copy .mr-lead { max-width: 40em; }
+  .hero__trust { max-width: 34em; }
   .hero__copy { grid-column: 1 / -1; padding: 0 0 40px; }
   .hero__visual { grid-column: 1 / -1; min-height: 0; display: grid; gap: 16px; }
   .hero__person { position: relative; right: auto; bottom: auto; height: auto; width: min(100%, 420px); margin: 24px 0 0 auto; }
