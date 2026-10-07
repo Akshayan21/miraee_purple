@@ -45,13 +45,13 @@
 .compose--review .compose__person { left: 0; height: 58%; }
 .compose--review { height: 600px; }
 .compose--review .compose__card { right: 0; top: 8px; width: 420px; max-width: 62%; }
-/* Desktop: the finance leader leans on the findings card. The photo is cropped at his forearms, so the card
-   sits directly under it and its top edge becomes the surface he rests on. */
+/* Desktop: the finance leader leans on the findings card. In the photo his forearms rest at about 85% of its height
+   (a surface he is leaning on), so the card slides over the bottom of the photo and its top edge becomes that surface. */
 @media (min-width: 1024px) {
-  .compose--review { height: auto; display: grid; justify-items: end; }
-  .compose--review picture { display: block; position: relative; z-index: 3; margin-right: 56px; margin-bottom: -5px; }
-  .compose--review .compose__person { position: relative; left: auto; bottom: auto; height: 340px; width: auto; display: block; }
-  .compose--review .compose__card { position: relative; right: auto; top: auto; width: 100%; max-width: 420px; }
+  .compose--review { --lean-h: 340px; height: auto; display: grid; justify-items: end; }
+  .compose--review picture { display: block; position: relative; z-index: 1; margin-right: 56px; margin-bottom: calc(var(--lean-h) * -0.14); }
+  .compose--review .compose__person { position: relative; left: auto; bottom: auto; height: var(--lean-h); width: auto; display: block; }
+  .compose--review .compose__card { position: relative; right: auto; top: auto; z-index: 3; width: 100%; max-width: 420px; }
 }
 @media (max-width: 1023px) {
   .compose--how .compose__person, .compose--fin .compose__person, .compose--review .compose__person { position: relative; left: auto; right: auto; height: 400px; }

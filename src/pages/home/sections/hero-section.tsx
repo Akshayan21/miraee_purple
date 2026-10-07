@@ -4,12 +4,24 @@ import { Badge } from '@/components/ui/badge'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
 
 /**
- * Decorative backdrop: an organic plum shape bleeding off the right edge, a lighter shape inside it for depth, and the
- * brand's orange Line tracing its edge.
+ * Decorative backdrop: an organic plum shape bleeding off the right edge, a travel photograph cut to its edge, and the brand's
+ * orange Line tracing it.
  */
 function HeroBackdrop() {
   return (
     <div className="hero__backdrop" aria-hidden="true">
+      {/* Photo: Briana Tozour on Unsplash (Unsplash License). Cut to the shape's wavy edge by a mask in site.css. */}
+      <picture>
+        <source srcSet="/img/hero-airport-terminal.webp" type="image/webp" />
+        <img
+          className="hero__photo"
+          src="/img/hero-airport-terminal.jpg"
+          width="1600"
+          height="1067"
+          alt="Business travelers with carry-on bags walk through a sunlit airport terminal."
+          fetchpriority="high"
+        />
+      </picture>
       <svg
         className="hero__blob"
         viewBox="0 0 100 100"
@@ -66,16 +78,6 @@ export function HeroSection() {
         </div>
         <figure className="hero__visual" style={{ margin: '0' }}>
           <span className="hero__orb" aria-hidden="true" />
-          <picture>
-            <source srcSet="/img/px3932459-traveler-phone.webp" type="image/webp" />{' '}
-            <img
-              className="hero__person"
-              src="/img/px3932459-traveler-phone.png"
-              width="1100"
-              height="964"
-              alt="A business traveler in a trench coat takes a call on his phone, beside a finance report showing each trip with its amount, policy status and GL code."
-            />
-          </picture>
           <div className="hero__card mr-paper mr-ledger-wrap card-shadow">
             <div className="mr-ledger-wrap__head">
               <p className="mr-ledger-wrap__title">October trips</p>

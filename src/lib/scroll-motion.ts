@@ -37,6 +37,8 @@ export function initScrollMotion(): () => void {
   }
 
   gsap.registerPlugin(ScrollTrigger)
+  /* Mobile browsers resize the viewport as the address bar slides; do not rebuild every trigger when that happens. */
+  ScrollTrigger.config({ ignoreMobileResize: true })
   const root = document.documentElement
   const restore: Array<() => void> = []
   const added: HTMLElement[] = []
@@ -53,7 +55,9 @@ export function initScrollMotion(): () => void {
     /* Home sections that get bespoke choreography are tagged first, so the generic passes below leave them alone. */
     const isHome = window.location.pathname === '/'
     const customs = isHome
-      ? qa('section[aria-labelledby]').filter((sec) => HOME_SECTIONS[sec.getAttribute('aria-labelledby') ?? ''])
+      ? qa('section[aria-labelledby]').filter(
+          (sec) => HOME_SECTIONS[sec.getAttribute('aria-labelledby') ?? ''],
+        )
       : []
     customs.forEach((sec) => sec.setAttribute('data-mo-custom', ''))
     restore.push(() => customs.forEach((sec) => sec.removeAttribute('data-mo-custom')))
@@ -243,6 +247,9 @@ export function initScrollMotion(): () => void {
 
     reveal.forEach((el) => {
       gsap.set(el, { opacity: 0, y: isBlock(el) ? 44 : 26 })
+      /* blocks (steps, tasks, cards) lift up from a slight backward tilt */
+      if (isBlock(el))
+        gsap.set(el, { transformPerspective: 1000, transformOrigin: '50% 100%', rotationX: 10 })
       gsap.set(qa(INNER, el), { opacity: 0 })
     })
     ScrollTrigger.batch(reveal, {
@@ -255,6 +262,7 @@ export function initScrollMotion(): () => void {
           gsap.to(batch, {
             opacity: 1,
             y: 0,
+            rotationX: 0,
             duration: 1.1,
             ease: EASE,
             stagger: 0.09,
@@ -348,6 +356,40 @@ export function initScrollMotion(): () => void {
       })
     }
     cards.forEach(setupCard)
+    /* Cards on photographs swing in on their vertical axis; a trip record also gets earlier records fanned out behind it. */
+    cards.forEach((card) => {
+      const host = card.closest<HTMLElement>('.compose')
+      if (!host || card.matches('.phone--alert')) return
+      if (card.querySelector('.mr-trip-tag')) {
+        card.classList.add('mo-stack')
+        restore.push(() => card.classList.remove('mo-stack'))
+        gsap.set(card, {
+          transformPerspective: 1000,
+          transformOrigin: '50% 100%',
+          rotationX: 30,
+          '--s': 0,
+        })
+        gsap.to(card, {
+          rotationX: 0,
+          '--s': 1,
+          ease: 'none',
+          scrollTrigger: { trigger: host, start: 'top 80%', end: 'top 22%', scrub: 0.9 },
+        })
+      } else {
+        gsap.fromTo(
+          card,
+          {
+            transformPerspective: 1100,
+            rotationY: window.matchMedia('(max-width: 1023px)').matches ? -10 : -18,
+          },
+          {
+            rotationY: 0,
+            ease: 'none',
+            scrollTrigger: { trigger: host, start: 'top 85%', end: 'top 30%', scrub: 0.9 },
+          },
+        )
+      }
+    })
     /* hero ledger: its own cascade once the CSS entrance has finished */
     if (hero) {
       qa('.hero__card', hero).forEach((card) => {
@@ -404,6 +446,15 @@ export function initScrollMotion(): () => void {
             ),
         })
       }
+      if (fr.classList.contains('closing__photo')) {
+        /* the closing photograph stands up from a tilted plane */
+        gsap.set(fr, { transformPerspective: 1300, transformOrigin: '50% 100%', rotationX: 18 })
+        gsap.to(fr, {
+          rotationX: 0,
+          ease: 'none',
+          scrollTrigger: { trigger: fr, start: 'top bottom', end: 'top 50%', scrub: 0.8 },
+        })
+      }
       gsap.fromTo(
         img,
         { scale: 1.16 },
@@ -443,6 +494,8 @@ export function initScrollMotion(): () => void {
         defaults: { ease: 'power2.out' },
         scrollTrigger: { trigger: host, start: 'top 60%', end: 'bottom 55%', scrub: 0.7 },
       })
+      gsap.set(phone, { transformPerspective: 1100, rotationY: -30 })
+      tl.to(phone, { rotationY: 0, duration: 1.2 }, 0)
       if (alert) {
         gsap.set(alert, { opacity: 0, y: -24, animation: 'none' })
         tl.to(alert, { opacity: 1, y: 0, duration: 1 })
@@ -466,6 +519,24 @@ export function initScrollMotion(): () => void {
     })
 
     /* ---- 12. Depth: parallax on large screens only ---- */
+    /* Phones and tablets: the hero stack keeps a light tilt in depth (no vertical parallax in the stacked layout). */
+    mm.add('(max-width: 1023px)', () => {
+      if (!hero) return
+      const stage = hero.querySelector<HTMLElement>(
+        '.hero__visual, .compose, .split__visual, .lf-hero__visual, .page-hero__visual',
+      )
+      if (!stage) return
+      gsap.set(stage, { transformPerspective: 1100, transformOrigin: '50% 80%' })
+      /* composed photo + card pairs (a person leaning on a card) must stay in one plane, so only the home hero gets depth */
+      if (stage.matches('.hero__visual')) gsap.set(qa('.hero__card', stage), { z: 36 })
+      gsap.set(qa('.hero__toast', stage), { z: 60 })
+      gsap.to(stage, {
+        rotationY: -5,
+        rotationX: 2,
+        ease: 'none',
+        scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: 0.6 },
+      })
+    })
     mm.add('(min-width: 1024px)', () => {
       if (hero) {
         const trigger = { trigger: hero, start: 'top top', end: 'bottom top', scrub: 0.6 }
@@ -475,6 +546,22 @@ export function initScrollMotion(): () => void {
         qa('.hero__card, .hero__toast', hero).forEach((c) =>
           gsap.to(c, { y: -36, ease: 'none', scrollTrigger: trigger }),
         )
+        /* The hero composition is a real stack in depth (photo, ledger, toast); it turns slightly as you scroll past. */
+        const stage = hero.querySelector<HTMLElement>('.hero__visual')
+        if (stage) {
+          gsap.set(stage, { transformPerspective: 1500, transformOrigin: '35% 70%' })
+          gsap.set(qa('.hero__card', stage), { z: 70 })
+          gsap.set(qa('.hero__toast', stage), { z: 110 })
+          gsap.to(stage, { rotationY: -9, rotationX: 3, ease: 'none', scrollTrigger: trigger })
+        } else {
+          const alt = hero.querySelector<HTMLElement>(
+            '.compose, .split__visual, .lf-hero__visual, .page-hero__visual',
+          )
+          if (alt) {
+            gsap.set(alt, { transformPerspective: 1500, transformOrigin: '40% 70%' })
+            gsap.to(alt, { rotationY: -7, rotationX: 2, ease: 'none', scrollTrigger: trigger })
+          }
+        }
         const copy = hero.querySelector<HTMLElement>('.hero__copy, .lf-hero__copy')
         if (copy)
           gsap.to(copy, {
@@ -501,7 +588,19 @@ export function initScrollMotion(): () => void {
     })
 
     /* ---- 13. Bespoke choreography, one per home section ---- */
-    const kit: Kit = { gsap, ScrollTrigger, qa, words: splitWords, rec, mm, restore, added, setupCard, setupCircle, EASE }
+    const kit: Kit = {
+      gsap,
+      ScrollTrigger,
+      qa,
+      words: splitWords,
+      rec,
+      mm,
+      restore,
+      added,
+      setupCard,
+      setupCircle,
+      EASE,
+    }
     customs.forEach((sec) => HOME_SECTIONS[sec.getAttribute('aria-labelledby') ?? '']?.(sec, kit))
     ScrollTrigger.sort()
   })
