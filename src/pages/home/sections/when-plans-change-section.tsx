@@ -1,3 +1,4 @@
+import styles from './when-plans-change-section.module.css'
 import { VisualComposition } from '@/components/sections/product-preview'
 import { Section, Container } from '@/components/layout/content-layout'
 import { ProductPhone } from '@/components/sections/product-preview'
@@ -7,7 +8,7 @@ import { Badge } from '@/components/ui/badge'
 
 export function WhenPlansChangeSection() {
   return (
-    <Section className="mr-plum mr-section section-bleed" aria-labelledby="plans-h">
+    <Section className={`mr-plum mr-section ${styles.section}`} aria-labelledby="plans-h">
       <Container className="mr-container split split--rev">
         <div className="split__copy">
           <p className="mr-eyebrow">When plans change</p>
@@ -32,7 +33,10 @@ export function WhenPlansChangeSection() {
             </Button>
           </p>
         </div>
-        <VisualComposition className="split__visual compose compose--plans" style={{ margin: '0' }}>
+        <VisualComposition
+          className={`split__visual compose compose--plans ${styles.visual}`}
+          style={{ margin: '0' }}
+        >
           <picture>
             <source srcSet="/img/px4173228-traveler-suitcase.webp" type="image/webp" />{' '}
             <img
@@ -97,18 +101,7 @@ export function WhenPlansChangeSection() {
               <p className="phone__cap">Your travel lead sees the change in the audit log.</p>
             </div>
           </ProductPhone>
-          <p
-            className="mr-caption"
-            style={{
-              position: 'absolute',
-              right: '0',
-              bottom: '4px',
-              margin: '0',
-              color: 'var(--mr-mist)',
-            }}
-          >
-            Product view with illustrative data.
-          </p>
+          <figcaption className={styles.caption}>Product view with illustrative data.</figcaption>
         </VisualComposition>
       </Container>
     </Section>

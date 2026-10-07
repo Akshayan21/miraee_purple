@@ -31,3 +31,10 @@
     padding-inline: 16px;
   }
 }
+
+.white {
+  background: var(--mr-white);
+}
+.accent {
+  border-top: 2px solid var(--mr-orange);
+}

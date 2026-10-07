@@ -41,15 +41,6 @@ export function CriteriaSection() {
               {criterion.stat ? (
                 <p className="m-0 mt-auto rounded-md bg-surface-sunken px-4 py-3 text-[15px] font-semibold text-content">
                   {criterion.stat.text}
-                  <sup>
-                    <a
-                      href={`#${criterion.stat.source.id}`}
-                      rel="noopener"
-                      aria-label={criterion.stat.source.label}
-                    >
-                      {criterion.stat.source.id.replace('src-', '')}
-                    </a>
-                  </sup>
                 </p>
               ) : null}
             </li>

@@ -1,6 +1,4 @@
 import type { SeoMeta } from '@/components/common/seo'
-import { faqPageJsonLd } from '@/lib/json-ld'
-import { faq } from './faq'
 
 export const meta: SeoMeta = {
   title: 'Travel and expense policy: what to include, with examples',
@@ -89,7 +87,52 @@ export const meta: SeoMeta = {
             },
           ],
         },
-        faqPageJsonLd('https://miraee.ai/resources/travel-and-expense-policy#faq', faq),
+        {
+          '@type': 'FAQPage',
+          '@id': 'https://miraee.ai/resources/travel-and-expense-policy#faq',
+          mainEntity: [
+            {
+              '@type': 'Question',
+              name: 'What is a travel and expense policy?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'A travel and expense policy sets the rules for business trips and the costs that come with them: what is reimbursable, the limits, the receipts required, the submission deadline, who approves and when employees are paid back.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'How long should employees have to submit expenses?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Thirty days after the end of the trip is a common deadline. It gives travelers time and keeps month-end close on schedule. Older claims can need finance approval.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'What counts as a valid receipt?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'An itemized receipt that shows the merchant, date, items and amount paid. Card slips alone usually do not show the items. For a lost receipt, ask for a short written statement with the same details.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Should we use per diems or actual costs for meals?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Both work. Actual cost up to a daily limit is easier to audit; a per diem is simpler for travelers. Choose one and use it for every trip.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Where can I find a template?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Our business travel policy template includes the booking and expense sections in one editable document, with a rollout checklist.',
+              },
+            },
+          ],
+        },
       ],
     },
   ],

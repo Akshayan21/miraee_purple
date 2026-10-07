@@ -8,7 +8,6 @@ import { WhyNowSection } from './sections/why-now-section'
 import { WhatFinanceGetsSection } from './sections/what-finance-gets-section'
 import { ProofFirstSection } from './sections/proof-first-section'
 import { FreeStartSection } from './sections/free-start-section'
-import { SourcesSection } from './sections/sources-section'
 
 /** Route: /lp/cfo */
 export function Component() {
@@ -42,7 +41,6 @@ export function Component() {
         <WhatFinanceGetsSection />
         <ProofFirstSection />
         <FreeStartSection />
-        <SourcesSection />
       </main>
     </LandingLayout>
   )

@@ -414,7 +414,7 @@ const closing: Handler = (sec, k) => {
 /* ------------------------------------------------------------------------------------------------ sources */
 const sources: Handler = (sec, k) => {
   const items = k.qa('li', sec)
-  k.gsap.set(items, { opacity: 0, x: -16 })
+  k.gsap.set(items, { opacity: 0, x: -36 })
   k.ScrollTrigger.batch(items, {
     start: 'top 94%',
     once: true,

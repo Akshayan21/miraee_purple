@@ -109,7 +109,31 @@ export function initScrollMotion(): () => void {
     added.push(bar)
     gsap.set(bar, { scaleX: 0, transformOrigin: '0 50%' })
     const setBar = gsap.quickTo(bar, 'scaleX', { duration: 0.25, ease: 'power2.out' })
-    ScrollTrigger.create({ start: 0, end: 'max', onUpdate: (self) => setBar(self.progress) })
+    let flushed = false
+    ScrollTrigger.create({
+      start: 0,
+      end: 'max',
+      onUpdate: (self) => {
+        setBar(self.progress)
+        /* Safety net: if layout shifted after triggers were measured, anything still hidden is shown once the page end is reached. */
+        if (!flushed && self.progress > 0.985) {
+          flushed = true
+          const left = qa('[data-mo]').filter(
+            (el) => Number(getComputedStyle(el).opacity) < 0.99 && !el.closest('[data-mo-custom]'),
+          )
+          if (left.length)
+            gsap.to(left, {
+              opacity: 1,
+              y: 0,
+              rotationX: 0,
+              duration: 0.8,
+              ease: 'power2.out',
+              stagger: 0.03,
+              overwrite: 'auto',
+            })
+        }
+      },
+    })
 
     /* ---- 2. Header: gains a shadow past the fold, tucks away going down, returns going up ---- */
     const head = document.querySelector<HTMLElement>('.site-head')
@@ -215,7 +239,6 @@ export function initScrollMotion(): () => void {
       '.link-row',
       '.mr-btn-row',
       '.icon-row li',
-      '.sources li',
       '.crumbs',
       '.lf-prose > *',
       '.lf-card',
@@ -233,8 +256,7 @@ export function initScrollMotion(): () => void {
       '.duo__head',
       '.duo__body',
       '.faq-acc__head',
-      '.mr-footer__brand',
-      '.mr-footer nav',
+      '.sources li',
       '.mr-h2:not([data-mo])',
     ].join(',')
     const INNER =
@@ -246,6 +268,20 @@ export function initScrollMotion(): () => void {
     candidates.forEach((el) => el.setAttribute('data-mo', ''))
     restore.push(() => qa('[data-mo]').forEach((el) => el.removeAttribute('data-mo')))
     const reveal = candidates.filter((el) => !el.parentElement?.closest('[data-mo]'))
+
+    /* Footer: content stays visible unless its trigger fires (from-tween, no hidden start state), so it can never be left blank. */
+    const footer = document.querySelector<HTMLElement>('.mr-footer')
+    if (footer) {
+      gsap.from(qa('.mr-footer__brand, .mr-footer nav', footer), {
+        opacity: 0,
+        y: 24,
+        duration: 1,
+        ease: EASE,
+        stagger: 0.1,
+        immediateRender: false,
+        scrollTrigger: { trigger: footer, start: 'top 98%', once: true },
+      })
+    }
     const isBlock = (el: Element) =>
       el.matches('.step, .task, .lf-card, .match__card, .mock, .compare-wrap, .gtable')
 
@@ -599,10 +635,12 @@ export function initScrollMotion(): () => void {
   }
   void document.fonts?.ready.then(refresh)
   window.addEventListener('load', refresh)
+  const late = window.setTimeout(refresh, 1500)
 
   return () => {
     disposed = true
     window.removeEventListener('load', refresh)
+    window.clearTimeout(late)
     ctx.revert()
     restore.reverse().forEach((fn) => fn())
     added.forEach((el) => el.remove())

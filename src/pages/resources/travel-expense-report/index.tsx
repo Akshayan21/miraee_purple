@@ -1,22 +1,15 @@
 import { Seo } from '@/components/common/seo'
+import { StaticHtml } from '@/components/common/static-html'
+import content from './content.html?raw'
 import { meta } from './meta'
-import { HeroSection } from './sections/hero-section'
-import { HowDoYouCloseSection } from './sections/how-do-you-close-section'
-import { RelatedSection } from './sections/related-section'
-import { ClosingSection } from './sections/closing-section'
 
 /** Route: /resources/travel-expense-report */
 export function Component() {
   return (
     <>
       <Seo meta={meta} />
-      <main id="main">
-        <HeroSection />
-        <HowDoYouCloseSection />
-        <RelatedSection />
-        <ClosingSection />
-      </main>
+      <StaticHtml html={content} />
     </>
   )
 }
-Component.displayName = 'ResourcesTravelExpenseReportPage'
+Component.displayName = 'TravelExpenseReportPage'

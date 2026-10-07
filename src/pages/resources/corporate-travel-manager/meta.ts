@@ -1,6 +1,4 @@
 import type { SeoMeta } from '@/components/common/seo'
-import { faqPageJsonLd } from '@/lib/json-ld'
-import { faq } from './faq'
 
 export const meta: SeoMeta = {
   title: 'Corporate travel manager guide for part-time travel leads',
@@ -89,7 +87,52 @@ export const meta: SeoMeta = {
             },
           ],
         },
-        faqPageJsonLd('https://miraee.ai/resources/corporate-travel-manager#faq', faq),
+        {
+          '@type': 'FAQPage',
+          '@id': 'https://miraee.ai/resources/corporate-travel-manager#faq',
+          mainEntity: [
+            {
+              '@type': 'Question',
+              name: 'Is corporate travel manager a full-time job?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'In large companies it often is. In companies of 300 to 1,500 people it is commonly part of an operations, office, people or finance role. A clear policy and a booking tool that applies it let one person run the program in a few hours a month.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'What skills does a corporate travel manager need?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Clear writing for the policy, comfort with numbers for the monthly view, calm judgment when plans change, and the ability to work with finance, assistants and travelers.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Who should approve business travel?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: "The traveler's budget owner, for trips outside policy. Trips inside policy can book straight away.",
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'What should a travel manager report each month?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Trips booked, spend against budget, bookings outside the channel, out-of-policy spend and unused tickets, on one page.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Where do I start?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'With the policy. Download the business travel policy template and adapt the numbers with finance.',
+              },
+            },
+          ],
+        },
       ],
     },
   ],

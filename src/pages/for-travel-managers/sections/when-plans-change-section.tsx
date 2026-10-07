@@ -14,11 +14,6 @@ export function WhenPlansChangeSection() {
           </h2>
           <p className="stat-line" style={{ margin: '0 0 24px' }}>
             64% of travel managers say changes and cancellations are hard in their booking tool.
-            <sup>
-              <a href="#src-1" aria-label="Source 1">
-                1
-              </a>
-            </sup>
           </p>
           <p className="mr-body">
             With Miraee, a delayed or canceled flight brings an alert and new options. The traveler

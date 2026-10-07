@@ -5,7 +5,6 @@ import { WhatMiraeeDoesSection } from './sections/what-miraee-does-section'
 import { CoverageSection } from './sections/coverage-section'
 import { HowWeWorkSection } from './sections/how-we-work-section'
 import { ContactSection } from './sections/contact-section'
-import { SourcesSection } from './sections/sources-section'
 
 /** Route: /company */
 export function Component() {
@@ -18,7 +17,6 @@ export function Component() {
         <CoverageSection />
         <HowWeWorkSection />
         <ContactSection />
-        <SourcesSection />
       </main>
     </>
   )

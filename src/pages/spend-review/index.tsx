@@ -8,7 +8,6 @@ import { WhatYouGetSection } from './sections/what-you-get-section'
 import { HowItsMeasuredSection } from './sections/how-its-measured-section'
 import { OptionalAlwaysSection } from './sections/optional-always-section'
 import { QuestionsSection } from './sections/questions-section'
-import { SourcesSection } from './sections/sources-section'
 
 /** Route: /spend-review */
 export function Component() {
@@ -24,7 +23,6 @@ export function Component() {
         <HowItsMeasuredSection />
         <OptionalAlwaysSection />
         <QuestionsSection />
-        <SourcesSection />
       </main>
     </>
   )

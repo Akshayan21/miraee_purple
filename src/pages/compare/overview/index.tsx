@@ -9,7 +9,6 @@ import { CostSection } from './sections/cost-section'
 import { ComparisonsSection } from './sections/comparisons-section'
 import { ProofSection } from './sections/proof-section'
 import { FaqSection } from './sections/faq-section'
-import { SourcesSection } from './sections/sources-section'
 import { SmallPrintSection } from './sections/small-print-section'
 import { ClosingSection } from './sections/closing-section'
 
@@ -27,7 +26,6 @@ export function Component() {
         <ComparisonsSection />
         <ProofSection />
         <FaqSection />
-        <SourcesSection />
         <SmallPrintSection />
         <ClosingSection />
       </main>

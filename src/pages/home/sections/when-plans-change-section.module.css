@@ -1,0 +1,70 @@
+.section {
+  border-top: 2px solid var(--mr-orange);
+}
+.visual.visual {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.85fr);
+  align-items: end;
+  gap: 24px 0;
+  height: auto;
+  isolation: isolate;
+}
+.visual.visual > picture {
+  display: block;
+  min-width: 0;
+  align-self: end;
+  overflow: hidden;
+  border-radius: 16px;
+}
+.visual.visual :global(.compose__person) {
+  position: relative;
+  inset: auto;
+  display: block;
+  width: 100%;
+  height: 540px;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: left bottom;
+}
+.visual.visual :global(.compose__card) {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  max-width: 280px;
+  transform: none;
+  margin: 0;
+  justify-self: end;
+}
+.caption {
+  grid-column: 1 / -1;
+  position: relative;
+  margin: 0;
+  padding-block: 16px;
+  border-top: 1px solid var(--mr-plum-rule);
+  color: var(--mr-white);
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}
+@media (max-width: 1199px) {
+  .visual.visual {
+    max-width: 600px;
+    margin-inline: auto;
+  }
+}
+@media (max-width: 639px) {
+  .visual.visual {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  .visual.visual :global(.compose__person) {
+    height: auto;
+    max-height: 340px;
+  }
+  .visual.visual :global(.compose__card) {
+    justify-self: center;
+  }
+  .caption {
+    padding-block: 16px 0;
+  }
+}
