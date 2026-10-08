@@ -9,12 +9,12 @@ export function FreeAtAnySizeSection() {
       <Container className="mr-container split">
         <figure className="split__visual free__img mr-frame" style={{ margin: '0' }}>
           <picture>
-            <source srcSet="/img/px4623080-team.webp" type="image/webp" />{' '}
+            <source srcSet="/img/document/home-approved-travel-tool-1.webp" type="image/webp" />{' '}
             <img
-              src="/img/px4623080-team.jpg"
-              width="1067"
-              height="641"
-              alt="Colleagues smile as they review work together at a desk."
+              src="/img/document/home-approved-travel-tool-1.jpg"
+              width="2046"
+              height="1366"
+              alt="A team meets around a conference table in a bright office."
             />
           </picture>
         </figure>

@@ -39,12 +39,12 @@ export function HeroSection() {
         </div>
         <figure className="page-hero__visual mr-frame">
           <picture>
-            <source srcSet="/img/px8419929-gate.webp" type="image/webp" />
+            <source srcSet="/img/document/company-hero-1.webp" type="image/webp" />
             <img
-              src="/img/px8419929-gate.jpg"
-              width="1200"
-              height="900"
-              alt="An airport gate with planes outside at sunset."
+              src="/img/document/company-hero-1.jpg"
+              width="2046"
+              height="1364"
+              alt="An airport lounge overlooks an aircraft."
               fetchpriority="high"
             />
           </picture>

@@ -1,3 +1,4 @@
+import styles from './related-cards.module.css'
 import { Section, Container } from '@/components/layout/content-layout'
 import { Link } from 'react-router-dom'
 
@@ -40,6 +41,7 @@ export function RelatedCards({ heading, cards, more }: RelatedCardsProps) {
               key={card.to}
               className={cn(
                 'lf-card',
+                styles.card,
                 `lf-card--${card.shape}`,
                 card.tone === 'plum' ? 'mr-plum' : 'mr-paper',
               )}

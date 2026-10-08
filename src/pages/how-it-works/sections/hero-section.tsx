@@ -30,15 +30,15 @@ export function HeroSection() {
             </Button>
           </div>
         </div>
-        <VisualComposition className="split__visual compose compose--how" style={{ margin: '0' }}>
+        <VisualComposition className="split__visual compose document-composition compose--how" style={{ margin: '0' }}>
           <picture>
-            <source srcSet="/img/px15959733-traveler-red-coat.webp" type="image/webp" />
+            <source srcSet="/img/document/how-it-works-hero-1.webp" type="image/webp" />
             <img
               className="compose__person"
-              src="/img/px15959733-traveler-red-coat.png"
-              width="880"
-              height="1100"
-              alt="A traveler in a red coat smiles on a city street at night. Two hotel options show whether each fits company policy."
+              src="/img/document/how-it-works-hero-1.jpg"
+              width="626"
+              height="417"
+              alt="A business traveler uses her phone at the airport."
               fetchpriority="high"
             />
           </picture>

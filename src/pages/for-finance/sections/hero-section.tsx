@@ -1,8 +1,8 @@
+import styles from './hero-section.module.css'
 import { VisualComposition } from '@/components/sections/product-preview'
 import { Section, Container } from '@/components/layout/content-layout'
-import { ProductCard, LedgerTable } from '@/components/sections/product-preview'
+import { ProductCard } from '@/components/sections/product-preview'
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
 
 export function HeroSection() {
@@ -31,91 +31,66 @@ export function HeroSection() {
           </div>
           <p className="mr-small hero__trust">Keep the corporate cards you already use.</p>
         </div>
-        <VisualComposition className="split__visual compose compose--fin" style={{ margin: '0' }}>
+        <VisualComposition
+          className={`split__visual compose document-composition compose--fin ${styles.visual}`}
+          style={{ margin: '0' }}
+        >
           <picture>
-            <source srcSet="/img/px5918389-controller.webp" type="image/webp" />
+            <source srcSet="/img/document/for-finance-hero-1.webp" type="image/webp" />
             <img
               className="compose__person"
-              src="/img/px5918389-controller.png"
-              width="831"
-              height="1100"
-              alt="A controller in a rust sweater holds a tablet in the office, beside a ledger of October trips with GL codes and budgets."
+              src="/img/document/for-finance-hero-1.jpg"
+              width="1626"
+              height="2046"
+              alt="A smiling finance professional in a white blouse."
               fetchpriority="high"
             />
           </picture>
-          <ProductCard className="compose__card mr-ledger-wrap card-shadow">
+          <ProductCard className={`compose__card mr-ledger-wrap card-shadow ${styles.card}`}>
             <div className="mr-ledger-wrap__head">
               <p className="mr-ledger-wrap__title">October trips</p>
               <span className="mr-label">4 trips</span>
             </div>
-            <LedgerTable className="mr-ledger">
-              <thead>
-                <tr>
-                  <th scope="col">Trip</th>
-                  <th scope="col" className="mr-num col-budget">
-                    Budget
-                  </th>
-                  <th scope="col" className="mr-num">
-                    Amount
-                  </th>
-                  <th scope="col">Policy</th>
-                  <th scope="col" className="mr-num">
-                    GL code
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Client visit, Chicago</td>
-                  <td className="mr-num col-budget">$1,500.00</td>
-                  <td className="mr-num">$1,284.60</td>
-                  <td>
-                    <Badge variant="success">In policy</Badge>
-                  </td>
-                  <td className="mr-num">
-                    <span className="mr-circled">
-                      6200
-                      <svg
-                        className="mr-line"
-                        viewBox="0 0 260 130"
-                        preserveAspectRatio="none"
-                        aria-hidden="true"
-                        focusable="false"
-                      >
-                        <path d="M36 74 C 24 36 108 14 172 18 C 228 22 244 58 220 86 C 196 112 96 116 48 98 C 26 90 20 72 30 58"></path>
-                      </svg>
+            <ul className={styles.trips} aria-label="Illustrative October trips">
+              {[
+                {
+                  city: 'Chicago',
+                  amount: '$1,284.60',
+                  budget: '$1,500',
+                  gl: '6200',
+                  inPolicy: true,
+                },
+                { city: 'Dallas', amount: '$946.20', budget: '$1,200', gl: '6200', inPolicy: true },
+                {
+                  city: 'Denver',
+                  amount: '$2,318.40',
+                  budget: '$2,000',
+                  gl: '6200',
+                  inPolicy: false,
+                },
+                {
+                  city: 'Atlanta',
+                  amount: '$1,106.75',
+                  budget: '$1,400',
+                  gl: '6210',
+                  inPolicy: true,
+                },
+              ].map((trip) => (
+                <li key={trip.city} className={styles.trip}>
+                  <div className={styles.tripTop}>
+                    <strong>{trip.city}</strong>
+                    <span>{trip.amount}</span>
+                  </div>
+                  <div className={styles.tripMeta}>
+                    <span className={trip.inPolicy ? styles.inPolicy : styles.outOfPolicy}>
+                      {trip.inPolicy ? 'In policy' : 'Out of policy'}
                     </span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Site audit, Dallas</td>
-                  <td className="mr-num col-budget">$1,200.00</td>
-                  <td className="mr-num">$946.20</td>
-                  <td>
-                    <Badge variant="success">In policy</Badge>
-                  </td>
-                  <td className="mr-num">6200</td>
-                </tr>
-                <tr>
-                  <td>Sales kickoff, Denver</td>
-                  <td className="mr-num col-budget">$2,000.00</td>
-                  <td className="mr-num">$2,318.40</td>
-                  <td>
-                    <Badge variant="error">Out of policy</Badge>
-                  </td>
-                  <td className="mr-num">6200</td>
-                </tr>
-                <tr>
-                  <td>Partner review, Atlanta</td>
-                  <td className="mr-num col-budget">$1,400.00</td>
-                  <td className="mr-num">$1,106.75</td>
-                  <td>
-                    <Badge variant="success">In policy</Badge>
-                  </td>
-                  <td className="mr-num">6210</td>
-                </tr>
-              </tbody>
-            </LedgerTable>
+                    <span>GL {trip.gl}</span>
+                  </div>
+                  <p className={styles.budget}>Budget {trip.budget}</p>
+                </li>
+              ))}
+            </ul>
             <p className="mr-caption" style={{ margin: '10px 0 0' }}>
               Product view with illustrative data.
             </p>

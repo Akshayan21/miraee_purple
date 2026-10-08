@@ -31,17 +31,17 @@ export function HeroSection() {
           </div>
         </div>
         <VisualComposition
-          className="split__visual compose compose--review"
+          className="split__visual compose document-composition compose--review"
           style={{ margin: '0' }}
         >
           <picture>
-            <source srcSet="/img/px37409441-finance-leader.webp" type="image/webp" />
+            <source srcSet="/img/document/spend-review-hero-1.webp" type="image/webp" />
             <img
               className="compose__person"
-              src="/img/px37409441-finance-leader.png"
-              width="977"
-              height="1100"
-              alt="A finance leader in a tweed blazer smiles in the office."
+              src="/img/document/spend-review-hero-1.jpg"
+              width="626"
+              height="417"
+              alt="A finance professional reviews documents at a desk."
               fetchpriority="high"
             />
           </picture>

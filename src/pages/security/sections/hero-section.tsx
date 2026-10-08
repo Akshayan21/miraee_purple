@@ -28,13 +28,13 @@ export function HeroSection() {
         </div>
         <figure className="page-hero__visual">
           <picture>
-            <source srcSet="/img/px36845948-traveler-suit.webp" type="image/webp" />
+            <source srcSet="/img/document/security-hero-1.webp" type="image/webp" />
             <img
-              className="hero-cutout"
-              src="/img/px36845948-traveler-suit.png"
-              width="856"
-              height="1100"
-              alt="A business traveler in a dark suit looks toward the camera."
+              className="document-portrait"
+              src="/img/document/security-hero-1.jpg"
+              width="1364"
+              height="2046"
+              alt="A business professional in a dark suit."
               fetchpriority="high"
             />
           </picture>

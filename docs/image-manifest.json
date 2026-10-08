@@ -1,0 +1,296 @@
+[
+  {
+    "label": "Page: Home  |  Section: hero  |  Option: 1",
+    "file": "/img/document/home-hero-1.jpg",
+    "width": 626,
+    "height": 418
+  },
+  {
+    "label": "Page: Home  |  Section: hero  |  Option: 2",
+    "file": "/img/document/home-hero-2.jpg",
+    "width": 626,
+    "height": 417
+  },
+  {
+    "label": "Page: Home  |  Section: spend review  |  Option: 1",
+    "file": "/img/document/home-spend-review-1.jpg",
+    "width": 1364,
+    "height": 2046
+  },
+  {
+    "label": "Page: Home  |  Section: when plans change  |  Option: 1",
+    "file": "/img/document/home-when-plans-change-1.jpg",
+    "width": 626,
+    "height": 418
+  },
+  {
+    "label": "Page: Home  |  Section: finance GL code  |  Option: 1",
+    "file": "/img/document/home-finance-gl-code-1.jpg",
+    "width": 626,
+    "height": 417
+  },
+  {
+    "label": "Page: Home  |  Section: approved travel tool  |  Option: 1",
+    "file": "/img/document/home-approved-travel-tool-1.jpg",
+    "width": 2046,
+    "height": 1366
+  },
+  {
+    "label": "Page: Home  |  Section: approved travel tool  |  Option: 2",
+    "file": "/img/document/home-approved-travel-tool-2.jpg",
+    "width": 2046,
+    "height": 1364
+  },
+  {
+    "label": "Page: Home  |  Section: Call to action band  |  Option: 1",
+    "file": "/img/document/home-call-to-action-band-1.jpg",
+    "width": 2046,
+    "height": 1242
+  },
+  {
+    "label": "Page: Home  |  Section: Call to action band  |  Option: 2",
+    "file": "/img/document/home-call-to-action-band-2.jpg",
+    "width": 2046,
+    "height": 1364
+  },
+  {
+    "label": "Page: How It Works  |  Section: hero  |  Option: 1",
+    "file": "/img/document/how-it-works-hero-1.jpg",
+    "width": 626,
+    "height": 417
+  },
+  {
+    "label": "Page: How It Works  |  Section: replace band  |  Option: 1",
+    "file": "/img/document/how-it-works-replace-band-1.jpg",
+    "width": 2046,
+    "height": 1364
+  },
+  {
+    "label": "Page: How It Works  |  Section: replace band  |  Option: 2",
+    "file": "/img/document/how-it-works-replace-band-2.jpg",
+    "width": 626,
+    "height": 417
+  },
+  {
+    "label": "Page: Spend Review  |  Section: hero  |  Option: 1",
+    "file": "/img/document/spend-review-hero-1.jpg",
+    "width": 626,
+    "height": 417
+  },
+  {
+    "label": "Page: Spend Review  |  Section: hero  |  Option: 2",
+    "file": "/img/document/spend-review-hero-2.jpg",
+    "width": 1366,
+    "height": 2046
+  },
+  {
+    "label": "Page: Spend Review  |  Section: review optional  |  Option: 1",
+    "file": "/img/document/spend-review-review-optional-1.jpg",
+    "width": 2046,
+    "height": 1364
+  },
+  {
+    "label": "Page: Spend Review  |  Section: review optional  |  Option: 2",
+    "file": "/img/document/spend-review-review-optional-2.jpg",
+    "width": 2046,
+    "height": 1359
+  },
+  {
+    "label": "Page: For Finance  |  Section: hero  |  Option: 1",
+    "file": "/img/document/for-finance-hero-1.jpg",
+    "width": 1626,
+    "height": 2046
+  },
+  {
+    "label": "Page: For Finance  |  Section: hero  |  Option: 2",
+    "file": "/img/document/for-finance-hero-2.jpg",
+    "width": 1364,
+    "height": 2046
+  },
+  {
+    "label": "Page: For Finance  |  Section: proof band  |  Option: 1",
+    "file": "/img/document/for-finance-proof-band-1.jpg",
+    "width": 2046,
+    "height": 1151
+  },
+  {
+    "label": "Page: For Finance  |  Section: proof band  |  Option: 2",
+    "file": "/img/document/for-finance-proof-band-2.jpg",
+    "width": 2046,
+    "height": 1364
+  },
+  {
+    "label": "Page: For Travel Managers  |  Section: hero  |  Option: 1",
+    "file": "/img/document/for-travel-managers-hero-1.jpg",
+    "width": 2046,
+    "height": 1365
+  },
+  {
+    "label": "Page: For Travel Managers  |  Section: hero  |  Option: 2",
+    "file": "/img/document/for-travel-managers-hero-2.jpg",
+    "width": 626,
+    "height": 418
+  },
+  {
+    "label": "Page: Pricing  |  Section: hero  |  Option: 1",
+    "file": "/img/document/pricing-hero-1.jpg",
+    "width": 2046,
+    "height": 1364
+  },
+  {
+    "label": "Page: Pricing  |  Section: hero  |  Option: 2",
+    "file": "/img/document/pricing-hero-2.jpg",
+    "width": 2046,
+    "height": 1151
+  },
+  {
+    "label": "Page: Sign Up  |  Section: side image  |  Option: 1",
+    "file": "/img/document/sign-up-side-image-1.jpg",
+    "width": 2046,
+    "height": 1364
+  },
+  {
+    "label": "Page: Sign Up  |  Section: side image  |  Option: 2",
+    "file": "/img/document/sign-up-side-image-2.jpg",
+    "width": 2046,
+    "height": 1151
+  },
+  {
+    "label": "Page: Talk To Sales  |  Section: side image  |  Option: 1",
+    "file": "/img/document/talk-to-sales-side-image-1.jpg",
+    "width": 2047,
+    "height": 1535
+  },
+  {
+    "label": "Page: Talk To Sales  |  Section: side image  |  Option: 2",
+    "file": "/img/document/talk-to-sales-side-image-2.jpg",
+    "width": 2046,
+    "height": 1364
+  },
+  {
+    "label": "Page: Resources  |  Section: hero  |  Option: 1",
+    "file": "/img/document/resources-hero-1.jpg",
+    "width": 2046,
+    "height": 1364
+  },
+  {
+    "label": "Page: Resources  |  Section: template card  |  Option: 1",
+    "file": "/img/document/resources-template-card-1.jpg",
+    "width": 2046,
+    "height": 1364
+  },
+  {
+    "label": "Page: Resources  |  Section: guide travel policy  |  Option: 1",
+    "file": "/img/document/resources-guide-travel-policy-1.jpg",
+    "width": 2046,
+    "height": 1364
+  },
+  {
+    "label": "Page: Resources  |  Section: guide T&E policy  |  Option: 1",
+    "file": "/img/document/resources-guide-t-e-policy-1.jpg",
+    "width": 2046,
+    "height": 1174
+  },
+  {
+    "label": "Page: Resources  |  Section: guide policy compliance  |  Option: 1",
+    "file": "/img/document/resources-guide-policy-compliance-1.jpg",
+    "width": 1364,
+    "height": 2046
+  },
+  {
+    "label": "Page: Resources  |  Section: guide expense reports  |  Option: 1",
+    "file": "/img/document/resources-guide-expense-reports-1.jpg",
+    "width": 2046,
+    "height": 1366
+  },
+  {
+    "label": "Page: Resources  |  Section: guide part time travel manager  |  Option: 1",
+    "file": "/img/document/resources-guide-part-time-travel-manager-1.jpg",
+    "width": 2047,
+    "height": 1364
+  },
+  {
+    "label": "Page: Company  |  Section: hero  |  Option: 1",
+    "file": "/img/document/company-hero-1.jpg",
+    "width": 2046,
+    "height": 1364
+  },
+  {
+    "label": "Page: Company  |  Section: hero  |  Option: 2",
+    "file": "/img/document/company-hero-2.jpg",
+    "width": 2046,
+    "height": 1366
+  },
+  {
+    "label": "Page: Company  |  Section: city new york  |  Option: 1",
+    "file": "/img/document/company-city-new-york-1.jpg",
+    "width": 2046,
+    "height": 1364
+  },
+  {
+    "label": "Page: Company  |  Section: city san francisco  |  Option: 1",
+    "file": "/img/document/company-city-san-francisco-1.jpg",
+    "width": 2046,
+    "height": 1364
+  },
+  {
+    "label": "Page: Company  |  Section: city los angeles  |  Option: 1",
+    "file": "/img/document/company-city-los-angeles-1.jpg",
+    "width": 2047,
+    "height": 1228
+  },
+  {
+    "label": "Page: Company  |  Section: city los angeles  |  Option: 2",
+    "file": "/img/document/company-city-los-angeles-2.jpg",
+    "width": 2046,
+    "height": 1364
+  },
+  {
+    "label": "Page: Company  |  Section: city los angeles  |  Option: 3",
+    "file": "/img/document/company-city-los-angeles-3.jpg",
+    "width": 2046,
+    "height": 1364
+  },
+  {
+    "label": "Page: Security  |  Section: hero  |  Option: 1",
+    "file": "/img/document/security-hero-1.jpg",
+    "width": 1364,
+    "height": 2046
+  },
+  {
+    "label": "Page: Compare  |  Section: navan hero  |  Option: 1",
+    "file": "/img/document/compare-navan-hero-1.jpg",
+    "width": 1364,
+    "height": 2046
+  },
+  {
+    "label": "Page: Compare  |  Section: SAP concur hero  |  Option: 1",
+    "file": "/img/document/compare-sap-concur-hero-1.jpg",
+    "width": 1366,
+    "height": 2047
+  },
+  {
+    "label": "Page: Compare  |  Section: perk hero  |  Option: 1",
+    "file": "/img/document/compare-perk-hero-1.jpg",
+    "width": 1364,
+    "height": 2046
+  },
+  {
+    "label": "Page: Compare  |  Section: ramp hero  |  Option: 1",
+    "file": "/img/document/compare-ramp-hero-1.jpg",
+    "width": 2046,
+    "height": 1364
+  },
+  {
+    "label": "Page: When Plans Change  |  Section: hero  |  Option: 1",
+    "file": "/img/document/when-plans-change-hero-1.jpg",
+    "width": 2046,
+    "height": 1366
+  },
+  {
+    "label": "Page: When Plans Change  |  Section: hero  |  Option: 2",
+    "file": "/img/document/when-plans-change-hero-2.jpg",
+    "width": 2046,
+    "height": 1365
+  }
+]

@@ -55,13 +55,13 @@ export function HeroSection() {
           style={{ margin: '0' }}
         >
           <picture>
-            <source srcSet="/img/px3932459-traveler-phone.webp" type="image/webp" />
+            <source srcSet="/img/document/compare-navan-hero-1.webp" type="image/webp" />
             <img
               className="lf-hero__person"
-              src="/img/px3932459-traveler-phone.png"
-              width="1100"
-              height="964"
-              alt="A business traveler in a trench coat takes a call on his phone."
+              src="/img/document/compare-navan-hero-1.jpg"
+              width="1364"
+              height="2046"
+              alt="A business professional wearing glasses in an office."
               fetchpriority="high"
             />
           </picture>

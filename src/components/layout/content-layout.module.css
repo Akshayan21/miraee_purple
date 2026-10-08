@@ -36,5 +36,5 @@
   background: var(--mr-white);
 }
 .accent {
-  border-top: 2px solid var(--mr-orange);
+  position: relative;
 }

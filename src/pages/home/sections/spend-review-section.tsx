@@ -50,13 +50,13 @@ export function SpendReviewSection() {
           style={{ margin: '0' }}
         >
           <picture>
-            <source srcSet="/img/px37409441-finance-leader.webp" type="image/webp" />{' '}
+            <source srcSet="/img/document/home-spend-review-1.webp" type="image/webp" />{' '}
             <img
               className="compose__person"
-              src="/img/px37409441-finance-leader.png"
-              width="977"
-              height="1100"
-              alt="A finance leader in a tweed blazer smiles in the office."
+              src="/img/document/home-spend-review-1.jpg"
+              width="1364"
+              height="2046"
+              alt="A smiling finance professional in a red sweater."
             />
           </picture>
           <ProductCard className="compose__card mr-ledger-wrap card-shadow">
