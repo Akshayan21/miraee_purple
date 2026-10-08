@@ -1,10 +1,11 @@
 import { Section, Container } from '@/components/layout/content-layout'
 import { CRITERIA } from '../data'
+import styles from './criteria-section.module.css'
 
 export function CriteriaSection() {
   return (
     <Section
-      className="bg-white py-20 md:py-24"
+      className="bg-white mr-section"
       aria-labelledby="what-should-a-company-of-300-to-1-500-people-compare"
     >
       <Container className="mr-container">
@@ -23,7 +24,7 @@ export function CriteriaSection() {
           </p>
         </div>
 
-        <h3 className="mr-h3 mt-16 mb-6 scroll-mt-32" id="four-things-to-compare">
+        <h3 className={`mr-h3 scroll-mt-32 ${styles.heading}`} id="four-things-to-compare">
           Four things to compare
         </h3>
         <ul className="m-0 grid list-none gap-5 p-0 md:grid-cols-2">

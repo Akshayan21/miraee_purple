@@ -2,7 +2,7 @@ import { Section, Container } from '@/components/layout/content-layout'
 import { ProductCard, LedgerTable } from '@/components/sections/product-preview'
 export function FinanceDashboardAndAuditLogSection() {
   return (
-    <Section className="mr-paper mr-section" aria-labelledby="audit-h">
+    <Section spacing="compact" className="mr-paper mr-section" aria-labelledby="audit-h">
       <Container className="mr-container split split--rev">
         <div className="split__copy">
           <h2 className="mr-h2" id="audit-h">

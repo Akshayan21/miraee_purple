@@ -1,6 +1,9 @@
 .card {
   min-width: 0;
 }
+.card.card {
+  overflow: visible;
+}
 .phone,
 .document {
   min-width: 0;
@@ -13,17 +16,48 @@
   width: 100%;
   max-width: 100%;
   min-width: 0;
-  overflow-x: auto;
-  overscroll-behavior-inline: contain;
-  scrollbar-width: thin;
+  overflow: visible;
 }
-.viewport:focus-visible {
-  outline: 2px solid var(--focus);
-  outline-offset: 3px;
+.table.table {
+  width: 100%;
+  min-width: 0;
+  table-layout: fixed;
+}
+.table.table th,
+.table.table td {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.table.table th:first-child,
+.table.table td:first-child {
+  width: 45%;
+}
+.table.table:has(th:nth-child(4)) th:first-child,
+.table.table:has(th:nth-child(4)) td:first-child {
+  width: 30%;
+}
+.table.table:has(th:nth-child(3)):not(:has(th:nth-child(4))) th:nth-child(2) {
+  width: 15%;
+}
+.table.table :global(.mr-circled) {
+  max-width: 100%;
+}
+.table.table caption {
+  white-space: normal;
 }
 @media (max-width: 639px) {
-  .table {
-    min-width: 280px;
+  .table.table {
+    font-size: 11px;
+  }
+  .table.table th {
+    font-size: 10px;
+  }
+  .table.table th,
+  .table.table td {
+    padding-right: 6px;
+  }
+  .card.card:global(.mr-ledger-wrap) {
+    padding: 16px 12px 12px;
   }
 }
 

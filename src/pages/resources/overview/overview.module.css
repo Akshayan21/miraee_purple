@@ -1,0 +1,7 @@
+.page :global(section[aria-labelledby='video-library']) {
+  padding-bottom: 0;
+}
+
+.page :global(.lf-hubbody) {
+  padding-top: 24px;
+}

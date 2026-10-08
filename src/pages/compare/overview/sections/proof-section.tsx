@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 
 export function ProofSection() {
   return (
-    <Section className="bg-white py-20 md:py-24" aria-labelledby="want-proof-before-you-choose">
+    <Section className="bg-white mr-section" aria-labelledby="want-proof-before-you-choose">
       <Container className="mr-container">
         <div className="mr-paper grid gap-8 rounded-xl p-8 lg:grid-cols-12 lg:items-center md:p-12">
           <div className="lg:col-span-8">

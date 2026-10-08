@@ -11,7 +11,7 @@ const LINKS = [
 /** Sticky in-page navigation: this guide is long, so the reader can jump between its parts. */
 export function PageNav() {
   return (
-    <nav aria-label="On this page" className={styles.nav}>
+    <nav aria-label="On this page" className={`mr-plum ${styles.nav}`}>
       <Container className={styles.track} tabIndex={0}>
         {LINKS.map((link) => (
           <a key={link.href} href={link.href} className={styles.link}>

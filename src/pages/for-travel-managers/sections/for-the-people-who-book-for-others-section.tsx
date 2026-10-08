@@ -1,3 +1,4 @@
+import styles from './for-the-people-who-book-for-others-section.module.css'
 import { Section, Container } from '@/components/layout/content-layout'
 import { ProductCard } from '@/components/sections/product-preview'
 export function ForThePeopleWhoBookForOthersSection() {
@@ -19,7 +20,7 @@ export function ForThePeopleWhoBookForOthersSection() {
             role="img"
             aria-label="Booking screen with a colleague's name selected."
           >
-            <ProductCard className="mock" aria-hidden="true">
+            <ProductCard className={`mock ${styles.card}`} aria-hidden="true">
               <div className="mock__head">
                 <div>
                   <p className="mock__title">New trip</p>

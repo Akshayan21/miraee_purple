@@ -1,3 +1,4 @@
+import styles from './policy-section.module.css'
 import { Section, Container } from '@/components/layout/content-layout'
 import { ProductPhone, ProductRow } from '@/components/sections/product-preview'
 import { Badge } from '@/components/ui/badge'
@@ -17,7 +18,7 @@ export function PolicySection() {
         </div>
         <figure className="split__visual" style={{ margin: '0' }}>
           <div className="view" role="img" aria-label="Hotel options marked in policy.">
-            <ProductPhone className="phone phone--lg" aria-hidden="true">
+            <ProductPhone className={`phone phone--lg ${styles.preview}`} aria-hidden="true">
               <div className="phone__screen mr-plum">
                 <div className="phone__bar">
                   <span className="mr-fig">9:41</span>

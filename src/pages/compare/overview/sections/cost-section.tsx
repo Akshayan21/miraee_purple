@@ -5,7 +5,7 @@ import { VENDORS } from '../data'
 export function CostSection() {
   return (
     <Section
-      className="bg-white py-20 md:py-24"
+      className="bg-white mr-section"
       aria-labelledby="cost-to-start-as-each-vendor-states-it"
     >
       <Container className="mr-container">

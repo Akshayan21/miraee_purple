@@ -1,10 +1,11 @@
+import styles from './set-up-section.module.css'
 import { Section, Container } from '@/components/layout/content-layout'
 import { ProductCard, ProductRow } from '@/components/sections/product-preview'
 import { Badge } from '@/components/ui/badge'
 
 export function SetUpSection() {
   return (
-    <Section className="step-sec mr-paper" aria-labelledby="s1-h">
+    <Section spacing="compact" className="step-sec mr-paper" aria-labelledby="s1-h">
       <Container className="mr-container split">
         <div className="split__copy">
           <p className="mr-eyebrow">Step 1</p>
@@ -23,7 +24,7 @@ export function SetUpSection() {
             role="img"
             aria-label="Company setup screen with travel policy, employees and payment settings."
           >
-            <ProductCard className="mock" aria-hidden="true">
+            <ProductCard className={`mock ${styles.card}`} aria-hidden="true">
               <div className="mock__head">
                 <div>
                   <p className="mock__title">Company setup</p>

@@ -13,14 +13,14 @@
 .crumbs [aria-current="page"] { color: var(--text); font-weight: 600; }
 
 /* Page hero: copy left, visual right */
-.page-hero { position: relative; padding: 48px 0 0; overflow: hidden; }
+.page-hero { position: relative; padding: 32px 0 0; overflow: hidden; }
 .page-hero__grid { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: var(--mr-grid-gutter); align-items: end; }
-.page-hero__copy { grid-column: 1 / span 6; align-self: center; padding: 40px 0 96px; }
+.page-hero__copy { grid-column: 1 / span 6; align-self: center; padding: 24px 0 40px; }
 .page-hero__copy .mr-display, .page-hero__copy .mr-h1 { margin-bottom: var(--mr-s-5); }
 .page-hero__copy .mr-lead { margin-bottom: var(--mr-s-6); max-width: 540px; }
 .page-hero__visual { grid-column: 8 / span 5; position: relative; margin: 0; }
-.page-hero--frame .page-hero__visual { grid-column: 7 / span 6; align-self: center; margin: 24px 0 72px; }
-.page-hero--frame .page-hero__copy { padding-bottom: 72px; }
+.page-hero--frame .page-hero__visual { grid-column: 7 / span 6; align-self: center; margin: 16px 0 32px; }
+.page-hero--frame .page-hero__copy { padding-bottom: 32px; }
 .page-hero .mr-frame { aspect-ratio: 4 / 3; box-shadow: none; }
 .page-hero .mr-frame img { width: 100%; height: 100%; object-fit: cover; }
 .hero-cutout { display: block; width: 100%; max-width: 440px; height: auto; margin-left: auto; }
@@ -28,7 +28,7 @@
 @media (max-width: 1023px) {
   .page-hero__copy, .page-hero__visual, .page-hero--frame .page-hero__visual { grid-column: 1 / -1; }
   .page-hero__copy, .page-hero--frame .page-hero__copy { padding: 24px 0 32px; }
-  .page-hero--frame .page-hero__visual { margin: 0 0 48px; }
+  .page-hero--frame .page-hero__visual { margin: 0 0 24px; }
   .hero-cutout { max-width: 360px; margin: 0 auto; }
 }
 @media (max-width: 639px) {
@@ -138,7 +138,7 @@
 /* LP hero on plum with a cutout on the section floor */
 .lp-plum-hero { padding: 64px 0 0; overflow: hidden; }
 .lp-plum-hero .split { align-items: end; }
-.lp-plum-hero .split__copy { grid-column: 1 / span 6; padding-bottom: var(--mr-s-9); align-self: center; }
+.lp-plum-hero .split__copy { grid-column: 1 / span 6; padding-bottom: 32px; align-self: center; }
 .lp-plum-hero .split__visual { grid-column: 8 / span 5; }
 .lp-plum-hero .mr-display { margin-bottom: var(--mr-s-5); }
 .lp-plum-hero .mr-lead { margin-bottom: var(--mr-s-6); }
@@ -185,7 +185,7 @@
 .nf__links a.mr-btn { justify-content: flex-start; padding-left: 0; }
 
 /* Paid LP hero with a full-frame photo (lp-concur-alternative, story 9 face ph25) */
-.lp-plum-hero--photo { padding-bottom: var(--mr-s-9); }
+.lp-plum-hero--photo { padding-bottom: 32px; }
 .lp-plum-hero--photo .split { align-items: center; }
 .lp-plum-hero--photo .split__copy { padding-bottom: 0; }
 .lp-plum-hero--photo .split__visual img { max-width: 560px; border-radius: 20px; display: block; }

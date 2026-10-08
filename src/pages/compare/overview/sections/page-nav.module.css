@@ -2,16 +2,14 @@
   position: sticky;
   top: 76px;
   z-index: 30;
-  background: var(--mr-white, #fff);
+  background: var(--surface);
   border-block: 1px solid var(--rule);
   min-width: 0;
 }
 .track {
   display: flex;
   gap: 4px;
-  overflow-x: auto;
-  overscroll-behavior-inline: contain;
-  scrollbar-width: thin;
+  flex-wrap: wrap;
 }
 .link {
   flex: 0 0 auto;
@@ -24,8 +22,11 @@
   white-space: nowrap;
   color: var(--text);
   text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 150ms ease, color 150ms ease;
 }
 .link:hover {
+  background: var(--surface-raised);
   text-decoration: underline;
   text-underline-offset: 6px;
 }
@@ -37,15 +38,23 @@
 .page [id] {
   scroll-margin-top: 148px;
 }
+.page.page > section:global(.mr-section) {
+  padding-block: 40px;
+}
 @media (max-width: 639px) {
   .nav {
     top: 68px;
   }
   .link {
+    flex: 1 1 40%;
+    white-space: normal;
     padding-inline: 12px;
     font-size: 14px;
   }
   .page [id] {
-    scroll-margin-top: 140px;
+    scroll-margin-top: 240px;
+  }
+  .page.page > section:global(.mr-section) {
+    padding-block: 24px;
   }
 }

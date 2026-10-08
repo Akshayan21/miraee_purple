@@ -1,4 +1,17 @@
 /* Framing for the photographs supplied in Miraee Master Images. */
+.lf-faq .faq-acc {
+  width: 100%;
+  padding-inline: 0;
+}
+.lf-faq .faq-acc__list {
+  grid-column: 6 / -1;
+  margin-top: 0;
+}
+@media (max-width: 1023px) {
+  .lf-faq .faq-acc__list {
+    grid-column: 1 / -1;
+  }
+}
 .document-portrait {
   display: block;
   width: 100%;
@@ -14,7 +27,7 @@
   align-items: center;
   height: auto;
   min-height: 0;
-  padding-block: 24px;
+  padding-block: 12px;
 }
 
 .document-composition.compose > picture {
@@ -49,7 +62,7 @@
 }
 
 .document-band {
-  margin: 48px 0 0;
+  margin: 32px 0 0;
 }
 
 .document-band img {

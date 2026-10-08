@@ -1,3 +1,4 @@
+import styles from './approvals-section.module.css'
 import { Section, Container } from '@/components/layout/content-layout'
 import { ProductCard } from '@/components/sections/product-preview'
 import { Badge } from '@/components/ui/badge'
@@ -20,7 +21,7 @@ export function ApprovalsSection() {
             role="img"
             aria-label="An approval request for a booking above the policy limit."
           >
-            <ProductCard className="mock approval" aria-hidden="true">
+            <ProductCard className={`mock approval ${styles.card}`} aria-hidden="true">
               <div className="mock__head">
                 <div>
                   <p className="mock__title">Sales kickoff, Denver</p>

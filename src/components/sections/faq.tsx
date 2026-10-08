@@ -35,6 +35,7 @@ type FaqProps = {
   listClassName?: 'faq' | 'qa'
   /** Extra section classes, e.g. a top rule (`hr-top`). */
   sectionClassName?: string
+  headingId?: string
 }
 
 /** Numbered accordion rows shared by the page-level FAQ and the inline (long-form) FAQ. */
@@ -110,12 +111,17 @@ function FaqList({ items }: { items: FaqItem[] }) {
 }
 
 /** Question-and-answer list. Feed the same `items` to `faqPageJsonLd` so markup and structured data stay in sync. */
-function FaqAccordion({ heading, items, sectionClassName }: Omit<FaqProps, 'listClassName'>) {
+function FaqAccordion({
+  heading,
+  items,
+  sectionClassName,
+  headingId = 'faq-h',
+}: Omit<FaqProps, 'listClassName'>) {
   return (
-    <Section className={sectionClassName} aria-labelledby="faq-h">
+    <Section spacing="compact" className={sectionClassName} aria-labelledby={headingId}>
       <Container className="mr-container faq-acc">
         <div className="faq-acc__head">
-          <h2 className="mr-h2" id="faq-h">
+          <h2 className="mr-h2" id={headingId}>
             {heading}
           </h2>
           <p className="faq-acc__aside">
@@ -131,39 +137,27 @@ function FaqAccordion({ heading, items, sectionClassName }: Omit<FaqProps, 'list
 export function Faq({
   heading,
   items,
-  listClassName = 'faq',
   sectionClassName = 'mr-section hr-top',
+  headingId,
 }: FaqProps) {
-  if (listClassName === 'faq') {
-    return <FaqAccordion heading={heading} items={items} sectionClassName={sectionClassName} />
-  }
   return (
-    <Section className={sectionClassName} aria-labelledby="faq-h">
-      <Container className="mr-container">
-        <h2 className="mr-h2" id="faq-h">
-          {heading}
-        </h2>
-        <div className={listClassName}>
-          {items.map((item) => (
-            <div key={item.question}>
-              <h3>{item.question}</h3>
-              <FaqAnswer answer={item.answer} />
-            </div>
-          ))}
-        </div>
-      </Container>
-    </Section>
+    <FaqAccordion
+      heading={heading}
+      items={items}
+      sectionClassName={sectionClassName}
+      headingId={headingId}
+    />
   )
 }
 
 /** Question list nested inside a long-form page section (compare and resource pages). */
 export function InlineFaq({ items }: { items: FaqItem[] }) {
   return (
-    <Section className="lf-faq" aria-labelledby="questions">
-      <h2 className="mr-h2" id="questions">
-        Questions
-      </h2>
-      <FaqList items={items} />
-    </Section>
+    <FaqAccordion
+      heading="Questions"
+      items={items}
+      headingId="questions"
+      sectionClassName="lf-faq"
+    />
   )
 }

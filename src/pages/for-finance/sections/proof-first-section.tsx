@@ -4,7 +4,7 @@ import { DialogLink } from '@/components/forms/form-dialogs-context'
 
 export function ProofFirstSection() {
   return (
-    <Section className="mr-paper mr-section" aria-labelledby="proof-h">
+    <Section spacing="compact" className="mr-paper mr-section" aria-labelledby="proof-h">
       <Container className="mr-container answer">
         <h2 className="mr-h2" id="proof-h">
           Want proof first?

@@ -3,7 +3,7 @@ import { Badge } from '@/components/ui/badge'
 
 export function ExpenseSection() {
   return (
-    <Section className="step-sec" aria-labelledby="exp-h">
+    <Section spacing="compact" className="step-sec" aria-labelledby="exp-h">
       <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="exp-h">

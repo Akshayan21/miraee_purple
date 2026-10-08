@@ -1,10 +1,12 @@
+import styles from './the-assistant-and-approvals-section.module.css'
+import spacing from './section-spacing.module.css'
 import { Section, Container } from '@/components/layout/content-layout'
 import { ProductCard } from '@/components/sections/product-preview'
 import { Badge } from '@/components/ui/badge'
 
 export function TheAssistantAndApprovalsSection() {
   return (
-    <Section className="step-sec" aria-labelledby="appr-h">
+    <Section spacing="compact" className={`step-sec ${spacing.approvals}`} aria-labelledby="appr-h">
       <Container className="mr-container split split--rev">
         <div className="split__copy">
           <h2 className="mr-h2" id="appr-h">
@@ -21,7 +23,7 @@ export function TheAssistantAndApprovalsSection() {
             role="img"
             aria-label="An approval request for an out-of-policy hotel."
           >
-            <ProductCard className="mock approval" aria-hidden="true">
+            <ProductCard className={`mock approval ${styles.card}`} aria-hidden="true">
               <div className="mock__head">
                 <div>
                   <p className="mock__title">Sales kickoff, Denver</p>

@@ -1,0 +1,21 @@
+.policy {
+  margin-top: 16px;
+  padding: 16px 20px;
+  background: var(--surface-raised);
+  border: 1px solid var(--rule);
+  border-radius: var(--mr-r-lg);
+}
+.policy ul {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.policy li::before {
+  content: '\2713';
+  margin-right: 8px;
+  color: var(--success);
+}

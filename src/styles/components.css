@@ -56,7 +56,7 @@
 /* ---------- Layout ---------- */
 .mr-container { width: 100%; max-width: calc(var(--mr-grid-max) + 2 * var(--mr-grid-margin)); margin: 0 auto; padding: 0 var(--mr-grid-margin); }
 .mr-grid { display: grid; grid-template-columns: repeat(var(--mr-grid-cols), minmax(0, 1fr)); column-gap: var(--mr-grid-gutter); row-gap: var(--mr-s-6); }
-.mr-section { padding: var(--mr-s-9) 0; }
+.mr-section { padding: 64px 0; }
 .mr-stack > * + * { margin-top: var(--mr-s-4); }
 .mr-rule { border: 0; border-top: var(--mr-bw-hair) solid var(--rule); margin: var(--mr-s-6) 0; }
 

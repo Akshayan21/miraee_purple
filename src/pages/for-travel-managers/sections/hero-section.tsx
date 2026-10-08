@@ -2,6 +2,8 @@ import { Section, Container } from '@/components/layout/content-layout'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
+import { Badge } from '@/components/ui/badge'
+import styles from './hero-section.module.css'
 
 export function HeroSection() {
   return (
@@ -39,6 +41,14 @@ export function HeroSection() {
               />
             </picture>
           </div>
+          <figcaption className={styles.policy}>
+            <Badge variant="success" tick>In policy</Badge>
+            <ul>
+              <li>Flight and hotel limits checked</li>
+              <li>Approvals for exceptions</li>
+              <li>Every booking recorded</li>
+            </ul>
+          </figcaption>
         </figure>
       </Container>
     </Section>

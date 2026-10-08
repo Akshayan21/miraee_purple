@@ -1,0 +1,22 @@
+.cards.cards {
+  padding-bottom: 24px;
+}
+
+.approvals.approvals {
+  padding-top: 24px;
+}
+
+.cards :global(.split__copy) > :last-child,
+.cards :global(.split__visual) > :last-child,
+.approvals :global(.split__copy) > :last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 639px) {
+  .cards.cards {
+    padding-bottom: 16px;
+  }
+  .approvals.approvals {
+    padding-top: 16px;
+  }
+}

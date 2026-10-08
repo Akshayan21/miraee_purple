@@ -1,0 +1,56 @@
+.visual:global(.document-composition.compose) {
+  max-width: 500px;
+  width: 100%;
+  justify-self: center;
+}
+.visual:global(.document-composition.compose) > picture {
+  margin: 0;
+}
+.visual:global(.document-composition.compose) .card:global(.compose__card) {
+  width: min(100%, 440px);
+  align-self: center;
+  margin-inline: 0;
+  padding: 12px 14px 8px;
+}
+.card :global(.mr-ledger-wrap__head) {
+  margin-bottom: 8px;
+}
+.card :global(.mr-ledger-wrap__title) {
+  font-size: 13px;
+}
+.card :global(.mr-label) {
+  font-size: 10px;
+}
+.card :global(.mr-ledger) {
+  font-size: 11px;
+  line-height: 1.35;
+}
+.card :global(.mr-ledger th),
+.card :global(.mr-ledger td) {
+  padding-block: 7px;
+  padding-right: 8px;
+}
+.card :global(.mr-ledger td:first-child) {
+  width: 50%;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+.card :global(.mr-ledger caption) {
+  font-size: 10px;
+  line-height: 1.4;
+  padding-top: 8px;
+}
+.card :global(.mr-circled) {
+  padding-inline: 0;
+  margin-inline: 0;
+}
+.card :global(.mr-circled > .mr-line) {
+  left: 0;
+  width: 100%;
+}
+@media (max-width: 639px) {
+  .visual:global(.document-composition.compose) .card:global(.compose__card) {
+    width: 100%;
+    margin-inline: 0;
+  }
+}

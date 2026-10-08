@@ -18,7 +18,7 @@ export interface Kit {
 
 type Handler = (sec: HTMLElement, k: Kit) => void
 
-const DESKTOP_PIN =
+const DESKTOP_STORY =
   '(min-width: 1200px) and (min-height: 800px) and (hover: hover) and (pointer: fine)'
 const OTHERWISE = '(max-width: 1199px), (max-height: 799px), (hover: none), (pointer: coarse)'
 
@@ -102,7 +102,7 @@ const spend: Handler = (sec, k) => {
       })
     }
   }
-  if (!host) return
+  if (!host || host.matches('.mo-skip')) return
   const person = host.querySelector<HTMLElement>('.compose__person')
   const card = host.querySelector<HTMLElement>('.compose__card')
   if (person) {
@@ -144,7 +144,7 @@ const plans: Handler = (sec, k) => {
   const person = host?.querySelector<HTMLElement>('.compose__person')
   const phone = host?.querySelector<HTMLElement>('.phone--alert')
   const copy = sec.querySelector<HTMLElement>('.split__copy')
-  if (!host || !phone) return
+  if (!host || !phone || host.matches('.mo-skip')) return
   const parts = {
     alert: phone.querySelector<HTMLElement>('.mr-alert'),
     opts: qa('.mr-option', phone),
@@ -171,8 +171,8 @@ const plans: Handler = (sec, k) => {
   revealWords(k, h2)
   const copyBits = copy ? qa('.mr-eyebrow, .mr-body, .stat-line, .link-row', copy) : []
 
-  /* Desktop: the section pins and the whole story plays under your scroll. */
-  mm.add(DESKTOP_PIN, () => {
+  /* Desktop: play the story on entry without reserving extra page height. */
+  mm.add(DESKTOP_STORY, () => {
     hideInner()
     rise(k, copyBits)
     if (person) gsap.set(person, { opacity: 0, x: -40 })
@@ -181,11 +181,8 @@ const plans: Handler = (sec, k) => {
       defaults: { ease: 'power2.out' },
       scrollTrigger: {
         trigger: sec,
-        pin: true,
-        start: 'top top',
-        end: '+=120%',
-        scrub: 0.8,
-        anticipatePin: 1,
+        start: 'top 80%',
+        once: true,
       },
     })
     if (person) tl.to(person, { opacity: 1, x: 0, duration: 0.65 }, 0)
@@ -232,7 +229,7 @@ const fin: Handler = (sec, k) => {
     }
     rise(k, qa('.stat-line, .link-row', copy))
   }
-  if (!host) return
+  if (!host || host.matches('.mo-skip')) return
   const person = host.querySelector<HTMLElement>('.compose__person')
   const card = host.querySelector<HTMLElement>('.compose__card')
   if (person) {
