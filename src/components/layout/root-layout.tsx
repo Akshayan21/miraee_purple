@@ -7,6 +7,8 @@ import { ReviewDialog, SignupDialog } from '@/components/forms/form-dialogs'
 import archivoLatin from '@/assets/fonts/archivo-latin-standard-normal.woff2?url'
 import type { RouteHandle } from '@/lib/route-handle'
 import { initScrollMotion } from '@/lib/scroll-motion'
+import { IntroContext } from '@/components/motion/intro-context'
+import { SitePreloader } from '@/components/motion/site-preloader'
 
 /** Scroll to the top on navigation, or to the #anchor when the URL has one (footnotes, in-page links). */
 function ScrollManager() {
@@ -22,9 +24,10 @@ function ScrollManager() {
 }
 
 /** Scroll-driven motion for whichever page is showing; torn down and rebuilt on every navigation. */
-function ScrollMotion() {
+function ScrollMotion({ enabled }: { enabled: boolean }) {
   const { pathname } = useLocation()
   React.useEffect(() => {
+    if (!enabled) return
     let cleanup: (() => void) | undefined
     // Wait a frame so the new route (and any scroll-to-top / anchor jump) has settled before measuring.
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -42,7 +45,7 @@ function ScrollMotion() {
       desktop.removeEventListener('change', updateMotion)
       cleanup?.()
     }
-  }, [pathname])
+  }, [pathname, enabled])
   return null
 }
 
@@ -69,14 +72,30 @@ function PageStyles() {
 
 /** Top of every route: shared form dialogs, page-sheet scoping and scroll handling. */
 export function RootLayout() {
+  const [loading, setLoading] = React.useState(true)
+  const page = React.useRef<HTMLDivElement>(null)
+  const complete = React.useCallback(() => setLoading(false), [])
+  React.useEffect(() => {
+    const element = page.current
+    if (!element) return
+    element.inert = loading
+    return () => {
+      element.inert = false
+    }
+  }, [loading])
   return (
-    <FormDialogsProvider>
-      <PageStyles />
-      <ScrollManager />
-      <ScrollMotion />
-      <Outlet />
-      <SignupDialog />
-      <ReviewDialog />
-    </FormDialogsProvider>
+    <IntroContext.Provider value={loading}>
+      <FormDialogsProvider>
+        <PageStyles />
+        <ScrollManager />
+        <ScrollMotion enabled={!loading} />
+        {loading && <SitePreloader onComplete={complete} />}
+        <div ref={page} aria-busy={loading}>
+          <Outlet />
+          <SignupDialog />
+          <ReviewDialog />
+        </div>
+      </FormDialogsProvider>
+    </IntroContext.Provider>
   )
 }

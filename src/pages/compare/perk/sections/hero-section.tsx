@@ -55,13 +55,13 @@ export function HeroSection() {
           style={{ margin: '0' }}
         >
           <picture>
-            <source srcSet="/img/px4173228-traveler-suitcase.webp" type="image/webp" />
+            <source srcSet="/img/document/compare-perk-hero-1.webp" type="image/webp" />
             <img
               className="lf-hero__person"
-              src="/img/px4173228-traveler-suitcase.png"
-              width="1100"
-              height="957"
-              alt="A traveler in a camel coat takes a call beside her suitcase."
+              src="/img/document/compare-perk-hero-1.jpg"
+              width="1364"
+              height="2046"
+              alt="A person walks through striped light and shadow."
               fetchpriority="high"
             />
           </picture>

@@ -1,0 +1,36 @@
+.button {
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    translate 220ms ease,
+    box-shadow 220ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .button:not(:disabled):not([aria-disabled='true']):hover {
+    translate: 0 -2px;
+    box-shadow: 0 8px 20px -12px var(--mr-orange);
+  }
+  .button:global(.mr-btn--tertiary)::after {
+    transition: translate 220ms ease;
+  }
+  .button:global(.mr-btn--tertiary):hover::after {
+    translate: 5px 0;
+  }
+}
+.button:not(:disabled):not([aria-disabled='true']):active {
+  translate: 0 1px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+  .button:hover,
+  .button:active {
+    translate: none !important;
+  }
+  .button:global(.mr-btn--tertiary)::after {
+    transition: none;
+    translate: none !important;
+  }
+}

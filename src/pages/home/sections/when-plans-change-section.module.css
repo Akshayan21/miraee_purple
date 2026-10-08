@@ -1,5 +1,5 @@
 .section {
-  border-top: 2px solid var(--mr-orange);
+  isolation: isolate;
 }
 .visual.visual {
   display: grid;

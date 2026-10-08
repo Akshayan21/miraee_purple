@@ -29,12 +29,12 @@ export function OptionalAlwaysSection() {
         </div>
         <figure className="split__visual mr-frame" style={{ margin: '0' }}>
           <picture>
-            <source srcSet="/img/px31879477-train-window.webp" type="image/webp" />
+            <source srcSet="/img/document/spend-review-review-optional-1.webp" type="image/webp" />
             <img
-              src="/img/px31879477-train-window.jpg"
-              width="1600"
-              height="520"
-              alt="A traveler seen through a train window at dusk."
+              src="/img/document/spend-review-review-optional-1.jpg"
+              width="2046"
+              height="1364"
+              alt="A traveler relaxes by an airport window."
               loading="lazy"
               decoding="async"
             />

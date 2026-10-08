@@ -54,13 +54,13 @@ export function HeroSection() {
           style={{ margin: '0' }}
         >
           <picture>
-            <source srcSet="/img/px5918389-controller.webp" type="image/webp" />
+            <source srcSet="/img/document/compare-ramp-hero-1.webp" type="image/webp" />
             <img
               className="lf-hero__person"
-              src="/img/px5918389-controller.png"
-              width="831"
-              height="1100"
-              alt="A controller in a rust sweater holds a tablet in the office, beside a trip record with its GL code."
+              src="/img/document/compare-ramp-hero-1.jpg"
+              width="2046"
+              height="1364"
+              alt="A business professional in a green shirt."
               fetchpriority="high"
             />
           </picture>

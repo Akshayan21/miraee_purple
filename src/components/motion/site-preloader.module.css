@@ -1,0 +1,138 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  background: #43162e;
+  color: #faf6fa;
+  overflow: hidden;
+  animation: failOpen 6s step-end forwards;
+}
+.glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 45%, #664454, transparent 65%);
+  opacity: 0.45;
+  pointer-events: none;
+}
+.content {
+  position: relative;
+  width: min(760px, 100%);
+  padding: 48px 32px;
+  text-align: center;
+}
+.logo {
+  display: block;
+  width: clamp(160px, 24vw, 242px);
+  height: auto;
+  margin: 0 auto;
+}
+.route {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin: 40px auto 24px;
+  overflow: visible;
+}
+.guide {
+  fill: none;
+  stroke: #a68b97;
+  stroke-width: 1;
+  opacity: 0.4;
+  stroke-dasharray: 3 8;
+}
+.line {
+  fill: none;
+  stroke: #ff9861;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.dot {
+  fill: #f0e5f8;
+  stroke: #ff9861;
+  stroke-width: 2;
+}
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 4.5vw, 48px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+}
+.status {
+  color: #deced4;
+  font-size: 14px;
+  margin: 0;
+}
+.footer {
+  position: absolute;
+  bottom: max(32px, env(safe-area-inset-bottom));
+  font-size: 12px;
+  color: #deced4;
+  text-align: center;
+  padding-inline: 24px;
+}
+@keyframes failOpen {
+  to {
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+@media (max-width: 639px) {
+  .content {
+    padding: 24px;
+  }
+  .route {
+    margin-top: 32px;
+  }
+}
+@media (max-height: 500px) {
+  .content {
+    padding: 16px;
+  }
+  .logo {
+    width: 140px;
+  }
+  .route {
+    max-width: 340px;
+    margin: 12px auto;
+  }
+  .title {
+    font-size: 26px;
+    margin-bottom: 8px;
+  }
+  .footer {
+    bottom: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .overlay {
+    display: none;
+  }
+}
+
+.logoStage {
+  position: relative;
+  isolation: isolate;
+}
+.logo svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.halo {
+  position: absolute;
+  z-index: -1;
+  width: clamp(220px, 40vw, 400px);
+  aspect-ratio: 1;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #a2688540 0%, #e5560210 40%, transparent 70%);
+  pointer-events: none;
+}

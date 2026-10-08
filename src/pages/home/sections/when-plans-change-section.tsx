@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/badge'
 
 export function WhenPlansChangeSection() {
   return (
-    <Section className={`mr-plum mr-section ${styles.section}`} aria-labelledby="plans-h">
+    <Section accent className={`mr-plum mr-section ${styles.section}`} aria-labelledby="plans-h">
       <Container className="mr-container split split--rev">
         <div className="split__copy">
           <p className="mr-eyebrow">When plans change</p>
@@ -38,13 +38,13 @@ export function WhenPlansChangeSection() {
           style={{ margin: '0' }}
         >
           <picture>
-            <source srcSet="/img/px4173228-traveler-suitcase.webp" type="image/webp" />{' '}
+            <source srcSet="/img/document/home-when-plans-change-1.webp" type="image/webp" />{' '}
             <img
               className="compose__person"
-              src="/img/px4173228-traveler-suitcase.png"
-              width="1100"
-              height="957"
-              alt="A traveler in a camel coat takes a call beside her suitcase, beside a phone alert offering two new flight options."
+              src="/img/document/home-when-plans-change-1.jpg"
+              width="626"
+              height="418"
+              alt="Colleagues talk over coffee and a laptop in a cafe."
             />
           </picture>
           <ProductPhone className="compose__card phone phone--alert" aria-hidden="true">

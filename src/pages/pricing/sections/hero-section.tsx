@@ -44,12 +44,12 @@ export function HeroSection() {
         </div>
         <figure className="page-hero__visual mr-frame">
           <picture>
-            <source srcSet="/img/px4623080-team-wide.webp" type="image/webp" />
+            <source srcSet="/img/document/pricing-hero-1.webp" type="image/webp" />
             <img
-              src="/img/px4623080-team-wide.jpg"
-              width="917"
-              height="688"
-              alt="Colleagues smile as they review work together at a desk."
+              src="/img/document/pricing-hero-1.jpg"
+              width="2046"
+              height="1364"
+              alt="A team collaborates in an office meeting."
               fetchpriority="high"
             />
           </picture>

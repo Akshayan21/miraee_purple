@@ -8,7 +8,7 @@ export function ClosingCallToActionSection() {
       body="Free to sign up and onboard, at any company size."
       secondary={SPEND_REVIEW_ACTION}
       photo={{
-        src: '/img/px1635419-golden-gate.jpg',
+        src: '/img/document/for-finance-proof-band-1.jpg',
         width: 1600,
         height: 520,
         alt: 'The Golden Gate Bridge at dusk under a purple sky.',

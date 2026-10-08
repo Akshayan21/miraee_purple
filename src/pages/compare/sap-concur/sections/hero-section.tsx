@@ -52,12 +52,12 @@ export function HeroSection() {
         </div>
         <figure className="lf-hero__visual lf-hero__visual--frame mr-frame" style={{ margin: '0' }}>
           <picture>
-            <source srcSet="/img/px4623080-team-wide.webp" type="image/webp" />
+            <source srcSet="/img/document/compare-sap-concur-hero-1.webp" type="image/webp" />
             <img
-              src="/img/px4623080-team-wide.jpg"
-              width="917"
-              height="688"
-              alt="Colleagues smile as they review work together at a desk."
+              src="/img/document/compare-sap-concur-hero-1.jpg"
+              width="1366"
+              height="2047"
+              alt="A business professional in a striped blouse."
               fetchpriority="high"
             />
           </picture>

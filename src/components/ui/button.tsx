@@ -1,3 +1,4 @@
+import styles from './button.module.css'
 import * as React from 'react'
 import { Slot } from 'radix-ui'
 import { cva, type VariantProps } from 'class-variance-authority'
@@ -55,7 +56,7 @@ function Button({ className, variant, size, asChild = false, type, ...props }: B
     <Comp
       data-slot="button"
       type={asChild ? undefined : (type ?? 'button')}
-      className={cn(buttonVariants({ variant, size }), className)}
+      className={cn(buttonVariants({ variant, size }), styles.button, className)}
       {...props}
     />
   )

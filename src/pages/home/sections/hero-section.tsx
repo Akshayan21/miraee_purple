@@ -1,163 +1,165 @@
-import styles from './hero-section.module.css'
-import { Section, Container } from '@/components/layout/content-layout'
-import { ProductCard, LedgerTable } from '@/components/sections/product-preview'
+import { useContext, useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Link } from 'react-router-dom'
+import { IntroContext } from '@/components/motion/intro-context'
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
-
-/**
- * Decorative backdrop: an organic plum shape bleeding off the right edge, a travel photograph cut to its edge, and the brand's
- * orange Line tracing it.
- */
-function HeroBackdrop() {
-  return (
-    <div className="hero__backdrop" aria-hidden="true">
-      <HeroPhoto />
-      <svg
-        className="hero__blob"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-        focusable="false"
-      >
-        <path
-          className="hero__blob-back"
-          d="M 30 0 C 22 12, 8 18, 14 34 C 20 48, 0 54, 4 68 C 8 82, 22 84, 18 100 L 100 100 L 100 0 Z"
-        />
-        <path
-          className="hero__blob-line"
-          d="M 27 -2 C 19 10, 4 16, 10 34 C 16 48, -4 54, 0 68"
-          vectorEffect="non-scaling-stroke"
-        />
-      </svg>
-    </div>
-  )
-}
-
-/** The stacked hero keeps its photograph inside the visual, clear of the copy. */
-function HeroPhoto({ mobile = false }: { mobile?: boolean }) {
-  return (
-    <picture>
-      <source srcSet="/img/hero-airport-terminal.webp" type="image/webp" />
-      <img
-        className={mobile ? 'hero__photo hero__photo--stacked' : 'hero__photo'}
-        src="/img/hero-airport-terminal.jpg"
-        width="1600"
-        height="1067"
-        alt=""
-        aria-hidden="true"
-        fetchpriority="high"
-      />
-    </picture>
-  )
-}
+import styles from './hero-section.module.css'
 
 export function HeroSection() {
+  const ref = useRef<HTMLElement>(null)
+  const loading = useContext(IntroContext)
+  useEffect(() => {
+    const root = ref.current
+    if (!root || loading) return
+    gsap.registerPlugin(ScrollTrigger)
+    const media = gsap.matchMedia()
+    media.add(
+      {
+        reduced: '(prefers-reduced-motion: reduce)',
+        desktop: '(min-width: 1024px) and (hover: hover) and (pointer: fine)',
+      },
+      (context) => {
+        if (context.conditions?.reduced) return
+        const timeline = gsap.timeline({ defaults: { ease: 'power3.out' } })
+        timeline
+          .from('[data-hero-copy]', { y: 24, opacity: 0, duration: 0.7, stagger: 0.1 })
+          .from('[data-hero-stage]', { y: 32, opacity: 0, duration: 0.85 }, 0.15)
+          .from('[data-hero-trip]', { y: 28, opacity: 0, duration: 0.7 }, 0.4)
+          .from('[data-hero-step]', { y: 10, opacity: 0, duration: 0.5, stagger: 0.22 }, 0.7)
+          .fromTo(
+            '[data-hero-route]',
+            { strokeDasharray: 650, strokeDashoffset: 650 },
+            { strokeDashoffset: 0, duration: 1.3, ease: 'power2.inOut' },
+            0.6,
+          )
+        if (context.conditions?.desktop) {
+          gsap.to('[data-hero-photo]', {
+            yPercent: 8,
+            ease: 'none',
+            scrollTrigger: { trigger: root, start: 'top top', end: 'bottom top', scrub: 1 },
+          })
+        }
+      },
+      root,
+    )
+    return () => media.revert()
+  }, [loading])
+
   return (
-    <Section className={`mr-paper hero hero--blob ${styles.hero}`} aria-labelledby="hero-h">
-      <HeroBackdrop />
-      <Container className="mr-container hero__grid">
-        <div className="hero__copy">
-          <h1 className="mr-display" id="hero-h">
-            See where your travel money goes, and where you can spend less.
-          </h1>
-          <p className="mr-lead">
-            Miraee is business travel and expense software. Your people book flights and hotels
-            inside company policy, and finance sees every trip with its budget and GL code. Free to
-            sign up and onboard, at any company size.
+    <section ref={ref} className={`${styles.hero} mo-skip`} aria-labelledby="home-hero-h">
+      <div className={styles.grid}>
+        <div className={styles.copy}>
+          <p data-hero-copy className={styles.eyebrow}>
+            Business travel & expense software
           </p>
-          <div className="mr-btn-row">
+          <h1 data-hero-copy id="home-hero-h" className={styles.heading}>
+            Business travel.
+            <br />
+            <span>
+              Every dollar
+              <br className={styles.desktopBreak} /> in view.
+            </span>
+          </h1>
+          <p data-hero-copy className={styles.lead}>
+            Book within policy. Track every trip, budget, and expense in one place.
+          </p>
+          <div data-hero-copy className={styles.actions}>
             <Button asChild>
               <DialogLink to="/sign-up" dialog="signup">
                 Sign up free
               </DialogLink>
-            </Button>{' '}
-            <Button asChild variant="secondary">
-              <DialogLink to="/spend-review" dialog="review">
-                Get a spend review
-              </DialogLink>
-            </Button>{' '}
+            </Button>
             <Button asChild variant="tertiary">
               <Link to="/how-it-works">See how it works</Link>
             </Button>
           </div>
-          <p className="mr-small hero__trust">
-            Built by Tabhi, the company behind the Mondee travel marketplace. Keep the corporate
-            cards you already use.
+          <p data-hero-copy className={styles.note}>
+            Free to sign up and onboard. At any company size.
+          </p>
+          <p data-hero-copy className={styles.trust}>
+            Built by Tabhi, the company behind the Mondee travel marketplace.
           </p>
         </div>
-        <figure className="hero__visual" style={{ margin: '0' }}>
-          <HeroPhoto mobile />
-          <span className="hero__orb" aria-hidden="true" />
-          <ProductCard className="hero__card mr-paper mr-ledger-wrap card-shadow">
-            <div className="mr-ledger-wrap__head">
-              <p className="mr-ledger-wrap__title">October trips</p>
-              <span className="mr-label">3 trips</span>
-            </div>
-            <LedgerTable className="mr-ledger">
-              <caption>Product view with illustrative data.</caption>
-              <thead>
-                <tr>
-                  <th scope="col">Trip</th>
-                  <th scope="col" className="mr-num">
-                    Amount
-                  </th>
-                  <th scope="col">Policy</th>
-                  <th scope="col" className="mr-num">
-                    GL code
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Client visit, Chicago</td>
-                  <td className="mr-num">$1,284.60</td>
-                  <td>
-                    <Badge variant="success">In policy</Badge>
-                  </td>
-                  <td className="mr-num">6200</td>
-                </tr>
-                <tr>
-                  <td>Site audit, Dallas</td>
-                  <td className="mr-num">$946.20</td>
-                  <td>
-                    <Badge variant="success">In policy</Badge>
-                  </td>
-                  <td className="mr-num">6200</td>
-                </tr>
-                <tr>
-                  <td>Sales kickoff, Denver</td>
-                  <td className="mr-num">
-                    <span className="mr-circled">
-                      $2,318.40
-                      <svg
-                        className="mr-line"
-                        viewBox="0 0 260 130"
-                        preserveAspectRatio="none"
-                        aria-hidden="true"
-                        focusable="false"
-                      >
-                        <path d="M36 74 C 24 36 108 14 172 18 C 228 22 244 58 220 86 C 196 112 96 116 48 98 C 26 90 20 72 30 58"></path>
-                      </svg>
-                    </span>
-                  </td>
-                  <td>
-                    <Badge variant="error">Out of policy</Badge>
-                  </td>
-                  <td className="mr-num">6200</td>
-                </tr>
-              </tbody>
-            </LedgerTable>
-          </ProductCard>
-          <div className="hero__toast mr-paper card-shadow">
-            <span className="hero__toast-mark" aria-hidden="true" />
-            <p className="hero__toast-text">
-              <strong>Approved</strong>
-              <span>Denver hotel, by Dana R. at 9:40 a.m.</span>
-            </p>
+        <figure data-hero-stage className={styles.stage}>
+          <div className={styles.photoWrap} aria-hidden="true">
+            <img
+              data-hero-photo
+              src="/img/document/home-hero-1.jpg"
+              width="626"
+              height="418"
+              alt=""
+              fetchpriority="high"
+              className={styles.photo}
+            />
           </div>
+          <div className={styles.stageHeading}>
+            <span>One trip. A clear picture.</span>
+            <span className={styles.liveDot} aria-hidden="true" />
+          </div>
+          <svg
+            className={styles.route}
+            viewBox="0 0 600 300"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path d="M-10 225C110 225 50 25 230 60S400 290 610 95" />
+            <path data-hero-route d="M-10 225C110 225 50 25 230 60S400 290 610 95" />
+          </svg>
+          <div data-hero-trip className={styles.trip}>
+            <div className={styles.tripHeader}>
+              <span>CLIENT VISIT</span>
+              <span className={styles.policy}>In policy</span>
+            </div>
+            <div className={styles.destination}>
+              <span>Chicago</span>
+              <span aria-hidden="true">&#8599;</span>
+            </div>
+            <p className={styles.tripDetail}>
+              Flight + hotel <span>Oct 14&#8211;16</span>
+            </p>
+            <div className={styles.amount}>
+              <div>
+                <span>Trip total</span>
+                <strong>$1,284.60</strong>
+              </div>
+              <div className={styles.budget}>
+                <span>Budget</span>
+                <strong>$1,500.00</strong>
+              </div>
+            </div>
+            <div className={styles.budgetTrack} aria-label="Trip uses 86 percent of its budget">
+              <span />
+            </div>
+            <div className={styles.finance}>
+              <span>Finance has the details</span>
+              <span>GL 6200</span>
+            </div>
+          </div>
+          <ol className={styles.steps} aria-label="Trip workflow">
+            <li data-hero-step>
+              <span className={styles.check} aria-hidden="true">
+                &#10003;
+              </span>
+              <span>Booked</span>
+            </li>
+            <li data-hero-step>
+              <span className={styles.check} aria-hidden="true">
+                &#10003;
+              </span>
+              <span>In policy</span>
+            </li>
+            <li data-hero-step>
+              <span className={styles.check} aria-hidden="true">
+                &#10003;
+              </span>
+              <span>Ready for finance</span>
+            </li>
+          </ol>
+          <figcaption className={styles.caption}>Product view with illustrative data.</figcaption>
         </figure>
-      </Container>
-    </Section>
+      </div>
+    </section>
   )
 }

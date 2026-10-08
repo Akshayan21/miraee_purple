@@ -10,11 +10,12 @@ type ClosingCtaProps = {
   children: ReactNode
   secondary?: SecondaryAction
   /** Lazy-load the bridge photo (everywhere except the home page, where it is already near the fold). */
+  photo?: { src: string; width: number; height: number; alt: string }
   lazyPhoto?: boolean
 }
 
 /** Plum closing band: headline, copy, buttons, and the Brooklyn Bridge photo with the Line across it. */
-export function ClosingCta({ title, children, secondary, lazyPhoto = true }: ClosingCtaProps) {
+export function ClosingCta({ title, children, secondary, photo, lazyPhoto = true }: ClosingCtaProps) {
   return (
     <Section className="mr-plum closing" aria-labelledby="close-h">
       <Container className="mr-container">
@@ -30,10 +31,10 @@ export function ClosingCta({ title, children, secondary, lazyPhoto = true }: Clo
       </Container>
       <figure className="closing__photo" style={{ margin: '64px 0 0' }}>
         <ResponsiveImage
-          src="/img/px7823010-brooklyn-bridge.jpg"
-          width="1196"
-          height="540"
-          alt="The Brooklyn Bridge and the Manhattan skyline at sunset."
+          src={photo?.src ?? "/img/px7823010-brooklyn-bridge.jpg"}
+          width={photo?.width ?? 1196}
+          height={photo?.height ?? 540}
+          alt={photo?.alt ?? "The Brooklyn Bridge and the Manhattan skyline at sunset."}
           {...(lazyPhoto ? { loading: 'lazy', decoding: 'async' } : {})}
         />{' '}
         <svg

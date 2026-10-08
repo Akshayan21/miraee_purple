@@ -8,10 +8,10 @@ export function ClosingCallToActionSection() {
       body="Free to sign up and onboard, at any company size."
       secondary={SPEND_REVIEW_ACTION}
       photo={{
-        src: '/img/px7904332-manhattan-sunset.jpg',
-        width: 1600,
-        height: 420,
-        alt: 'A Manhattan street under an orange and plum sunset.',
+        src: '/img/document/how-it-works-replace-band-1.jpg',
+        width: 2046,
+        height: 1364,
+        alt: 'The Manhattan skyline in warm evening light.',
       }}
     />
   )

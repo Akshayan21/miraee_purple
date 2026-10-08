@@ -29,12 +29,12 @@ export function CoverageSection() {
           <li>
             <figure className="place">
               <picture>
-                <source srcSet="/img/px30362683-new-york.webp" type="image/webp" />
+                <source srcSet="/img/document/company-city-new-york-1.webp" type="image/webp" />
                 <img
-                  src="/img/px30362683-new-york.jpg"
-                  width="800"
-                  height="480"
-                  alt="The Manhattan skyline and Empire State Building at dusk."
+                  src="/img/document/company-city-new-york-1.jpg"
+                  width="2046"
+                  height="1364"
+                  alt="The Manhattan skyline with the Empire State Building."
                   loading="lazy"
                   decoding="async"
                 />
@@ -45,12 +45,12 @@ export function CoverageSection() {
           <li>
             <figure className="place">
               <picture>
-                <source srcSet="/img/px29667762-san-francisco.webp" type="image/webp" />
+                <source srcSet="/img/document/company-city-san-francisco-1.webp" type="image/webp" />
                 <img
-                  src="/img/px29667762-san-francisco.jpg"
-                  width="800"
-                  height="480"
-                  alt="The San Francisco skyline at twilight."
+                  src="/img/document/company-city-san-francisco-1.jpg"
+                  width="2046"
+                  height="1364"
+                  alt="The Golden Gate Bridge in San Francisco."
                   loading="lazy"
                   decoding="async"
                 />
@@ -61,11 +61,11 @@ export function CoverageSection() {
           <li>
             <figure className="place">
               <picture>
-                <source srcSet="/img/px237325-los-angeles.webp" type="image/webp" />
+                <source srcSet="/img/document/company-city-los-angeles-1.webp" type="image/webp" />
                 <img
-                  src="/img/px237325-los-angeles.jpg"
-                  width="800"
-                  height="480"
+                  src="/img/document/company-city-los-angeles-1.jpg"
+                  width="2047"
+                  height="1228"
                   alt="The Los Angeles skyline at sunset."
                   loading="lazy"
                   decoding="async"

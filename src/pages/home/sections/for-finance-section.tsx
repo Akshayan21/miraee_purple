@@ -33,17 +33,17 @@ export function ForFinanceSection() {
           </p>
         </div>
         <VisualComposition
-          className="split__visual compose compose--finance"
+          className="split__visual compose document-composition compose--finance"
           style={{ margin: '0' }}
         >
           <picture>
-            <source srcSet="/img/px5918389-controller.webp" type="image/webp" />{' '}
+            <source srcSet="/img/document/home-finance-gl-code-1.webp" type="image/webp" />{' '}
             <img
               className="compose__person"
-              src="/img/px5918389-controller.png"
-              width="831"
-              height="1100"
-              alt="A controller in a rust sweater holds a tablet in the office, beside a trip record showing its GL code, amount and policy status."
+              src="/img/document/home-finance-gl-code-1.jpg"
+              width="626"
+              height="417"
+              alt="A finance professional reviews charts at her computer."
             />
           </picture>
           <div className="compose__card">

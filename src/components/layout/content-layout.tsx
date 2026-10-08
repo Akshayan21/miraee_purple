@@ -1,3 +1,4 @@
+import { SectionProgress } from '@/components/motion/section-progress'
 import type { ComponentProps } from 'react'
 import { cn } from '@/lib/utils'
 import styles from './content-layout.module.css'
@@ -13,7 +14,7 @@ type SectionProps = ComponentProps<'section'> & {
 }
 
 /** Brand surfaces are owned by each section, including inherited text and control colors. */
-export function Section({ className, tone, accent = false, ...props }: SectionProps) {
+export function Section({ className, tone, accent = false, children, ...props }: SectionProps) {
   const hasTone = /(?:^|\s)mr-(?:paper|plum|night|dark)(?:\s|$)/.test(className ?? '')
   const surface = tone ?? (hasTone ? undefined : 'lavender')
   return (
@@ -27,7 +28,10 @@ export function Section({ className, tone, accent = false, ...props }: SectionPr
         accent && styles.accent,
       )}
       {...props}
-    />
+    >
+      {accent && <SectionProgress />}
+      {children}
+    </section>
   )
 }
 

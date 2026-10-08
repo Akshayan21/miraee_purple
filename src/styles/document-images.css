@@ -1,0 +1,69 @@
+/* Framing for the photographs supplied in Miraee Master Images. */
+.document-portrait {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  margin-inline: auto;
+  border-radius: var(--mr-r-xl);
+}
+
+.document-composition.compose {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  min-height: 0;
+  padding-block: 24px;
+}
+
+.document-composition.compose > picture {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--mr-r-xl);
+}
+
+.document-composition.compose .compose__person {
+  position: relative;
+  inset: auto;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.document-composition.compose .compose__card {
+  position: relative;
+  inset: auto;
+  align-self: flex-end;
+  margin: -32px 16px 0;
+  width: min(85%, 380px);
+  max-width: 100%;
+  z-index: 1;
+}
+
+.document-composition.compose .hero-cap {
+  position: static;
+  margin-top: 16px;
+}
+
+.document-band {
+  margin: 48px 0 0;
+}
+
+.document-band img {
+  display: block;
+  width: 100%;
+  height: clamp(180px, 25vw, 360px);
+  object-fit: cover;
+}
+
+.lf-hero__visual--frame .lf-hero__person {
+  position: static;
+  inset: auto;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
