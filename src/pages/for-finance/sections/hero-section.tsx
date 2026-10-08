@@ -36,13 +36,13 @@ export function HeroSection() {
           style={{ margin: '0' }}
         >
           <picture>
-            <source srcSet="/img/document/for-finance-hero-1.webp" type="image/webp" />
+            <source srcSet="/img/document/for-finance-hero-report.webp" type="image/webp" />
             <img
               className="compose__person"
-              src="/img/document/for-finance-hero-1.jpg"
-              width="1626"
-              height="2046"
-              alt="A smiling finance professional in a white blouse."
+              src="/img/document/for-finance-hero-report.jpg"
+              width="1480"
+              height="986"
+              alt="Two finance professionals review a report together in an office."
               fetchpriority="high"
             />
           </picture>
