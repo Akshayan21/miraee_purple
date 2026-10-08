@@ -37,16 +37,7 @@ export function HeroSection() {
                 alt="Colleagues plan together around a table."
                 fetchpriority="high"
               />
-            </picture>{' '}
-            <svg
-              className="mr-line"
-              viewBox="0 0 1536 1024"
-              preserveAspectRatio="none"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path d="M-12 330 C 30 306 70 250 124 244 C 152 241 166 250 176 262 L 186 274 L 212 238"></path>
-            </svg>
+            </picture>
           </div>
         </figure>
       </Container>

@@ -1,3 +1,4 @@
+import styles from './hero-section.module.css'
 import { VisualComposition } from '@/components/sections/product-preview'
 import { Section, Container } from '@/components/layout/content-layout'
 import { ProductPhone, ProductRow } from '@/components/sections/product-preview'
@@ -8,7 +9,7 @@ import { DialogLink } from '@/components/forms/form-dialogs-context'
 export function HeroSection() {
   return (
     <Section className="core-hero section-bleed" aria-labelledby="hero-h">
-      <Container className="mr-container split">
+      <Container className={`mr-container split ${styles.grid}`}>
         <div className="split__copy">
           <h1 className="mr-h1" id="hero-h">
             How Miraee works, from booking to month-end
@@ -30,7 +31,10 @@ export function HeroSection() {
             </Button>
           </div>
         </div>
-        <VisualComposition className="split__visual compose document-composition compose--how" style={{ margin: '0' }}>
+        <VisualComposition
+          className={`split__visual compose document-composition compose--how ${styles.visual}`}
+          style={{ margin: '0' }}
+        >
           <picture>
             <source srcSet="/img/document/how-it-works-hero-1.webp" type="image/webp" />
             <img
@@ -42,7 +46,10 @@ export function HeroSection() {
               fetchpriority="high"
             />
           </picture>
-          <ProductPhone className="compose__card phone phone--lg" aria-hidden="true">
+          <ProductPhone
+            className={`compose__card phone phone--lg ${styles.card}`}
+            aria-hidden="true"
+          >
             <div className="phone__screen mr-plum">
               <div className="phone__bar">
                 <span className="mr-fig">9:41</span>

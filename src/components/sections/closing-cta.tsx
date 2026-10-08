@@ -15,7 +15,13 @@ type ClosingCtaProps = {
 }
 
 /** Plum closing band: headline, copy, buttons, and the Brooklyn Bridge photo with the Line across it. */
-export function ClosingCta({ title, children, secondary, photo, lazyPhoto = true }: ClosingCtaProps) {
+export function ClosingCta({
+  title,
+  children,
+  secondary,
+  photo,
+  lazyPhoto = true,
+}: ClosingCtaProps) {
   return (
     <Section className="mr-plum closing" aria-labelledby="close-h">
       <Container className="mr-container">
@@ -31,21 +37,12 @@ export function ClosingCta({ title, children, secondary, photo, lazyPhoto = true
       </Container>
       <figure className="closing__photo" style={{ margin: '64px 0 0' }}>
         <ResponsiveImage
-          src={photo?.src ?? "/img/px7823010-brooklyn-bridge.jpg"}
+          src={photo?.src ?? '/img/px7823010-brooklyn-bridge.jpg'}
           width={photo?.width ?? 1196}
           height={photo?.height ?? 540}
-          alt={photo?.alt ?? "The Brooklyn Bridge and the Manhattan skyline at sunset."}
+          alt={photo?.alt ?? 'The Brooklyn Bridge and the Manhattan skyline at sunset.'}
           {...(lazyPhoto ? { loading: 'lazy', decoding: 'async' } : {})}
-        />{' '}
-        <svg
-          className="mr-line"
-          viewBox="0 0 1440 300"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <path d="M-12 296 C 220 292 480 272 610 236 C 660 222 690 196 704 160"></path>
-        </svg>
+        />
       </figure>
     </Section>
   )

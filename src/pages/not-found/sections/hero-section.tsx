@@ -33,16 +33,6 @@ export function HeroSection() {
             </Button>
           </li>
         </ul>
-        <div className="nf__route" aria-hidden="true">
-          <svg
-            className="mr-line"
-            viewBox="0 0 1280 140"
-            preserveAspectRatio="none"
-            focusable="false"
-          >
-            <path d="M-80 120 C 180 118 420 96 560 70 C 640 55 690 40 720 22"></path>
-          </svg>
-        </div>
       </Container>
     </Section>
   )
