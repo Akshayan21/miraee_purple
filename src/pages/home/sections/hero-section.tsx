@@ -86,9 +86,9 @@ export function HeroSection() {
           <div className={styles.photoWrap} aria-hidden="true">
             <img
               data-hero-photo
-              src="/img/document/home-hero-1.jpg"
-              width="626"
-              height="418"
+              src="/img/hero-traveler.jpg"
+              width="687"
+              height="1031"
               alt=""
               fetchpriority="high"
               className={styles.photo}

@@ -46,17 +46,17 @@ export function SpendReviewSection() {
           </div>
         </div>
         <figure
-          className="split__visual split__visual--wide compose compose--spend"
+          className="split__visual split__visual--wide compose document-composition compose--spend"
           style={{ margin: '0' }}
         >
           <picture>
-            <source srcSet="/img/document/home-spend-review-1.webp" type="image/webp" />{' '}
+            <source srcSet="/img/document/home-hero-2.webp" type="image/webp" />{' '}
             <img
               className="compose__person"
-              src="/img/document/home-spend-review-1.jpg"
-              width="1364"
-              height="2046"
-              alt="A smiling finance professional in a red sweater."
+              src="/img/document/home-hero-2.jpg"
+              width="626"
+              height="417"
+              alt="A business traveler in a tan coat speaks on her phone outside a modern building."
             />
           </picture>
           <ProductCard className="compose__card mr-ledger-wrap card-shadow">
