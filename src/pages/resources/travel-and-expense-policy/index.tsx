@@ -1,5 +1,6 @@
 import { Seo } from '@/components/common/seo'
-import { StaticHtml } from '@/components/common/static-html'
+import { ResourceArticle } from '@/components/common/resource-article'
+import { faq } from './faq'
 import content from './content.html?raw'
 import { meta } from './meta'
 
@@ -8,7 +9,7 @@ export function Component() {
   return (
     <>
       <Seo meta={meta} />
-      <StaticHtml html={content} />
+      <ResourceArticle html={content} faq={faq} />
     </>
   )
 }

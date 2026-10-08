@@ -1,0 +1,20 @@
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  align-items: center;
+  gap: 32px;
+}
+.row :global(.stat-line),
+.row :global(.mr-h2) {
+  margin: 0;
+  max-width: none;
+}
+.row :global(.mr-h2) {
+  font-size: clamp(24px, 2.2vw, 32px);
+}
+@media (max-width: 767px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+}

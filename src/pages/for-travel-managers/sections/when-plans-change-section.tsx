@@ -1,3 +1,4 @@
+import styles from './when-plans-change-section.module.css'
 import { Section, Container } from '@/components/layout/content-layout'
 import { ProductPhone } from '@/components/sections/product-preview'
 import { Link } from 'react-router-dom'
@@ -31,7 +32,7 @@ export function WhenPlansChangeSection() {
           role="img"
           aria-label="Phone alert about a delayed flight with new options."
         >
-          <ProductPhone className="phone phone--alert" aria-hidden="true">
+          <ProductPhone className={`phone phone--alert ${styles.preview}`} aria-hidden="true">
             <div className="phone__screen mr-plum">
               <div className="phone__bar">
                 <span className="mr-fig">5:53</span>

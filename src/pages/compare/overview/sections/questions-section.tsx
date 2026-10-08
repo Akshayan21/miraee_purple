@@ -5,7 +5,7 @@ import { QUESTION_GROUPS } from '../data'
 export function QuestionsSection() {
   return (
     <Section
-      className="mr-paper py-20 md:py-24"
+      className="mr-paper mr-section"
       aria-labelledby="twelve-questions-to-ask-every-vendor-including-us"
     >
       <Container className="mr-container">

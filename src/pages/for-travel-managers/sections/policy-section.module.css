@@ -1,0 +1,4 @@
+.preview:global(.phone.phone--lg) {
+  width: 100%;
+  max-width: 400px;
+}

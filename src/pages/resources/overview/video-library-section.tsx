@@ -5,7 +5,7 @@ import { VIDEO_GROUPS } from './videos'
 
 export function VideoLibrarySection() {
   return (
-    <Section tone="white" className="py-20 md:py-24" aria-labelledby="video-library">
+    <Section tone="white" className="mr-section" aria-labelledby="video-library">
       <Container>
         <div className="grid gap-4 lg:grid-cols-12 lg:items-end">
           <h2 className="mr-h2 scroll-mt-32 lg:col-span-6" id="video-library">

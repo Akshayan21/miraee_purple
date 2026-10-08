@@ -16,14 +16,18 @@
 .split {
   min-width: 0;
 }
+/* Outer section rhythm is independent of card and form spacing. */
+.section:is(:global(.mr-section), :global(.step-sec), :global(.alert-band), :global(.plum-band)) {
+  padding-block: 64px;
+}
 @media (max-width: 1023px) {
-  .section:global(.mr-section) {
-    padding-block: 64px;
+  .section:is(:global(.mr-section), :global(.step-sec), :global(.alert-band), :global(.plum-band)) {
+    padding-block: 48px;
   }
 }
 @media (max-width: 639px) {
-  .section:global(.mr-section) {
-    padding-block: 48px;
+  .section:is(:global(.mr-section), :global(.step-sec), :global(.alert-band), :global(.plum-band)) {
+    padding-block: 32px;
   }
 }
 @media (max-width: 374px) {
@@ -37,4 +41,13 @@
 }
 .accent {
   position: relative;
+}
+
+.section.compact {
+  padding-block: 40px;
+}
+@media (max-width: 639px) {
+  .section.compact {
+    padding-block: 24px;
+  }
 }

@@ -2,7 +2,7 @@ import { Section, Container } from '@/components/layout/content-layout'
 import { ProductCard, LedgerTable } from '@/components/sections/product-preview'
 export function SetItOnceSection() {
   return (
-    <Section className="step-sec hr-top" aria-labelledby="once-h">
+    <Section spacing="compact" className="step-sec hr-top" aria-labelledby="once-h">
       <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="once-h">

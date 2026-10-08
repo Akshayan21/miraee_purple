@@ -6,7 +6,7 @@ import { COMPARISONS } from '../data'
 
 export function ComparisonsSection() {
   return (
-    <Section className="mr-paper py-20 md:py-24" aria-labelledby="side-by-side-comparisons">
+    <Section className="mr-paper mr-section" aria-labelledby="side-by-side-comparisons">
       <Container className="mr-container">
         <h2 className="mr-h2 scroll-mt-32" id="side-by-side-comparisons">
           Side-by-side comparisons

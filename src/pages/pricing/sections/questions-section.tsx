@@ -3,6 +3,6 @@ import { faq } from '../faq'
 
 export function QuestionsSection() {
   return (
-    <Faq heading="Questions" items={faq} listClassName="qa" sectionClassName="mr-section hr-top" />
+    <Faq heading="Questions" items={faq} sectionClassName="mr-section hr-top" />
   )
 }

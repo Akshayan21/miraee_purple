@@ -1,10 +1,11 @@
+import styles from './approve-section.module.css'
 import { Section, Container } from '@/components/layout/content-layout'
 import { ProductCard } from '@/components/sections/product-preview'
 import { Badge } from '@/components/ui/badge'
 
 export function ApproveSection() {
   return (
-    <Section className="step-sec" aria-labelledby="s3-h">
+    <Section spacing="compact" className="step-sec" aria-labelledby="s3-h">
       <Container className="mr-container split">
         <div className="split__copy">
           <p className="mr-eyebrow">Step 3</p>
@@ -22,7 +23,7 @@ export function ApproveSection() {
             role="img"
             aria-label="An approval request for a hotel above the policy limit."
           >
-            <ProductCard className="mock approval" aria-hidden="true">
+            <ProductCard className={`mock approval ${styles.card}`} aria-hidden="true">
               <div className="mock__head">
                 <div>
                   <p className="mock__title">Sales kickoff, Denver</p>

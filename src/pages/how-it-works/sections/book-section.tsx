@@ -1,10 +1,11 @@
+import styles from './book-section.module.css'
 import { Section, Container } from '@/components/layout/content-layout'
 import { ProductPhone, ProductRow } from '@/components/sections/product-preview'
 import { Badge } from '@/components/ui/badge'
 
 export function BookSection() {
   return (
-    <Section className="step-sec" aria-labelledby="s2-h">
+    <Section spacing="compact" className="step-sec" aria-labelledby="s2-h">
       <Container className="mr-container split split--rev">
         <div className="split__copy">
           <p className="mr-eyebrow">Step 2</p>
@@ -29,7 +30,7 @@ export function BookSection() {
             role="img"
             aria-label="Flight results from Austin to Chicago, each marked in policy or out of policy."
           >
-            <ProductPhone className="phone phone--lg" aria-hidden="true">
+            <ProductPhone className={`phone phone--lg ${styles.preview}`} aria-hidden="true">
               <div className="phone__screen mr-plum">
                 <div className="phone__bar">
                   <span className="mr-fig">9:41</span>

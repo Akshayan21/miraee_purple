@@ -8,7 +8,7 @@
 .lf-hero { position: relative; padding: 0; overflow: hidden; }
 .lf-hero .crumbs { padding-top: 20px; }
 .lf-hero .split { align-items: end; }
-.lf-hero__copy { grid-column: 1 / span 6; align-self: center; padding: 40px 0 88px; }
+.lf-hero__copy { grid-column: 1 / span 6; align-self: center; padding: 32px 0 40px; }
 .lf-hero .mr-eyebrow { margin-bottom: var(--mr-s-3); }
 .lf-hero .mr-h1 { margin-bottom: var(--mr-s-5); max-width: 15em; text-wrap: balance; }
 .lf-hero .mr-lead { margin-bottom: var(--mr-s-6); max-width: 36em; }
@@ -20,9 +20,9 @@
 .lf-cut--perk .lf-hero__person { max-width: 300px; margin-right: 40px; }
 .lf-cut--ramp .lf-hero__person, .lf-cut--te .lf-hero__person { max-width: 400px; }
 .lf-cut--hub .lf-hero__person { max-width: 540px; }
-.lf-hero__visual--frame { align-self: center; margin: 32px 0 72px !important; aspect-ratio: 4 / 3; border-radius: var(--mr-r-xl); overflow: hidden; }
+.lf-hero__visual--frame { align-self: center; margin: 16px 0 32px !important; aspect-ratio: 4 / 3; border-radius: var(--mr-r-xl); overflow: hidden; }
 .lf-hero__visual--frame img { width: 100%; height: 100%; object-fit: cover; }
-.lf-hero__visual--doc { align-self: center; margin: 32px 0 72px !important; display: flex; justify-content: center; }
+.lf-hero__visual--doc { align-self: center; margin: 16px 0 32px !important; display: flex; justify-content: center; }
 @media (max-width: 1023px) {
   .lf-hero__copy, .lf-hero__visual { grid-column: 1 / -1; }
   .lf-hero__copy { padding: 16px 0 16px; }
@@ -30,7 +30,7 @@
   .lf-hero__person { max-width: 360px; }
   .lf-cut--perk .lf-hero__person { max-width: 240px; margin-right: 0; }
   .lf-cut--hub .lf-hero__person { max-width: 420px; }
-  .lf-hero__visual--frame, .lf-hero__visual--doc { margin: 8px 0 48px !important; }
+  .lf-hero__visual--frame, .lf-hero__visual--doc { margin: 8px 0 24px !important; }
 }
 @media (max-width: 639px) {
   .lf-hero .mr-btn-row { flex-direction: column; align-items: stretch; }
@@ -52,13 +52,13 @@
   .lf-toc { display: none; }
   .lf-prose { grid-column: 1 / -1; }
 }
-.lf-article { padding-top: var(--mr-s-8); }
+.lf-article { padding-top: 40px; }
 
 /* Prose */
 .lf-prose > * { max-width: 720px; }
 .lf-prose > .compare-wrap, .lf-prose > .lf-view, .lf-prose > .lf-product, .lf-prose > .lf-callout,
 .lf-prose > .lf-cards, .lf-prose > .lf-feature, .lf-prose > .lf-faq, .lf-prose > .tpl-preview { max-width: none; }
-.lf-prose h2.mr-h2 { font-size: var(--mr-fs-h3); line-height: 1.2; margin: var(--mr-s-8) 0 var(--mr-s-4); scroll-margin-top: 24px; }
+.lf-prose h2.mr-h2 { font-size: var(--mr-fs-h3); line-height: 1.2; margin: 40px 0 var(--mr-s-4); scroll-margin-top: 24px; }
 .lf-prose > h2.mr-h2:first-child { margin-top: 0; }
 .lf-hubbody .lf-prose h2.mr-h2 { font-size: var(--mr-fs-h2); line-height: var(--mr-lh-h2); }
 .lf-prose h3.mr-h3 { font-size: var(--mr-fs-card-title); margin: var(--mr-s-6) 0 var(--mr-s-2); }
@@ -126,7 +126,7 @@
 .lf-prose li.task::before { content: ""; position: absolute; left: 2px; top: 14px; width: 18px; height: 18px; border: 1.5px solid var(--mr-paper-edge); border-radius: 4px; background: var(--mr-white); }
 
 /* FAQ inside prose */
-.lf-faq { margin-top: var(--mr-s-8); }
+.lf-faq { margin-top: 40px; }
 .lf-faq .qa { grid-template-columns: 1fr; gap: var(--mr-s-5); margin-top: var(--mr-s-5); }
 .lf-faq .qa > div { border-top: var(--mr-bw-hair) solid var(--rule); padding-top: var(--mr-s-4); }
 .lf-faq .qa h3 { font-size: var(--mr-fs-card-title); }

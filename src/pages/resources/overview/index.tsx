@@ -3,6 +3,7 @@ import { StaticHtml } from '@/components/common/static-html'
 import content from './content.html?raw'
 import { meta } from './meta'
 import { VideoLibrarySection } from './video-library-section'
+import styles from './overview.module.css'
 
 /** The video library sits between the hero and the guides. */
 const SPLIT_AT = '<div class="mr-section lf-hubbody">'
@@ -15,7 +16,7 @@ export function Component() {
   return (
     <>
       <Seo meta={meta} />
-      <main id="main">
+      <main id="main" className={styles.page}>
         <StaticHtml tag="div" html={heroHtml} />
         <VideoLibrarySection />
         <StaticHtml tag="div" html={restHtml} />

@@ -1,3 +1,4 @@
+import styles from './closing-cta.module.css'
 import { Section, Container } from '@/components/layout/content-layout'
 import type { ReactNode } from 'react'
 
@@ -35,7 +36,7 @@ export function ClosingCta({
           </div>
         </div>
       </Container>
-      <figure className="closing__photo" style={{ margin: '64px 0 0' }}>
+      <figure className={`closing__photo ${styles.photo}`}>
         <ResponsiveImage
           src={photo?.src ?? '/img/px7823010-brooklyn-bridge.jpg'}
           width={photo?.width ?? 1196}

@@ -10,17 +10,26 @@ export function Container({ className, ...props }: ComponentProps<'div'>) {
 
 type SectionProps = ComponentProps<'section'> & {
   tone?: 'lavender' | 'plum' | 'white'
+  spacing?: 'standard' | 'compact'
   accent?: boolean
 }
 
 /** Brand surfaces are owned by each section, including inherited text and control colors. */
-export function Section({ className, tone, accent = false, children, ...props }: SectionProps) {
+export function Section({
+  className,
+  tone,
+  spacing = 'standard',
+  accent = false,
+  children,
+  ...props
+}: SectionProps) {
   const hasTone = /(?:^|\s)mr-(?:paper|plum|night|dark)(?:\s|$)/.test(className ?? '')
   const surface = tone ?? (hasTone ? undefined : 'lavender')
   return (
     <section
       className={cn(
         styles.section,
+        spacing === 'compact' && styles.compact,
         className,
         surface === 'lavender' && 'mr-paper',
         surface === 'plum' && 'mr-plum',

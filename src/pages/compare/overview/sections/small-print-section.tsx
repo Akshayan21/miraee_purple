@@ -4,11 +4,14 @@ import { SmallPrint } from '@/components/sections/small-print'
 export function SmallPrintSection() {
   return (
     <SmallPrint>
-      Navan, SAP Concur, Perk, TravelPerk, Ramp, Itilite and Engine are trademarks of their owners.
-      Competitor facts on this page come from each vendor's own website, checked September 30, 2026,
-      and are re-checked every 30 days. Miraee facts describe the live product. If you see a fact
-      that has changed, tell us at <Link to="/talk-to-sales">Talk to sales</Link> and we will update
-      the page.
+      Navan, SAP Concur, Perk, TravelPerk, Ramp, ITILITE, and Engine are trademarks of their
+      respective owners. Competitor information is sourced from publicly available vendor
+      websites and was last reviewed on September 30, 2026. This information is reviewed and
+      updated every 30 days. Miraee information reflects the current product offering.
+      <br />
+      <br />
+      If you notice an outdated or inaccurate detail, please let us know via{' '}
+      <Link to="/talk-to-sales">Talk to Sales</Link>, and we’ll review and update it.
     </SmallPrint>
   )
 }

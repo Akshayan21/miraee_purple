@@ -1,3 +1,4 @@
+import styles from './hero-section.module.css'
 import { VisualComposition } from '@/components/sections/product-preview'
 import { Section, Container } from '@/components/layout/content-layout'
 import { ProductCard, LedgerTable } from '@/components/sections/product-preview'
@@ -31,7 +32,7 @@ export function HeroSection() {
           </div>
         </div>
         <VisualComposition
-          className="split__visual compose document-composition compose--review"
+          className={`split__visual compose document-composition compose--review ${styles.visual}`}
           style={{ margin: '0' }}
         >
           <picture>
@@ -45,7 +46,7 @@ export function HeroSection() {
               fetchpriority="high"
             />
           </picture>
-          <ProductCard className="compose__card mr-ledger-wrap card-shadow">
+          <ProductCard className={`compose__card mr-ledger-wrap card-shadow ${styles.card}`}>
             <div className="mr-ledger-wrap__head">
               <p className="mr-ledger-wrap__title">Spend review findings</p>
               <span className="mr-label">Last year</span>
