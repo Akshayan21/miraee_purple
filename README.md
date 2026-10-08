@@ -42,6 +42,8 @@ Pages with an FAQ keep one list in `faq.ts`. It feeds both the visible questions
 
 Each page folder is self-contained: `index.tsx` composes the sections and is what the router lazy-loads; every section (`hero-section.tsx`, `faq-section.tsx`, ...) is its own component file.
 
+Resource pages keep their authored content in `content.tsx`. The hub composes `ResourceHero`, the video library and `ResourceGuides`; articles pass `ArticleContent` and `RelatedContent` to `ResourceArticle`, which places the shared FAQ between them. Buttons, internal links and dialog triggers use the shared React components directly.
+
 ## Styling
 
 - **Tailwind v4** provides theme and utilities. Preflight is deliberately not imported, because the design system was written against browser defaults and a reset would shift every page.
