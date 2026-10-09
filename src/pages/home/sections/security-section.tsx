@@ -18,15 +18,15 @@ export function SecuritySection() {
             <p className="mr-body">Ask us for the security pack at any stage of your review.</p>
             <ul className="icon-row" style={{ flexWrap: 'wrap' }}>
               <li>
-                <img src="/img/icons/check.svg" alt="" width="24" height="24" />
+                <img src="/img/icons/check-orange.svg" alt="" width="24" height="24" />
                 Approvals
               </li>
               <li>
-                <img src="/img/icons/file-text.svg" alt="" width="24" height="24" />
+                <img src="/img/icons/file-text-orange.svg" alt="" width="24" height="24" />
                 Audit log
               </li>
               <li>
-                <img src="/img/icons/shield-check.svg" alt="" width="24" height="24" />
+                <img src="/img/icons/shield-check-orange.svg" alt="" width="24" height="24" />
                 Security pack
               </li>
             </ul>

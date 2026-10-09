@@ -1,3 +1,5 @@
+import { CtaVideoBand } from '@/components/sections/cta-video-band'
+import { SPEND_REVIEW_ACTION } from '@/content/actions'
 import { Seo } from '@/components/common/seo'
 import { meta } from './meta'
 import { BreadcrumbsSection } from './sections/breadcrumbs-section'
@@ -23,6 +25,12 @@ export function Component() {
         <HowItsMeasuredSection />
         <OptionalAlwaysSection />
         <QuestionsSection />
+        <CtaVideoBand
+          video="finance"
+          title="Check our work on last year's travel."
+          body="Send one booking report. The review is optional, and you can sign up without one."
+          secondary={SPEND_REVIEW_ACTION}
+        />
       </main>
     </>
   )

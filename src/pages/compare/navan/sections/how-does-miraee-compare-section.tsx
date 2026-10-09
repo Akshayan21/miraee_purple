@@ -140,12 +140,7 @@ export function HowDoesMiraeeCompareSection() {
           </p>
           <p>
             That matters because most programs still work from several reports. Only 12% of travel
-            programs have their data in one place.
-            <sup>
-              <a href="#src-1" rel="noopener" aria-label="Source 1">
-                1
-              </a>
-            </sup>{' '}
+            programs have their data in one place.{' '}
             See <Link to="/finance">the finance view</Link> for the screens.
           </p>
           <figure className="lf-view mr-paper">

@@ -1,23 +1,14 @@
-import { Section, Container } from '@/components/layout/content-layout'
-import { CtaActions, type SecondaryAction } from '@/components/sections/cta-actions'
+import type { SecondaryAction } from '@/components/sections/cta-actions'
+import { CtaVideoBand, type CtaVideo } from '@/components/sections/cta-video-band'
 
-type CenterCtaProps = {
+type Props = {
   title: string
   body: string
   secondary?: SecondaryAction
+  video?: CtaVideo
 }
 
-/** Centred call to action on a paper ground, with the Line's underline on the primary button. */
-export function CenterCta({ title, body, secondary }: CenterCtaProps) {
-  return (
-    <Section className="mr-paper mr-section" aria-labelledby="close-h">
-      <Container className="mr-container center-cta">
-        <h2 className="mr-h2" id="close-h">
-          {title}
-        </h2>
-        <p className="mr-body">{body}</p>
-        <CtaActions secondary={secondary} underline style={{ marginTop: '32px' }} />
-      </Container>
-    </Section>
-  )
+/** Closing call to action with a looping video behind it. */
+export function CenterCta({ title, body, secondary, video }: Props) {
+  return <CtaVideoBand title={title} body={body} secondary={secondary} video={video} />
 }

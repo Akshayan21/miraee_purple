@@ -9,20 +9,10 @@ export function CoverageSection() {
         <div className="coverage-facts">
           <p>
             The Mondee travel marketplace connects to more than 500 airlines.
-            <sup>
-              <a href="#src-1" aria-label="Source 1">
-                1
-              </a>
-            </sup>
           </p>
           <p>
             It also offers more than 1 million hotels and vacation rentals across the Mondee
             network.
-            <sup>
-              <a href="#src-2" aria-label="Source 2">
-                2
-              </a>
-            </sup>
           </p>
         </div>
         <ul className="places">

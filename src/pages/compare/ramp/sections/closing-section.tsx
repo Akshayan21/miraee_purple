@@ -4,6 +4,7 @@ import { SPEND_REVIEW_ACTION } from '@/content/actions'
 export function ClosingSection() {
   return (
     <ClosingCta
+      video="compare"
       title="Start free, and check our work on your own data."
       secondary={SPEND_REVIEW_ACTION}
     >

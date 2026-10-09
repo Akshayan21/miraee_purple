@@ -14,7 +14,8 @@ export function WhenPlansChangeSection() {
             When plans change, your traveler gets new options to confirm.
           </h2>
           <p className="stat-line" style={{ margin: '0 0 24px' }}>
-            64% of travel managers say changes and cancellations are hard in their booking tool.
+            <span className="stat-line__fig">64%</span> of travel managers say changes and
+            cancellations are hard in their booking tool.
           </p>
           <p className="mr-body">
             With Miraee, a delayed or canceled flight brings an alert and new options. The traveler

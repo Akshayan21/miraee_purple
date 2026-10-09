@@ -19,12 +19,8 @@ export function ForFinanceSection() {
             <li>Keep the corporate cards you already use.</li>
           </ul>
           <p className="stat-line">
-            Only 12% of travel programs have their data in one place.
-            <sup>
-              <a href="#src-3" aria-label="Source 3">
-                3
-              </a>
-            </sup>
+            <span className="stat-line__fig">12%</span> of travel programs have their data in one
+            place.
           </p>
           <p className="link-row">
             <Button asChild variant="tertiary">
