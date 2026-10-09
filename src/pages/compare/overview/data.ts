@@ -17,21 +17,21 @@ export const CRITERIA: Criterion[] = [
     icon: Coins,
     title: 'Cost to start at your size',
     summary: 'What sign-up and onboarding cost at your headcount',
-    body: "Many tools have a free plan, and the details differ. Some free plans stop at a headcount. Some charge a fee on each booking. Some move to a quote as you grow. Check the vendor's own pricing page, note the date, and ask what changes when your headcount grows.",
+    body: 'Free plans vary. Some cap headcount, some charge per booking. Ask what changes as you grow.',
   },
   {
     id: 'policy',
     icon: ShieldCheck,
     title: 'Policy on every booking',
     summary: 'Whether your policy runs on every search',
-    body: 'A travel policy works when travelers see it in the options, and approvers only hear about the exceptions. Ask to see a search where one option is out of policy, and follow it through to the approver.',
+    body: 'Travelers should see policy in their options. Approvers should only see exceptions. Ask for a demo of one out-of-policy booking.',
   },
   {
     id: 'finance',
     icon: Receipt,
     title: 'What finance sees',
-    summary: 'Budget and GL code on every trip',
-    body: 'Controllers want each trip with its budget and GL code, receipts matched to card charges, and an audit log of who booked what, and when. Ask to see a month of trips in the finance view, not a slide.',
+    summary: 'Budget and GL codes on every trip',
+    body: 'Budget and GL code on every trip, receipts matched to card charges, and a full audit log. Ask to see a real month, not a slide.',
     stat: {
       text: 'Only 12% of travel programs have their data in one place.',
     },
@@ -40,12 +40,28 @@ export const CRITERIA: Criterion[] = [
     id: 'changes',
     icon: RefreshCw,
     title: 'When plans change',
-    summary: 'What the traveler sees when a flight is canceled',
-    body: 'A delayed or canceled flight is the moment travelers judge the tool. Ask what the traveler sees first, who confirms the new option, and where the change is recorded.',
+    summary: 'What the traveler needs when a flight is canceled',
+    body: 'This is when travelers judge the tool. Ask what they see first and who confirms the new option.',
     stat: {
       text: '89% of travel buyers want help rebooking when plans change.',
     },
   },
+]
+
+/** What Miraee includes, one line per topic (replaces the old "Our answers" paragraph). */
+export const INCLUSIONS: { label: string; text: string }[] = [
+  { label: 'Cost to start', text: 'Free sign-up and onboarding at any company size' },
+  { label: 'Setup', text: 'We set up your company, travel policy and people with you' },
+  { label: 'Policy', text: 'Every option is marked in or out of policy' },
+  { label: 'Approvals', text: 'Only out-of-policy bookings need approval' },
+  { label: 'Finance view', text: 'Every trip carries its budget and GL code' },
+  { label: 'Cards', text: 'You keep your existing cards' },
+  { label: 'When plans change', text: 'Travelers get an alert and new options to confirm' },
+  {
+    label: 'Proof',
+    text: "A spend review of last year's travel, with savings as a dollar range and the method shown",
+  },
+  { label: 'Security', text: 'Security pack available at any stage' },
 ]
 
 export type Question = { n: number; question: string; why: string }
@@ -144,18 +160,18 @@ export type Vendor = { name: string; offer: string; source: string; isUs?: boole
 export const VENDORS: Vendor[] = [
   {
     name: 'Navan',
-    offer: 'Business plan free for companies up to 300 employees; Enterprise priced by quote',
+    offer: 'Free Business plan for up to 300 employees. Enterprise by quote.',
     source: 'navan.com/pricing',
   },
-  { name: 'SAP Concur', offer: 'Pricing on request', source: 'concur.com' },
+  { name: 'SAP Concur', offer: 'Pricing on request.', source: 'concur.com' },
   {
     name: 'Perk (formerly TravelPerk)',
-    offer: 'Travel Starter at $0 a month plus 5% per booking, minimum $2 and maximum $30',
+    offer: '$0 a month plus 5% per booking, $2 minimum, $30 maximum.',
     source: 'perk.com/pricing',
   },
   {
     name: 'Miraee',
-    offer: 'Sign-up and onboarding free at any company size',
+    offer: 'Free sign-up and onboarding at any company size.',
     source: 'miraee.ai/pricing',
     isUs: true,
   },
@@ -167,24 +183,22 @@ export const COMPARISONS: Comparison[] = [
   {
     to: '/compare/navan',
     title: 'Navan alternatives',
-    description:
-      'Miraee vs Navan on cost to start, policy controls, the finance view and changes. Plus other Navan alternatives.',
+    description: 'Cost to start, policy controls, finance view and changes.',
   },
   {
     to: '/compare/sap-concur',
     title: 'SAP Concur alternatives',
-    description: 'Miraee vs SAP Concur on onboarding, travel policy, approvals and month-end.',
+    description: 'Onboarding, travel policy, approvals and month-end.',
   },
   {
     to: '/compare/perk',
-    title: 'TravelPerk alternatives',
-    description:
-      'Miraee vs Perk, formerly TravelPerk, on cost to start, the finance view and how changes are confirmed.',
+    title: 'Perk (formerly TravelPerk) alternatives',
+    description: 'Cost to start, finance view and how changes are confirmed.',
   },
   {
     to: '/compare/ramp',
     title: 'Ramp Travel with Miraee',
     description:
-      'Keep the Ramp card you use and add travel depth: policy on every booking and new options when plans change.',
+      'Keep your Ramp card. Add policy on every booking and new options when plans change.',
   },
 ]
