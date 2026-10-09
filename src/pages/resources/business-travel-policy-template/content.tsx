@@ -1,3 +1,4 @@
+import { CtaVideoBand } from '@/components/sections/cta-video-band'
 import { Link } from 'react-router-dom'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
 import { Button } from '@/components/ui/button'
@@ -695,47 +696,12 @@ export function TemplateContent() {
           </div>
         </div>
       </section>
-      <section className="mr-plum closing" aria-labelledby="close-h">
-        <div className="mr-container">
-          <div className="closing__grid">
-            <h2 className="mr-h2" id="close-h">
-              {'Put your policy on every booking.'}
-            </h2>
-            <div className="closing__side">
-              <p className="mr-body">
-                {
-                  'Miraee is business travel and expense software. Free to sign up and onboard, at any company size, and we set up your travel policy with you.'
-                }
-              </p>
-              <div className="mr-btn-row">
-                <Button asChild variant="default" size="default">
-                  <DialogLink className="mr-btn" dialog="signup" to="/sign-up">
-                    {'Sign up free'}
-                  </DialogLink>
-                </Button>
-                <Button asChild variant="tertiary" size="default">
-                  <Link className="mr-btn mr-btn--tertiary" to="/travel-managers">
-                    {'For travel managers'}
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <figure className="closing__photo" style={{ margin: '64px 0 0' }}>
-          <picture>
-            <source srcSet="/img/px7823010-brooklyn-bridge.webp" type="image/webp" />
-            <img
-              src="/img/px7823010-brooklyn-bridge.jpg"
-              width="1196"
-              height="540"
-              alt="The Brooklyn Bridge and the Manhattan skyline at sunset."
-              loading="lazy"
-              decoding="async"
-            />
-          </picture>
-        </figure>
-      </section>
+      <CtaVideoBand
+        video="compare"
+        title="Put your policy on every booking."
+        body="Miraee is business travel and expense software. Free to sign up and onboard, at any company size, and we set up your travel policy with you."
+        secondary={{ label: 'For travel managers', variant: 'tertiary', to: '/travel-managers' }}
+      />
     </>
   )
 }

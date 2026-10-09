@@ -1,31 +1,12 @@
-import { Section, Container } from '@/components/layout/content-layout'
-import { Link } from 'react-router-dom'
-import { Button } from '@/components/ui/button'
-import { DialogLink } from '@/components/forms/form-dialogs-context'
+import { CtaVideoBand } from '@/components/sections/cta-video-band'
 
 export function ContactSection() {
   return (
-    <Section className="mr-plum plum-band" aria-labelledby="close-h">
-      <Container className="mr-container">
-        <div className="inner">
-          <h2 className="mr-h2" id="close-h">
-            Talk to us
-          </h2>
-          <p className="mr-body">
-            Questions about Miraee, the spend review or security? Our team will answer.
-          </p>
-          <div className="mr-btn-row" style={{ marginTop: '32px' }}>
-            <Button asChild>
-              <DialogLink to="/sign-up" dialog="signup">
-                Sign up free
-              </DialogLink>
-            </Button>{' '}
-            <Button asChild variant="tertiary">
-              <Link to="/talk-to-sales">Talk to sales</Link>
-            </Button>
-          </div>
-        </div>
-      </Container>
-    </Section>
+    <CtaVideoBand
+      video="how"
+      title="Talk to us."
+      body="Questions about Miraee, the spend review or security? Our team will answer."
+      secondary={{ label: 'Talk to sales', variant: 'secondary', to: '/talk-to-sales' }}
+    />
   )
 }

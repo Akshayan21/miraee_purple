@@ -1,3 +1,5 @@
+import { CtaVideoBand } from '@/components/sections/cta-video-band'
+import { SPEND_REVIEW_ACTION } from '@/content/actions'
 import { Seo } from '@/components/common/seo'
 import { Link } from 'react-router-dom'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
@@ -41,6 +43,12 @@ export function Component() {
         <WhatFinanceGetsSection />
         <ProofFirstSection />
         <FreeStartSection />
+        <CtaVideoBand
+          video="finance"
+          title="Close the month with every trip already coded."
+          body="Free to sign up and onboard, at any company size."
+          secondary={SPEND_REVIEW_ACTION}
+        />
       </main>
     </LandingLayout>
   )

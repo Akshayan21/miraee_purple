@@ -4,7 +4,10 @@ export function TheProblemSection() {
   return (
     <Section spacing="compact" className="mr-section problem" aria-labelledby="prob-h">
       <Container className={`mr-container ${styles.row}`}>
-        <p className="stat-line">Only 12% of travel programs have their data in one place.</p>
+        <p className="stat-line">
+          <span className="stat-line__fig">12%</span> of travel programs have their data in one
+          place.
+        </p>
         <h2 className="mr-h2" id="prob-h">
           See every trip, its budget and its GL code in one place.
         </h2>

@@ -20,12 +20,8 @@ export function WhenPlansChangeSection() {
             They tap one to confirm. The change is recorded for the travel lead and finance.
           </p>
           <p className="stat-line">
-            89% of travel buyers want help rebooking when plans change.
-            <sup>
-              <a href="#src-2" aria-label="Source 2">
-                2
-              </a>
-            </sup>
+            <span className="stat-line__fig">89%</span> of travel buyers want help rebooking when
+            plans change.
           </p>
           <p className="link-row">
             <Button asChild variant="tertiary">

@@ -1,5 +1,5 @@
+import { CtaVideoBand } from '@/components/sections/cta-video-band'
 import { Link } from 'react-router-dom'
-import { DialogLink } from '@/components/forms/form-dialogs-context'
 import { Button } from '@/components/ui/button'
 
 export function ArticleContent() {
@@ -327,11 +327,6 @@ export function ArticleContent() {
               {
                 'This is harder than it sounds in many companies, because travel data sits in several places: agency reports, card statements, expense reports and hotel folios. Only 12% of travel programs have their data in one place.'
               }
-              <sup>
-                <a href="#src-1" rel="noopener" aria-label="Source 1">
-                  {'1'}
-                </a>
-              </sup>
               {
                 ' A policy that names the codes, and a tool that applies them at booking, closes most of that gap.'
               }
@@ -643,47 +638,12 @@ export function RelatedContent() {
           </ol>
         </div>
       </section>
-      <section className="mr-plum closing" aria-labelledby="close-h">
-        <div className="mr-container">
-          <div className="closing__grid">
-            <h2 className="mr-h2" id="close-h">
-              {'Put every trip in one place.'}
-            </h2>
-            <div className="closing__side">
-              <p className="mr-body">
-                {
-                  'Miraee is business travel and expense software. Free to sign up and onboard, at any company size.'
-                }
-              </p>
-              <div className="mr-btn-row">
-                <Button asChild variant="default" size="default">
-                  <DialogLink className="mr-btn" dialog="signup" to="/sign-up">
-                    {'Sign up free'}
-                  </DialogLink>
-                </Button>
-                <Button asChild variant="tertiary" size="default">
-                  <Link className="mr-btn mr-btn--tertiary" to="/how-it-works">
-                    {'See how it works'}
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <figure className="closing__photo" style={{ margin: '64px 0 0' }}>
-          <picture>
-            <source srcSet="/img/px7823010-brooklyn-bridge.webp" type="image/webp" />
-            <img
-              src="/img/px7823010-brooklyn-bridge.jpg"
-              width="1196"
-              height="540"
-              alt="The Brooklyn Bridge and the Manhattan skyline at sunset."
-              loading="lazy"
-              decoding="async"
-            />
-          </picture>
-        </figure>
-      </section>
+      <CtaVideoBand
+        video="compare"
+        title="Put every trip in one place."
+        body="Miraee is business travel and expense software. Free to sign up and onboard, at any company size."
+        secondary={{ label: 'See how it works', variant: 'tertiary', to: '/how-it-works' }}
+      />
     </>
   )
 }

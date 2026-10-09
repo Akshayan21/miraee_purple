@@ -11,11 +11,6 @@ export function SpendReviewSection() {
           <p className="context">
             Business travel spending is forecast to rise 7.2% in 2026, while the number of trips
             rises 1.3%.
-            <sup>
-              <a href="#src-1" aria-label="Source 1">
-                1
-              </a>
-            </sup>
           </p>
           <h2 className="mr-h2" id="spend-h">
             Want proof first? See last year's travel, trip by trip.
