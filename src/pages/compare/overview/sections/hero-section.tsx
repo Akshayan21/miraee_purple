@@ -18,10 +18,9 @@ export function HeroSection() {
           </h1>
           <div className="mt-6">
             <p className="mr-lead">
-              Miraee is business travel and expense software. This guide is for finance and travel
-              leads at companies of 300 to 1,500 people who are choosing a corporate travel
-              management tool: what to compare, the questions to ask every vendor, including us, and
-              dated facts on the tools buyers shortlist most.
+              For finance and travel leads at companies of 300 to 1,500 people. What to compare,
+              what to ask every vendor (us included), and dated facts on the tools buyers shortlist
+              most.
             </p>
           </div>
           <div className={`mr-btn-row ${styles.actions}`}>
@@ -31,14 +30,11 @@ export function HeroSection() {
               </DialogLink>
             </Button>
             <Button asChild variant="tertiary">
-              <a href="#twelve-questions-to-ask-every-vendor-including-us">
-                See the twelve questions
-              </a>
+              <a href="#tab-questions">See the twelve questions</a>
             </Button>
           </div>
           <p className="mt-6 mb-0 text-[length:var(--mr-fs-small)] text-content-2">
-            Last updated <time dateTime="2026-09-30">September 30, 2026</time> · Vendor facts
-            checked September 30, 2026
+            Vendor facts checked <time dateTime="2026-09-30">September 30, 2026</time>
           </p>
         </div>
 
@@ -51,7 +47,7 @@ export function HeroSection() {
               {CRITERIA.map((criterion) => (
                 <li key={criterion.id} className="border-t border-rule first:border-t-0">
                   <a
-                    href={`#criterion-${criterion.id}`}
+                    href="#tab-compare"
                     className="group flex items-center gap-4 py-4 no-underline"
                   >
                     <span className="grid size-11 flex-none place-content-center rounded-md bg-twilight text-orange-light">
@@ -69,7 +65,7 @@ export function HeroSection() {
             </ul>
             <p className="m-0 mt-5 flex items-center gap-2 border-t border-rule pt-5 text-[length:var(--mr-fs-small)] text-mist">
               <Check className="size-4 text-orange-light" aria-hidden="true" />
-              Every vendor fact on this page is dated.
+              Only 12% of travel programs have their data in one place.
             </p>
           </div>
         </aside>
