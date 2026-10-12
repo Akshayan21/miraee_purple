@@ -49,7 +49,7 @@ export function HeroSection() {
               src="/img/document/pricing-hero-1.jpg"
               width="2046"
               height="1364"
-              alt="A team collaborates in an office meeting."
+              alt="A team meets around a conference table with laptops."
               fetchpriority="high"
             />
           </picture>

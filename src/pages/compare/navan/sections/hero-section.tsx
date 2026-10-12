@@ -61,7 +61,7 @@ export function HeroSection() {
               src="/img/document/compare-navan-hero-1.jpg"
               width="1364"
               height="2046"
-              alt="A business professional wearing glasses in an office."
+              alt="A man in glasses and a navy blazer."
               fetchpriority="high"
             />
           </picture>

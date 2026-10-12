@@ -56,9 +56,9 @@ export function ArticleContent() {
               />
               <img
                 src="/img/document/resources-guide-policy-compliance-1.jpg"
-                width="1364"
-                height="2046"
-                alt="A professional works at a laptop."
+                width="2046"
+                height="1366"
+                alt="An aisle of airline seats with passengers in a full cabin."
                 {...{ fetchpriority: 'high' }}
               />
             </picture>
@@ -550,7 +550,7 @@ export function RelatedContent() {
                       src="/img/document/resources-guide-travel-policy-1.jpg"
                       width="2046"
                       height="1364"
-                      alt=""
+                      alt="A hand pins notes to a planning board of process diagrams."
                       loading="lazy"
                       decoding="async"
                     />
@@ -578,8 +578,8 @@ export function RelatedContent() {
                     <img
                       src="/img/document/resources-guide-t-e-policy-1.jpg"
                       width="2046"
-                      height="1174"
-                      alt=""
+                      height="1366"
+                      alt="Two colleagues review figures on paper beside open laptops."
                       loading="lazy"
                       decoding="async"
                     />
@@ -609,8 +609,8 @@ export function RelatedContent() {
                     <img
                       src="/img/document/resources-guide-expense-reports-1.jpg"
                       width="2046"
-                      height="1366"
-                      alt=""
+                      height="1364"
+                      alt="A team meets in a glass-walled conference room."
                       loading="lazy"
                       decoding="async"
                     />

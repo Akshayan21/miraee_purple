@@ -37,9 +37,9 @@ export function ForFinanceSection() {
             <img
               className="compose__person"
               src="/img/document/home-finance-gl-code-1.jpg"
-              width="626"
-              height="417"
-              alt="A finance professional reviews charts at her computer."
+              width="1364"
+              height="2046"
+              alt="A finance leader in a striped blazer smiles at the camera."
             />
           </picture>
           <div className="compose__card">

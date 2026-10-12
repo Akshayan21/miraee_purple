@@ -31,12 +31,12 @@ export function HeroSection() {
         <figure className="split__visual" style={{ margin: '0' }}>
           <div className="mr-frame route-frame">
             <picture>
-              <source srcSet="/img/document/for-travel-managers-hero-1.webp" type="image/webp" />
+              <source srcSet="/img/document/for-travel-managers-hero-2.webp" type="image/webp" />
               <img
-                src="/img/document/for-travel-managers-hero-1.jpg"
+                src="/img/document/for-travel-managers-hero-2.jpg"
                 width="2046"
-                height="1365"
-                alt="Colleagues plan together around a table."
+                height="1364"
+                alt="A manager explains a plan to a colleague beside an open laptop."
                 fetchpriority="high"
               />
             </picture>

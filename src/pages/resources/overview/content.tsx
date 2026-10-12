@@ -51,8 +51,8 @@ export function ResourceHero() {
               <img
                 src="/img/document/resources-hero-1.jpg"
                 width="2046"
-                height="1364"
-                alt="A person plans work with notes on a whiteboard."
+                height="1151"
+                alt="A small team talks around a wooden table in a cafe."
                 {...{ fetchpriority: 'high' }}
               />
             </picture>
@@ -85,9 +85,9 @@ export function ResourceGuides() {
                       />
                       <img
                         src="/img/document/resources-template-card-1.jpg"
-                        width="1200"
-                        height="800"
-                        alt=""
+                        width="1364"
+                        height="2046"
+                        alt="A traveler works on a laptop at a window desk with her bag beside her."
                         loading="lazy"
                         decoding="async"
                       />
@@ -135,7 +135,7 @@ export function ResourceGuides() {
                         src="/img/document/resources-guide-travel-policy-1.jpg"
                         width="2046"
                         height="1364"
-                        alt=""
+                        alt="A hand pins notes to a planning board of process diagrams."
                         loading="lazy"
                         decoding="async"
                       />
@@ -164,8 +164,8 @@ export function ResourceGuides() {
                       <img
                         src="/img/document/resources-guide-t-e-policy-1.jpg"
                         width="2046"
-                        height="1174"
-                        alt=""
+                        height="1366"
+                        alt="Two colleagues review figures on paper beside open laptops."
                         loading="lazy"
                         decoding="async"
                       />
@@ -195,9 +195,9 @@ export function ResourceGuides() {
                       />
                       <img
                         src="/img/document/resources-guide-policy-compliance-1.jpg"
-                        width="1364"
-                        height="2046"
-                        alt=""
+                        width="2046"
+                        height="1366"
+                        alt="An aisle of airline seats with passengers in a full cabin."
                         loading="lazy"
                         decoding="async"
                       />
@@ -228,8 +228,8 @@ export function ResourceGuides() {
                       <img
                         src="/img/document/resources-guide-expense-reports-1.jpg"
                         width="2046"
-                        height="1366"
-                        alt=""
+                        height="1364"
+                        alt="A team meets in a glass-walled conference room."
                         loading="lazy"
                         decoding="async"
                       />
@@ -257,9 +257,9 @@ export function ResourceGuides() {
                       />
                       <img
                         src="/img/document/resources-guide-part-time-travel-manager-1.jpg"
-                        width="2047"
-                        height="1364"
-                        alt=""
+                        width="1364"
+                        height="2046"
+                        alt="A smiling man in a white t-shirt."
                         loading="lazy"
                         decoding="async"
                       />

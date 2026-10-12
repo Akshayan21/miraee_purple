@@ -36,13 +36,13 @@ export function HeroSection() {
           style={{ margin: '0' }}
         >
           <picture>
-            <source srcSet="/img/document/how-it-works-hero-terminal.webp" type="image/webp" />
+            <source srcSet="/img/document/how-it-works-hero-1.webp" type="image/webp" />
             <img
               className="compose__person"
-              src="/img/document/how-it-works-hero-terminal.jpg"
-              width="740"
-              height="493"
-              alt="A business traveler talks on her phone beside her suitcase in an airport terminal."
+              src="/img/document/how-it-works-hero-1.jpg"
+              width="2046"
+              height="1364"
+              alt="A business traveler in a gray suit walks out of a building, checking his phone."
               fetchpriority="high"
             />
           </picture>

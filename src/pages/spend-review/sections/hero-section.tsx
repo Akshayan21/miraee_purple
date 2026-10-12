@@ -40,9 +40,9 @@ export function HeroSection() {
             <img
               className="compose__person"
               src="/img/document/spend-review-hero-1.jpg"
-              width="626"
-              height="417"
-              alt="A finance professional reviews documents at a desk."
+              width="2046"
+              height="1151"
+              alt="A finance analyst reviews a report beside her laptop in a bright office."
               fetchpriority="high"
             />
           </picture>

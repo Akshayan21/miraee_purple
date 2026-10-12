@@ -83,9 +83,9 @@ export function HeroSection() {
             <source srcSet="/img/document/talk-to-sales-side-image-1.webp" type="image/webp" />
             <img
               src="/img/document/talk-to-sales-side-image-1.jpg"
-              width="2047"
-              height="1535"
-              alt="A laptop displays a video meeting beside a cup of coffee."
+              width="2046"
+              height="1534"
+              alt="A video call with a large team on a laptop beside a coffee mug."
               fetchpriority="high"
             />
           </picture>

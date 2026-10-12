@@ -34,7 +34,7 @@ export function OptionalAlwaysSection() {
               src="/img/document/spend-review-review-optional-1.jpg"
               width="2046"
               height="1364"
-              alt="A traveler relaxes by an airport window."
+              alt="A traveler relaxes in an airport lounge with his feet on his suitcase as a plane takes off."
               loading="lazy"
               decoding="async"
             />

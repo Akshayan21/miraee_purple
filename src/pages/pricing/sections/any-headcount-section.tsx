@@ -16,9 +16,9 @@ export function AnyHeadcountSection() {
         <figure className={`split__visual mr-frame ${styles.photo}`}>
           <ResponsiveImage
             src="/img/document/pricing-company-size-team.jpg"
-            width={494}
-            height={740}
-            alt="Three colleagues collaborate on a project around a laptop."
+            width={1364}
+            height={2046}
+            alt="A business traveler in a dark suit crosses a striped road with his bag."
             loading="lazy"
             decoding="async"
           />

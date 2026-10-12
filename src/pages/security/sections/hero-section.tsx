@@ -34,7 +34,7 @@ export function HeroSection() {
               src="/img/document/security-hero-1.jpg"
               width="1364"
               height="2046"
-              alt="A business professional in a dark suit."
+              alt="A man in a dark suit and red tie stands with his arms crossed."
               fetchpriority="high"
             />
           </picture>
