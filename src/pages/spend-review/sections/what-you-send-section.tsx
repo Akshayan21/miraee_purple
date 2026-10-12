@@ -5,16 +5,12 @@ export function WhatYouSendSection() {
       <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="send-h">
-            One file you already have.
+            Send one file you already have
           </h2>
-          <ul className="list">
-            <li>A booking report from your travel agency, or</li>
-            <li>An expense extract from your expense system.</li>
-          </ul>
-          <p className="mr-body note">
-            A corporate card feed is optional. It makes the review more complete.
+          <p className="mr-body">
+            A booking report from your travel agency, or an expense extract from your expense
+            system. Add a corporate card feed if you like. We sign an NDA before you send anything.
           </p>
-          <p className="mr-body">We sign an NDA before you send anything.</p>
         </div>
         <div className="split__visual">
           <div className="view view--tiles">

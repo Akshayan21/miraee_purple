@@ -29,7 +29,7 @@ export function ArticleContent() {
             </h1>
             <p className="mr-lead">
               {
-                'In many companies of 300 to 1,500 people, the corporate travel manager is an operations, office or people lead who also runs travel. This guide sets out the job in plain steps: what to own, what to hand to finance, what to automate and what to do when a trip goes wrong.'
+                'In many growing companies, the travel manager is an operations, office or people lead who runs travel on the side. This guide sets out the job in plain steps.'
               }
             </p>
             <div className="mr-btn-row">
@@ -86,7 +86,7 @@ export function ArticleContent() {
               </li>
               <li>
                 <a href="#approvals-that-do-not-become-your-inbox">
-                  {'Approvals that do not become your inbox'}
+                  {'Keep approvals out of your inbox'}
                 </a>
               </li>
               <li>
@@ -247,7 +247,7 @@ export function ArticleContent() {
               }
             </p>
             <h2 className="mr-h2" id="approvals-that-do-not-become-your-inbox">
-              {'Approvals that do not become your inbox'}
+              {'Keep approvals out of your inbox'}
             </h2>
             <p>
               {
@@ -524,45 +524,15 @@ export function ArticleContent() {
               <h2 className="mr-h2" id="how-miraee-helps-a-part-time-travel-manager">
                 {'How Miraee helps a part-time travel manager'}
               </h2>
-              <p>
-                {
-                  'Miraee is business travel and expense software, with a travel assistant for every employee and the controls finance needs.'
-                }
-              </p>
               <ul>
+                <li>{'Every option is marked in or out of policy.'}</li>
+                <li>{'Approvals only reach you when something is out of policy.'}</li>
                 <li>
-                  <strong>{'Your policy runs on every booking.'}</strong>
-                  {
-                    ' Every option is marked in or out of policy, and approvals only reach you when something is out of policy.'
-                  }
-                </li>
-                <li>
-                  <strong>{'Booking on behalf'}</strong>
-                  {' for assistants and office admins, inside policy.'}
-                </li>
-                <li>
-                  <strong>{'When plans change,'}</strong>
-                  {
-                    ' your traveler gets an alert and new options to confirm, and you see the change in the audit log.'
-                  }
-                </li>
-                <li>
-                  <strong>{'Every trip coded for finance,'}</strong>
-                  {' with its budget and GL code, in one finance dashboard.'}
-                </li>
-                <li>
-                  <strong>{'Onboarding is free,'}</strong>
-                  {' including your policy and your people, at any company size.'}
+                  {'When plans change, your traveler gets an alert and new options to confirm.'}
                 </li>
               </ul>
               <p>
-                {
-                  'Employees ask the Miraee assistant for a trip and choose flights and hotels inside company policy. The assistant suggests. Your approvers decide. See '
-                }
-                <Link to="/travel-managers">{'Miraee for travel managers'}</Link>
-                {' or read about '}
-                <Link to="/when-plans-change">{'when plans change'}</Link>
-                {'.'}
+                <Link to="/travel-managers">{'See Miraee for travel managers'}</Link>
               </p>
             </div>
           </div>
@@ -677,22 +647,6 @@ export function RelatedContent() {
               </Link>
             </Button>
           </p>
-        </div>
-      </section>
-      <section className="sources" aria-labelledby="src-h">
-        <div className="mr-container">
-          <h2 id="src-h">{'Sources'}</h2>
-          <ol>
-            <li id="src-1">
-              {'GBTA and Direct Travel survey of 195 travel managers, May 2025. '}
-              <a
-                href="https://www.businesstravelnews.com/Technology/GBTA-Direct-Travel-Survey-Shows-Challenges-with-OBT-Servicing-Meeting-Integration"
-                rel="noopener"
-              >
-                {'businesstravelnews.com'}
-              </a>
-            </li>
-          </ol>
         </div>
       </section>
       <CtaVideoBand

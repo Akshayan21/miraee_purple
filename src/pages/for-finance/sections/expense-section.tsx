@@ -7,11 +7,11 @@ export function ExpenseSection() {
       <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="exp-h">
-            Receipts matched to card charges and checked against policy.
+            Receipts matched to card charges
           </h2>
           <p className="mr-body">
-            Travelers upload receipts. Miraee matches each one to its card charge and flags anything
-            out of policy. Reimbursements are tracked in the same place.
+            Travelers upload receipts. Miraee matches each to its card charge, flags anything out of
+            policy and tracks reimbursements.
           </p>
         </div>
         <div className="split__visual">

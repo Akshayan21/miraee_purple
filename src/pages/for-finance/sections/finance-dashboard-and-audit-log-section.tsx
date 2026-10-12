@@ -6,11 +6,9 @@ export function FinanceDashboardAndAuditLogSection() {
       <Container className="mr-container split split--rev">
         <div className="split__copy">
           <h2 className="mr-h2" id="audit-h">
-            A finance dashboard and a full audit log.
+            One dashboard. A full audit log.
           </h2>
-          <p className="mr-body">
-            See who booked what, and when. Every booking and every change is recorded.
-          </p>
+          <p className="mr-body">Every booking and change is recorded: who, what and when.</p>
         </div>
         <figure className="split__visual" style={{ margin: '0' }}>
           <ProductCard

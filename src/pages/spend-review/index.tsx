@@ -7,7 +7,6 @@ import { HeroSection } from './sections/hero-section'
 import { WhyLookBackSection } from './sections/why-look-back-section'
 import { WhatYouSendSection } from './sections/what-you-send-section'
 import { WhatYouGetSection } from './sections/what-you-get-section'
-import { HowItsMeasuredSection } from './sections/how-its-measured-section'
 import { OptionalAlwaysSection } from './sections/optional-always-section'
 import { QuestionsSection } from './sections/questions-section'
 
@@ -22,7 +21,6 @@ export function Component() {
         <WhyLookBackSection />
         <WhatYouSendSection />
         <WhatYouGetSection />
-        <HowItsMeasuredSection />
         <OptionalAlwaysSection />
         <QuestionsSection />
         <CtaVideoBand

@@ -20,6 +20,10 @@ const ACCENTS: Record<string, string> = {
   'Start free, at any company size.': 'at any company size.',
   'Put your travel policy to work.': 'to work.',
   'Put your policy on every booking.': 'on every booking.',
+  "See it on your company's travel": "your company's travel",
+  'Start free at your size': 'at your size',
+  'Start with free onboarding': 'free onboarding',
+  'Start free at any company size': 'at any company size',
 }
 
 export type CtaVideoBandProps = {

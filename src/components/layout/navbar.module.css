@@ -6,7 +6,6 @@
   width: 100%;
   min-width: 0;
   min-height: 76px;
-  border-bottom: 1px solid var(--rule);
 }
 .logo {
   display: block;
@@ -19,22 +18,24 @@
 }
 .links {
   display: flex;
-  gap: clamp(16px, 2vw, 28px);
+  gap: clamp(20px, 2.4vw, 36px);
+  margin: 0 0 0 clamp(16px, 3vw, 48px);
   list-style: none;
-  margin: 0;
   padding: 0;
 }
 .links a {
   color: var(--text);
   text-decoration: none;
   white-space: nowrap;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
+  padding-block: 8px;
 }
 .links a:hover,
 .links a[aria-current='page'] {
   text-decoration: underline;
-  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 8px;
 }
 .end {
   margin-left: auto;
@@ -73,6 +74,7 @@
   }
   .links {
     display: none;
+    margin: 0;
   }
   .menu[aria-expanded='true'] ~ .links {
     display: flex;
@@ -149,5 +151,72 @@
   .mobileAction a {
     width: 100%;
     justify-content: center;
+  }
+}
+
+.talk {
+  margin-right: 20px;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.talk:hover {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+.mobileTalk {
+  display: none;
+}
+.hasMenu {
+  position: relative;
+}
+.sub {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+  display: none;
+  position: absolute;
+  z-index: 25;
+  top: 100%;
+  left: -16px;
+  min-width: 210px;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--mr-r-md);
+  box-shadow: var(--mr-shadow-2);
+}
+.hasMenu:hover > .sub,
+.hasMenu:focus-within > .sub {
+  display: block;
+}
+.sub a {
+  display: block;
+  padding: 10px 20px;
+  white-space: nowrap;
+}
+@media (max-width: 1199px) {
+  .hasMenu > .sub {
+    display: block;
+    position: static;
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+    padding: 0 0 4px;
+  }
+  .sub a {
+    padding-left: 40px;
+    font-weight: 400;
+    min-height: 44px;
+  }
+  .mobileTalk {
+    display: block;
+  }
+  .mobileTalk a {
+    font-weight: 600;
+  }
+  .talk {
+    display: none;
   }
 }

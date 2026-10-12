@@ -1,4 +1,3 @@
-import { TravelJourney } from '@/components/motion/travel-journey'
 import { Seo } from '@/components/common/seo'
 import { meta } from './meta'
 import { HeroSection } from './sections/hero-section'
@@ -18,7 +17,6 @@ export function Component() {
       <Seo meta={meta} />
       <main id="main">
         <HeroSection />
-        <TravelJourney />
         <HowItWorksSection />
         <SpendReviewSection />
         <WhenPlansChangeSection />
@@ -27,6 +25,9 @@ export function Component() {
         <FreeAtAnySizeSection />
         <FAQSection />
         <ClosingCallToActionSection />
+        <p className="mr-caption" style={{ textAlign: 'center', margin: '0 0 24px' }}>
+          Product views show illustrative data.
+        </p>
       </main>
     </>
   )

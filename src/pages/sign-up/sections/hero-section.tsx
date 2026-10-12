@@ -1,7 +1,7 @@
 import { Section, Container } from '@/components/layout/content-layout'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
-import { TextField } from '@/components/forms/fields'
+import { ROLE_OPTIONS, SelectField, TextField } from '@/components/forms/fields'
 import { LeadForm } from '@/components/forms/lead-form'
 import { FormDoneMessage } from '@/components/forms/form-dialogs'
 
@@ -47,15 +47,15 @@ export function HeroSection() {
               inputMode="numeric"
               min={1}
               required
-              hint="Add the number of employees."
+              hint="Number of employees"
             />
-            <TextField
+            <SelectField
               id="p-su-role"
               name="role"
               label="Your role"
-              type="text"
               autoComplete="organization-title"
               required
+              options={ROLE_OPTIONS}
             />
             <div>
               <Button type="submit">
@@ -63,7 +63,7 @@ export function HeroSection() {
               </Button>
             </div>
             <p className="mr-small">
-              We'll email you to set up your company, your travel policy and your people with you.
+              Next, we'll email you to set up your company, policy and people.
             </p>
           </LeadForm>
           <p className="mr-small hero__trust">

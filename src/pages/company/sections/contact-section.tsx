@@ -5,7 +5,7 @@ export function ContactSection() {
     <CtaVideoBand
       video="how"
       title="Talk to us."
-      body="Questions about Miraee, the spend review or security? Our team will answer."
+      body="Questions about Miraee, the spend review or security? We'll answer."
       secondary={{ label: 'Talk to sales', variant: 'secondary', to: '/talk-to-sales' }}
     />
   )

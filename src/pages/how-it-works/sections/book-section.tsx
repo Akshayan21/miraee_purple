@@ -10,15 +10,14 @@ export function BookSection() {
         <div className="split__copy">
           <p className="mr-eyebrow">Step 2</p>
           <h2 className="mr-h2" id="s2-h">
-            Ask for a trip. Pick an option inside policy.
+            Employees ask for a trip and pick an option in policy
           </h2>
           <p className="mr-body">
-            Employees ask the Miraee assistant for a trip. Flights and hotels come back marked in
-            policy or out of policy.
+            Every flight and hotel comes back marked in or out of policy. The assistant suggests.
+            Your approvers decide.
           </p>
-          <p className="mr-body">The assistant suggests. Your approvers decide.</p>
           <p className="mr-body">
-            Booking for someone else? Choose their name and book in a few steps.
+            Booking for someone else? Pick their name and book in a few steps.
           </p>
           <p className="mr-body">
             Global flight and hotel coverage from the Mondee travel marketplace.

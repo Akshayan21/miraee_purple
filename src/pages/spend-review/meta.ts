@@ -3,14 +3,14 @@ import { faqPageJsonLd } from '@/lib/json-ld'
 import { faq } from './faq'
 
 export const meta: SeoMeta = {
-  title: "Travel spend analysis: review last year's travel | Miraee",
+  title: "Travel spend analysis of last year's trips | Miraee",
   description:
     "Want proof first? Send one booking report and get a trip-by-trip review of last year's travel from your own data. The report is yours to keep.",
   canonical: 'https://miraee.ai/spend-review',
   robots: 'index, follow',
   og: {
     type: 'website',
-    title: "Travel spend analysis: review last year's travel | Miraee",
+    title: "Travel spend analysis of last year's trips | Miraee",
     description:
       "Want proof first? Send one booking report and get a trip-by-trip review of last year's travel from your own data. The report is yours to keep.",
     url: 'https://miraee.ai/spend-review',
@@ -25,7 +25,7 @@ export const meta: SeoMeta = {
           '@type': 'WebPage',
           '@id': 'https://miraee.ai/spend-review#webpage',
           url: 'https://miraee.ai/spend-review',
-          name: "Travel spend analysis: review last year's travel | Miraee",
+          name: "Travel spend analysis of last year's trips | Miraee",
           description:
             "Want proof first? Send one booking report and get a trip-by-trip review of last year's travel from your own data. The report is yours to keep.",
           inLanguage: 'en-US',

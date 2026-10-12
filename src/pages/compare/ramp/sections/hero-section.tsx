@@ -28,8 +28,8 @@ export function HeroSection() {
             Miraee with Ramp: travel booking beside the card you keep
           </h1>
           <p className="mr-lead">
-            Miraee is business travel and expense software. Many finance teams already run Ramp
-            cards. This page explains what Miraee adds for travel and how the two work side by side.
+            Miraee is business travel and expense software. If your finance team runs Ramp cards,
+            here is what Miraee adds for travel and how the two work together.
           </p>
           <div className="mr-btn-row">
             <Button asChild>

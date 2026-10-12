@@ -9,11 +9,11 @@ export function PolicySection() {
       <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="pol-h">
-            Every option your people see already fits your policy.
+            Every option is checked against your policy
           </h2>
           <p className="mr-body">
-            Upload your travel policy during onboarding. Search results are marked in policy or out
-            of policy, so travelers book without checking a document.
+            Upload your policy during onboarding. Every result is marked in or out of policy, so
+            travelers book without checking a document.
           </p>
         </div>
         <figure className="split__visual" style={{ margin: '0' }}>

@@ -25,11 +25,11 @@ export function ArticleContent() {
           <div className="split__copy lf-hero__copy">
             <p className="mr-eyebrow">{'Guide for travel and operations leads'}</p>
             <h1 className="mr-h1" id="hero-h">
-              {'How to write a business travel policy your people will follow'}
+              {'How to write a travel policy people follow'}
             </h1>
             <p className="mr-lead">
               {
-                'A business travel policy is the set of rules that decides how employees book, what they can spend and who approves exceptions. This guide shows how to write one for a company of 300 to 1,500 people that travelers will actually follow, with a section-by-section checklist you can copy.'
+                'A business travel policy sets how employees book, what they can spend and who approves exceptions. This guide shows how to write one travelers follow, with a checklist you can copy.'
               }
             </p>
             <div className="mr-btn-row">
@@ -74,7 +74,7 @@ export function ArticleContent() {
                 <a href="#what-makes-a-travel-policy-work">{'What makes a travel policy work?'}</a>
               </li>
               <li>
-                <a href="#why-policies-get-ignored">{'Why policies get ignored'}</a>
+                <a href="#why-policies-get-ignored">{'Why travelers work around a policy'}</a>
               </li>
               <li>
                 <a href="#three-decisions-to-make-before-you-write">
@@ -124,7 +124,7 @@ export function ArticleContent() {
               }
             </p>
             <h2 className="mr-h2" id="why-policies-get-ignored">
-              {'Why policies get ignored'}
+              {'Why travelers work around a policy'}
             </h2>
             <p>
               {
@@ -431,41 +431,15 @@ export function ArticleContent() {
               <h2 className="mr-h2" id="how-miraee-applies-your-policy-on-every-booking">
                 {'How Miraee applies your policy on every booking'}
               </h2>
-              <p>
-                {
-                  'Miraee is business travel and expense software. During onboarding, which is free at any company size, we set up your company, your travel policy and your people with you.'
-                }
-              </p>
               <ul>
-                <li>
-                  <strong>{'Every option is marked in or out of policy.'}</strong>
-                  {
-                    ' Travelers choose flights and hotels that already fit, so the policy works without a document.'
-                  }
-                </li>
-                <li>
-                  <strong>{'Approvals only come in when something is out of policy.'}</strong>
-                  {' Approvers see the trips that need a decision.'}
-                </li>
-                <li>
-                  <strong>{'Booking on behalf.'}</strong>
-                  {' Assistants and office admins book for the people they support, inside policy.'}
-                </li>
-                <li>
-                  <strong>{'Finance sees every trip.'}</strong>
-                  {' Each booking arrives with its budget and GL code, with a full audit log.'}
-                </li>
+                <li>{'Every option is marked in or out of policy.'}</li>
+                <li>{'Approvals only come in when something is out of policy.'}</li>
+                <li>{'Finance sees every trip with its budget and GL code.'}</li>
               </ul>
               <p>
-                {
-                  'Employees ask the Miraee assistant for a trip and choose flights and hotels inside company policy. The assistant suggests. Your approvers decide. See '
-                }
                 <Link to="/travel-managers">
-                  {'a corporate travel booking tool that runs your policy'}
+                  {'See a corporate travel booking tool that runs your policy'}
                 </Link>
-                {', or '}
-                <Link to="/how-it-works">{'see how it works'}</Link>
-                {'.'}
               </p>
               <figure
                 className="lf-view mr-paper"
@@ -614,31 +588,6 @@ export function RelatedContent() {
               </Link>
             </Button>
           </p>
-        </div>
-      </section>
-      <section className="sources" aria-labelledby="src-h">
-        <div className="mr-container">
-          <h2 id="src-h">{'Sources'}</h2>
-          <ol>
-            <li id="src-1">
-              {'Business Travel News, Business Traveler survey, October 2025. '}
-              <a
-                href="https://www.businesstravelnews.com/Research/Business-Traveler-2025/Part-4-Booking-Tools-and-Technologies"
-                rel="noopener"
-              >
-                {'businesstravelnews.com'}
-              </a>
-            </li>
-            <li id="src-2">
-              {'GBTA, Business Travel Innovation Research, 2026. North America and Europe. '}
-              <a
-                href="https://gbta.org/research/business-travel-innovation-research-2026/"
-                rel="noopener"
-              >
-                {'gbta.org'}
-              </a>
-            </li>
-          </ol>
         </div>
       </section>
       <CtaVideoBand

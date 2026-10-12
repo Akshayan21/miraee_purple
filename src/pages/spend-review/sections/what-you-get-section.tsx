@@ -6,9 +6,8 @@ export function WhatYouGetSection() {
       <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="get-h">
-            Four findings, measured from your own data.
+            Four findings from your own data
           </h2>
-          <p className="mr-body">The report is yours to keep.</p>
         </div>
         <div className="split__visual split__visual--wide">
           <ProductCard className="mr-ledger-wrap card-shadow findings">

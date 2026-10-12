@@ -5,7 +5,7 @@ export const faq: FaqItem[] = [
   {
     question: 'Do we need a review to sign up?',
     answer:
-      'The review is optional. Sign-up and onboarding are free at any company size, with or without it.',
+      'Sign-up and onboarding are free at any company size, with or without a review.',
   },
   {
     question: 'What happens to our data?',
@@ -14,6 +14,6 @@ export const faq: FaqItem[] = [
   {
     question: 'Will you give us a savings number?',
     answer:
-      'The review measures what happened in your own data. Any savings figure comes as a dollar range, with the method and the data period shown.',
+      'Only as a dollar range from your own data, with the method and data period shown.',
   },
 ]

@@ -7,6 +7,7 @@ import {
   LedgerTable,
 } from '@/components/sections/product-preview'
 import { Link } from 'react-router-dom'
+import { TravelJourney } from '@/components/motion/travel-journey'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 
@@ -17,6 +18,10 @@ export function HowItWorksSection() {
         <h2 className="mr-h2" id="how-h">
           How it works
         </h2>
+        <p className="mr-lead" style={{ margin: '16px 0 40px' }}>
+          One trip, from the first search to the finance view.
+        </p>
+        <TravelJourney inline />
         <ol className="steps">
           <li className="step">
             <figure
@@ -58,12 +63,9 @@ export function HowItWorksSection() {
               </div>
             </figure>
             <h3 className="mr-h3">
-              <span className="step__n">1.</span> Set up your policy
+              <span className="step__n">1.</span> Set your policy
             </h3>
-            <p className="mr-body">
-              We set up your company, your travel policy and your people with you. Onboarding is
-              free.
-            </p>
+            <p className="mr-body">We set up your company, your policy and your people with you.</p>
           </li>
           <li className="step">
             <figure
@@ -105,8 +107,8 @@ export function HowItWorksSection() {
               <span className="step__n">2.</span> Your people book
             </h3>
             <p className="mr-body">
-              Employees ask the Miraee assistant for a trip and pick flights and hotels inside
-              policy. The assistant suggests. Your approvers decide.
+              Employees ask the Miraee assistant for a trip and pick from options inside policy. The
+              assistant suggests. Your approvers decide.
             </p>
           </li>
           <li className="step">
@@ -168,12 +170,11 @@ export function HowItWorksSection() {
               <span className="step__n">3.</span> Finance sees every trip
             </h3>
             <p className="mr-body">
-              Every booking arrives with its budget and GL code, in one finance dashboard with a
-              full audit log.
+              Each booking arrives with its budget and GL code, in one dashboard with a full audit
+              log.
             </p>
           </li>
         </ol>
-        <p className="mr-caption views-caption">Product views with illustrative data.</p>
         <p className="link-row">
           <Button asChild variant="tertiary">
             <Link to="/how-it-works">See how it works</Link>

@@ -26,7 +26,10 @@ export function SiteFooter() {
         <div className={`mr-footer__cols mr-footer__cols--two ${styles.grid}`}>
           <div className="mr-footer__brand">
             <img src="/img/miraee-logo-orange.svg" alt="Miraee" width={113} height={28} />
-            <p>Miraee is built by Tabhi, the company behind the Mondee travel marketplace.</p>
+            <p>
+              Business travel and expense software. Built by Tabhi, the company behind the Mondee
+              travel marketplace.
+            </p>
           </div>
           <FooterColumn title="Product" links={FOOTER_PRODUCT_LINKS} />
           <FooterColumn title="Company" links={FOOTER_COMPANY_LINKS} />

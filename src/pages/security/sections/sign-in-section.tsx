@@ -12,13 +12,13 @@ export function SignInSection() {
             height="32"
           />
           <h2 className="mr-h2" id="signin-h">
-            Sign in with Google.
+            Sign in with Google
           </h2>
         </div>
         <div className="duo__body">
-          <p className="mr-body">Your team signs in with their Google work accounts.</p>
           <p className="mr-body">
-            Single sign-on is on our roadmap. Ask us and we'll share the date in writing.
+            Your team signs in with their Google work accounts. Single sign-on is on our roadmap;
+            ask and we'll share the date in writing.
           </p>
         </div>
       </Container>

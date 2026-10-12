@@ -13,14 +13,16 @@ export function ForFinanceSection() {
             Every trip, with its budget and GL code.
           </h2>
           <ul className="list">
-            <li>Set your travel policy, GL codes and budgets once.</li>
-            <li>A finance dashboard and a full audit log of who booked what, and when.</li>
+            <li>Set policy, GL codes and budgets once.</li>
+            <li>One finance dashboard and a full audit log.</li>
             <li>Receipts matched to card charges and checked against policy.</li>
             <li>Keep the corporate cards you already use.</li>
           </ul>
           <p className="stat-line">
-            <span className="stat-line__fig">12%</span> of travel programs have their data in one
-            place.
+            <span className="stat-line__fig">
+              <small>Only </small>12%
+            </span>{' '}
+            of travel programs have their data in one place.
           </p>
           <p className="link-row">
             <Button asChild variant="tertiary">
@@ -76,9 +78,6 @@ export function ForFinanceSection() {
                 <dt className="mr-trip-tag__total">Total</dt>
                 <dd className="mr-trip-tag__total">$1,284.60</dd>
               </dl>
-              <p className="mr-caption" style={{ margin: '0' }}>
-                Product view with illustrative data.
-              </p>
             </div>
           </div>
         </VisualComposition>

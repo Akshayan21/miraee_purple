@@ -25,12 +25,12 @@ export function HeroSection() {
         <div className="split__copy lf-hero__copy">
           <p className="mr-eyebrow">Comparison</p>
           <h1 className="mr-h1" id="hero-h">
-            SAP Concur alternatives: how Miraee compares
+            SAP Concur alternatives: Miraee vs SAP Concur
           </h1>
           <p className="mr-lead">
-            Miraee is business travel and expense software. If your renewal with SAP Concur is
-            coming up, here is how the two compare on getting started, travel policy, approvals and
-            what finance sees, with every Concur fact dated.
+            Miraee is business travel and expense software. Renewing SAP Concur? Here is how the two
+            compare on getting started, policy, approvals and the finance view. Every Concur fact is
+            dated.
           </p>
           <div className="mr-btn-row">
             <Button asChild>

@@ -7,11 +7,11 @@ export function ForThePeopleWhoBookForOthersSection() {
       <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="ea-h">
-            Book for your team in a few steps, inside policy.
+            Book for anyone you support
           </h2>
           <p className="mr-body">
-            Executive assistants and office admins book on behalf of anyone they support. Options
-            already fit company rules, so there are fewer approval loops.
+            Assistants and office admins book for their team in a few steps. Options already fit
+            company rules, so fewer trips need approval.
           </p>
         </div>
         <figure className="split__visual" style={{ margin: '0' }}>

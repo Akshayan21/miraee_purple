@@ -8,17 +8,13 @@ export function TheSpendReviewSection() {
       <Container className="mr-container duo">
         <div className="duo__head">
           <h2 className="mr-h2" id="review-h">
-            Want proof first? Ask for a spend review.
+            Want proof first?
           </h2>
         </div>
         <div className="duo__body">
           <p className="mr-body">
-            A trip-by-trip review of last year's travel, from one booking report you already have.
-            It shows bookings outside your program, spend outside policy, the cost of booking late
-            and unused tickets.
-          </p>
-          <p className="mr-body">
-            The review is optional, on request. You can sign up without one.
+            Ask for a spend review: last year's travel, reviewed trip by trip from one booking
+            report. Optional, and on request.
           </p>
           <div className="mr-btn-row" style={{ marginTop: '32px' }}>
             <Button asChild variant="secondary">

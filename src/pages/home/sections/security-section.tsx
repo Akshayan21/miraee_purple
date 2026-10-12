@@ -12,10 +12,9 @@ export function SecuritySection() {
           </h2>
           <div className="security__body">
             <p className="mr-body">
-              The assistant suggests options. Your approvers decide what gets booked. Every booking
-              and every change is recorded in the audit log.
+              Every booking and change is recorded in the audit log. Ask for our security pack at
+              any stage of your review.
             </p>
-            <p className="mr-body">Ask us for the security pack at any stage of your review.</p>
             <ul className="icon-row" style={{ flexWrap: 'wrap' }}>
               <li>
                 <img src="/img/icons/check-orange.svg" alt="" width="24" height="24" />

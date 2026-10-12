@@ -24,8 +24,8 @@ export function HeroSection() {
             Free to sign up and onboard, at any company size
           </h1>
           <p className="mr-lead">
-            Miraee is business travel and expense software. Signing up is free. Onboarding is free:
-            we set up your company, your travel policy and your people with you.
+            Miraee is business travel and expense software. We set up your company, your policy and
+            your people with you, free.
           </p>
           <div className="mr-btn-row">
             <Button asChild>

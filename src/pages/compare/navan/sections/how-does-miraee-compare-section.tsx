@@ -56,8 +56,7 @@ export function HowDoesMiraeeCompareSection() {
             Both are business travel and expense software. Navan's free Business plan is for
             companies with up to 300 employees, and its Enterprise plan is priced by quote
             (navan.com/pricing, checked September 30, 2026). Miraee sign-up and onboarding are free
-            at every company size. Miraee also offers an optional review of last year's travel,
-            built from your own booking data.
+            at every company size.
           </p>
           <h2 className="mr-h2" id="miraee-and-navan-side-by-side">
             Miraee and Navan, side by side
@@ -140,8 +139,8 @@ export function HowDoesMiraeeCompareSection() {
           </p>
           <p>
             That matters because most programs still work from several reports. Only 12% of travel
-            programs have their data in one place.{' '}
-            See <Link to="/finance">the finance view</Link> for the screens.
+            programs have their data in one place. See <Link to="/finance">the finance view</Link>{' '}
+            for the screens.
           </p>
           <figure className="lf-view mr-paper">
             <ProductCard

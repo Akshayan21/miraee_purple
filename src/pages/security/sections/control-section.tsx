@@ -6,11 +6,11 @@ export function ControlSection() {
       <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="control-h">
-            The assistant suggests. Your approvers decide what gets booked.
+            The assistant suggests. Your approvers decide.
           </h2>
           <p className="mr-body">
-            Anything out of policy goes to an approver. Every booking and every change is recorded
-            in the audit log.
+            Anything out of policy goes to an approver. Every booking and change is in the audit
+            log.
           </p>
         </div>
         <figure className="split__visual" style={{ margin: '0' }}>

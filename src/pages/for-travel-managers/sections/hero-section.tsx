@@ -11,7 +11,7 @@ export function HeroSection() {
       <Container className="mr-container split">
         <div className="split__copy">
           <h1 className="mr-h1" id="hero-h">
-            A corporate travel booking tool that runs your policy on every booking
+            The corporate travel booking tool that runs your policy
           </h1>
           <p className="mr-lead">
             Miraee is business travel and expense software. Your policy runs on every booking, and
@@ -42,7 +42,9 @@ export function HeroSection() {
             </picture>
           </div>
           <figcaption className={styles.policy}>
-            <Badge variant="success" tick>In policy</Badge>
+            <Badge variant="success" tick>
+              In policy
+            </Badge>
             <ul>
               <li>Flight and hotel limits checked</li>
               <li>Approvals for exceptions</li>

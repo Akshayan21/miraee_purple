@@ -29,7 +29,7 @@ export function ArticleContent() {
             </h1>
             <p className="mr-lead">
               {
-                'A travel and expense policy tells employees what the company pays for on a trip, how to claim it and how fast they get their money back. This guide lists what to include, with example wording finance teams can copy and adapt for a company of 300 to 1,500 people.'
+                'A travel and expense policy tells employees what the company pays for, how to claim it and when they are repaid. This guide lists what to include, with wording you can copy.'
               }
             </p>
             <div className="mr-btn-row">
@@ -435,36 +435,19 @@ export function ArticleContent() {
               <h2 className="mr-h2" id="how-miraee-supports-a-travel-and-expense-policy">
                 {'How Miraee supports a travel and expense policy'}
               </h2>
-              <p>
-                {
-                  'Miraee is business travel and expense software. It applies the booking side of your policy on every trip and gives finance the record it needs.'
-                }
-              </p>
               <ul>
                 <li>
-                  <strong>{'Set your travel policy, GL codes and budgets once.'}</strong>
-                  {' Miraee applies them to every booking.'}
+                  {
+                    'Set your travel policy, GL codes and budgets once, and Miraee applies them to every booking.'
+                  }
                 </li>
+                <li>{'Receipts are matched to card charges and checked against policy.'}</li>
                 <li>
-                  <strong>{'Options marked in or out of policy.'}</strong>
-                  {' Approvals only come in when something is out of policy.'}
-                </li>
-                <li>
-                  <strong>{'Receipts matched to card charges and checked against policy.'}</strong>
-                  {' Employees upload receipts; Miraee matches them to the card charge.'}
-                </li>
-                <li>
-                  <strong>{'Reimbursements tracked,'}</strong>
-                  {' with a finance dashboard and a full audit log of who booked what, and when.'}
-                </li>
-                <li>
-                  <strong>{'Keep the corporate cards you already use.'}</strong>
+                  {'Reimbursements are tracked, with a finance dashboard and a full audit log.'}
                 </li>
               </ul>
               <p>
-                {'Sign-up and onboarding are free at any company size. See '}
-                <Link to="/finance">{'travel and expense management for finance'}</Link>
-                {'.'}
+                <Link to="/finance">{'See travel and expense management for finance'}</Link>
               </p>
               <figure
                 className="lf-view mr-paper"
@@ -620,22 +603,6 @@ export function RelatedContent() {
               </Link>
             </Button>
           </p>
-        </div>
-      </section>
-      <section className="sources" aria-labelledby="src-h">
-        <div className="mr-container">
-          <h2 id="src-h">{'Sources'}</h2>
-          <ol>
-            <li id="src-1">
-              {'GBTA, Business Travel Innovation Research, 2026. '}
-              <a
-                href="https://gbta.org/research/business-travel-innovation-research-2026/"
-                rel="noopener"
-              >
-                {'gbta.org'}
-              </a>
-            </li>
-          </ol>
         </div>
       </section>
       <CtaVideoBand

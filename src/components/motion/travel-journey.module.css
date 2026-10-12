@@ -119,3 +119,6 @@
     transform: none !important;
   }
 }
+.inline {
+  margin-bottom: 56px;
+}

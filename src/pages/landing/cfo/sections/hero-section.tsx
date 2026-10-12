@@ -15,7 +15,7 @@ export function HeroSection() {
       <Container className="mr-container split">
         <div className="split__copy">
           <h1 className="mr-display" id="hero-h">
-            See where your travel money goes.
+            See where your travel money goes
           </h1>
           <p className="mr-lead">
             Miraee is business travel and expense software. Every trip arrives with its budget and

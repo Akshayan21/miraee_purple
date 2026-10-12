@@ -3,12 +3,12 @@ import type { FormAction } from '@/lib/forms'
 /** Confirmation copy shown after each form is submitted. */
 export const FORM_DONE: Record<FormAction, { title: string; body: string }> = {
   '/sign-up': {
-    title: 'Your account request is in.',
-    body: "We'll email you to set up your company, your travel policy and your people with you.",
+    title: 'Thanks, your request is in.',
+    body: "We'll email you to set up your company, policy and people.",
   },
   '/spend-review': {
-    title: 'Your request is in.',
-    body: "We'll email you to set up an NDA and agree timing before you send any file.",
+    title: 'Thanks, your request is in.',
+    body: "We'll email you to sign an NDA and agree timing. Please hold your file until then.",
   },
   '/security/pack': {
     title: 'Your request is in.',

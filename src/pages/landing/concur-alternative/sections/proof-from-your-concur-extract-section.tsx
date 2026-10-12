@@ -8,7 +8,7 @@ export function ProofFromYourConcurExtractSection() {
       <Container className="mr-container">
         <div className="inner">
           <h2 className="mr-h2" id="proof-h">
-            Want proof first? Start from your Concur expense extract.
+            Start from your Concur expense extract
           </h2>
           <p className="mr-body">
             Send one file: an agency booking report or an expense extract. We show bookings outside

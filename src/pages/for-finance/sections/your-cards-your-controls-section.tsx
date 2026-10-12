@@ -12,7 +12,7 @@ export function YourCardsYourControlsSection() {
         <div className="split__visual">
           <p className="mr-body">
             Miraee replaces your booking tool and your agency's routine flight and hotel bookings.
-            You keep your corporate cards.
+            Your cards stay.
           </p>
         </div>
       </Container>

@@ -6,11 +6,11 @@ export function SetItOnceSection() {
       <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="once-h">
-            Set your travel policy, GL codes and budgets once.
+            Set policy, GL codes and budgets once
           </h2>
           <p className="mr-body">
-            Miraee applies them to every booking. Options are marked in or out of policy, and
-            approvals only come in when something is out of policy.
+            Miraee applies them to every booking. Options are marked in or out of policy, and only
+            exceptions go to an approver.
           </p>
         </div>
         <figure className="split__visual" style={{ margin: '0' }}>

@@ -18,9 +18,8 @@ export function WhereEachFitsSection() {
           <div className="fit">
             <h3>Miraee</h3>
             <p>
-              Fits US companies of 300 to 1,500 people that want travel booking their people pick up
-              quickly, policy on every booking, every trip coded for finance, and onboarding they do
-              not have to fund.
+              Built for US companies of 300 to 1,500 people that want booking their people pick up
+              fast, policy on every trip, finance coding built in and free onboarding.
             </p>
           </div>
         </div>
