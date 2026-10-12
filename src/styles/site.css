@@ -117,6 +117,7 @@ sup a { text-decoration: none; padding: 0 1px; }
 .list-title { font-weight: 650; margin: var(--mr-s-5) 0 var(--mr-s-3); }
 .note { margin-top: var(--mr-s-5); }
 .stat-line { font-size: var(--mr-fs-card-title); line-height: 1.45; font-weight: 500; margin: var(--mr-s-5) 0 0; max-width: 32em; }
+.stat-line__fig small { font-size: .38em; font-weight: 500; letter-spacing: 0; margin-right: .15em; }
 .stat-line__fig { display: block; font-size: clamp(44px, 5vw, 64px); line-height: 1; font-weight: var(--mr-display-weight); letter-spacing: var(--mr-display-tracking); color: var(--text-accent); margin-bottom: var(--mr-s-2); }
 .hr-top { border-top: var(--mr-bw-hair) solid var(--rule); }
 

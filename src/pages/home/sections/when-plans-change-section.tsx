@@ -13,11 +13,11 @@ export function WhenPlansChangeSection() {
         <div className="split__copy">
           <p className="mr-eyebrow">When plans change</p>
           <h2 className="mr-h2" id="plans-h">
-            Your traveler gets an alert and new options to confirm.
+            An alert and new options when plans change.
           </h2>
           <p className="mr-body">
-            A flight is delayed or canceled. Your traveler sees what happened and two new options.
-            They tap one to confirm. The change is recorded for the travel lead and finance.
+            When a flight is delayed or canceled, your traveler sees two new options and taps one to
+            confirm. The travel lead and finance see the change.
           </p>
           <p className="stat-line">
             <span className="stat-line__fig">89%</span> of travel buyers want help rebooking when
@@ -97,7 +97,6 @@ export function WhenPlansChangeSection() {
               <p className="phone__cap">Your travel lead sees the change in the audit log.</p>
             </div>
           </ProductPhone>
-          <figcaption className={styles.caption}>Product view with illustrative data.</figcaption>
         </VisualComposition>
       </Container>
     </Section>

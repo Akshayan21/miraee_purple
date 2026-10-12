@@ -23,10 +23,9 @@ export function FreeAtAnySizeSection() {
             Free to sign up and onboard, at any company size.
           </h2>
           <p className="mr-body">
-            Signing up is free. Onboarding is free: we set up your company, your travel policy and
-            your people with you, with training for admins and finance.
+            We set up your company, your policy and your people with you, and train your admins and
+            finance team.
           </p>
-          <p className="mr-body">The same is true for a company of 300 or 3,000.</p>
           <div className="mr-btn-row" style={{ marginTop: '32px' }}>
             <Button asChild>
               <DialogLink to="/sign-up" dialog="signup">
@@ -34,7 +33,7 @@ export function FreeAtAnySizeSection() {
               </DialogLink>
             </Button>{' '}
             <Button asChild variant="tertiary">
-              <Link to="/pricing">See what's free</Link>
+              <Link to="/pricing">See pricing</Link>
             </Button>
           </div>
         </div>

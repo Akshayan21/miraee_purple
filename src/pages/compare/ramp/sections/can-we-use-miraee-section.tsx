@@ -27,9 +27,7 @@ export function CanWeUseMiraeeSection() {
               <a href="#setting-up-miraee-beside-ramp">Setting up Miraee beside Ramp</a>
             </li>
             <li>
-              <a href="#a-useful-check-on-last-year-s-travel">
-                A useful check on last year's travel
-              </a>
+              <a href="#a-useful-check-on-last-year-s-travel">Check last year's travel first</a>
             </li>
             <li>
               <a href="#where-each-fits">Where each fits</a>
@@ -219,7 +217,7 @@ export function CanWeUseMiraeeSection() {
             </li>
           </ol>
           <h2 className="mr-h2" id="a-useful-check-on-last-year-s-travel">
-            A useful check on last year's travel
+            Check last year's travel first
           </h2>
           <p>
             Most companies book travel in more than one place, even with a company card: a booking

@@ -8,12 +8,11 @@ export function HeroSection() {
       <Container className="mr-container split">
         <div className="split__copy">
           <h1 className="mr-display" id="hero-h">
-            Comparing Navan alternatives? See Miraee on your own numbers.
+            A Navan alternative that's free to start at any size
           </h1>
           <p className="mr-lead">
-            Miraee is business travel and expense software. Free to sign up and onboard, at any
-            company size. Want proof first? Get a review of last year's travel from your own booking
-            data.
+            Miraee is business travel and expense software. Sign-up and onboarding are free at any
+            company size, and you can review last year's travel first.
           </p>
           <div className="mr-btn-row">
             <Button asChild>

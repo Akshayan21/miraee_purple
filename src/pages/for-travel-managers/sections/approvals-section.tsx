@@ -9,7 +9,7 @@ export function ApprovalsSection() {
       <Container className="mr-container split split--rev">
         <div className="split__copy">
           <h2 className="mr-h2" id="appr-h">
-            Approvals only when something is out of policy.
+            You approve only the exceptions
           </h2>
           <p className="mr-body">
             Trips inside policy go ahead. You see only the bookings that need a decision.

@@ -57,10 +57,28 @@ export function Navbar({ links = NAV_LINKS, ctaLabel = 'Sign up free' }: NavbarP
         }}
       >
         {links.map((link) => (
-          <li key={link.to}>
-            <NavLink to={link.to}>{link.label}</NavLink>
+          <li key={link.to} className={link.children ? styles.hasMenu : undefined}>
+            <NavLink to={link.to} end={Boolean(link.children)}>
+              {link.label}
+            </NavLink>
+            {link.children ? (
+              <ul className={styles.sub}>
+                {link.children.map((child) => (
+                  <li key={child.to + child.label}>
+                    <NavLink to={child.to} end>
+                      {child.label}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
           </li>
         ))}
+        <li className={styles.mobileTalk}>
+          <Link to="/talk-to-sales" onClick={() => setOpenFor(null)}>
+            Talk to sales
+          </Link>
+        </li>
         <li className={styles.mobileAction}>
           <Button asChild variant="secondary" size="sm">
             <DialogLink to="/sign-up" dialog="signup" onClick={() => setOpenFor(null)}>
@@ -70,6 +88,9 @@ export function Navbar({ links = NAV_LINKS, ctaLabel = 'Sign up free' }: NavbarP
         </li>
       </ul>
       <div className={`mr-nav__end ${styles.end}`}>
+        <Link className={styles.talk} to="/talk-to-sales">
+          Talk to sales
+        </Link>
         <Button asChild variant="secondary" size="sm">
           <DialogLink to="/sign-up" dialog="signup">
             {ctaLabel}

@@ -8,7 +8,7 @@ export function TheSecurityPackSection() {
       <Container className="mr-container duo">
         <div className="duo__head">
           <h2 className="mr-h2" id="pack-h">
-            Everything your security review needs, in one pack.
+            Your security review, in one pack
           </h2>
         </div>
         <div className="duo__body">

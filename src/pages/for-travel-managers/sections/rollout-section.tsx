@@ -8,11 +8,11 @@ export function RolloutSection() {
       <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="roll-h">
-            Onboarding is free, including your policy and your people.
+            Free onboarding, policy and people included
           </h2>
           <p className="mr-body">
-            We set up your company, your travel policy and your people with you, with training for
-            admins and finance.
+            We set up your company, policy and people with you, and train your admins and finance
+            team.
           </p>
         </div>
         <figure className="split__visual" style={{ margin: '0' }}>

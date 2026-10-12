@@ -29,7 +29,7 @@ export function ArticleContent() {
             </h1>
             <p className="mr-lead">
               {
-                'Travel policy compliance is the share of trips booked the way your policy says: through the company channel, inside the limits, with exceptions approved. This guide explains how to measure it and how to raise it by making the in-policy option the easiest one to choose.'
+                'Travel policy compliance is the share of trips booked the way your policy says. This guide shows how to measure it and raise it by making the in-policy option the easiest one.'
               }
             </p>
             <div className="mr-btn-row">
@@ -444,46 +444,13 @@ export function ArticleContent() {
               <h2 className="mr-h2" id="how-miraee-helps-keep-bookings-inside-policy">
                 {'How Miraee helps keep bookings inside policy'}
               </h2>
-              <p>
-                {
-                  'Miraee is business travel and expense software. It applies your policy at the moment people choose.'
-                }
-              </p>
               <ul>
-                <li>
-                  <strong>{'Every flight and hotel option is marked in or out of policy,'}</strong>
-                  {' so travelers pick from options that already fit.'}
-                </li>
-                <li>
-                  <strong>{'Approvals only come in when something is out of policy,'}</strong>
-                  {' with the reason attached.'}
-                </li>
-                <li>
-                  <strong>{'Booking on behalf'}</strong>
-                  {' for assistants and office admins, inside policy.'}
-                </li>
-                <li>
-                  <strong>{'When plans change,'}</strong>
-                  {' the traveler gets an alert and new options to confirm, in the same app.'}
-                </li>
-                <li>
-                  <strong>{'A full audit log'}</strong>
-                  {' of who booked what, and when, for the travel lead and finance.'}
-                </li>
+                <li>{'Every flight and hotel option is marked in or out of policy.'}</li>
+                <li>{'Approvals only come in when something is out of policy.'}</li>
+                <li>{'A full audit log shows who booked what, and when.'}</li>
               </ul>
               <p>
-                {
-                  'Employees ask the Miraee assistant for a trip and choose flights and hotels inside company policy. The assistant suggests. Your approvers decide.'
-                }
-              </p>
-              <p>
-                {
-                  "Want to see where last year's travel went first? The optional spend review measures bookings outside your program and spend outside policy from one booking report you already have. See "
-                }
-                <Link to="/travel-managers">{'policy on every booking'}</Link>
-                {' or '}
-                <Link to="/how-it-works">{'see how it works'}</Link>
-                {'.'}
+                <Link to="/travel-managers">{'See policy on every booking'}</Link>
               </p>
               <figure
                 className="lf-view mr-paper"
@@ -635,31 +602,6 @@ export function RelatedContent() {
               </Link>
             </Button>
           </p>
-        </div>
-      </section>
-      <section className="sources" aria-labelledby="src-h">
-        <div className="mr-container">
-          <h2 id="src-h">{'Sources'}</h2>
-          <ol>
-            <li id="src-1">
-              {'Business Travel News, Business Traveler survey, October 2025. '}
-              <a
-                href="https://www.businesstravelnews.com/Research/Business-Traveler-2025/Part-4-Booking-Tools-and-Technologies"
-                rel="noopener"
-              >
-                {'businesstravelnews.com'}
-              </a>
-            </li>
-            <li id="src-2">
-              {'GBTA, Business Travel Innovation Research, 2026. North America and Europe. '}
-              <a
-                href="https://gbta.org/research/business-travel-innovation-research-2026/"
-                rel="noopener"
-              >
-                {'gbta.org'}
-              </a>
-            </li>
-          </ol>
         </div>
       </section>
       <CtaVideoBand

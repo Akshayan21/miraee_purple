@@ -8,7 +8,6 @@ import archivoLatin from '@/assets/fonts/archivo-latin-standard-normal.woff2?url
 import type { RouteHandle } from '@/lib/route-handle'
 import { initScrollMotion } from '@/lib/scroll-motion'
 import { IntroContext } from '@/components/motion/intro-context'
-import { SitePreloader } from '@/components/motion/site-preloader'
 
 /** Scroll to the top on navigation, or to the #anchor when the URL has one (footnotes, in-page links). */
 function ScrollManager() {
@@ -72,9 +71,8 @@ function PageStyles() {
 
 /** Top of every route: shared form dialogs, page-sheet scoping and scroll handling. */
 export function RootLayout() {
-  const [loading, setLoading] = React.useState(true)
+  const [loading] = React.useState(false)
   const page = React.useRef<HTMLDivElement>(null)
-  const complete = React.useCallback(() => setLoading(false), [])
   React.useEffect(() => {
     const element = page.current
     if (!element) return
@@ -89,7 +87,6 @@ export function RootLayout() {
         <PageStyles />
         <ScrollManager />
         <ScrollMotion enabled={!loading} />
-        {loading && <SitePreloader onComplete={complete} />}
         <div ref={page} aria-busy={loading}>
           <Outlet />
           <SignupDialog />

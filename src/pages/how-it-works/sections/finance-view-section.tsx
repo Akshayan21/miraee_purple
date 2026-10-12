@@ -11,11 +11,10 @@ export function FinanceViewSection() {
         <div className="split__copy">
           <p className="mr-eyebrow">Step 6</p>
           <h2 className="mr-h2" id="s6-h">
-            Every trip arrives with its GL code and budget.
+            Finance sees every trip, coded and budgeted
           </h2>
           <p className="mr-body">
-            Finance sees every booking in one dashboard, with finance analytics and a full audit log
-            of who booked what, and when.
+            One dashboard with finance analytics and a full audit log of who booked what, and when.
           </p>
           <p className="link-row">
             <Button asChild variant="tertiary">

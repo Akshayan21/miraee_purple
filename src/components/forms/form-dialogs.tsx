@@ -2,7 +2,13 @@ import * as React from 'react'
 
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog'
-import { ChoiceCheckbox, ChoiceRadioGroup, TextField } from '@/components/forms/fields'
+import {
+  ChoiceCheckbox,
+  ChoiceRadioGroup,
+  ROLE_OPTIONS,
+  SelectField,
+  TextField,
+} from '@/components/forms/fields'
 import { LeadForm } from '@/components/forms/lead-form'
 import { useFormDialogs, type FormDialogId } from '@/components/forms/form-dialogs-context'
 import { FORM_DONE } from '@/content/forms'
@@ -117,16 +123,15 @@ export function SignupDialog() {
         inputMode="numeric"
         min={1}
         required
-        hint="Add the number of employees."
+        hint="Number of employees"
       />
-      <TextField
+      <SelectField
         fieldClassName="max-w-none"
         id="su-role"
         name="role"
         label="Your role"
-        type="text"
-        autoComplete="organization-title"
         required
+        options={ROLE_OPTIONS}
       />
       <SubmitButton>Request my account</SubmitButton>
       <p className="mr-small m-0">{TABHI_NOTE}</p>
@@ -140,7 +145,7 @@ export function ReviewDialog() {
       id="review"
       action="/spend-review"
       title="Get a spend review"
-      intro="Send one booking report. Get a trip-by-trip review of last year's travel."
+      intro="Send one booking report. Get last year's travel, reviewed trip by trip."
     >
       <TextField
         fieldClassName="max-w-none"
@@ -169,10 +174,10 @@ export function ReviewDialog() {
         inputMode="numeric"
         min={1}
         required
-        hint="Add the number of employees."
+        hint="Number of employees"
       />
       <ChoiceRadioGroup
-        legend="Which file do you have?"
+        legend="Which file can you share?"
         name="file"
         required
         options={[

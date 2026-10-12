@@ -10,13 +10,12 @@ export function SetUpSection() {
         <div className="split__copy">
           <p className="mr-eyebrow">Step 1</p>
           <h2 className="mr-h2" id="s1-h">
-            We set up your company with you.
+            We set up your company with you
           </h2>
           <p className="mr-body">
-            Onboarding is free. We set up your company, your travel policy and your people, and
-            train your admins and finance team.
+            Onboarding is free. We set up your company, policy and people, train your admins and
+            finance team, and add the corporate cards you already use.
           </p>
-          <p className="mr-body">Add the corporate cards you already use in payment settings.</p>
         </div>
         <figure className="split__visual" style={{ margin: '0' }}>
           <div

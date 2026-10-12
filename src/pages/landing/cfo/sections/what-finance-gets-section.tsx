@@ -6,12 +6,12 @@ export function WhatFinanceGetsSection() {
       <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="gets-h">
-            Every booking inside your policy, with its budget and GL code.
+            Every booking in policy, budgeted and coded
           </h2>
           <ul className="list">
-            <li>Set your travel policy, GL codes and budgets once.</li>
-            <li>Approvals only when something is out of policy.</li>
-            <li>A finance dashboard and a full audit log.</li>
+            <li>Set policy, GL codes and budgets once.</li>
+            <li>Approvals only for exceptions.</li>
+            <li>One finance dashboard and a full audit log.</li>
             <li>Receipts matched to card charges and checked against policy.</li>
           </ul>
         </div>

@@ -19,4 +19,8 @@ function Textarea({ className, ...props }: React.ComponentProps<'textarea'>) {
   return <textarea data-slot="textarea" className={cn(control, className)} {...props} />
 }
 
-export { Input, Textarea }
+function Select({ className, ...props }: React.ComponentProps<'select'>) {
+  return <select data-slot="select" className={cn(control, className)} {...props} />
+}
+
+export { Input, Select, Textarea }

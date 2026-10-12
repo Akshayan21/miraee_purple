@@ -26,11 +26,11 @@ export function TemplateContent() {
           <div className="split__copy lf-hero__copy">
             <p className="mr-eyebrow">{'Free template'}</p>
             <h1 className="mr-h1" id="hero-h">
-              {'Business travel policy template for companies of 300 to 1,500 people'}
+              {'Business travel policy template for growing companies'}
             </h1>
             <p className="mr-lead">
               {
-                'This business travel policy template is a complete policy you can edit and adopt: booking, flights, hotels, ground transport, meals, approvals, changes, expenses and reimbursement, with a one-page rollout checklist. Every section is previewed below. Download the editable Word file and the PDF to make it yours.'
+                'A complete travel policy you can edit and adopt, with a one-page rollout checklist. Preview every section below, then download it as Word or PDF.'
               }
             </p>
             <div className="mr-btn-row">

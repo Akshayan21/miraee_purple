@@ -12,10 +12,10 @@ export function HeroSection() {
       <Container className={`mr-container split ${styles.grid}`}>
         <div className="split__copy">
           <h1 className="mr-h1" id="hero-h">
-            How Miraee works, from booking to month-end
+            From booking to month-end, in six steps
           </h1>
           <p className="mr-lead">
-            Miraee is business travel and expense software. A travel assistant for every employee,
+            Miraee is business travel and expense software: a travel assistant for every employee,
             with the controls finance needs.
           </p>
           <div className="mr-btn-row">

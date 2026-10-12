@@ -8,11 +8,11 @@ export function ExpenseSection() {
         <div className="split__copy">
           <p className="mr-eyebrow">Step 5</p>
           <h2 className="mr-h2" id="s5-h">
-            Receipts matched to card charges.
+            Receipts match to card charges
           </h2>
           <p className="mr-body">
-            Upload a receipt and Miraee matches it to the card charge and checks it against policy.
-            Reimbursements are tracked.
+            Upload a receipt. Miraee matches it to the card charge, checks it against policy and
+            tracks reimbursements.
           </p>
         </div>
         <div className="split__visual">

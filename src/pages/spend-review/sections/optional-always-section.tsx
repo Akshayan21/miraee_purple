@@ -8,11 +8,19 @@ export function OptionalAlwaysSection() {
       <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="opt-h">
-            The review is optional.
+            We show our work.
           </h2>
           <p className="mr-body">
-            You can sign up and onboard without one. We agree timing with you when your file
-            arrives.
+            Every finding comes from the file you send, so your controller can check every line. Any
+            savings figure is a dollar range, with the method and data period shown. The report is
+            yours to keep.
+          </p>
+          <h2 className="mr-h2" style={{ marginTop: '32px' }}>
+            Ready when you are
+          </h2>
+          <p className="mr-body">
+            We agree timing with you when your file arrives. The review is optional, and you can
+            sign up without one.
           </p>
           <div className="mr-btn-row" style={{ marginTop: '32px' }}>
             <Button asChild>

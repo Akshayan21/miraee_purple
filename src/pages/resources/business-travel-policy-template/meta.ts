@@ -3,14 +3,14 @@ import type { SeoMeta } from '@/components/common/seo'
 export const meta: SeoMeta = {
   title: 'Business travel policy template (free download) | Miraee',
   description:
-    'A business travel policy template for companies of 300 to 1,500 people, with a one-page rollout checklist. Preview it here, then download.',
+    'A business travel policy template for growing companies, with a one-page rollout checklist. Preview it here, then download.',
   canonical: 'https://miraee.ai/resources/business-travel-policy-template',
   robots: 'index, follow',
   og: {
     type: 'website',
     title: 'Business travel policy template (free download) | Miraee',
     description:
-      'A business travel policy template for companies of 300 to 1,500 people, with a one-page rollout checklist. Preview it here, then download.',
+      'A business travel policy template for growing companies, with a one-page rollout checklist. Preview it here, then download.',
     url: 'https://miraee.ai/resources/business-travel-policy-template',
     image: 'https://miraee.ai/img/og/og-template.jpg',
     imageWidth: '1200',
@@ -27,7 +27,7 @@ export const meta: SeoMeta = {
           url: 'https://miraee.ai/resources/business-travel-policy-template',
           name: 'Business travel policy template (free download) | Miraee',
           description:
-            'A business travel policy template for companies of 300 to 1,500 people, with a one-page rollout checklist. Preview it here, then download.',
+            'A business travel policy template for growing companies, with a one-page rollout checklist. Preview it here, then download.',
           inLanguage: 'en-US',
           isPartOf: {
             '@id': 'https://miraee.ai/#website',

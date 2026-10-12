@@ -12,22 +12,20 @@ export function WhatYouGetWithMiraeeSection() {
           </h2>
           <ul className="gets">
             <li>
-              <strong>Your policy on every booking.</strong> Options are marked in or out of policy.
+              <strong>Policy on every booking.</strong> Options are marked in or out of policy.
             </li>
             <li>
-              <strong>Approvals only when something is out of policy.</strong> Approvers see the
-              trips that need a decision.
+              <strong>Approvals for exceptions only.</strong>
             </li>
             <li>
-              <strong>Every trip with its budget and GL code.</strong> A finance dashboard and a
-              full audit log.
+              <strong>Every trip budgeted and coded,</strong> with a finance dashboard and full
+              audit log.
             </li>
             <li>
-              <strong>New options when plans change.</strong> Travelers get an alert and confirm the
-              change.
+              <strong>New options when plans change.</strong> Travelers get an alert and confirm.
             </li>
             <li>
-              <strong>Your cards stay.</strong> Keep the corporate cards you already use.
+              <strong>Your cards stay.</strong>
             </li>
           </ul>
         </div>

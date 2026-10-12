@@ -10,8 +10,8 @@ export function ProofFirstSection() {
           Want proof first?
         </h2>
         <p className="mr-body">
-          Send one booking report and get a trip-by-trip review of last year's travel. Any savings
-          figure comes as a dollar range, with the method and the data period shown.
+          Send one booking report. We review last year's travel, trip by trip. Any savings figure is
+          a dollar range, with the method shown.
         </p>
         <div className="mr-btn-row" style={{ marginTop: '32px' }}>
           <Button asChild variant="secondary">

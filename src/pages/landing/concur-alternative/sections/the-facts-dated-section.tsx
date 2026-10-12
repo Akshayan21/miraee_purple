@@ -7,13 +7,8 @@ export function TheFactsDatedSection() {
           Last updated <time dateTime="2026-09-30">September 30, 2026</time>
         </p>
         <h2 className="mr-h2" id="facts-h">
-          Getting started, side by side.
+          Getting started, side by side
         </h2>
-        <p className="mr-body">
-          SAP Concur offers travel, expense and invoice products and asks buyers to request pricing
-          (concur.com, checked September 30, 2026). Miraee sign-up and onboarding are free at every
-          company size.
-        </p>
         <div className="compare-wrap">
           <table className="compare">
             <caption className="mr-sr">Getting started: SAP Concur and Miraee</caption>

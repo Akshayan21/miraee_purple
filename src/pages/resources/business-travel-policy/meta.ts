@@ -46,7 +46,7 @@ export const meta: SeoMeta = {
         {
           '@type': 'Article',
           '@id': 'https://miraee.ai/resources/business-travel-policy#article',
-          headline: 'How to write a business travel policy your people will follow',
+          headline: 'How to write a travel policy people follow',
           description:
             'How to write a business travel policy your people will follow: booking rules, approvals, hotel and flight limits, and how to roll it out. From Miraee.',
           mainEntityOfPage: {

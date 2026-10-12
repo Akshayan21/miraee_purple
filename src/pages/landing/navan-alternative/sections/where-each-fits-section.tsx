@@ -17,8 +17,8 @@ export function WhereEachFitsSection() {
           <div className="fit">
             <h3>Miraee</h3>
             <p>
-              Fits US companies of 300 to 1,500 people that want a free start at their size, and a
-              review of last year's travel on their own numbers before they move.
+              Built for US companies of 300 to 1,500 people that want a free start at their size and
+              proof on their own numbers.
             </p>
           </div>
         </div>

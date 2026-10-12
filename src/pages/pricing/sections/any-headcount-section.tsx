@@ -7,11 +7,9 @@ export function AnyHeadcountSection() {
       <Container className="mr-container split">
         <div className="split__copy">
           <h2 className="mr-h2" id="size-h">
-            From enterprise to startups, Miraee is for all.
+            Same start for 300 people or 3,000
           </h2>
-          <p className="mr-body">
-            Any company size can sign up and onboard free. There is no headcount cap.
-          </p>
+          <p className="mr-body">There is no headcount cap.</p>
         </div>
         <figure className={`split__visual mr-frame ${styles.photo}`}>
           <ResponsiveImage

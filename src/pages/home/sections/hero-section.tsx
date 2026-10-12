@@ -1,7 +1,6 @@
 import { useContext, useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Link } from 'react-router-dom'
 import { IntroContext } from '@/components/motion/intro-context'
 import { Button } from '@/components/ui/button'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
@@ -52,7 +51,7 @@ export function HeroSection() {
       <div className={styles.grid}>
         <div className={styles.copy}>
           <p data-hero-copy className={styles.eyebrow}>
-            Business travel & expense software
+            Business travel and expense software
           </p>
           <h1 data-hero-copy id="home-hero-h" className={styles.heading}>
             Business travel.
@@ -63,7 +62,8 @@ export function HeroSection() {
             </span>
           </h1>
           <p data-hero-copy className={styles.lead}>
-            Book within policy. Track every trip, budget, and expense in one place.
+            Miraee is business travel and expense software. Your people book inside company policy,
+            and finance sees every trip with its budget and GL code.
           </p>
           <div data-hero-copy className={styles.actions}>
             <Button asChild>
@@ -72,14 +72,17 @@ export function HeroSection() {
               </DialogLink>
             </Button>
             <Button asChild variant="tertiary">
-              <Link to="/how-it-works">See how it works</Link>
+              <DialogLink to="/spend-review" dialog="review">
+                Get a spend review
+              </DialogLink>
             </Button>
           </div>
           <p data-hero-copy className={styles.note}>
-            Free to sign up and onboard. At any company size.
+            Free to sign up and onboard, at any company size.
           </p>
           <p data-hero-copy className={styles.trust}>
-            Built by Tabhi, the company behind the Mondee travel marketplace.
+            Built by Tabhi, the company behind the Mondee travel marketplace. Keep the corporate
+            cards you already use.
           </p>
         </div>
         <figure data-hero-stage className={styles.stage}>
@@ -132,10 +135,6 @@ export function HeroSection() {
             <div className={styles.budgetTrack} aria-label="Trip uses 86 percent of its budget">
               <span />
             </div>
-            <div className={styles.finance}>
-              <span>Finance has the details</span>
-              <span>GL 6200</span>
-            </div>
           </div>
           <ol className={styles.steps} aria-label="Trip workflow">
             <li data-hero-step>
@@ -154,10 +153,9 @@ export function HeroSection() {
               <span className={styles.check} aria-hidden="true">
                 &#10003;
               </span>
-              <span>Ready for finance</span>
+              <span>Coded to GL 6200</span>
             </li>
           </ol>
-          <figcaption className={styles.caption}>Product view with illustrative data.</figcaption>
         </figure>
       </div>
     </section>

@@ -13,8 +13,7 @@ export function BookingTermsSection() {
         </div>
         <div className="duo__body">
           <p className="mr-body">
-            Signing up and onboarding are free, at any company size. Ask us about booking terms
-            before your team books its first trip.
+            We set out booking terms in writing before your team books its first trip.
           </p>
           <p className="link-row">
             <Button asChild variant="tertiary">

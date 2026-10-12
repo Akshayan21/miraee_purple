@@ -3,14 +3,14 @@ import type { SeoMeta } from '@/components/common/seo'
 export const meta: SeoMeta = {
   title: 'Business travel resources and guides | Miraee',
   description:
-    'Guides, a business travel policy template and checklists for finance and travel leads at companies of 300 to 1,500 people. From Miraee.',
+    'Guides, a business travel policy template and checklists for finance and travel leads at growing companies. From Miraee.',
   canonical: 'https://miraee.ai/resources',
   robots: 'index, follow',
   og: {
     type: 'website',
     title: 'Business travel resources and guides | Miraee',
     description:
-      'Guides, a business travel policy template and checklists for finance and travel leads at companies of 300 to 1,500 people. From Miraee.',
+      'Guides, a business travel policy template and checklists for finance and travel leads at growing companies. From Miraee.',
     url: 'https://miraee.ai/resources',
     image: 'https://miraee.ai/img/og/og-resources.jpg',
     imageWidth: '1200',
@@ -27,7 +27,7 @@ export const meta: SeoMeta = {
           url: 'https://miraee.ai/resources',
           name: 'Business travel resources and guides | Miraee',
           description:
-            'Guides, a business travel policy template and checklists for finance and travel leads at companies of 300 to 1,500 people. From Miraee.',
+            'Guides, a business travel policy template and checklists for finance and travel leads at growing companies. From Miraee.',
           inLanguage: 'en-US',
           isPartOf: {
             '@id': 'https://miraee.ai/#website',

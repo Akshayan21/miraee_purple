@@ -10,11 +10,10 @@ export function ApproveSection() {
         <div className="split__copy">
           <p className="mr-eyebrow">Step 3</p>
           <h2 className="mr-h2" id="s3-h">
-            Approvals only when something is out of policy.
+            Approvers see only the exceptions
           </h2>
           <p className="mr-body">
-            Trips inside policy go ahead. Anything out of policy goes to an approver. Approvers see
-            only the trips that need a decision.
+            Trips inside policy go ahead. Anything out of policy goes to an approver.
           </p>
         </div>
         <div className="split__visual">

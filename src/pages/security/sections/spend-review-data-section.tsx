@@ -10,9 +10,8 @@ export function SpendReviewDataSection() {
         </div>
         <div className="duo__body">
           <p className="mr-body">
-            The spend review needs one file: an agency booking report or an expense extract. A card
-            feed is optional. We sign an NDA before you send anything, and the report is yours to
-            keep.
+            For a spend review you send one file, an agency booking report or an expense extract. We
+            sign an NDA first, and the report is yours to keep.
           </p>
         </div>
       </Container>

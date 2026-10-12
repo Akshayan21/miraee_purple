@@ -18,35 +18,15 @@ export function WhatsFreeSection() {
               <th scope="row">Sign-up</th>
               <td>
                 <img src="/img/icons/check.svg" alt="" width="20" height="20" />A company account
-                for your whole company
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Setup</th>
-              <td>
-                <img src="/img/icons/check.svg" alt="" width="20" height="20" />
-                Company setup and travel policy setup
+                for everyone
               </td>
             </tr>
             <tr>
               <th scope="row">Onboarding</th>
               <td>
                 <img src="/img/icons/check.svg" alt="" width="20" height="20" />
-                Employee onboarding
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Payment methods</th>
-              <td>
-                <img src="/img/icons/check.svg" alt="" width="20" height="20" />
-                Payment settings with the corporate cards you already use
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Training</th>
-              <td>
-                <img src="/img/icons/check.svg" alt="" width="20" height="20" />
-                Training for your admins and finance team
+                Company and policy setup, employee onboarding, payment settings with your current
+                cards, and training for admins and finance
               </td>
             </tr>
           </tbody>

@@ -10,10 +10,7 @@ export function FreeStartSection() {
           <h2 className="mr-h2" id="free-h">
             Free to sign up and onboard, at any company size.
           </h2>
-          <p className="mr-body">
-            We set up your company, your travel policy and your people with you. The review is
-            optional.
-          </p>
+          <p className="mr-body">We set up your company, policy and people with you.</p>
           <div className="mr-btn-row" style={{ marginTop: '32px' }}>
             <Button asChild>
               <DialogLink to="/sign-up" dialog="signup">

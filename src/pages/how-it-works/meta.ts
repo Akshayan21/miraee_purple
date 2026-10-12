@@ -1,14 +1,14 @@
 import type { SeoMeta } from '@/components/common/seo'
 
 export const meta: SeoMeta = {
-  title: 'How Miraee works | Business travel and expense software',
+  title: 'How Miraee works | Travel booking to month-end',
   description:
     'Employees ask the Miraee assistant for a trip and choose flights and hotels inside policy. Finance sees every booking with its budget and GL code.',
   canonical: 'https://miraee.ai/how-it-works',
   robots: 'index, follow',
   og: {
     type: 'website',
-    title: 'How Miraee works | Business travel and expense software',
+    title: 'How Miraee works | Travel booking to month-end',
     description:
       'Employees ask the Miraee assistant for a trip and choose flights and hotels inside policy. Finance sees every booking with its budget and GL code.',
     url: 'https://miraee.ai/how-it-works',
@@ -23,7 +23,7 @@ export const meta: SeoMeta = {
           '@type': 'WebPage',
           '@id': 'https://miraee.ai/how-it-works#webpage',
           url: 'https://miraee.ai/how-it-works',
-          name: 'How Miraee works | Business travel and expense software',
+          name: 'How Miraee works | Travel booking to month-end',
           description:
             'Employees ask the Miraee assistant for a trip and choose flights and hotels inside policy. Finance sees every booking with its budget and GL code.',
           inLanguage: 'en-US',

@@ -8,17 +8,21 @@ export function HeroSection() {
       <Container className="mr-container split">
         <div className="split__copy">
           <h1 className="mr-display" id="hero-h">
-            Comparing SAP Concur alternatives? Start with free onboarding.
+            An SAP Concur alternative with free onboarding
           </h1>
           <p className="mr-lead">
-            Miraee is business travel and expense software. Sign-up and onboarding are free, at any
-            company size. We set up your company, your travel policy and your people with you, and
-            train your admins and finance team.
+            Miraee is business travel and expense software. Sign-up and onboarding are free at any
+            size, and we train your admins and finance team.
           </p>
           <div className="mr-btn-row">
             <Button asChild>
               <DialogLink to="/sign-up" dialog="signup">
                 <span className="mr-btn__u">Sign up free</span>
+              </DialogLink>
+            </Button>{' '}
+            <Button asChild variant="secondary">
+              <DialogLink to="/spend-review" dialog="review">
+                Get a spend review
               </DialogLink>
             </Button>
           </div>

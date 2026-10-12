@@ -22,11 +22,11 @@ export function ResourceHero() {
           <div className="split__copy lf-hero__copy">
             <p className="mr-eyebrow">{'Guides and templates'}</p>
             <h1 className="mr-h1" id="hero-h">
-              {'Business travel resources'}
+              {'Guides for running business travel'}
             </h1>
             <p className="mr-lead">
               {
-                ' Practical guides for the people who run company travel and pay for it: travel leads, controllers and finance teams at companies of 300 to 1,500 people. Each one works on its own, whatever tool you use. Miraee is business travel and expense software. '
+                'Practical guides for the travel leads and finance teams who run company travel. Each works with whatever tool you use.'
               }
             </p>
             <div className="mr-btn-row">

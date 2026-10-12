@@ -29,7 +29,6 @@ export function HeroSection() {
               </DialogLink>
             </Button>
           </div>
-          <p className="mr-small hero__trust">Keep the corporate cards you already use.</p>
         </div>
         <VisualComposition
           className={`split__visual compose document-composition compose--fin ${styles.visual}`}

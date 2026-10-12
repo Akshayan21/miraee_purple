@@ -8,7 +8,7 @@ export function ProofOnYourNumbersSection() {
       <Container className="mr-container">
         <div className="inner">
           <h2 className="mr-h2" id="proof-h">
-            Want proof first? See last year's travel, trip by trip.
+            Check our work on your own data
           </h2>
           <p className="mr-body">
             Send one booking report. We show bookings outside your program, spend outside policy,

@@ -46,7 +46,7 @@ export const meta: SeoMeta = {
         {
           '@type': 'Article',
           '@id': 'https://miraee.ai/resources/travel-expense-report#article',
-          headline: 'Travel expense reports: close month-end with fewer receipts to chase',
+          headline: 'Travel expense reports: a faster month-end close',
           description:
             'How to close month-end on travel with fewer receipts to chase: codes at booking, receipts matched to card charges and a clear audit trail.',
           mainEntityOfPage: {

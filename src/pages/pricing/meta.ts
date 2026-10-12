@@ -3,14 +3,14 @@ import { faqPageJsonLd } from '@/lib/json-ld'
 import { faq } from './faq'
 
 export const meta: SeoMeta = {
-  title: 'Miraee pricing | Free to sign up and onboard, any size',
+  title: 'Pricing | Free to sign up and onboard | Miraee',
   description:
     'Signing up is free. Onboarding is free: we set up your company, your travel policy and your people with you. The same is true at any company size.',
   canonical: 'https://miraee.ai/pricing',
   robots: 'index, follow',
   og: {
     type: 'website',
-    title: 'Miraee pricing | Free to sign up and onboard, any size',
+    title: 'Pricing | Free to sign up and onboard | Miraee',
     description:
       'Signing up is free. Onboarding is free: we set up your company, your travel policy and your people with you. The same is true at any company size.',
     url: 'https://miraee.ai/pricing',
@@ -27,7 +27,7 @@ export const meta: SeoMeta = {
           '@type': 'WebPage',
           '@id': 'https://miraee.ai/pricing#webpage',
           url: 'https://miraee.ai/pricing',
-          name: 'Miraee pricing | Free to sign up and onboard, any size',
+          name: 'Pricing | Free to sign up and onboard | Miraee',
           description:
             'Signing up is free. Onboarding is free: we set up your company, your travel policy and your people with you. The same is true at any company size.',
           inLanguage: 'en-US',

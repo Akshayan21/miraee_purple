@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { Input, Textarea } from '@/components/ui/input'
+import { Input, Select, Textarea } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Checkbox } from '@/components/ui/checkbox'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
@@ -50,6 +50,48 @@ export function TextField({
         <Input id={id} aria-describedby={hintId} {...controlProps} />
       )}
       {hint ? <FieldHint id={hintId}>{hint}</FieldHint> : null}
+    </Field>
+  )
+}
+
+export const ROLE_OPTIONS = [
+  'Finance',
+  'Travel or operations',
+  'Executive assistant or admin',
+  'HR',
+  'IT',
+  'Other',
+]
+
+type SelectFieldProps = Omit<React.ComponentProps<'select'>, 'id' | 'name'> & {
+  id: string
+  name: string
+  label: string
+  options: string[]
+  fieldClassName?: string
+}
+
+/** Label + native select, styled like the text inputs. */
+export function SelectField({
+  id,
+  label,
+  options,
+  fieldClassName,
+  ...controlProps
+}: SelectFieldProps) {
+  return (
+    <Field className={fieldClassName}>
+      <Label htmlFor={id}>{label}</Label>
+      <Select id={id} defaultValue="" {...controlProps}>
+        <option value="" disabled>
+          Select your role
+        </option>
+        {options.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </Select>
     </Field>
   )
 }

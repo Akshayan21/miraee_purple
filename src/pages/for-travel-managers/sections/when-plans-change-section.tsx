@@ -11,15 +11,15 @@ export function WhenPlansChangeSection() {
       <Container className="mr-container split split--rev">
         <div className="split__copy">
           <h2 className="mr-h2" id="plans-h">
-            When plans change, your traveler gets new options to confirm.
+            An alert and new options when plans change
           </h2>
+          <p className="mr-body">
+            A delayed or canceled flight brings your traveler an alert and new options. They confirm
+            one, and you see the change in the audit log.
+          </p>
           <p className="stat-line" style={{ margin: '0 0 24px' }}>
             <span className="stat-line__fig">64%</span> of travel managers say changes and
             cancellations are hard in their booking tool.
-          </p>
-          <p className="mr-body">
-            With Miraee, a delayed or canceled flight brings an alert and new options. The traveler
-            confirms one. You see the change in the audit log.
           </p>
           <p className="link-row">
             <Button asChild variant="tertiary">

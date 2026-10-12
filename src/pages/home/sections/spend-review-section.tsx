@@ -13,13 +13,13 @@ export function SpendReviewSection() {
             rises 1.3%.
           </p>
           <h2 className="mr-h2" id="spend-h">
-            Want proof first? See last year's travel, trip by trip.
+            Want proof first? Review last year's travel.
           </h2>
           <p className="mr-body">
-            Send one booking report from your travel agency or expense system. We review last year's
-            travel using your own data.
+            Send one booking report from your agency or expense system. We review every trip using
+            your own data.
           </p>
-          <p className="list-title">What you get</p>
+          <p className="list-title">What the review shows</p>
           <ul className="list">
             <li>Bookings made outside your travel program</li>
             <li>Spend outside policy</li>
@@ -27,11 +27,10 @@ export function SpendReviewSection() {
             <li>Unused or expired tickets</li>
           </ul>
           <p className="mr-body note">
-            <strong>How it's measured:</strong> Every finding comes from your own file. Any savings
-            figure is a dollar range, with the method and the data period beside it. The report is
-            yours to keep.
+            Every finding comes from your file. Any savings figure is a dollar range, with the
+            method and data period shown. The report is yours to keep.
           </p>
-          <p className="mr-body note">The review is optional. You can sign up without one.</p>
+          <p className="mr-body note">Optional. You can sign up without one.</p>
           <div className="mr-btn-row" style={{ marginTop: '24px' }}>
             <Button asChild variant="secondary">
               <DialogLink to="/spend-review" dialog="review">
@@ -60,7 +59,6 @@ export function SpendReviewSection() {
               <span className="mr-label">Last year</span>
             </div>
             <LedgerTable className="mr-ledger">
-              <caption>Product view with illustrative data.</caption>
               <thead>
                 <tr>
                   <th scope="col">Finding</th>

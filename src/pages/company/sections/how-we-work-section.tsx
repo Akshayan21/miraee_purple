@@ -6,7 +6,7 @@ export function HowWeWorkSection() {
     <Section tone="plum" accent className="mr-section" aria-labelledby="work-h">
       <Container className="mr-container">
         <h2 className="mr-h2" id="work-h">
-          We show our work.
+          How we work
         </h2>
         <ul className="principles" style={{ marginTop: '32px' }}>
           <li>Figures on this site carry their source.</li>

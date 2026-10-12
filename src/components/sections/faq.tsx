@@ -125,7 +125,7 @@ function FaqAccordion({
             {heading}
           </h2>
           <p className="faq-acc__aside">
-            Not here? <Link to="/talk-to-sales">Ask us directly</Link>
+            Something else? <Link to="/talk-to-sales">Talk to us</Link>
           </p>
         </div>
         <FaqList items={items} />

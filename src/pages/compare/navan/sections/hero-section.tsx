@@ -25,12 +25,11 @@ export function HeroSection() {
         <div className="split__copy lf-hero__copy">
           <p className="mr-eyebrow">Comparison</p>
           <h1 className="mr-h1" id="hero-h">
-            Navan alternatives: how Miraee compares, and where each fits
+            Navan alternatives: Miraee vs Navan
           </h1>
           <p className="mr-lead">
-            Miraee is business travel and expense software. Here is how it compares with Navan on
-            cost to start, travel policy, the finance view and changes, with every Navan fact dated
-            and checked on Navan's own pages.
+            Miraee is business travel and expense software. This page compares it with Navan on cost
+            to start, policy, the finance view and changes. Every Navan fact is dated and sourced.
           </p>
           <div className="mr-btn-row">
             <Button asChild>
@@ -46,8 +45,8 @@ export function HeroSection() {
           </div>
           <p className="mr-small hero__trust">Free to sign up and onboard, at any company size.</p>
           <p className="lf-meta">
-            Last updated <time dateTime="2026-09-30">September 30, 2026</time> · Competitor facts
-            checked September 30, 2026 · Reviewed by Product Marketing
+            Updated <time dateTime="2026-09-30">September 30, 2026</time> · Navan facts checked
+            September 30, 2026
           </p>
         </div>
         <figure

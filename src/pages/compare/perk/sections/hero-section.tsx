@@ -25,12 +25,12 @@ export function HeroSection() {
         <div className="split__copy lf-hero__copy">
           <p className="mr-eyebrow">Comparison</p>
           <h1 className="mr-h1" id="hero-h">
-            TravelPerk alternatives: how Miraee and Perk compare
+            TravelPerk alternatives: Miraee vs Perk
           </h1>
           <p className="mr-lead">
-            Miraee is business travel and expense software. Perk, formerly TravelPerk, is one of the
-            tools buyers compare it with. Here is how the two compare on cost to start, the finance
-            view of each trip and what happens when plans change, with every Perk fact dated.
+            Miraee is business travel and expense software. This page compares it with Perk,
+            formerly TravelPerk, on cost to start, the finance view and changes. Every Perk fact is
+            dated.
           </p>
           <div className="mr-btn-row">
             <Button asChild>

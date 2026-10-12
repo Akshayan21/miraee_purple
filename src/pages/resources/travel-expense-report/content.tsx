@@ -25,11 +25,11 @@ export function ArticleContent() {
           <div className="split__copy lf-hero__copy">
             <p className="mr-eyebrow">{'Guide for controllers, ap and finance operations'}</p>
             <h1 className="mr-h1" id="hero-h">
-              {'Travel expense reports: close month-end with fewer receipts to chase'}
+              {'Travel expense reports: a faster month-end close'}
             </h1>
             <p className="mr-lead">
               {
-                'A travel expense report lists what an employee spent on a business trip so the company can check it, code it and pay it back. This guide covers what a good report contains, why travel slows month-end close, and a travel month-end checklist your team can use from the next close.'
+                'A travel expense report lists what an employee spent on a trip so the company can check, code and repay it. This guide covers what a good report holds and gives you a month-end checklist.'
               }
             </p>
             <div className="mr-btn-row">
@@ -421,41 +421,15 @@ export function ArticleContent() {
               <h2 className="mr-h2" id="how-miraee-helps-with-travel-expense-reports">
                 {'How Miraee helps with travel expense reports'}
               </h2>
-              <p>
-                {
-                  'Miraee is business travel and expense software. It moves most of the close work to the moment of booking.'
-                }
-              </p>
               <ul>
+                <li>{'Every trip arrives with its GL code and budget, ready for month-end.'}</li>
+                <li>{'Receipts are matched to card charges and checked against policy.'}</li>
                 <li>
-                  <strong>{'Every trip arrives with its GL code and budget,'}</strong>
-                  {' ready for month-end.'}
-                </li>
-                <li>
-                  <strong>{'Receipts matched to card charges and checked against policy.'}</strong>
-                  {' Travelers upload receipts, and Miraee matches them to the card charge.'}
-                </li>
-                <li>
-                  <strong>{'Reimbursements tracked,'}</strong>
-                  {' with a finance dashboard and finance analytics.'}
-                </li>
-                <li>
-                  <strong>{'A full audit log'}</strong>
-                  {' of who booked what, and when, and every change.'}
-                </li>
-                <li>
-                  <strong>{'Keep the corporate cards you already use.'}</strong>
-                  {' Miraee sits beside the card platform your finance team runs today: '}
-                  <Link to="/compare/ramp">{'use Miraee beside your card platform'}</Link>
-                  {'.'}
+                  {'Reimbursements are tracked, with a finance dashboard and a full audit log.'}
                 </li>
               </ul>
               <p>
-                {'Sign-up and onboarding are free at any company size. See '}
-                <Link to="/finance">{'travel and expense management for finance'}</Link>
-                {' or '}
-                <Link to="/how-it-works">{'see how it works'}</Link>
-                {'.'}
+                <Link to="/finance">{'See travel and expense management for finance'}</Link>
               </p>
               <figure
                 className="lf-view mr-paper"

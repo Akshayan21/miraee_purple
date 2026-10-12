@@ -7,13 +7,8 @@ export function TheFactsDatedSection() {
           Last updated <time dateTime="2026-09-30">September 30, 2026</time>
         </p>
         <h2 className="mr-h2" id="facts-h">
-          Cost to start, side by side.
+          Cost to start, side by side
         </h2>
-        <p className="mr-body">
-          Navan's free Business plan is for companies with up to 300 employees, and its Enterprise
-          plan is priced by quote (navan.com/pricing, checked September 30, 2026). Miraee sign-up
-          and onboarding are free at every company size.
-        </p>
         <div className="compare-wrap">
           <table className="compare">
             <caption className="mr-sr">Cost to start: Navan and Miraee</caption>

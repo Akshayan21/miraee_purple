@@ -59,7 +59,7 @@ export function HeroSection() {
             <TextField
               id="ts-msg"
               name="message"
-              label="What would you like to ask?"
+              label="What would you like to know?"
               multiline
               rows={4}
             />
@@ -75,7 +75,6 @@ export function HeroSection() {
             <DialogLink to="/sign-up" dialog="signup">
               Sign up free
             </DialogLink>
-            .
           </p>
         </div>
         <figure className="page-hero__visual mr-frame">

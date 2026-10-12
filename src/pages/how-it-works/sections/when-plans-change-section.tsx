@@ -11,11 +11,11 @@ export function WhenPlansChangeSection() {
         <div className="split__copy">
           <p className="mr-eyebrow">Step 4</p>
           <h2 className="mr-h2" id="s4-h">
-            When plans change, new options arrive.
+            Travelers get new options when plans change
           </h2>
           <p className="mr-body">
-            Your traveler gets an alert when a flight is delayed or canceled, with new options to
-            confirm. The change is recorded for the travel lead and finance.
+            When a flight is delayed or canceled, your traveler gets an alert and new options to
+            confirm. The change is logged for the travel lead and finance.
           </p>
           <p className="link-row">
             <Button asChild variant="tertiary">
