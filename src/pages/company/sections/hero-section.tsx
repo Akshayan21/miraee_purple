@@ -44,7 +44,7 @@ export function HeroSection() {
               src="/img/document/company-hero-1.jpg"
               width="2046"
               height="1364"
-              alt="An airport lounge overlooks an aircraft."
+              alt="A traveler photographs planes through a tall airport window, his suitcase beside him."
               fetchpriority="high"
             />
           </picture>

@@ -40,13 +40,13 @@ export function HeroSection() {
         </div>
         <VisualComposition className="split__visual compose compose--lp" style={{ margin: '0' }}>
           <picture>
-            <source srcSet="/img/px8367824-finance-lead.webp" type="image/webp" />{' '}
+            <source srcSet="/img/document/landing-cfo-hero.webp" type="image/webp" />{' '}
             <img
               className="compose__person"
-              src="/img/px8367824-finance-lead.png"
-              width="591"
-              height="638"
-              alt="A finance lead in a red blazer looks over her work, beside a ledger of trips with budgets and GL codes."
+              src="/img/document/landing-cfo-hero.jpg"
+              width="1366"
+              height="2046"
+              alt="A confident professional in a striped shirt at golden hour."
               fetchpriority="high"
             />
           </picture>

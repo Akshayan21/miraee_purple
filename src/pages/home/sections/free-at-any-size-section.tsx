@@ -14,7 +14,7 @@ export function FreeAtAnySizeSection() {
               src="/img/document/home-approved-travel-tool-1.jpg"
               width="2046"
               height="1366"
-              alt="A team meets around a conference table in a bright office."
+              alt="A team works around a long conference table in a bright office."
             />
           </picture>
         </figure>

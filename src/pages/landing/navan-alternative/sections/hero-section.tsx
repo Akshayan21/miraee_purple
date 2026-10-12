@@ -33,12 +33,12 @@ export function HeroSection() {
         </div>
         <figure className="split__visual" style={{ margin: '0' }}>
           <picture>
-            <source srcSet="/img/px3932459-traveler-phone.webp" type="image/webp" />
+            <source srcSet="/img/document/landing-navan-hero.webp" type="image/webp" />
             <img
-              src="/img/px3932459-traveler-phone.png"
-              width="1100"
-              height="964"
-              alt="A business traveler in a trench coat takes a call on his phone."
+              src="/img/document/landing-navan-hero.jpg"
+              width="1364"
+              height="2046"
+              alt="A smiling woman in a red top outdoors."
               fetchpriority="high"
             />
           </picture>

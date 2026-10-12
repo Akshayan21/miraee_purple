@@ -78,7 +78,7 @@ export function HeroSection() {
               src="/img/document/sign-up-side-image-1.jpg"
               width="2046"
               height="1364"
-              alt="Colleagues celebrate together in the office."
+              alt="Two colleagues celebrate with a high five over a laptop and papers."
               fetchpriority="high"
             />
           </picture>

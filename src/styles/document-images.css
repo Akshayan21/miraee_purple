@@ -44,6 +44,9 @@
   width: 100%;
   max-width: 100%;
   height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: 50% 28%;
 }
 
 .document-composition.compose .compose__card {

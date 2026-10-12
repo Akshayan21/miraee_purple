@@ -180,8 +180,8 @@ sup a { text-decoration: none; padding: 0 1px; }
    His forearm sits at 75.5% of his image height, so the card starts there and hides his lower body. */
 @media (min-width: 1024px) {
   .compose.compose--spend { container-type: inline-size; height: auto; align-self: center; }
-  .compose--spend .compose__person { top: 0; bottom: auto; left: auto; right: 4cqw; width: 52cqw; height: auto; z-index: 1; }
-  .compose--spend .compose__card { position: relative; top: auto; right: auto; width: 100%; max-width: none; margin: calc(52cqw * 1.126 * 0.757 - 1px) 0 0; z-index: 2; padding: 24px 28px 16px; }
+  .compose--spend .compose__person { top: 0; bottom: auto; left: auto; right: 0; width: 62cqw; height: 46cqw; object-fit: cover; object-position: 50% 22%; border-radius: var(--mr-r-xl); z-index: 1; }
+  .compose--spend .compose__card { position: relative; top: auto; right: auto; width: 100%; max-width: none; margin: calc(46cqw - 72px) 0 0; z-index: 2; padding: 24px 28px 16px; }
 }
 @media (max-width: 1023px) {
   .compose { height: auto; display: grid; justify-items: center; }

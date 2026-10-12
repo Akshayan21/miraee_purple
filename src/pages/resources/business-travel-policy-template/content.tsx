@@ -55,9 +55,9 @@ export function TemplateContent() {
               <div className="doc-cover__top">
                 <img
                   src="/img/document/resources-template-card-1.jpg"
-                  alt=""
-                  width="2046"
-                  height="1364"
+                  alt="A traveler works on a laptop at a window desk with her bag beside her."
+                  width="1364"
+                  height="2046"
                 />
               </div>
               <div className="doc-cover__photo">

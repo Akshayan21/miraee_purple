@@ -86,10 +86,10 @@ export function HeroSection() {
           <div className={styles.photoWrap} aria-hidden="true">
             <img
               data-hero-photo
-              src="/img/hero-traveler.jpg"
-              width="687"
-              height="1031"
-              alt=""
+              src="/img/document/home-hero-1.jpg"
+              width="1364"
+              height="2046"
+              alt="A traveler in sunset light hurries across an airport apron with a rolling suitcase."
               fetchpriority="high"
               className={styles.photo}
             />

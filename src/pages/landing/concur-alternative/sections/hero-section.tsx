@@ -28,12 +28,12 @@ export function HeroSection() {
         </div>
         <figure className="split__visual" style={{ margin: '0' }}>
           <picture>
-            <source srcSet="/img/px4623080-team-wide.webp" type="image/webp" />
+            <source srcSet="/img/document/landing-concur-hero.webp" type="image/webp" />
             <img
-              src="/img/px4623080-team-wide.jpg"
-              width="917"
-              height="688"
-              alt="Colleagues smile as they review work together at a desk."
+              src="/img/document/landing-concur-hero.jpg"
+              width="2046"
+              height="1364"
+              alt="Colleagues take notes at a wooden meeting table."
               fetchpriority="high"
             />
           </picture>

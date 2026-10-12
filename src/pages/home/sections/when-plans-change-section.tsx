@@ -34,13 +34,13 @@ export function WhenPlansChangeSection() {
           style={{ margin: '0' }}
         >
           <picture>
-            <source srcSet="/img/document/home-when-plans-change-1.webp" type="image/webp" />{' '}
+            <source srcSet="/img/document/home-when-plans-change-2.webp" type="image/webp" />{' '}
             <img
               className="compose__person"
-              src="/img/document/home-when-plans-change-1.jpg"
-              width="626"
-              height="418"
-              alt="Colleagues talk over coffee and a laptop in a cafe."
+              src="/img/document/home-when-plans-change-2.jpg"
+              width="2046"
+              height="1366"
+              alt="A traveler in a suit looks out over the sea through a tall glass wall, his luggage beside him."
             />
           </picture>
           <ProductPhone className="compose__card phone phone--alert" aria-hidden="true">
