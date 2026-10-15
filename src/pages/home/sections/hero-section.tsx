@@ -1,162 +1,99 @@
-import { useContext, useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { IntroContext } from '@/components/motion/intro-context'
-import { Button } from '@/components/ui/button'
+import { useEffect, useRef, useState } from 'react'
+import { Pause, Play } from 'lucide-react'
+
 import { DialogLink } from '@/components/forms/form-dialogs-context'
+import { Button } from '@/components/ui/button'
 import styles from './hero-section.module.css'
 
 export function HeroSection() {
-  const ref = useRef<HTMLElement>(null)
-  const loading = useContext(IntroContext)
+  const video = useRef<HTMLVideoElement>(null)
+  const [paused, setPaused] = useState(false)
+  const [src, setSrc] = useState('/video/hero-home.mp4')
+
   useEffect(() => {
-    const root = ref.current
-    if (!root || loading) return
-    gsap.registerPlugin(ScrollTrigger)
-    const media = gsap.matchMedia()
-    media.add(
-      {
-        reduced: '(prefers-reduced-motion: reduce)',
-        desktop: '(min-width: 1024px) and (hover: hover) and (pointer: fine)',
-      },
-      (context) => {
-        if (context.conditions?.reduced) return
-        const timeline = gsap.timeline({ defaults: { ease: 'power3.out' } })
-        timeline
-          .from('[data-hero-copy]', { y: 24, opacity: 0, duration: 0.7, stagger: 0.1 })
-          .from('[data-hero-stage]', { y: 32, opacity: 0, duration: 0.85 }, 0.15)
-          .from('[data-hero-trip]', { y: 28, opacity: 0, duration: 0.7 }, 0.4)
-          .from('[data-hero-step]', { y: 10, opacity: 0, duration: 0.5, stagger: 0.22 }, 0.7)
-          .fromTo(
-            '[data-hero-route]',
-            { strokeDasharray: 650, strokeDashoffset: 650 },
-            { strokeDashoffset: 0, duration: 1.3, ease: 'power2.inOut' },
-            0.6,
-          )
-        if (context.conditions?.desktop) {
-          gsap.to('[data-hero-photo]', {
-            yPercent: 8,
-            ease: 'none',
-            scrollTrigger: { trigger: root, start: 'top top', end: 'bottom top', scrub: 1 },
-          })
-        }
-      },
-      root,
-    )
-    return () => media.revert()
-  }, [loading])
+    const small = window.matchMedia('(max-width: 900px)')
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const sync = () => {
+      setSrc(small.matches ? '/video/hero-home-sm.mp4' : '/video/hero-home.mp4')
+      if (reduced.matches) {
+        video.current?.pause()
+        setPaused(true)
+      }
+    }
+    sync()
+    small.addEventListener('change', sync)
+    reduced.addEventListener('change', sync)
+    return () => {
+      small.removeEventListener('change', sync)
+      reduced.removeEventListener('change', sync)
+    }
+  }, [])
+
+  const toggle = () => {
+    const el = video.current
+    if (!el) return
+    if (el.paused) {
+      void el.play().catch(() => undefined)
+      setPaused(false)
+    } else {
+      el.pause()
+      setPaused(true)
+    }
+  }
 
   return (
-    <section ref={ref} className={`${styles.hero} mo-skip`} aria-labelledby="home-hero-h">
-      <div className={styles.grid}>
-        <div className={styles.copy}>
-          <p data-hero-copy className={styles.eyebrow}>
-            Business travel and expense software
-          </p>
-          <h1 data-hero-copy id="home-hero-h" className={styles.heading}>
-            Business travel.
-            <br />
-            <span>
-              Every dollar
-              <br className={styles.desktopBreak} /> in view.
-            </span>
-          </h1>
-          <p data-hero-copy className={styles.lead}>
-            Miraee is business travel and expense software. Your people book inside company policy,
-            and finance sees every trip with its budget and GL code.
-          </p>
-          <div data-hero-copy className={styles.actions}>
-            <Button asChild>
-              <DialogLink to="/sign-up" dialog="signup">
-                Sign up free
-              </DialogLink>
-            </Button>
-            <Button asChild variant="tertiary">
-              <DialogLink to="/spend-review" dialog="review">
-                Get a spend review
-              </DialogLink>
-            </Button>
-          </div>
-          <p data-hero-copy className={styles.note}>
-            Free to sign up and onboard, at any company size.
-          </p>
-          <p data-hero-copy className={styles.trust}>
-            Built by Tabhi, the company behind the Mondee travel marketplace. Keep the corporate
-            cards you already use.
-          </p>
+    <section className={`${styles.hero} mo-skip`} aria-labelledby="home-hero-h">
+      <video
+        key={src}
+        ref={video}
+        className={styles.video}
+        src={src}
+        poster="/video/hero-home.jpg"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-hidden="true"
+        tabIndex={-1}
+      />
+      <div className={styles.tint} aria-hidden="true" />
+      <button
+        type="button"
+        className={styles.pause}
+        onClick={toggle}
+        aria-label={paused ? 'Play background video' : 'Pause background video'}
+      >
+        {paused ? <Play size={16} fill="currentColor" /> : <Pause size={16} fill="currentColor" />}
+      </button>
+
+      <div className={styles.content}>
+        <p className={styles.eyebrow}>Business travel and expense software</p>
+        <h1 id="home-hero-h" className={styles.heading}>
+          Business travel.
+          <br />
+          <span>Every dollar in view.</span>
+        </h1>
+        <p className={styles.lead}>
+          Miraee is business travel and expense software. Your people book inside company policy,
+          and finance sees every trip with its budget and GL code.
+        </p>
+        <div className={styles.actions}>
+          <Button asChild>
+            <DialogLink to="/sign-up" dialog="signup">
+              Sign up free
+            </DialogLink>
+          </Button>
+          <Button asChild variant="secondary" className={styles.ghost}>
+            <DialogLink to="/spend-review" dialog="review">
+              Get a spend review
+            </DialogLink>
+          </Button>
         </div>
-        <figure data-hero-stage className={styles.stage}>
-          <div className={styles.photoWrap} aria-hidden="true">
-            <img
-              data-hero-photo
-              src="/img/document/home-hero-1.jpg"
-              width="1364"
-              height="2046"
-              alt="A traveler in sunset light hurries across an airport apron with a rolling suitcase."
-              fetchpriority="high"
-              className={styles.photo}
-            />
-          </div>
-          <div className={styles.stageHeading}>
-            <span>One trip. A clear picture.</span>
-            <span className={styles.liveDot} aria-hidden="true" />
-          </div>
-          <svg
-            className={styles.route}
-            viewBox="0 0 600 300"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <path d="M-10 225C110 225 50 25 230 60S400 290 610 95" />
-            <path data-hero-route d="M-10 225C110 225 50 25 230 60S400 290 610 95" />
-          </svg>
-          <div data-hero-trip className={styles.trip}>
-            <div className={styles.tripHeader}>
-              <span>CLIENT VISIT</span>
-              <span className={styles.policy}>In policy</span>
-            </div>
-            <div className={styles.destination}>
-              <span>Chicago</span>
-              <span aria-hidden="true">&#8599;</span>
-            </div>
-            <p className={styles.tripDetail}>
-              Flight + hotel <span>Oct 14&#8211;16</span>
-            </p>
-            <div className={styles.amount}>
-              <div>
-                <span>Trip total</span>
-                <strong>$1,284.60</strong>
-              </div>
-              <div className={styles.budget}>
-                <span>Budget</span>
-                <strong>$1,500.00</strong>
-              </div>
-            </div>
-            <div className={styles.budgetTrack} aria-label="Trip uses 86 percent of its budget">
-              <span />
-            </div>
-          </div>
-          <ol className={styles.steps} aria-label="Trip workflow">
-            <li data-hero-step>
-              <span className={styles.check} aria-hidden="true">
-                &#10003;
-              </span>
-              <span>Booked</span>
-            </li>
-            <li data-hero-step>
-              <span className={styles.check} aria-hidden="true">
-                &#10003;
-              </span>
-              <span>In policy</span>
-            </li>
-            <li data-hero-step>
-              <span className={styles.check} aria-hidden="true">
-                &#10003;
-              </span>
-              <span>Coded to GL 6200</span>
-            </li>
-          </ol>
-        </figure>
+        <p className={styles.note}>
+          Free to sign up and onboard, at any company size. Built by Tabhi, the company behind the
+          Mondee travel marketplace. Keep the corporate cards you already use.
+        </p>
       </div>
     </section>
   )

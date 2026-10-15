@@ -5,7 +5,7 @@
  * if the script never runs, everything fades in after 3.5s.
  */
 .site-head { transition: box-shadow 0.3s ease; }
-.site-head.is-scrolled { box-shadow: 0 10px 30px -18px rgba(37, 9, 24, 0.7); }
+.site-head.is-scrolled { box-shadow: 0 10px 30px -18px rgba(14, 7, 4, 0.7); }
 [id] { scroll-margin-top: 96px; }
 
 .mo-progress {

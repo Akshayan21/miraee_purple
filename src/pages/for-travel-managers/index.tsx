@@ -1,6 +1,5 @@
 import { Seo } from '@/components/common/seo'
 import { meta } from './meta'
-import { BreadcrumbsSection } from './sections/breadcrumbs-section'
 import { HeroSection } from './sections/hero-section'
 import { PolicySection } from './sections/policy-section'
 import { ApprovalsSection } from './sections/approvals-section'
@@ -15,7 +14,6 @@ export function Component() {
     <>
       <Seo meta={meta} />
       <main id="main">
-        <BreadcrumbsSection />
         <HeroSection />
         <PolicySection />
         <ApprovalsSection />

@@ -4,15 +4,15 @@
   z-index: 1000;
   display: grid;
   place-items: center;
-  background: #43162e;
-  color: #faf6fa;
+  background: #1C0F08;
+  color: #FDF4EC;
   overflow: hidden;
   animation: failOpen 6s step-end forwards;
 }
 .glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 45%, #664454, transparent 65%);
+  background: radial-gradient(ellipse at 50% 45%, #46301F, transparent 65%);
   opacity: 0.45;
   pointer-events: none;
 }
@@ -38,7 +38,7 @@
 }
 .guide {
   fill: none;
-  stroke: #a68b97;
+  stroke: #D1A58A;
   stroke-width: 1;
   opacity: 0.4;
   stroke-dasharray: 3 8;
@@ -50,7 +50,7 @@
   stroke-linecap: round;
 }
 .dot {
-  fill: #f0e5f8;
+  fill: #FDF4EC;
   stroke: #ff9861;
   stroke-width: 2;
 }
@@ -63,7 +63,7 @@
   margin: 0 0 20px;
 }
 .status {
-  color: #deced4;
+  color: #EAD6C8;
   font-size: 14px;
   margin: 0;
 }
@@ -71,7 +71,7 @@
   position: absolute;
   bottom: max(32px, env(safe-area-inset-bottom));
   font-size: 12px;
-  color: #deced4;
+  color: #EAD6C8;
   text-align: center;
   padding-inline: 24px;
 }
@@ -133,6 +133,6 @@
   top: 50%;
   translate: -50% -50%;
   border-radius: 50%;
-  background: radial-gradient(circle, #a2688540 0%, #e5560210 40%, transparent 70%);
+  background: radial-gradient(circle, #8A4A2A40 0%, #e5560210 40%, transparent 70%);
   pointer-events: none;
 }
