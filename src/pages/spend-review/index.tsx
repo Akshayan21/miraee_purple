@@ -2,7 +2,6 @@ import { CtaVideoBand } from '@/components/sections/cta-video-band'
 import { SPEND_REVIEW_ACTION } from '@/content/actions'
 import { Seo } from '@/components/common/seo'
 import { meta } from './meta'
-import { BreadcrumbsSection } from './sections/breadcrumbs-section'
 import { HeroSection } from './sections/hero-section'
 import { WhyLookBackSection } from './sections/why-look-back-section'
 import { WhatYouSendSection } from './sections/what-you-send-section'
@@ -16,7 +15,6 @@ export function Component() {
     <>
       <Seo meta={meta} />
       <main id="main">
-        <BreadcrumbsSection />
         <HeroSection />
         <WhyLookBackSection />
         <WhatYouSendSection />

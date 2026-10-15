@@ -1,22 +1,22 @@
-/* Miraee design system: Dusk + Line. Tokens v1.1, 30 September 2026.
+/* Miraee design system: Ember + Sand. Tokens v1.2, 15 October 2026 (was Dusk + Line v1.1).
    Generated from src/palette.py and src/gen_tokens.py. Link with fonts.css and components.css. */
 :root {
-  /* Raw palette: dark grounds (plum, OKLCH hue 350; night is for footers only) */
-  --mr-night: #250918;
-  --mr-plum: #43162E;
-  --mr-twilight: #542B3F;
-  --mr-plum-rule: #664454;
-  --mr-plum-edge: #A68B97;
-  --mr-mist: #DECED4;
+  /* Raw palette: dark grounds (ember brown; night is for footers only; token names keep "plum" for compatibility) */
+  --mr-night: #0E0704;
+  --mr-plum: #1C0F08;
+  --mr-twilight: #2D1A10;
+  --mr-plum-rule: #46301F;
+  --mr-plum-edge: #D1A58A;
+  --mr-mist: #EAD6C8;
   --mr-white: #FFFFFF;
-  /* Raw palette: light grounds (lilac paper finance surface) */
-  --mr-paper: #F0E5F8;
-  --mr-paper-raised: #F9F5FC;
-  --mr-paper-rule: #DAD1E1;
-  --mr-paper-edge: #847381;
+  /* Raw palette: light grounds (sand paper surface) */
+  --mr-paper: #FDF4EC;
+  --mr-paper-raised: #FFFFFF;
+  --mr-paper-rule: #F0E1D4;
+  --mr-paper-edge: #9A8271;
   --mr-ink: #1D1418;
   --mr-ink-hover: #3C2E34;
-  --mr-slate: #68555D;
+  --mr-slate: #6A5648;
   /* Orange: the logo orange is a light and a stroke, never a wash */
   --mr-orange: #E55602;
   --mr-orange-light: #FF9861;
@@ -39,7 +39,7 @@
   --mr-dv-3-dark: #8FB6E8;
   --mr-dv-4-dark: #6CC9A4;
   --mr-dv-5-dark: #E8C06A;
-  --mr-dv-6-dark: #DECED4;
+  --mr-dv-6-dark: #EAD6C8;
 
   /* Type: one family, Archivo. The width axis is the voice */
   --mr-font-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;

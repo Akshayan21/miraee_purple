@@ -19,7 +19,7 @@
 .links {
   display: flex;
   gap: clamp(20px, 2.4vw, 36px);
-  margin: 0 0 0 clamp(16px, 3vw, 48px);
+  margin: 0 auto;
   list-style: none;
   padding: 0;
 }
@@ -38,7 +38,7 @@
   text-underline-offset: 8px;
 }
 .end {
-  margin-left: auto;
+  margin-left: 0;
   min-width: 0;
   display: flex;
   align-items: center;

@@ -1,27 +1,12 @@
-import { Section, Container } from '@/components/layout/content-layout'
-import { ResponsiveImage } from '@/components/sections/responsive-image'
-import styles from './any-headcount-section.module.css'
+import { VideoPanel } from '@/components/sections/video-panel'
+
 export function AnyHeadcountSection() {
   return (
-    <Section className="mr-paper mr-section" aria-labelledby="size-h">
-      <Container className="mr-container split">
-        <div className="split__copy">
-          <h2 className="mr-h2" id="size-h">
-            Same start for 300 people or 3,000
-          </h2>
-          <p className="mr-body">There is no headcount cap.</p>
-        </div>
-        <figure className={`split__visual mr-frame ${styles.photo}`}>
-          <ResponsiveImage
-            src="/img/document/pricing-company-size-team.jpg"
-            width={1364}
-            height={2046}
-            alt="A business traveler in a dark suit crosses a striped road with his bag."
-            loading="lazy"
-            decoding="async"
-          />
-        </figure>
-      </Container>
-    </Section>
+    <VideoPanel video="panel-pricing" labelledBy="size-h">
+      <h2 className="mr-h2" id="size-h">
+        Same start for 300 people or 3,000
+      </h2>
+      <p className="mr-body">There is no headcount cap.</p>
+    </VideoPanel>
   )
 }
