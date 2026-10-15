@@ -52,6 +52,30 @@ export function SitePreloader({ onComplete }: { onComplete: () => void }) {
           0.65,
         )
       }
+      const plane = root.querySelector<SVGGElement>('[data-loader-plane]')
+      if (path && plane) {
+        // The plane rides the route line, in step with the line drawing itself.
+        const length = path.getTotalLength()
+        const place = (progress: number) => {
+          const at = path.getPointAtLength(length * progress)
+          const ahead = path.getPointAtLength(Math.min(length, length * progress + 1))
+          const angle = (Math.atan2(ahead.y - at.y, ahead.x - at.x) * 180) / Math.PI
+          plane.setAttribute('transform', `translate(${at.x} ${at.y}) rotate(${angle + 45})`)
+        }
+        const state = { progress: 0 }
+        place(0)
+        intro.fromTo(plane, { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.65)
+        intro.to(
+          state,
+          {
+            progress: 1,
+            duration: 1.3,
+            ease: 'power2.inOut',
+            onUpdate: () => place(state.progress),
+          },
+          0.65,
+        )
+      }
       intro.from(
         '[data-loader-dot]',
         { scale: 0, transformOrigin: 'center', duration: 0.45, stagger: 0.55 },
@@ -151,6 +175,13 @@ export function SitePreloader({ onComplete }: { onComplete: () => void }) {
               className={styles.line}
               d="M30 120C140 120 145 30 290 50S440 150 570 60"
             />
+            <g data-loader-plane opacity="0" aria-hidden="true">
+              <path
+                className={styles.plane}
+                transform="translate(-14 -14) scale(1.17)"
+                d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"
+              />
+            </g>
             {[
               { x: 30, y: 120 },
               { x: 290, y: 50 },

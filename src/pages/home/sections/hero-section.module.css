@@ -9,7 +9,7 @@
   min-height: 100svh;
   border-top: 0 !important;
   padding: 120px clamp(20px, 5vw, 80px) 40px;
-  background: #0E0704;
+  background: #250918;
   color: #fff;
   text-align: center;
 }
@@ -27,10 +27,10 @@
   z-index: -1;
   background: linear-gradient(
     0deg,
-    rgb(14 7 4 / 0.94) 0%,
-    rgb(14 7 4 / 0.72) 38%,
-    rgb(28 15 8 / 0.2) 72%,
-    rgb(28 15 8 / 0.12) 100%
+    rgb(37 9 24 / 0.94) 0%,
+    rgb(37 9 24 / 0.72) 38%,
+    rgb(67 22 46 / 0.2) 72%,
+    rgb(67 22 46 / 0.12) 100%
   );
 }
 .pause {
@@ -43,13 +43,13 @@
   height: 44px;
   border: 0;
   border-radius: 50%;
-  background: rgb(14 7 4 / 0.55);
+  background: rgb(37 9 24 / 0.55);
   color: #fff;
   cursor: pointer;
   backdrop-filter: blur(6px);
 }
 .pause:hover {
-  background: rgb(14 7 4 / 0.8);
+  background: rgb(37 9 24 / 0.8);
 }
 .content {
   width: 100%;
@@ -98,7 +98,7 @@
   font-size: 18px;
 }
 .ghost:global(.mr-btn) {
-  background: rgb(14 7 4 / 0.3);
+  background: rgb(37 9 24 / 0.3);
   color: #fff;
   border-color: rgb(255 255 255 / 0.65);
   backdrop-filter: blur(4px);

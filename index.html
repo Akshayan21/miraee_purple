@@ -3,7 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#1C0F08" />
+    <script>
+      if (location.pathname === '/') document.documentElement.setAttribute('data-intro', '');
+    </script>
+    <meta name="theme-color" content="#43162E" />
     <script>
       if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('mo-pre')
     </script>

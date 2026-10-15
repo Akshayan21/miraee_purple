@@ -8,6 +8,7 @@ import archivoLatin from '@/assets/fonts/archivo-latin-standard-normal.woff2?url
 import type { RouteHandle } from '@/lib/route-handle'
 import { initScrollMotion } from '@/lib/scroll-motion'
 import { IntroContext } from '@/components/motion/intro-context'
+import { SitePreloader } from '@/components/motion/site-preloader'
 
 /** Scroll to the top on navigation, or to the #anchor when the URL has one (footnotes, in-page links). */
 function ScrollManager() {
@@ -69,10 +70,23 @@ function PageStyles() {
   )
 }
 
-/** Top of every route: shared form dialogs, page-sheet scoping and scroll handling. */
+/**
+ * Top of every route: shared form dialogs, page-sheet scoping and scroll handling.
+ * The splash is pre-rendered on the home page so it covers the page from the first paint, and plays
+ * on every full load or reload of `/`. An inline script in index.html sets `data-intro` on <html>
+ * (CSS hides the splash without it); client-side navigation back to home does not replay it.
+ */
 export function RootLayout() {
-  const [loading] = React.useState(false)
+  const { pathname } = useLocation()
+  const [loading, setLoading] = React.useState(pathname === '/')
   const page = React.useRef<HTMLDivElement>(null)
+  const complete = React.useCallback(() => {
+    document.documentElement.removeAttribute('data-intro')
+    setLoading(false)
+  }, [])
+  React.useLayoutEffect(() => {
+    if (!document.documentElement.hasAttribute('data-intro')) setLoading(false)
+  }, [])
   React.useEffect(() => {
     const element = page.current
     if (!element) return
@@ -87,6 +101,7 @@ export function RootLayout() {
         <PageStyles />
         <ScrollManager />
         <ScrollMotion enabled={!loading} />
+        {loading && <SitePreloader onComplete={complete} />}
         <div ref={page} aria-busy={loading}>
           <Outlet />
           <SignupDialog />

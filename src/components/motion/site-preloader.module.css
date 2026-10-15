@@ -4,15 +4,15 @@
   z-index: 1000;
   display: grid;
   place-items: center;
-  background: #1C0F08;
-  color: #FDF4EC;
+  background: #43162E;
+  color: #F0E5F8;
   overflow: hidden;
   animation: failOpen 6s step-end forwards;
 }
 .glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 45%, #46301F, transparent 65%);
+  background: radial-gradient(ellipse at 50% 45%, #664454, transparent 65%);
   opacity: 0.45;
   pointer-events: none;
 }
@@ -38,7 +38,7 @@
 }
 .guide {
   fill: none;
-  stroke: #D1A58A;
+  stroke: #A68B97;
   stroke-width: 1;
   opacity: 0.4;
   stroke-dasharray: 3 8;
@@ -49,8 +49,15 @@
   stroke-width: 2;
   stroke-linecap: round;
 }
+.plane {
+  fill: #ff9861;
+  stroke: #fff;
+  stroke-width: 1;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 4px 10px rgb(255 152 97 / 0.55));
+}
 .dot {
-  fill: #FDF4EC;
+  fill: #F0E5F8;
   stroke: #ff9861;
   stroke-width: 2;
 }
@@ -63,7 +70,7 @@
   margin: 0 0 20px;
 }
 .status {
-  color: #EAD6C8;
+  color: #DECED4;
   font-size: 14px;
   margin: 0;
 }
@@ -71,7 +78,7 @@
   position: absolute;
   bottom: max(32px, env(safe-area-inset-bottom));
   font-size: 12px;
-  color: #EAD6C8;
+  color: #DECED4;
   text-align: center;
   padding-inline: 24px;
 }
