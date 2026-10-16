@@ -1,0 +1,11 @@
+/* Reduced-motion visitors on wide screens get the stacked layout instead of a pinned scene. */
+@media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
+  .hiw-flat.hiw-flat {
+    height: auto;
+  }
+  .hiw-flat.hiw-flat > div {
+    position: static;
+    height: auto;
+    overflow: visible;
+  }
+}

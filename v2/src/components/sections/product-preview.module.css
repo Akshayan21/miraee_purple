@@ -1,0 +1,83 @@
+.card {
+  min-width: 0;
+}
+.card.card {
+  overflow: visible;
+}
+.phone,
+.document {
+  min-width: 0;
+  max-width: 100%;
+}
+.row {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+.viewport {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: visible;
+}
+.table.table {
+  width: 100%;
+  min-width: 0;
+  table-layout: fixed;
+}
+.table.table th,
+.table.table td {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.table.table th:first-child,
+.table.table td:first-child {
+  width: 45%;
+}
+.table.table:has(th:nth-child(4)) th:first-child,
+.table.table:has(th:nth-child(4)) td:first-child {
+  width: 30%;
+}
+.table.table:has(th:nth-child(3)):not(:has(th:nth-child(4))) th:nth-child(2) {
+  width: 15%;
+}
+.table.table :global(.mr-circled) {
+  max-width: 100%;
+}
+.table.table caption {
+  white-space: normal;
+}
+@media (max-width: 639px) {
+  .table.table {
+    font-size: 11px;
+  }
+  .table.table th {
+    font-size: 10px;
+  }
+  .table.table th,
+  .table.table td {
+    padding-right: 6px;
+  }
+  .card.card:global(.mr-ledger-wrap) {
+    padding: 16px 12px 12px;
+  }
+}
+
+.composition {
+  min-width: 0;
+}
+.composition > * {
+  min-width: 0;
+}
+@media (max-width: 1023px) {
+  .composition.composition :global(.compose__person) {
+    max-width: 100%;
+    object-fit: contain;
+  }
+  .composition :global(.compose__card) {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .composition:global(.mo-stack)::before,
+  .composition:global(.mo-stack)::after {
+    display: none;
+  }
+}

@@ -1,0 +1,225 @@
+/* The vault. Four layers stacked in one pinned stage; each peels up as --p advances, revealing the next. */
+.vault {
+  background: #1a0610;
+  color: #fff;
+}
+.stack {
+  display: grid;
+  gap: 12px;
+  padding: 12px;
+}
+.layer {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  display: grid;
+  align-items: center;
+  padding: clamp(32px, 6vw, 56px) clamp(20px, 5vw, 48px);
+  border-radius: 28px;
+}
+.layer::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  right: -12%;
+  bottom: -40%;
+  width: min(90vw, 760px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: repeating-radial-gradient(
+    circle,
+    transparent 0 34px,
+    rgb(255 255 255 / 0.07) 34px 36px
+  );
+  pointer-events: none;
+}
+.l0 {
+  background: var(--mr-paper);
+}
+.l0::after {
+  background: repeating-radial-gradient(circle, transparent 0 34px, rgb(67 22 46 / 0.07) 34px 36px);
+}
+.l1 {
+  background: #250918;
+  min-height: 420px;
+  align-items: end;
+}
+.l1::after {
+  display: none;
+}
+.l2 {
+  background: #2d0f1f;
+}
+.l3 {
+  background: var(--mr-plum);
+}
+.l3::after {
+  right: auto;
+  left: -14%;
+  bottom: -55%;
+}
+.content {
+  position: relative;
+  z-index: 1;
+}
+.video {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tint {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    0deg,
+    rgb(37 9 24 / 0.92),
+    rgb(37 9 24 / 0.55) 60%,
+    rgb(37 9 24 / 0.3)
+  );
+}
+.title.title {
+  margin: 0 0 16px;
+  font-size: clamp(32px, 7vw, 56px);
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+  max-width: 14em;
+}
+.big.big {
+  font-size: clamp(36px, 8vw, 72px);
+}
+.huge.huge {
+  font-size: clamp(42px, 10vw, 96px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.body {
+  max-width: 34em;
+}
+.split {
+  display: grid;
+  gap: 28px;
+}
+.figure {
+  margin: 0;
+}
+.caption {
+  margin-top: 12px;
+}
+.duo {
+  display: grid;
+  gap: 24px;
+}
+.statement::before {
+  content: '';
+  display: block;
+  width: 72px;
+  height: 4px;
+  margin-bottom: 24px;
+  border-radius: 2px;
+  background: var(--mr-orange-light);
+}
+
+@media (min-width: 1024px) {
+  .vault {
+    /* A layer holds for the first half of its slot on the 0..4 run, then peels in the second half. */
+    --q0: clamp(0, calc((var(--p) * 4 - 0.55) / 0.45), 1);
+    --q1: clamp(0, calc((var(--p) * 4 - 1.55) / 0.45), 1);
+    --q2: clamp(0, calc((var(--p) * 4 - 2.55) / 0.45), 1);
+    --t: calc(var(--q0) + var(--q1) + var(--q2));
+  }
+  .stack {
+    display: block;
+    position: relative;
+    height: 100svh;
+    padding: 0;
+  }
+  .layer {
+    position: absolute;
+    inset: 84px max(12px, 1vw) 56px;
+    padding: clamp(28px, 4svh, 56px) clamp(24px, 7vw, 140px);
+    border-radius: 36px;
+    z-index: calc(10 - var(--i));
+    --d: max(0, calc(var(--i) - var(--t)));
+    transform-origin: 50% 0;
+    transform: translateY(calc(var(--q) * -118% + var(--d) * 16px))
+      scale(calc(1 - var(--d) * 0.028 + var(--q) * 0.02));
+    box-shadow: 0 24px 60px rgb(0 0 0 / 0.35);
+  }
+  .l0 {
+    --q: var(--q0);
+  }
+  .l1 {
+    --q: var(--q1);
+    min-height: 0;
+  }
+  .l2 {
+    --q: var(--q2);
+  }
+  .l3 {
+    --q: 0;
+  }
+  /* A layer that has fully peeled leaves the tab order. */
+  .vault:not([data-step='0']) .l0,
+  .vault:is([data-step='2'], [data-step='3']) .l1,
+  .vault[data-step='3'] .l2 {
+    visibility: hidden;
+  }
+  .layer::after {
+    transform: scale(calc(1 + var(--p) * 0.35));
+  }
+  .split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 560px);
+    gap: clamp(32px, 6vw, 96px);
+    align-items: center;
+  }
+  .duo {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: clamp(32px, 6vw, 96px);
+    align-items: center;
+  }
+  .packBody {
+    max-width: 480px;
+  }
+  .title.title {
+    font-size: clamp(36px, 4.6vw, 64px);
+  }
+  .big.big {
+    font-size: clamp(40px, 6vw, 84px);
+  }
+  .huge.huge {
+    font-size: clamp(56px, 8vw, 96px);
+    max-width: 10em;
+  }
+  .statement {
+    max-width: 880px;
+  }
+}
+@media (min-width: 1024px) and (max-height: 760px) {
+  .layer {
+    inset: 76px max(12px, 1vw) 48px;
+  }
+}
+.figure :global(.log-card) {
+  max-width: none;
+}
+.figure :global(.log-card .mr-ledger td:first-child),
+.figure :global(.log-card th:first-child) {
+  width: 84px;
+  white-space: normal;
+}
+.figure :global(.log-card td) {
+  word-break: normal;
+  overflow-wrap: normal;
+}
+@media (min-width: 640px) {
+  .figure :global(.log-card .mr-ledger td:first-child),
+  .figure :global(.log-card th:first-child) {
+    width: 150px;
+    white-space: nowrap;
+  }
+}

@@ -1,0 +1,106 @@
+/* When plans change. The statistic leads; the phone rises from the bottom edge and the fix lands beat by beat. */
+.scene {
+  background: #250918;
+}
+.grid {
+  display: grid;
+  gap: 40px;
+  align-items: center;
+}
+.title {
+  max-width: 13em;
+  color: #fff;
+}
+.stat {
+  margin: 28px 0 24px;
+  max-width: 20em;
+  font-size: clamp(16px, 1.5vw, 19px);
+  line-height: 1.45;
+  color: #fff;
+}
+.fig {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--mr-font-display);
+  font-size: clamp(64px, 8vw, 96px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--mr-orange-light);
+  font-variant-numeric: tabular-nums;
+}
+.link {
+  margin: 0;
+}
+.stage {
+  display: grid;
+  justify-items: center;
+}
+.phone:global(.phone.phone--alert) {
+  width: 100%;
+  max-width: 340px;
+  box-shadow: 0 50px 100px -30px rgb(0 0 0 / 0.7);
+}
+.confirm :global(.mr-btn) {
+  width: 100%;
+}
+.tick path {
+  stroke-dasharray: 120;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 340px);
+    gap: 96px;
+    align-items: end;
+  }
+  .copy {
+    align-self: center;
+  }
+  .stage {
+    align-self: end;
+    margin-bottom: -150px;
+    transform: translateY(calc((1 - var(--in)) * 30svh)) rotate(calc(-5deg * (1 - var(--p) * 1.5)));
+    transform-origin: 50% 100%;
+  }
+  /* Beat 0: the alert. Beat 1: both options slide in. Beat 2: one is confirmed and logged. */
+  .options,
+  .confirm,
+  .cap {
+    transition:
+      opacity 600ms cubic-bezier(0.2, 0, 0, 1),
+      transform 700ms cubic-bezier(0.2, 0, 0, 1);
+  }
+  .options,
+  .confirm {
+    opacity: 0.12;
+    transform: translateX(28px);
+  }
+  .cap {
+    opacity: 0;
+  }
+  [data-step='1'] .options,
+  [data-step='2'] .options,
+  [data-step='2'] .confirm {
+    opacity: 1;
+    transform: none;
+  }
+  [data-step='2'] .cap {
+    opacity: 1;
+  }
+  .tick path {
+    stroke-dashoffset: 120;
+    transition: stroke-dashoffset 800ms cubic-bezier(0.2, 0, 0, 1);
+  }
+  [data-step='2'] .tick path {
+    stroke-dashoffset: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .options,
+  .confirm,
+  .cap,
+  .tick path {
+    transition: none;
+  }
+}

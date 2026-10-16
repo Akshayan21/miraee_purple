@@ -1,0 +1,75 @@
+/* The problem. Loose fragments scatter across the stage and gather into one grid as you scroll (--p). */
+.scene {
+  --cell: var(--mr-paper-edge, #cfc4d8);
+}
+.row {
+  display: grid;
+  gap: 40px;
+  align-items: center;
+}
+.stat.stat {
+  margin: 0;
+  max-width: 14em;
+  font-size: clamp(24px, 2.6vw, 36px);
+  line-height: 1.25;
+  font-weight: 600;
+  text-wrap: balance;
+}
+.fig {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--font-display);
+  font-size: clamp(72px, 12vw, 96px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  color: var(--mr-orange-text);
+}
+.field {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: clamp(5px, 1vw, 10px);
+  width: min(100%, 480px);
+  margin-inline: auto;
+}
+.cell {
+  aspect-ratio: 1;
+  border-radius: 22%;
+  background: var(--cell);
+}
+.hit {
+  background: var(--mr-orange-text);
+}
+
+@media (min-width: 1024px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 80px;
+  }
+  .field {
+    --g: min(1, calc(var(--p) * 1.7));
+    --e: calc(1 - (1 - var(--g)) * (1 - var(--g)) * (1 - var(--g)));
+    width: min(100%, 520px);
+    margin-inline: 0 auto;
+  }
+  .cell {
+    transform: translate(
+        calc(var(--dx) * (1 - var(--e)) * 1vw),
+        calc(var(--dy) * (1 - var(--e)) * 1svh)
+      )
+      rotate(calc(var(--r) * (1 - var(--e)) * 1deg));
+    opacity: calc(0.35 + var(--e) * 0.65);
+  }
+  .hit {
+    background: var(--cell);
+    transition: background-color 700ms cubic-bezier(0.2, 0, 0, 1);
+  }
+  [data-step='1'] .hit {
+    background: var(--mr-orange-text);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hit {
+    transition: none;
+  }
+}

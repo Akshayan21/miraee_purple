@@ -1,0 +1,167 @@
+/* Departure. The portrait is the vault door: rings widen and the orbiting dot turns as you scroll (--out). */
+.scene {
+  background: #1a0610;
+  color: #fff;
+}
+.grid {
+  display: grid;
+  gap: 40px;
+  align-items: center;
+  padding-top: clamp(88px, 11vw, 120px);
+  padding-bottom: clamp(48px, 7vw, 72px);
+}
+.copy {
+  position: relative;
+  z-index: 2;
+}
+.crumbs {
+  margin-bottom: clamp(20px, 3vw, 32px);
+}
+.crumbs ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--mr-mist);
+}
+.crumbs li + li::before {
+  content: '/';
+  margin-right: 6px;
+}
+.crumbs a {
+  color: var(--mr-mist);
+}
+.crumbs [aria-current='page'] {
+  color: #fff;
+  font-weight: 600;
+}
+.title {
+  margin: 0 0 20px;
+  font-family: var(--font-display);
+  font-size: clamp(46px, 7.4vw, 96px);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  color: #fff;
+  text-wrap: balance;
+}
+.lead {
+  margin: 0 0 28px;
+  max-width: 32em;
+  font-size: clamp(17px, 1.6vw, 20px);
+  line-height: 1.5;
+  color: #fff;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  align-items: center;
+}
+.visual {
+  position: relative;
+  margin: 0;
+  justify-self: center;
+  width: min(300px, 70%);
+}
+.photo {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 999px 999px 28px 28px;
+  background: #250918;
+}
+.ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--s) * 1%);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgb(255 255 255 / 0.2);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.r1 {
+  --s: 150;
+}
+.r2 {
+  --s: 215;
+  border-color: rgb(255 152 97 / 0.55);
+}
+.r3 {
+  --s: 290;
+  border-color: rgb(255 255 255 / 0.1);
+}
+.dot {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: 50%;
+  background: var(--mr-orange-light);
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    gap: 64px;
+  }
+  .visual {
+    width: min(calc(64svh * 0.6667), 100%, 400px);
+  }
+  .ring {
+    transform: translate(-50%, -50%) scale(calc(1 + var(--out) * 0.9));
+  }
+  .dot {
+    transform: none;
+  }
+  .r2 {
+    transform: translate(-50%, -50%) scale(calc(1 + var(--out) * 0.9))
+      rotate(calc(var(--out) * 200deg));
+  }
+  .photo {
+    transform: translateY(calc(var(--out) * -6svh));
+  }
+  .copy {
+    transform: translateY(calc(var(--out) * -10svh));
+    opacity: calc(1 - var(--out) * 3.5);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ring {
+    animation: ring-in 1400ms cubic-bezier(0.2, 0, 0, 1) both;
+  }
+  .r2 {
+    animation-delay: 120ms;
+  }
+  .r3 {
+    animation-delay: 240ms;
+  }
+  .photo,
+  .copy {
+    animation: rise 1000ms cubic-bezier(0.2, 0, 0, 1) 150ms both;
+  }
+}
+@keyframes ring-in {
+  from {
+    opacity: 0;
+    width: calc(var(--s) * 0.6%);
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    translate: 0 20px;
+  }
+}

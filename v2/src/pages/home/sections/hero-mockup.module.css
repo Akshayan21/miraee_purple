@@ -1,0 +1,54 @@
+/* The product mock-up: the app on a phone, rising into the hero. */
+.stage {
+  --mx: 0;
+  --my: 0;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  perspective: 1600px;
+}
+.glow {
+  position: absolute;
+  inset: 8% 6% 0;
+  background: radial-gradient(closest-side, rgb(255 255 255 / 0.95), rgb(255 255 255 / 0) 75%);
+  pointer-events: none;
+}
+.phone {
+  position: relative;
+  display: block;
+  width: min(100%, 340px);
+  height: auto;
+  filter: drop-shadow(0 50px 50px rgb(37 9 24 / 0.32));
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+@media (min-width: 1024px) {
+  /* A tall phone in the right column, wholly inside the first screen; scroll then lifts and turns it. */
+  .stage {
+    place-items: start end;
+  }
+  .phone {
+    width: auto;
+    height: clamp(380px, 74svh, 660px);
+    transform: translateY(calc(var(--p) * -3svh))
+      rotateY(calc(-8deg + var(--p) * 8deg + var(--mx) * 5deg)) rotateX(calc(var(--my) * -3deg));
+  }
+}
+@media (max-width: 1023px) {
+  .phone {
+    width: min(64%, 280px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .phone {
+    animation: float 7s ease-in-out infinite;
+  }
+}
+@keyframes float {
+  50% {
+    translate: 0 -8px;
+  }
+}

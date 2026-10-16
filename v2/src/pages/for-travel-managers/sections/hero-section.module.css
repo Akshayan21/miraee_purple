@@ -1,0 +1,175 @@
+/* Departure. Copy on plum with a video window; the policy check overlaps the window and ticks in line by line. */
+.scene {
+  background: #250918;
+  color: #fff;
+}
+.wrap {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: clamp(104px, 14vw, 128px) clamp(24px, 5vw, 48px) clamp(40px, 6vw, 64px);
+  box-sizing: border-box;
+  display: grid;
+  gap: 40px;
+  align-items: center;
+}
+.crumb {
+  margin: 0 0 20px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--mr-mist);
+}
+.h1 {
+  margin: 0 0 24px;
+  font-family: var(--mr-font-display);
+  font-weight: 700;
+  font-size: clamp(38px, 5.4vw, 72px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+  color: #fff;
+}
+.lead {
+  margin: 0 0 28px;
+  max-width: 30em;
+  font-size: clamp(17px, 1.6vw, 20px);
+  line-height: 1.5;
+  color: #fff;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.actions :global(.mr-btn) {
+  min-height: 52px;
+  border-radius: 999px;
+}
+.visual {
+  position: relative;
+}
+.window {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  aspect-ratio: 4 / 3;
+  border-radius: clamp(24px, 3vw, 40px);
+  background: #43162e;
+}
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.pause {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(37 9 24 / 0.6);
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+}
+.pause:hover {
+  background: rgb(37 9 24 / 0.85);
+}
+.policy {
+  position: relative;
+  margin-top: -36px;
+  margin-inline: 16px;
+  padding: 18px 22px;
+  border-radius: 20px;
+  border: 1px solid rgb(255 255 255 / 0.22);
+  background: rgb(37 9 24 / 0.88);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 30px 60px -24px rgb(0 0 0 / 0.6);
+}
+.policy ul {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #fff;
+}
+.policy li::before {
+  content: '\2713';
+  margin-right: 10px;
+  font-weight: 700;
+  color: var(--mr-orange-light);
+}
+
+@media (min-width: 1024px) {
+  .wrap {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 64px;
+  }
+  .window {
+    aspect-ratio: auto;
+    height: min(64svh, 560px);
+    border-radius: 40px 40px 40px 160px;
+    transform: translateY(calc(var(--out) * -6svh)) scale(calc(1 - var(--out) * 0.12));
+    transform-origin: 50% 0;
+  }
+  .video {
+    transform: scale(calc(1.04 + var(--out) * 0.5));
+  }
+  .policy {
+    position: absolute;
+    left: -56px;
+    bottom: 28px;
+    margin: 0;
+    width: min(340px, 80%);
+    transform: translateY(calc(var(--out) * -10svh));
+  }
+  .copy {
+    transform: translateY(calc(var(--out) * -8svh));
+    opacity: calc(1 - var(--out) * 3);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .h1 {
+    animation: rise 900ms cubic-bezier(0.2, 0, 0, 1) both;
+  }
+  .crumb,
+  .lead,
+  .actions {
+    animation: rise 900ms cubic-bezier(0.2, 0, 0, 1) 200ms both;
+  }
+  .policy li {
+    animation: tick-in 700ms cubic-bezier(0.2, 0, 0, 1) both;
+  }
+  .policy li:nth-child(1) {
+    animation-delay: 500ms;
+  }
+  .policy li:nth-child(2) {
+    animation-delay: 700ms;
+  }
+  .policy li:nth-child(3) {
+    animation-delay: 900ms;
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+@keyframes tick-in {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+}

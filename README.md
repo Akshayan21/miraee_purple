@@ -68,3 +68,12 @@ All forms validate natively and show their confirmation state. To deliver submis
 - `/when-plans-change`, `/privacy` and `/terms` are linked but do not exist yet (they render the 404 page).
 - The Open Graph image `/img/og/miraee-og-1200x630.jpg` is referenced in page metadata but is not in `public/img`.
 - `sitemap.xml` and `llms.txt` still list `/when-plans-change`.
+
+## Two versions: V1 and V2
+
+This repo builds **two sites into one deploy**: V1 (`src/`) is served at `/`, V2 (`v2/`, an immersive redesign of the same content) at `/v2/`. A `V1 | V2` toggle in each nav links to the same page in the other version.
+
+- `npm run build` builds V1, then V2, and copies V2 into `dist/v2`. Vercel needs no extra settings (build command `npm run build`, output `dist`).
+- `npm start` serves `dist` on one port (default 4000; `PORT=8080 npm start`): V1 at `/`, V2 at `/v2/`.
+- `npm run dev` runs V1 at :5173; `npm run dev:v2` runs V2 at :5180/v2/. In dev the toggle jumps between those two ports (`.env.development` files).
+- V2 reuses V1's `node_modules` and `public/` folder (images, video, icons), so shared files live in one place. V2 pages are marked `noindex` through `vercel.json` while it is in preview.

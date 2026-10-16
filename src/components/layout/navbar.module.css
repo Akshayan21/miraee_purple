@@ -368,3 +368,39 @@
     display: none;
   }
 }
+
+.version {
+  margin-right: 14px;
+}
+.mobileVersion {
+  display: none;
+}
+@media (max-width: 1199px) {
+  .mobileVersion {
+    display: block;
+    padding: 8px 18px 4px !important;
+  }
+  .links .mobileVersion {
+    min-height: 0;
+  }
+  .version {
+    display: none;
+  }
+}
+@media (min-width: 640px) and (max-width: 1199px) {
+  .version {
+    display: inline-flex;
+  }
+  .mobileVersion {
+    display: none;
+  }
+}
+.mobileVersion a {
+  display: grid;
+  min-height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0;
+}

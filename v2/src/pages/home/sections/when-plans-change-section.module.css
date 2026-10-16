@@ -1,0 +1,103 @@
+.scene {
+  background:
+    radial-gradient(40% 55% at 50% 52%, rgb(255 255 255 / 0.75) 0%, rgb(255 255 255 / 0) 72%),
+    #f0e5f8;
+}
+.grid {
+  display: grid;
+  gap: clamp(36px, 5vw, 64px);
+  align-items: center;
+}
+.eyebrow {
+  margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--mr-orange-text);
+}
+.phoneWrap {
+  display: grid;
+  place-items: center;
+}
+.phone {
+  width: min(100%, 340px);
+  box-shadow: 0 60px 100px -40px rgb(37 9 24 / 0.5);
+}
+.confirm :global(.mr-btn) {
+  width: 100%;
+}
+.tick path {
+  stroke-dasharray: 120;
+}
+.right {
+  align-self: center;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 360px) minmax(0, 1fr);
+  }
+  .right {
+    justify-self: end;
+    max-width: 20em;
+  }
+  .phoneWrap {
+    perspective: 1600px;
+  }
+  /* The phone settles into place as the scene pins, and tilts a hair as it is read. */
+  .phone {
+    transform: scale(calc(0.88 + var(--in) * 0.12)) rotateY(calc((1 - var(--in)) * -12deg))
+      rotateX(calc((var(--p) - 0.5) * -4deg));
+  }
+  .options,
+  .confirm,
+  .cap {
+    transition:
+      opacity 600ms var(--v2-ease),
+      transform 800ms var(--v2-ease),
+      filter 600ms ease;
+  }
+  .options,
+  .confirm {
+    opacity: 0.14;
+    transform: translateY(12px);
+    filter: blur(3px);
+  }
+  .cap {
+    opacity: 0;
+  }
+  [data-step='1'] .options,
+  [data-step='2'] .options,
+  [data-step='2'] .confirm {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+  [data-step='2'] .cap {
+    opacity: 1;
+  }
+  .tick,
+  .opt1 > svg {
+    opacity: 0;
+  }
+  .tick path {
+    stroke-dashoffset: 120;
+    transition: stroke-dashoffset 700ms var(--v2-ease) 300ms;
+  }
+  [data-step='2'] .opt1 > svg {
+    opacity: 1;
+  }
+  [data-step='2'] .tick path {
+    stroke-dashoffset: 0;
+  }
+  .opt2 {
+    opacity: 0.6;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .options,
+  .confirm,
+  .cap,
+  .tick path {
+    transition: none;
+  }
+}

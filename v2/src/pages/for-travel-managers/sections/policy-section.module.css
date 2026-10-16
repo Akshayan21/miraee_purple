@@ -1,0 +1,77 @@
+/* Policy. A pinned phone; the hotel rows are checked and locked one by one as you scroll. */
+.grid {
+  display: grid;
+  gap: 40px;
+  align-items: center;
+}
+.title {
+  max-width: 11em;
+}
+.figure {
+  margin: 0;
+  display: grid;
+  justify-items: center;
+}
+.phoneWrap {
+  display: grid;
+  justify-items: center;
+}
+.phone:global(.phone.phone--lg) {
+  width: 100%;
+  max-width: 292px;
+  box-shadow: 0 40px 80px -30px rgb(67 22 46 / 0.5);
+}
+.row {
+  transition:
+    border-color 500ms cubic-bezier(0.2, 0, 0, 1),
+    background-color 500ms cubic-bezier(0.2, 0, 0, 1),
+    box-shadow 500ms cubic-bezier(0.2, 0, 0, 1),
+    transform 500ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 360px);
+    gap: 96px;
+  }
+  .title {
+    font-size: clamp(44px, 5.2vw, 72px);
+    transform: translateX(calc((1 - var(--in)) * -6vw));
+  }
+  .phoneWrap {
+    transform: translateY(calc((1 - var(--in)) * 14svh)) rotate(calc((1 - var(--in)) * 3deg));
+    transform-origin: 50% 100%;
+  }
+  .figure {
+    transform-origin: 50% 0;
+  }
+  /* Unchecked rows wait with a dashed outline; each one locks when its beat arrives. */
+  .row {
+    border-style: dashed;
+    opacity: 0.55;
+  }
+  [data-step='1'] .row[data-n='1'],
+  [data-step='2'] .row[data-n='1'],
+  [data-step='3'] .row[data-n='1'],
+  [data-step='2'] .row[data-n='2'],
+  [data-step='3'] .row[data-n='2'],
+  [data-step='3'] .row[data-n='3'] {
+    opacity: 1;
+    border-style: solid;
+    border-color: var(--mr-orange-light);
+    background-color: rgb(255 152 97 / 0.14);
+    box-shadow: 0 0 0 3px rgb(255 152 97 / 0.22);
+  }
+}
+@media (min-width: 1024px) and (max-height: 820px) {
+  .phoneWrap {
+    scale: 0.84;
+    transform-origin: 50% 0;
+    margin-bottom: -90px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .row {
+    transition: none;
+  }
+}

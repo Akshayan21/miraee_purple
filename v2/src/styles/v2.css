@@ -1,0 +1,20 @@
+/* Miraee V2: page-level overrides for the continuous trip. */
+#main > :first-child { border-top: 0 !important; }
+
+/* The trip route runs down the right gutter on wide screens; keep pause buttons clear of it. */
+@media (min-width: 1360px) {
+  .cta-video__pause { right: 80px !important; }
+}
+
+/* ---- V2 home: foundations ---- */
+:root {
+  --v2-ink: #1d1418;
+  --v2-muted: #5e4f57;
+  --v2-line: rgb(37 9 24 / 0.12);
+  --v2-tint: #f6f1fa;
+  --v2-plum: #43162e;
+  --v2-night: #250918;
+  --v2-plum-soft: #5b1f43;
+  --v2-ease: cubic-bezier(0.2, 0, 0, 1);
+  --v2-gap: clamp(88px, 11vw, 160px);
+}

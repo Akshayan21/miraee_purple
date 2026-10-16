@@ -1,0 +1,111 @@
+/* Step 6. The ledger lies back like a desk and lifts upright (--in, --p); the over-budget total is circled on the last beat. */
+.scene {
+  background: #250918;
+  color: #fff;
+  overflow: clip;
+}
+.grid {
+  display: grid;
+  gap: 48px;
+  align-items: center;
+}
+.copy {
+  display: grid;
+  gap: 16px;
+  align-content: center;
+}
+.eyebrow {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--mr-orange-light);
+}
+.h2 {
+  margin: 0;
+  font-family: var(--mr-font-display);
+  font-size: clamp(34px, 4.6vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  color: #fff;
+  text-wrap: balance;
+}
+.body {
+  margin: 0;
+  max-width: 28em;
+  font-size: clamp(17px, 1.4vw, 19px);
+  line-height: 1.55;
+  color: #fff;
+}
+.link {
+  margin: 8px 0 0;
+}
+.figure {
+  margin: 0;
+  min-width: 0;
+}
+.ledger {
+  box-shadow: 0 50px 100px -30px rgb(0 0 0 / 0.7);
+}
+.circled {
+  white-space: nowrap;
+}
+.circled path {
+  stroke: var(--mr-orange);
+  stroke-dasharray: 900;
+  stroke-dashoffset: 0;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.45fr);
+    gap: clamp(40px, 5vw, 80px);
+  }
+}
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .scene {
+    --e: clamp(0, calc(var(--in) * 0.55 + var(--p) * 0.9), 1);
+  }
+  .desk {
+    zoom: 1.1;
+  }
+  .figure {
+    perspective: 1700px;
+    perspective-origin: 50% 20%;
+  }
+  .desk {
+    transform-origin: 50% 100%;
+    transform: translate3d(0, calc((1 - var(--e)) * 10svh), 0) rotateX(calc((1 - var(--e)) * 48deg));
+  }
+  .r0,
+  .r1,
+  .r2,
+  .r3 {
+    transition:
+      opacity 700ms ease,
+      transform 900ms cubic-bezier(0.2, 0, 0, 1);
+  }
+  .r1,
+  .r2,
+  .r3 {
+    opacity: 0.25;
+    transform: translateX(28px);
+  }
+  [data-step='0'] .r1 {
+    opacity: 1;
+    transform: none;
+  }
+  [data-step='1'] .r1,
+  [data-step='1'] .r2,
+  [data-step='1'] .r3 {
+    opacity: 1;
+    transform: none;
+  }
+  .circled path {
+    stroke-dashoffset: 900;
+    transition: stroke-dashoffset 1000ms cubic-bezier(0.2, 0, 0, 1) 600ms;
+  }
+  [data-step='1'] .circled path {
+    stroke-dashoffset: 0;
+  }
+}

@@ -1,0 +1,157 @@
+/* Departure gate. Headline left, a video window right, the phone breaking out of the window and lifting as you scroll. */
+.scene {
+  background: #250918;
+  color: #fff;
+}
+.grid {
+  display: grid;
+  gap: 40px;
+  width: min(100%, 1280px);
+  margin-inline: auto;
+  box-sizing: border-box;
+  padding: clamp(104px, 12vw, 120px) clamp(20px, 5vw, 96px) 48px;
+}
+.crumb {
+  margin: 0 0 20px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--mr-mist);
+}
+.heading {
+  margin: 0 0 24px;
+  font-family: var(--mr-font-display);
+  font-size: clamp(44px, 7.4vw, 96px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+  color: #fff;
+  text-wrap: balance;
+}
+.lead {
+  margin: 0 0 32px;
+  max-width: 30em;
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.5;
+  color: #fff;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.visual {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  padding-bottom: 36px;
+}
+.window {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 28px;
+  background: #1a0610;
+}
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pause {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(37 9 24 / 0.6);
+  color: #fff;
+  cursor: pointer;
+}
+.pause:hover {
+  background: rgb(37 9 24 / 0.85);
+}
+.phone:global(.phone.phone--lg) {
+  position: relative;
+  width: min(100%, 272px);
+  margin-top: -64px;
+  box-shadow: 0 50px 90px -30px rgb(0 0 0 / 0.75);
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    align-items: center;
+    gap: 96px;
+    height: 100svh;
+    padding-bottom: 56px;
+  }
+  .copy {
+    position: relative;
+    z-index: 2;
+  }
+  .window {
+    aspect-ratio: 3 / 4;
+    max-height: calc(100svh - 190px);
+    margin-left: auto;
+    width: min(100%, 500px);
+  }
+  .phone:global(.phone.phone--lg) {
+    position: absolute;
+    left: -76px;
+    bottom: 12px;
+    margin: 0;
+  }
+}
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .copy {
+    transform: translate3d(calc(var(--p) * -3vw), calc(var(--p) * -4svh), 0);
+    opacity: calc(1 - var(--p) * 0.75);
+  }
+  .window {
+    transform: translate3d(0, calc(var(--p) * -5svh), 0) scale(calc(1 + var(--p) * 0.08));
+  }
+  .video {
+    transform: scale(calc(1.05 + var(--p) * 0.2));
+  }
+  .phone:global(.phone.phone--lg) {
+    transform: translate3d(0, calc(var(--p) * -20svh), 0) rotate(calc(var(--p) * -6deg));
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .copy > * {
+    animation: rise 900ms cubic-bezier(0.2, 0, 0, 1) both;
+  }
+  .copy > :nth-child(2) {
+    animation-delay: 80ms;
+  }
+  .copy > :nth-child(3) {
+    animation-delay: 160ms;
+  }
+  .copy > :nth-child(4) {
+    animation-delay: 240ms;
+  }
+  .window {
+    animation: open 1200ms cubic-bezier(0.2, 0, 0, 1) 120ms both;
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+@keyframes open {
+  from {
+    clip-path: inset(0 0 100% 0 round 28px);
+  }
+  to {
+    clip-path: inset(0 0 0 0 round 28px);
+  }
+}
