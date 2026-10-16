@@ -1,0 +1,78 @@
+/* Your cards. A calm, full-bleed statement; a huge card outline settles slowly as the section arrives. */
+.scene {
+  overflow: clip;
+}
+.card {
+  position: absolute;
+  right: -6vw;
+  top: 50%;
+  z-index: -1;
+  width: min(60vw, 760px);
+  aspect-ratio: 1.586;
+  margin-top: calc(min(60vw, 760px) / -3.172);
+  border: 2px solid var(--mr-paper-edge, #cfc4d8);
+  border-radius: 5%;
+  transform: rotate(-9deg);
+  opacity: 0.7;
+}
+.chip {
+  position: absolute;
+  left: 8%;
+  top: 22%;
+  width: 14%;
+  aspect-ratio: 1.25;
+  border: 2px solid var(--mr-paper-edge, #cfc4d8);
+  border-radius: 14%;
+}
+.stripe {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 14%;
+  height: 2px;
+  background: var(--mr-paper-edge, #cfc4d8);
+}
+.inner {
+  display: grid;
+  gap: 28px;
+  padding-block: clamp(56px, 10vw, 96px);
+}
+.title {
+  margin: 0;
+  max-width: 10em;
+  font-size: clamp(40px, 7.4vw, 96px);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+.body {
+  margin: 0;
+  max-width: 24em;
+  font-size: clamp(18px, 1.8vw, 24px);
+  line-height: 1.45;
+}
+
+@media (min-width: 1024px) {
+  .inner {
+    padding-block: 0;
+  }
+  .card {
+    transform: translateX(calc((1 - var(--in)) * 20vw + var(--p) * -4vw))
+      rotate(calc(-14deg + var(--in) * 5deg + var(--p) * 3deg));
+  }
+  .title {
+    transform: translateY(calc((1 - var(--in)) * 6svh));
+  }
+  .body {
+    margin-left: auto;
+    margin-right: 0;
+    transform: translateY(calc((1 - var(--in)) * 10svh));
+  }
+}
+@media (max-width: 1023px) {
+  .card {
+    width: 90vw;
+    margin-top: -28vw;
+    opacity: 0.45;
+  }
+}

@@ -1,0 +1,82 @@
+/* Audit log. A big ledger on paper; a marker walks down it one event per beat and the changed time is circled. */
+.grid {
+  display: grid;
+  gap: 32px;
+  align-items: center;
+}
+.title {
+  margin: 0 0 16px;
+  max-width: 7em;
+  font-size: clamp(36px, 5.2vw, 76px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.body {
+  margin: 0;
+  max-width: 20em;
+  font-size: clamp(17px, 1.5vw, 20px);
+}
+.figure {
+  margin: 0;
+  min-width: 0;
+}
+.card:global(.audit-card) {
+  max-width: none;
+  padding: clamp(16px, 2.4vw, 36px);
+  border-radius: 24px;
+}
+.card :global(.mr-ledger-wrap__title) {
+  font-size: clamp(17px, 1.6vw, 22px);
+}
+.table td {
+  font-size: clamp(13px, 1.25vw, 17px);
+}
+.cap {
+  margin: 12px 0 0;
+}
+.card :global(.mr-line path) {
+  stroke-dasharray: 520;
+  stroke-dashoffset: 0;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 64px;
+  }
+  .card {
+    transform: translateX(calc((1 - var(--in)) * 18vw));
+  }
+  .table tbody td {
+    transition: background-color 500ms cubic-bezier(0.2, 0, 0, 1);
+  }
+  .table tbody td:first-child {
+    padding-left: 10px;
+    border-radius: 10px 0 0 10px;
+  }
+  .table tbody td:last-child {
+    padding-right: 10px;
+    border-radius: 0 10px 10px 0;
+  }
+  [data-step='0'] .table tbody tr:nth-child(1) td,
+  [data-step='1'] .table tbody tr:nth-child(2) td,
+  [data-step='2'] .table tbody tr:nth-child(3) td,
+  [data-step='3'] .table tbody tr:nth-child(4) td {
+    background: rgb(244 117 33 / 0.15);
+  }
+  .card :global(.mr-line path) {
+    stroke-dashoffset: 520;
+    transition: stroke-dashoffset 900ms cubic-bezier(0.2, 0, 0, 1) 200ms;
+  }
+  [data-step='2'] .card :global(.mr-line path),
+  [data-step='3'] .card :global(.mr-line path) {
+    stroke-dashoffset: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .table tbody td,
+  .card :global(.mr-line path) {
+    transition: none;
+  }
+}

@@ -1,0 +1,72 @@
+/* Who is behind Miraee. Quiet and large: rings settle (--in), the rule draws (--p). */
+.scene {
+  background: var(--mr-paper);
+  color: var(--mr-ink);
+}
+.rings {
+  position: absolute;
+  z-index: -1;
+  right: -18%;
+  top: 50%;
+  width: min(100vw, 900px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  translate: 0 -50%;
+  background: repeating-radial-gradient(circle, transparent 0 44px, rgb(67 22 46 / 0.08) 44px 46px);
+  pointer-events: none;
+}
+.grid {
+  display: grid;
+  gap: 28px;
+  align-content: center;
+}
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(44px, 9vw, 96px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  color: var(--mr-ink);
+  text-wrap: balance;
+  max-width: 10em;
+}
+.rule {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: var(--mr-orange-text);
+  transform-origin: 0 50%;
+}
+.body {
+  display: grid;
+  gap: 12px;
+}
+.text {
+  margin: 0;
+  max-width: 24em;
+  font-size: clamp(22px, 3vw, 36px);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--mr-ink);
+  text-wrap: balance;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    padding-top: 96px;
+    gap: clamp(28px, 5svh, 48px);
+  }
+  .rings {
+    transform: scale(calc(1.5 - var(--in) * 0.5 - var(--p) * 0.1));
+  }
+  .rule {
+    transform: scaleX(calc(0.04 + var(--in) * 0.3 + var(--p) * 0.66));
+  }
+  .title {
+    transform: translateY(calc((1 - var(--in)) * 6svh));
+  }
+  .body {
+    transform: translateY(calc((1 - var(--in)) * 10svh));
+  }
+}

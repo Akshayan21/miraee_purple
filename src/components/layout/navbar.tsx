@@ -4,6 +4,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 
 import { DialogLink } from '@/components/forms/form-dialogs-context'
 import { Button } from '@/components/ui/button'
+import { VersionToggle } from './version-toggle'
 import { NAV_LINKS, type NavItem } from '@/content/navigation'
 
 type NavbarProps = {
@@ -101,6 +102,9 @@ export function Navbar({ links = NAV_LINKS, ctaLabel = 'Sign up free' }: NavbarP
               ) : null}
             </li>
           ))}
+          <li className={styles.mobileVersion}>
+            <VersionToggle />
+          </li>
           <li className={styles.mobileTalk}>
             <Link to="/talk-to-sales" onClick={() => setOpenFor(null)}>
               Talk to sales
@@ -115,6 +119,7 @@ export function Navbar({ links = NAV_LINKS, ctaLabel = 'Sign up free' }: NavbarP
           </li>
         </ul>
         <div className={`mr-nav__end ${styles.end}`}>
+          <VersionToggle className={styles.version} />
           <Link className={styles.talk} to="/talk-to-sales">
             Talk to sales
           </Link>

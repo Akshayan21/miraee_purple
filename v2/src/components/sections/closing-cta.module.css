@@ -1,0 +1,8 @@
+.photo:global(.closing__photo) {
+  margin: 32px 0 0;
+}
+@media (max-width: 639px) {
+  .photo:global(.closing__photo) {
+    margin-top: 24px;
+  }
+}

@@ -1,0 +1,58 @@
+/* What Miraee replaces. One sentence in display type; strike lines draw through what is replaced, an underline lands under what stays. */
+.scene {
+  background: var(--mr-paper);
+}
+.inner {
+  display: grid;
+  gap: clamp(20px, 3vw, 36px);
+}
+.h2 {
+  margin: 0;
+  font-size: clamp(22px, 2.6vw, 36px);
+  font-weight: 700;
+  color: var(--text-accent);
+}
+.answer {
+  margin: 0;
+  max-width: 17em;
+  font-family: var(--mr-font-display);
+  font-size: clamp(34px, 5.8vw, 84px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  color: var(--mr-ink);
+  text-wrap: balance;
+}
+.struck,
+.kept {
+  --a: 1;
+  background-repeat: no-repeat;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.struck {
+  background-image: linear-gradient(var(--mr-orange-text), var(--mr-orange-text));
+  background-position: 0 56%;
+  background-size: calc(var(--a) * 100%) 0.07em;
+}
+.kept {
+  background-image: linear-gradient(var(--mr-orange), var(--mr-orange));
+  background-position: 0 100%;
+  background-size: calc(var(--a) * 100%) 0.1em;
+  padding-bottom: 0.06em;
+}
+
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .s1 {
+    --a: clamp(0, calc((var(--p) - 0.1) * 4), 1);
+  }
+  .s2 {
+    --a: clamp(0, calc((var(--p) - 0.35) * 4), 1);
+  }
+  .kept {
+    --a: clamp(0, calc((var(--p) - 0.65) * 4), 1);
+  }
+  .struck {
+    color: color-mix(in srgb, var(--mr-ink) calc(100% - var(--a) * 28%), var(--mr-paper));
+  }
+}

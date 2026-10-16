@@ -1,0 +1,11 @@
+.line {
+  display: block;
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  height: 2px;
+  background: var(--mr-orange);
+  transform-origin: left center;
+  pointer-events: none;
+  z-index: 1;
+}

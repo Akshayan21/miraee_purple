@@ -1,0 +1,180 @@
+/* Reconciliation. Receipts arrive from the left and card charges from the right; each pair snaps together and ticks as you scroll (--p). */
+.scene {
+  background: #1a0610;
+  color: #fff;
+}
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tint {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgb(37 9 24 / 0.86);
+}
+.grid {
+  display: grid;
+  gap: 40px;
+}
+.head {
+  display: grid;
+  gap: 16px 64px;
+  align-items: end;
+}
+.title {
+  margin: 0;
+  max-width: 9em;
+  font-size: clamp(36px, 5vw, 72px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: #fff;
+  text-wrap: balance;
+}
+.body {
+  margin: 0;
+  max-width: 30em;
+  font-size: clamp(17px, 1.5vw, 20px);
+  color: #fff;
+}
+.board {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+  max-width: 920px;
+  margin-inline: auto;
+}
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+  align-items: stretch;
+}
+.real {
+  gap: 12px;
+}
+.join {
+  align-self: center;
+  justify-self: center;
+  width: 2px;
+  height: 16px;
+  background: var(--mr-orange-light);
+}
+.status {
+  justify-self: center;
+}
+.ghost,
+.hideShort {
+  display: none;
+}
+
+/* Empty outlines that reconcile beside the real pair */
+.slot {
+  position: relative;
+  display: grid;
+  gap: 8px;
+  align-content: center;
+  padding: 12px 16px;
+  border: 1px solid rgb(255 255 255 / 0.22);
+  border-radius: 14px;
+  background: rgb(255 255 255 / 0.07);
+}
+.sk {
+  display: block;
+  width: 70%;
+  height: 7px;
+  border-radius: 4px;
+  background: rgb(255 255 255 / 0.28);
+}
+.short {
+  width: 38%;
+}
+.tick {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  border-radius: 50%;
+  background: var(--mr-orange-light);
+}
+.tick::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 4px;
+  width: 5px;
+  height: 9px;
+  border: solid #250918;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+@media (min-width: 1024px) {
+  .head {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  }
+  .row {
+    --t: clamp(0, calc((var(--p) - var(--s)) * 3.2), 1);
+    --e: calc(1 - (1 - var(--t)) * (1 - var(--t)));
+    --snap: clamp(0, calc((var(--t) - 0.86) * 7), 1);
+    grid-template-columns: minmax(0, 1fr) 72px minmax(0, 1fr);
+    gap: 0;
+  }
+  .real {
+    row-gap: 14px;
+  }
+  .real .status {
+    grid-column: 1 / -1;
+    opacity: var(--snap);
+    transform: translateY(calc((1 - var(--snap)) * 10px)) scale(calc(0.9 + var(--snap) * 0.1));
+  }
+  .ghost {
+    display: grid;
+  }
+  .hideShort {
+    display: block;
+  }
+  .hideShort > .row {
+    display: grid;
+  }
+  .rcpt {
+    transform: translateX(calc((1 - var(--e)) * -62vw));
+  }
+  .chg {
+    transform: translateX(calc((1 - var(--e)) * 62vw));
+  }
+  .join {
+    width: 100%;
+    height: 2px;
+    transform: scaleX(var(--snap));
+  }
+  .real .rcpt,
+  .real .chg {
+    box-shadow: 0 0 0 calc(var(--snap) * 3px) var(--mr-orange-light);
+  }
+  .ghost .tick {
+    transform: scale(var(--snap));
+  }
+  .ghost .slot {
+    padding-block: 14px;
+  }
+}
+@media (min-width: 1024px) and (max-height: 819px) {
+  .hideShort {
+    display: none;
+  }
+  .grid {
+    gap: 28px;
+  }
+}
+@media (min-width: 1024px) and (max-height: 760px) {
+  .title {
+    font-size: clamp(34px, 4.2vw, 56px);
+  }
+}
