@@ -1,0 +1,199 @@
+/* Page-local parts shared by the resources hub and the guides in this folder. */
+.photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+
+/* ---------- guide cards ---------- */
+.cards {
+  display: grid;
+  gap: clamp(14px, 2vw, 24px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 640px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .cards3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.card {
+  display: flex;
+  min-width: 0;
+  border-radius: 28px;
+  background: #fff;
+  color: var(--v3-ink);
+  box-shadow: 0 0 0 1px var(--v3-line-dark);
+  overflow: clip;
+  transition:
+    transform 500ms var(--v3-ease),
+    box-shadow 500ms var(--v3-ease),
+    opacity 900ms var(--v3-ease);
+  transition-delay: calc(var(--i, 0) * 70ms), 0s, calc(var(--i, 0) * 70ms);
+}
+[data-in='false'].card {
+  opacity: 0;
+  transform: translateY(26px) perspective(900px) rotateX(8deg);
+}
+.card a {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+.card a:focus-visible {
+  outline: 3px solid var(--mr-orange);
+  outline-offset: -3px;
+  border-radius: 28px;
+}
+.cardImg {
+  display: block;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: var(--v3-plum-2);
+}
+.cardImg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 900ms var(--v3-ease);
+}
+.cardBody {
+  display: grid;
+  gap: 8px;
+  padding: clamp(20px, 2.4vw, 28px);
+}
+.cardKicker {
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mr-orange-text);
+}
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: clamp(21px, 2vw, 26px);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  text-wrap: balance;
+}
+.cardDesc {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #5e4f57;
+}
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 0 0 1px var(--v3-line-dark),
+      0 30px 50px -28px rgb(37 9 24 / 0.5);
+  }
+  .card:hover .cardImg img {
+    transform: scale(1.04);
+  }
+}
+.more {
+  margin: clamp(28px, 4vw, 48px) 0 0;
+}
+
+/* ---------- document cover ---------- */
+.cover {
+  width: min(100%, 320px);
+  margin-inline: auto;
+}
+.coverLarge {
+  width: min(100%, 360px);
+}
+
+/* ---------- product callout and views inside prose ---------- */
+.callout {
+  display: grid;
+  gap: 18px;
+  padding: clamp(22px, 3.4vw, 40px);
+  border-radius: 28px;
+  background: #fff;
+  box-shadow: 0 0 0 1px var(--v3-line-dark);
+}
+.callout > * {
+  margin: 0;
+}
+.calloutKicker {
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mr-orange-text);
+}
+.callout h2 {
+  margin-top: 0 !important;
+}
+.figure {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  padding: clamp(22px, 4vw, 44px) clamp(12px, 3vw, 32px) 18px;
+  border-radius: 22px;
+  background: var(--v3-lilac-2);
+  transition:
+    opacity 900ms var(--v3-ease),
+    transform 1100ms var(--v3-ease);
+}
+.figurePlum {
+  background: linear-gradient(160deg, #50193d 0%, #2c0c20 60%, #1b0613 100%);
+}
+.figure > :global(.ui-card) {
+  width: 100%;
+  max-width: 360px;
+}
+[data-in='false'].figure {
+  opacity: 0;
+  transform: perspective(1300px) rotateY(-10deg) translateY(24px);
+}
+.caption {
+  margin: 0;
+  font-size: 14px;
+  color: #5e4f57;
+}
+.figurePlum .caption {
+  color: rgb(255 255 255 / 0.65);
+}
+
+/* ---------- checklists ---------- */
+.checklist.checklist {
+  list-style: none;
+  padding: 0;
+}
+.checklist li {
+  position: relative;
+  padding-left: 36px;
+}
+.checklist li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  background: #fff;
+  box-shadow: inset 0 0 0 2px var(--mr-orange);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .cardImg img,
+  .figure {
+    transition: none;
+  }
+}

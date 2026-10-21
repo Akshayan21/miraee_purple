@@ -1,0 +1,52 @@
+.scene {
+  background: var(--v3-night);
+}
+.stage {
+  position: relative;
+  min-height: 70svh;
+  display: grid;
+  align-content: center;
+  gap: clamp(28px, 4vw, 48px);
+  padding-block: var(--v3-gap);
+}
+.glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(50% 55% at 20% 40%, rgb(150 70 125 / 0.28), transparent 70%),
+    radial-gradient(40% 50% at 85% 70%, rgb(229 86 2 / 0.12), transparent 70%);
+  pointer-events: none;
+}
+.text {
+  position: relative;
+  margin-block: 0;
+  max-width: 1200px;
+  font-family: var(--font-display);
+  font-size: clamp(40px, 7.4vw, 112px);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  font-weight: 650;
+  text-wrap: balance;
+}
+.w {
+  color: #fff;
+}
+.hot {
+  color: var(--mr-orange-light);
+}
+.rule {
+  position: relative;
+  display: block;
+  width: min(1240px, 100% - 2 * clamp(20px, 4vw, 56px));
+  height: 2px;
+  margin-inline: auto;
+  background: linear-gradient(90deg, var(--mr-orange-light), rgb(255 152 97 / 0));
+  transform-origin: 0 50%;
+}
+
+@media (min-width: 1024px) {
+  .stage {
+    height: 100svh;
+    padding-block: 0;
+  }
+}

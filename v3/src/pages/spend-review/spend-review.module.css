@@ -1,0 +1,111 @@
+/* Page-local layout for /spend-review. Tokens: --v3-*, --font-display. */
+.title {
+  margin: 0;
+}
+.body {
+  margin: 0;
+  max-width: 32em;
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.55;
+  opacity: 0.84;
+}
+.stats {
+  display: grid;
+  gap: clamp(36px, 6vw, 72px);
+}
+@media (min-width: 900px) {
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.paper {
+  width: 100%;
+  max-width: 380px;
+  padding: 24px;
+  border-radius: 20px;
+  background: var(--mr-paper-raised, #fff);
+  color: var(--mr-ink, #1a0a14);
+}
+.tiles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.tile {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 16px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid var(--mr-paper-rule, rgb(0 0 0 / 0.1));
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--mr-ink, #1a0a14);
+  transition:
+    transform 700ms var(--v3-ease),
+    opacity 700ms var(--v3-ease);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+.tile img {
+  width: 24px;
+  height: 24px;
+}
+.findings {
+  width: 100%;
+  max-width: 640px;
+}
+.findings :global(.mr-ledger td) {
+  white-space: normal;
+}
+.findings :global(.mr-ledger td:first-child) {
+  font-weight: 600;
+}
+.findings :global(.mr-ledger td.mr-num) {
+  white-space: nowrap;
+}
+.findings :global(.mr-circled > .mr-line) {
+  left: -12%;
+  top: -62%;
+  width: 124%;
+  height: 224%;
+}
+.work {
+  display: grid;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .work {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+.workCopy {
+  display: grid;
+  gap: 20px;
+  justify-items: start;
+}
+.workCopy h2 + p + h2 {
+  margin-top: 28px;
+}
+.photo {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 28px;
+}
+.photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .photo img {
+    transition: transform 1600ms var(--v3-ease);
+  }
+  .photo:hover img {
+    transform: scale(1.03);
+  }
+}

@@ -1,0 +1,46 @@
+.trips {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+.trip {
+  padding: 8px 0;
+  border-top: 1px solid #dad1e1;
+}
+.tripTop,
+.tripMeta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+}
+.tripTop {
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+.tripTop strong {
+  font-weight: 650;
+}
+.tripMeta {
+  font-size: 12px;
+  color: #68555d;
+  margin-top: 3px;
+}
+.inPolicy {
+  color: #296145;
+}
+.outOfPolicy {
+  color: #ac352b;
+}
+.budget {
+  font-size: 12px;
+  color: #68555d;
+  margin: 2px 0 0;
+}
+.tripsCard {
+  width: min(100%, 440px);
+}
+.approval {
+  width: 100%;
+  max-width: 520px;
+}

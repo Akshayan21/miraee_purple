@@ -69,11 +69,12 @@ All forms validate natively and show their confirmation state. To deliver submis
 - The Open Graph image `/img/og/miraee-og-1200x630.jpg` is referenced in page metadata but is not in `public/img`.
 - `sitemap.xml` and `llms.txt` still list `/when-plans-change`.
 
-## Two versions: V1 and V2
+## Three versions: V1, V2 and V3
 
-This repo builds **two sites into one deploy**: V1 (`src/`) is served at `/`, V2 (`v2/`, an immersive redesign of the same content) at `/v2/`. A `V1 | V2` toggle in each nav links to the same page in the other version.
+This repo builds **three sites into one deploy**: V1 (`src/`) at `/`, V2 (`v2/`, a scroll-led redesign of the same content) at `/v2/`, and V3 (`v3/`, a minimal premium redesign with the baseline V1/V2 content) at `/v3/`. A `V1 | V2 | V3` toggle in each nav links to the same page in the other versions.
 
-- `npm run build` builds V1, then V2, and copies V2 into `dist/v2`. Vercel needs no extra settings (build command `npm run build`, output `dist`).
-- `npm start` serves `dist` on one port (default 4000; `PORT=8080 npm start`): V1 at `/`, V2 at `/v2/`.
-- `npm run dev` runs V1 at :5173; `npm run dev:v2` runs V2 at :5180/v2/. In dev the toggle jumps between those two ports (`.env.development` files).
-- V2 reuses V1's `node_modules` and `public/` folder (images, video, icons), so shared files live in one place. V2 pages are marked `noindex` through `vercel.json` while it is in preview.
+- `npm run build` builds V1, then V2, then V3, and copies V2 and V3 into `dist/v2` and `dist/v3`. Vercel needs no extra settings (build command `npm run build`, output `dist`).
+- `npm start` serves `dist` on one port (default 4000; `PORT=8080 npm start`): V1 at `/`, V2 at `/v2/`, V3 at `/v3/`.
+- `npm run dev` runs V1 at :5173, `npm run dev:v2` V2 at :5180/v2/, `npm run dev:v3` V3 at :5190/v3/. In dev the toggle jumps between those ports (`.env.development` files).
+- V2 and V3 reuse V1's `node_modules` and `public/` folder (images, video, icons). V2 and V3 pages are `noindex` through `vercel.json` while they are previews.
+- V3 content: the home page is its own composition; every other route renders the same minimal template from `v3/src/content/pages.ts` (copy taken verbatim from V1).

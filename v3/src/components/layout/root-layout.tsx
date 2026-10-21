@@ -1,0 +1,113 @@
+import * as React from 'react'
+import { Outlet, useLocation, useMatches } from 'react-router-dom'
+import { Head } from 'vite-react-ssg'
+
+import { FormDialogsProvider } from '@/components/forms/form-dialogs-context'
+import { ReviewDialog, SignupDialog } from '@/components/forms/form-dialogs'
+import archivoLatin from '@/assets/fonts/archivo-latin-standard-normal.woff2?url'
+import type { RouteHandle } from '@/lib/route-handle'
+import { initScrollMotion } from '@/lib/scroll-motion'
+import { IntroContext } from '@/components/motion/intro-context'
+import { SitePreloader } from '@/components/motion/site-preloader'
+
+/** Scroll to the top on navigation, or to the #anchor when the URL has one (footnotes, in-page links). */
+function ScrollManager() {
+  const { pathname, hash } = useLocation()
+  React.useEffect(() => {
+    if (hash) {
+      document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView()
+      return
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+  }, [pathname, hash])
+  return null
+}
+
+/** Scroll-driven motion for whichever page is showing; torn down and rebuilt on every navigation. */
+function ScrollMotion({ enabled }: { enabled: boolean }) {
+  const { pathname } = useLocation()
+  React.useEffect(() => {
+    if (!enabled) return
+    let cleanup: (() => void) | undefined
+    // Wait a frame so the new route (and any scroll-to-top / anchor jump) has settled before measuring.
+    const preference = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const desktop = window.matchMedia('(min-width: 1200px) and (hover: hover) and (pointer: fine)')
+    const updateMotion = () => {
+      cleanup?.()
+      cleanup = initScrollMotion()
+    }
+    const raf = requestAnimationFrame(updateMotion)
+    preference.addEventListener('change', updateMotion)
+    desktop.addEventListener('change', updateMotion)
+    return () => {
+      cancelAnimationFrame(raf)
+      preference.removeEventListener('change', updateMotion)
+      desktop.removeEventListener('change', updateMotion)
+      cleanup?.()
+    }
+  }, [pathname, enabled])
+  return null
+}
+
+/** Tells the scoped page sheets (see lib/route-handle.ts) which pages they apply to. */
+function PageStyles() {
+  const matches = useMatches()
+  const sheets = matches
+    .flatMap((match) => (match.handle as RouteHandle | undefined)?.styles ?? [])
+    .join(' ')
+
+  // <Head> covers the pre-rendered HTML; this keeps <body> in step on client-side navigation.
+  React.useEffect(() => {
+    if (sheets) document.body.setAttribute('data-css', sheets)
+    else document.body.removeAttribute('data-css')
+  }, [sheets])
+
+  return (
+    <Head defer={false}>
+      <link rel="preload" href={archivoLatin} as="font" type="font/woff2" crossOrigin="anonymous" />
+      <body data-css={sheets || undefined} />
+    </Head>
+  )
+}
+
+/**
+ * Top of every route: shared form dialogs, page-sheet scoping and scroll handling.
+ * The splash is pre-rendered on the home page so it covers the page from the first paint, and plays
+ * on every full load or reload of `/`. An inline script in index.html sets `data-intro` on <html>
+ * (CSS hides the splash without it); client-side navigation back to home does not replay it.
+ */
+export function RootLayout() {
+  const { pathname } = useLocation()
+  const [loading, setLoading] = React.useState(pathname === '/')
+  const page = React.useRef<HTMLDivElement>(null)
+  const complete = React.useCallback(() => {
+    document.documentElement.removeAttribute('data-intro')
+    setLoading(false)
+  }, [])
+  React.useLayoutEffect(() => {
+    if (!document.documentElement.hasAttribute('data-intro')) setLoading(false)
+  }, [])
+  React.useEffect(() => {
+    const element = page.current
+    if (!element) return
+    element.inert = loading
+    return () => {
+      element.inert = false
+    }
+  }, [loading])
+  return (
+    <IntroContext.Provider value={loading}>
+      <FormDialogsProvider>
+        <PageStyles />
+        <ScrollManager />
+        <ScrollMotion enabled={!loading} />
+        {loading && <SitePreloader onComplete={complete} />}
+        <div ref={page} aria-busy={loading}>
+          <Outlet />
+          <SignupDialog />
+          <ReviewDialog />
+        </div>
+      </FormDialogsProvider>
+    </IntroContext.Provider>
+  )
+}

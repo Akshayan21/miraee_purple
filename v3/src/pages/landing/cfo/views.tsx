@@ -1,0 +1,84 @@
+import { LedgerTable, ProductCard } from '@/components/sections/product-preview'
+
+/** The finance dashboard shown in "Every booking in policy, budgeted and coded". */
+export function DashboardView() {
+  return (
+    <ProductCard
+      className="dash dash--lg"
+      role="img"
+      aria-label="Finance dashboard with trips, budgets and GL codes."
+    >
+      <div aria-hidden="true">
+        <div className="dash__head">
+          <p className="dash__title">Finance dashboard</p>
+          <span className="mr-label">October</span>
+        </div>
+        <div className="kpis">
+          <div className="kpi">
+            <span>Trips</span>
+            <strong>38</strong>
+          </div>
+          <div className="kpi">
+            <span>Spend</span>
+            <strong>$41,208.30</strong>
+          </div>
+          <div className="kpi">
+            <span>Needs approval</span>
+            <strong>2</strong>
+          </div>
+        </div>
+        <LedgerTable className="mr-ledger mr-ledger--compact">
+          <thead>
+            <tr>
+              <th>Trip</th>
+              <th className="mr-num">Budget</th>
+              <th className="mr-num">Spent</th>
+              <th className="mr-num">GL code</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Client visit, Chicago</td>
+              <td className="mr-num">$1,500.00</td>
+              <td className="mr-num">$1,284.60</td>
+              <td className="mr-num">6200</td>
+            </tr>
+            <tr>
+              <td>Site audit, Dallas</td>
+              <td className="mr-num">$1,200.00</td>
+              <td className="mr-num">$946.20</td>
+              <td className="mr-num">6200</td>
+            </tr>
+            <tr>
+              <td>Sales kickoff, Denver</td>
+              <td className="mr-num">$2,000.00</td>
+              <td className="mr-num">$2,318.40</td>
+              <td className="mr-num">6200</td>
+            </tr>
+            <tr>
+              <td>Partner review, Atlanta</td>
+              <td className="mr-num">$1,400.00</td>
+              <td className="mr-num">$1,106.75</td>
+              <td className="mr-num">6210</td>
+            </tr>
+          </tbody>
+        </LedgerTable>
+        <ul className="audit">
+          <li className="audit__h">Audit log</li>
+          <li>
+            <time className="mr-fig">9:12 a.m.</time>
+            <span>Booked by Priya N. · Chicago</span>
+          </li>
+          <li>
+            <time className="mr-fig">9:40 a.m.</time>
+            <span>Approved by Dana R. · Denver hotel</span>
+          </li>
+          <li>
+            <time className="mr-fig">2:05 p.m.</time>
+            <span>Receipt matched · Dallas</span>
+          </li>
+        </ul>
+      </div>
+    </ProductCard>
+  )
+}

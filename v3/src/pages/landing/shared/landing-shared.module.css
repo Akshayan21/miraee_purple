@@ -1,0 +1,118 @@
+/* Logo-only header and small footer of the paid landing pages, set for the night ground. The layout component is shared, so
+   these rules reach it by its global class names; this stylesheet only loads with the landing pages. */
+:global(.lp-head) {
+  background: var(--v3-night);
+  border-bottom: 1px solid var(--v3-line);
+}
+:global(.lp-foot) {
+  background: var(--v3-night);
+  color: rgb(255 255 255 / 0.74);
+  border-top: 1px solid var(--v3-line);
+  padding-block: 40px;
+}
+:global(.lp-foot) a {
+  color: rgb(255 255 255 / 0.8);
+  font-size: 15px;
+}
+:global(.lp-foot) a:hover {
+  color: #fff;
+}
+:global(.lp-foot) :global(.mr-footer__legal) {
+  border-top-color: var(--v3-line);
+}
+
+.ledger {
+  width: min(100%, 640px);
+  margin: 0;
+}
+.ledger :global(.mr-ledger-wrap) {
+  background: #fff;
+  color: var(--v3-ink);
+}
+
+.photo {
+  margin: 0;
+  overflow: clip;
+  border-radius: 28px;
+}
+.photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(70svh, 640px);
+  object-fit: cover;
+}
+
+.copy {
+  display: grid;
+  gap: 20px;
+  align-content: start;
+}
+.copy p {
+  margin: 0;
+  max-width: 34em;
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.6;
+  color: rgb(255 255 255 / 0.78);
+}
+.copyTitle {
+  margin: 0;
+}
+.dateline {
+  margin: 0 0 14px;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  color: #5e4f57;
+}
+.tableHead {
+  margin-bottom: clamp(28px, 4vw, 48px);
+}
+.cell small {
+  display: block;
+  margin-top: 4px;
+  font-weight: 400;
+  font-size: 12px;
+  opacity: 0.7;
+}
+.stats {
+  display: grid;
+  gap: clamp(32px, 5vw, 64px);
+}
+.checks {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+}
+.checks li {
+  padding: 18px 0;
+  border-top: 1px solid var(--v3-line);
+  font-size: clamp(18px, 1.7vw, 22px);
+  line-height: 1.4;
+}
+.checks li:last-child {
+  border-bottom: 1px solid var(--v3-line);
+}
+.caption {
+  margin: 14px 0 0;
+  font-size: 13px;
+  color: rgb(255 255 255 / 0.6);
+}
+.free {
+  display: grid;
+  gap: 20px;
+  max-width: 760px;
+}
+.free p {
+  margin: 0;
+}
+@media (min-width: 900px) {
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .photo img {
+    transition: none;
+  }
+}

@@ -1,0 +1,12 @@
+.grid {
+  min-width: 0;
+}
+.grid > * {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 374px) {
+  .grid {
+    gap: 24px 16px;
+  }
+}

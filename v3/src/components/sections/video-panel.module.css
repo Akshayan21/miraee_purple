@@ -1,0 +1,133 @@
+.wrap {
+  padding: clamp(20px, 3vw, 40px) clamp(12px, 2.4vw, 32px);
+}
+.panel {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  max-width: 1360px;
+  min-height: clamp(520px, 70vh, 680px);
+  margin: 0 auto;
+  padding: clamp(32px, 5vw, 72px);
+  border-radius: clamp(28px, 3.4vw, 48px);
+  display: grid;
+  align-items: end;
+  gap: clamp(24px, 4vw, 64px);
+  background: #250918;
+  color: #fff;
+}
+.split {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: end;
+}
+.wide.split {
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.8fr);
+}
+.wide .copy {
+  max-width: 46em;
+}
+.wide .copy :global(.list) {
+  columns: 2;
+  column-gap: 32px;
+}
+.video {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tint {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      90deg,
+      rgb(37 9 24 / 0.86) 0%,
+      rgb(67 22 46 / 0.55) 55%,
+      rgb(67 22 46 / 0.2) 100%
+    ),
+    linear-gradient(0deg, rgb(37 9 24 / 0.55), transparent 45%);
+}
+.copy {
+  display: grid;
+  justify-items: start;
+  gap: 0;
+  max-width: 34em;
+}
+.aside {
+  display: grid;
+  justify-items: end;
+  align-items: end;
+}
+.copy :global(.mr-h2) {
+  font-size: clamp(38px, 5vw, 72px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin: 0 0 20px;
+  color: #fff;
+}
+.copy :global(.mr-body) {
+  color: #fff;
+  font-size: clamp(16px, 1.4vw, 19px);
+}
+.copy :global(.mr-eyebrow) {
+  color: var(--mr-mist);
+  margin-bottom: 16px;
+}
+.pause {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(37 9 24 / 0.55);
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+}
+.pause:hover {
+  background: rgb(37 9 24 / 0.8);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .panel {
+    opacity: 0;
+    transform: translateY(32px);
+    transition:
+      opacity 700ms cubic-bezier(0.2, 0, 0, 1),
+      transform 700ms cubic-bezier(0.2, 0, 0, 1);
+  }
+  .in {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 1023px) {
+  .split,
+  .wide.split {
+    grid-template-columns: 1fr;
+  }
+  .wide .copy :global(.list) {
+    columns: 1;
+  }
+  .aside {
+    justify-items: start;
+  }
+  .panel {
+    min-height: 0;
+  }
+}
+
+/* The trip route runs down the right gutter on wide screens; keep the pause button clear of it. */
+@media (min-width: 1360px) {
+  .pause {
+    right: 72px;
+  }
+}

@@ -41,7 +41,7 @@ export function HeroMockup() {
         width={800}
         height={1422}
         alt="The Miraee app on a phone: the assistant, with flight options to Delhi in policy"
-        fetchPriority="high"
+        {...({ fetchpriority: 'high' } as Record<string, string>)}
       />
     </div>
   )
