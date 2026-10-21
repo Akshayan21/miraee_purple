@@ -1,0 +1,89 @@
+/* Page-local layout for /how-it-works. Tokens: --v3-*, --font-display. */
+.eyebrow {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mr-orange-light);
+}
+.lilacEyebrow {
+  color: var(--mr-orange-text);
+}
+.body {
+  margin: 0;
+  max-width: 32em;
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.55;
+  opacity: 0.84;
+}
+.title {
+  margin: 0;
+}
+.fig {
+  margin: 0;
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+  width: 100%;
+}
+.cap {
+  margin: 0;
+  font-size: 13px;
+  opacity: 0.6;
+  text-align: center;
+}
+.mock,
+.phone,
+.heroPhone {
+  width: 100%;
+}
+.mock {
+  max-width: 520px;
+}
+.phone {
+  max-width: 400px;
+}
+.heroPhone {
+  max-width: 340px;
+  margin-inline: auto;
+}
+.ledgerFig {
+  width: 100%;
+}
+.match {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+.replace {
+  display: grid;
+  gap: 24px;
+  max-width: 920px;
+}
+.replaceTitle {
+  margin: 0;
+}
+.replaceBody {
+  margin: 0;
+  max-width: 28em;
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3.2vw, 40px);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+.linkRow {
+  margin: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .match :global(.match__status) {
+    animation: pop 900ms var(--v3-ease) both;
+    animation-delay: 500ms;
+  }
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+}

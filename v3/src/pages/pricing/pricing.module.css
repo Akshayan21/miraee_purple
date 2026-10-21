@@ -1,0 +1,69 @@
+.duo {
+  display: grid;
+  gap: 28px;
+  align-items: start;
+}
+.duoBody {
+  display: grid;
+  gap: 28px;
+  justify-items: start;
+}
+.duoBody p {
+  margin: 0;
+}
+@media (min-width: 900px) {
+  .duo {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: clamp(40px, 6vw, 96px);
+  }
+}
+
+.free td img {
+  display: inline-block;
+  vertical-align: -4px;
+  margin-right: 12px;
+}
+.free table {
+  min-width: 0;
+}
+
+.size {
+  display: grid;
+  gap: 40px;
+  align-items: center;
+}
+.sizeTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(44px, 7.4vw, 120px);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  font-weight: 700;
+  text-wrap: balance;
+}
+.sizeText {
+  display: grid;
+  gap: 24px;
+}
+.sizeText p {
+  margin: 0;
+}
+.clip {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 28px;
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.1);
+}
+.clip video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+@media (min-width: 1024px) {
+  .size {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    gap: clamp(40px, 6vw, 96px);
+  }
+}

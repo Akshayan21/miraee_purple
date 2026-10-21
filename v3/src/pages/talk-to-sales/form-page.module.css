@@ -1,0 +1,27 @@
+/* The lead form sits in the kit's plum glass window, on the plum ground the design system re-themes itself for. */
+.panel.panel {
+  width: 100%;
+  background: transparent;
+  filter: none;
+  padding: clamp(4px, 1vw, 12px);
+}
+.panel :global(.form-page) {
+  max-width: none;
+  margin-top: 0;
+}
+.panel :global(.mr-field) {
+  max-width: none;
+}
+.photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(70svh, 640px);
+  border-radius: clamp(24px, 3vw, 40px);
+  object-fit: cover;
+  box-shadow: 0 40px 80px -40px rgb(37 9 24 / 0.5);
+}
+.link {
+  color: inherit;
+  text-underline-offset: 3px;
+}

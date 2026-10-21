@@ -1,0 +1,162 @@
+.stack {
+  position: relative;
+  padding: 0 clamp(8px, 1.6vw, 20px) clamp(8px, 1.6vw, 20px);
+}
+.card {
+  position: relative;
+  padding-top: 8px;
+}
+.in {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  display: grid;
+  align-content: center;
+  gap: clamp(28px, 4vw, 56px);
+  padding: clamp(32px, 6vw, 96px) clamp(24px, 6vw, 96px);
+  border-radius: clamp(24px, 3vw, 36px);
+  transform-origin: 50% 0;
+}
+.copy {
+  display: grid;
+  gap: 22px;
+  align-content: center;
+}
+
+/* Card 1: the figure on plum */
+.finance {
+  background:
+    radial-gradient(60% 70% at 85% 10%, rgb(236 130 200 / 0.38), transparent 70%), var(--v3-plum-2);
+  color: #fff;
+}
+.fig {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(120px, 17vw, 270px);
+  line-height: 0.82;
+  letter-spacing: -0.07em;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.fig small {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 18px;
+  letter-spacing: 0;
+  font-weight: 600;
+  color: var(--mr-orange-light);
+}
+.big {
+  margin: 0;
+  max-width: 14em;
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3vw, 44px);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 650;
+  text-wrap: balance;
+}
+.list {
+  list-style: none;
+  margin: 6px 0 4px;
+  padding: 0;
+  display: grid;
+  max-width: 30em;
+  border-top: 1px solid rgb(255 255 255 / 0.2);
+}
+.list li {
+  padding: 14px 0;
+  border-bottom: 1px solid rgb(255 255 255 / 0.2);
+  font-size: clamp(17px, 1.5vw, 21px);
+  line-height: 1.35;
+  color: rgb(255 255 255 / 0.9);
+}
+
+/* Card 2: trust on night, an ember glow low left */
+.trust {
+  background: radial-gradient(60% 80% at 0% 100%, rgb(229 86 2 / 0.34), transparent 70%), #14040c;
+  color: #fff;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1);
+}
+.h2 {
+  margin: 0;
+  max-width: 11em;
+  font-family: var(--font-display);
+  font-size: clamp(38px, 5.6vw, 84px);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  font-weight: 700;
+  text-wrap: balance;
+}
+.lead {
+  margin: 0;
+  max-width: 26em;
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.5;
+  color: rgb(255 255 255 / 0.82);
+}
+.gates {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.gates li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 26px;
+  border-radius: 22px;
+  background: rgb(255 255 255 / 0.07);
+  border: 1px solid rgb(255 255 255 / 0.16);
+  backdrop-filter: blur(10px);
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.2vw, 32px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+/* Card 3: the close, on lilac (the one light block on the page) */
+.close {
+  justify-items: start;
+  background:
+    radial-gradient(50% 60% at 90% 100%, rgb(255 255 255 / 0.9), transparent 70%), var(--v3-lilac);
+  color: var(--v3-ink);
+  --btn-bg: var(--mr-orange);
+  --btn-fg: var(--mr-night);
+  --btn-bg-hover: var(--mr-orange-light);
+  --btn2-border: var(--v3-ink);
+  --btn2-fg: var(--v3-ink);
+}
+.closeTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(52px, 10vw, 156px);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+}
+.actions {
+  margin-top: 8px;
+}
+
+@media (min-width: 1024px) {
+  .card {
+    position: sticky;
+    top: 0;
+    min-height: 100svh;
+  }
+  .in {
+    min-height: calc(100svh - 16px);
+  }
+  .finance {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    align-items: center;
+  }
+  .trust {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    align-items: center;
+    gap: clamp(32px, 6vw, 96px);
+  }
+}

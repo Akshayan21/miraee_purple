@@ -1,0 +1,169 @@
+.scene {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  min-height: 100svh;
+  display: grid;
+  align-items: center;
+  padding: clamp(104px, 11vw, 124px) 0 clamp(40px, 6vw, 72px);
+  background: var(--v3-night);
+}
+.glow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(40% 56% at 76% 52%, rgb(236 130 200 / 0.42), transparent 70%),
+    radial-gradient(34% 40% at 6% 0%, rgb(130 60 170 / 0.38), transparent 70%),
+    radial-gradient(28% 34% at 100% 100%, rgb(229 86 2 / 0.24), transparent 70%);
+}
+.grid {
+  position: relative;
+  display: grid;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+.copy {
+  display: grid;
+  gap: 24px;
+  justify-items: start;
+}
+.title {
+  display: grid;
+  font-size: clamp(42px, 6vw, 88px);
+}
+.line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+}
+.line > span {
+  display: block;
+}
+.accent {
+  color: var(--mr-orange-light);
+}
+.lead {
+  margin: 0;
+  max-width: 24em;
+  font-size: clamp(19px, 1.7vw, 23px);
+  line-height: 1.45;
+  color: rgb(255 255 255 / 0.9);
+}
+.actions {
+  margin-top: 4px;
+}
+
+/* The product: dashboard behind, phone in front, both whole. */
+.product {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  min-height: 420px;
+}
+.dash {
+  background: transparent;
+  filter: drop-shadow(0 40px 60px rgb(0 0 0 / 0.5));
+}
+.dash.dash :global(.mr-ledger) {
+  width: 100%;
+  table-layout: auto;
+}
+.dash.dash :global(.mr-ledger) :global(td),
+.dash.dash :global(.mr-ledger) :global(th) {
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: keep-all;
+}
+.phone {
+  display: block;
+  width: min(58vw, 260px);
+  height: auto;
+  filter: drop-shadow(0 40px 60px rgb(0 0 0 / 0.55));
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  }
+  .product {
+    height: min(76svh, 700px);
+    min-height: 0;
+    display: block;
+  }
+  .dash {
+    position: absolute;
+    left: 0;
+    bottom: 8%;
+    z-index: 2;
+  }
+  .dash > * {
+    zoom: 1.3;
+  }
+  .phone {
+    position: absolute;
+    right: 2%;
+    top: 0;
+    z-index: 3;
+    width: auto;
+    height: 94%;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .dash {
+    display: none;
+  }
+  .phone {
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+  }
+}
+@media (min-width: 1500px) {
+  .dash > * {
+    zoom: 1.55;
+  }
+}
+@media (max-width: 1023px) {
+  .dash {
+    display: none;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .scene {
+    min-height: 0;
+    padding-block: 132px 96px;
+  }
+  .grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  }
+  .phone {
+    width: min(34vw, 300px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .line > span {
+    animation: rise 1100ms var(--v3-ease) both;
+  }
+  .line:nth-child(2) > span {
+    animation-delay: 120ms;
+  }
+  .lead,
+  .actions,
+  .copy > p:last-child,
+  .product {
+    animation: fade 1000ms var(--v3-ease) 300ms both;
+  }
+}
+@keyframes rise {
+  from {
+    transform: translateY(105%);
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}

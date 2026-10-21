@@ -1,0 +1,32 @@
+.policy {
+  width: min(100%, 420px);
+  padding: 22px 24px;
+  border-radius: 20px;
+  background: #fff;
+  color: var(--v3-ink);
+}
+.policy ul {
+  display: grid;
+  gap: 10px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.policy li::before {
+  content: '\2713';
+  margin-right: 10px;
+  color: var(--success, #296145);
+}
+.card:global(.mock),
+.card:global(.mock.approval) {
+  width: 100%;
+  max-width: 520px;
+}
+.preview:global(.phone.phone--lg),
+.preview:global(.phone.phone--alert) {
+  width: 100%;
+  max-width: 400px;
+  margin-inline: auto;
+}
