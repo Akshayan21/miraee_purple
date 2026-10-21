@@ -46,9 +46,8 @@ export function Beat({
 }
 
 export function IllustrativeNote({ dark }: { dark?: boolean }) {
-  return (
-    <p className={cx(styles.note, dark && styles.dark)}>Product view with illustrative data.</p>
-  )
+  void dark
+  return null
 }
 
 export function TableNote({ dark, children }: { dark?: boolean; children: React.ReactNode }) {

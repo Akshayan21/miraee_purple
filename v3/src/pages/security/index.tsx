@@ -96,9 +96,6 @@ export function Component() {
             visual={
               <figure style={{ margin: 0, width: '100%', display: 'grid', justifyItems: 'center' }}>
                 <AuditLogView />
-                <figcaption className={styles.captionInk}>
-                  Product view with illustrative data.
-                </figcaption>
               </figure>
             }
           />

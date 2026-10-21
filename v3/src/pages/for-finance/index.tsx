@@ -137,7 +137,6 @@ export function Component() {
             </>
           }
         />
-        <SmallPrint>Product views show illustrative data.</SmallPrint>
       </main>
     </>
   )

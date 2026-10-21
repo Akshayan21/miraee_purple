@@ -63,7 +63,6 @@ export function Component() {
             visual={
               <figure style={{ margin: 0 }}>
                 <DashboardView />
-                <figcaption className={s.caption}>Product view with illustrative data.</figcaption>
               </figure>
             }
           />

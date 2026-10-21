@@ -42,7 +42,6 @@ export function TripTagView() {
           <dd className="mr-trip-tag__total">$1,284.60</dd>
         </dl>
       </div>
-      <figcaption className="mr-caption">Product view with illustrative data.</figcaption>
     </figure>
   )
 }
