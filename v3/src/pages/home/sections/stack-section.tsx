@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 
-import { DialogLink } from '@/components/forms/form-dialogs-context'
 import { useScrollScene } from '@/components/scroll/use-scroll-scene'
 import { Button } from '@/components/ui/button'
 import shared from '../home-shared.module.css'
@@ -17,6 +16,11 @@ const GATES = [
  * Three full-height cards in a vertical sticky stack: each pins at the top and the one beneath it sits back (scale and fade)
  * as the next slides over it. The stack ends on the closing call to action, the single light moment of the page.
  */
+const CLOSE_LINES = [
+  ['Put', 'every', 'trip'],
+  ['in', 'one', 'place.'],
+]
+
 export function StackSection() {
   const root = React.useRef<HTMLElement>(null)
 
@@ -32,6 +36,20 @@ export function StackSection() {
         scrollTrigger: { trigger: next, start: 'top bottom', end: 'top top', scrub: true },
       })
     })
+    /* The closing line: the pinned statement's word-by-word reveal. Words start dim and come up to full strength as the
+       last card slides into place, then a rule draws under the line. */
+    const closeCard = cards[cards.length - 1]
+    if (closeCard) {
+      gsap.set('[data-cw]', { opacity: 0.16 })
+      gsap.set('[data-crule]', { scaleX: 0 })
+      gsap
+        .timeline({
+          defaults: { ease: 'none' },
+          scrollTrigger: { trigger: closeCard, start: 'top 75%', end: 'top 5%', scrub: 0.6 },
+        })
+        .to('[data-cw]', { opacity: 1, stagger: 0.5 })
+        .to('[data-crule]', { scaleX: 1, duration: 2 }, '>-0.5')
+    }
     gsap.from('[data-rise]', {
       yPercent: 18,
       opacity: 0,
@@ -98,23 +116,18 @@ export function StackSection() {
 
       <div className={styles.card} data-card>
         <div className={`${styles.in} ${styles.close}`} data-card-in>
-          <h2 className={styles.closeTitle} data-rise>
-            Put every trip
-            <br />
-            in one place.
+          <h2 className={styles.closeTitle} aria-label="Put every trip in one place.">
+            {CLOSE_LINES.map((line, li) => (
+              <span key={li} className={styles.closeLine} aria-hidden="true">
+                {line.map((w, i) => (
+                  <span key={i} data-cw className={li === 1 ? styles.closeHot : undefined}>
+                    {w}{' '}
+                  </span>
+                ))}
+              </span>
+            ))}
           </h2>
-          <div className={`${shared.buttons} ${styles.actions}`} data-rise>
-            <Button asChild>
-              <DialogLink to="/sign-up" dialog="signup">
-                Sign up free
-              </DialogLink>
-            </Button>
-            <Button asChild variant="secondary">
-              <DialogLink to="/spend-review" dialog="review">
-                Get a spend review
-              </DialogLink>
-            </Button>
-          </div>
+          <span className={styles.closeRule} data-crule aria-hidden="true" />
         </div>
       </div>
     </section>

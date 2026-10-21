@@ -47,7 +47,7 @@ export function HeroSection() {
             </span>
           </h1>
           <p className={styles.lead}>
-            Your people book inside company policy, and finance sees every trip.
+            Your people book within company policy, and finance sees every trip.
           </p>
           <div className={`${shared.buttons} ${styles.actions}`}>
             <Button asChild>

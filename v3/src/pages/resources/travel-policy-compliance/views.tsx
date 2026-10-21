@@ -10,7 +10,6 @@ export function FlightsView() {
       aria-label="Flight options from Austin to Chicago, each marked in policy or out of policy"
     >
       <FlightsPhoneView />
-      <figcaption className="mr-caption">Product view with illustrative data.</figcaption>
     </figure>
   )
 }

@@ -32,7 +32,6 @@ export function MatchView() {
           Matched · In policy
         </span>
       </div>
-      <figcaption className="mr-caption">Product view with illustrative data.</figcaption>
     </figure>
   )
 }

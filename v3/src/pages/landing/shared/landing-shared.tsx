@@ -87,7 +87,6 @@ export function OctoberLedger() {
           className="mr-ledger"
           aria-label="A finance ledger of trips with budgets, policy status and GL codes."
         >
-          <caption>Product view with illustrative data.</caption>
           <thead>
             <tr>
               <th scope="col">Trip</th>

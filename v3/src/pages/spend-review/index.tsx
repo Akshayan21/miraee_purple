@@ -116,7 +116,6 @@ export function Component() {
                   <span className="mr-label">Last year</span>
                 </div>
                 <LedgerTable className="mr-ledger">
-                  <caption>Product view with illustrative data.</caption>
                   <thead>
                     <tr>
                       <th scope="col">Finding</th>

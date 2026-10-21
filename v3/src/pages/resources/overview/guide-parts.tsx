@@ -184,7 +184,6 @@ export function ViewFigure({
       aria-label={label}
     >
       {children}
-      <figcaption className={styles.caption}>{'Product view with illustrative data.'}</figcaption>
     </Reveal>
   )
 }

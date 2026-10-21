@@ -18,8 +18,6 @@ import {
   SetUpCard,
 } from './views'
 
-const CAPTION = 'Product view with illustrative data.'
-
 function Eyebrow({ children, lilac }: { children: React.ReactNode; lilac?: boolean }) {
   return <p className={`${styles.eyebrow} ${lilac ? styles.lilacEyebrow : ''}`}>{children}</p>
 }
@@ -35,7 +33,6 @@ function Figure({ label, children }: { label?: string; children: React.ReactNode
       ) : (
         children
       )}
-      <figcaption className={styles.cap}>{CAPTION}</figcaption>
     </figure>
   )
 }

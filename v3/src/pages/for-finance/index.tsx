@@ -6,7 +6,6 @@ import {
   PageClosing,
   PageHero,
   SectionHead,
-  SmallPrint,
   Split,
   StackPanels,
 } from '@/components/page/kit'
@@ -137,7 +136,6 @@ export function Component() {
             </>
           }
         />
-        <SmallPrint>Product views show illustrative data.</SmallPrint>
       </main>
     </>
   )
