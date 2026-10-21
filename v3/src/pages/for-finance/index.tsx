@@ -6,7 +6,6 @@ import {
   PageClosing,
   PageHero,
   SectionHead,
-  SmallPrint,
   Split,
   StackPanels,
 } from '@/components/page/kit'

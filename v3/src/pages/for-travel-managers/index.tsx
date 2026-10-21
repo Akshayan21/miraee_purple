@@ -7,7 +7,6 @@ import {
   Band,
   PageClosing,
   PageHero,
-  SmallPrint,
   Split,
   StackPanels,
 } from '@/components/page/kit'
