@@ -7,6 +7,7 @@ import { ForThePeopleWhoBookForOthersSection } from './sections/for-the-people-w
 import { WhenPlansChangeSection } from './sections/when-plans-change-section'
 import { RolloutSection } from './sections/rollout-section'
 import { ClosingCallToActionSection } from './sections/closing-call-to-action-section'
+import { PromiseSection } from '@/pages/home/sections/promise-section'
 
 /** Route: /travel-managers */
 export function Component() {
@@ -15,6 +16,7 @@ export function Component() {
       <Seo meta={meta} />
       <main id="main">
         <HeroSection />
+        <PromiseSection />
         <PolicySection />
         <ApprovalsSection />
         <ForThePeopleWhoBookForOthersSection />

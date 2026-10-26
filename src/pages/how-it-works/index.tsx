@@ -9,6 +9,7 @@ import { ExpenseSection } from './sections/expense-section'
 import { FinanceViewSection } from './sections/finance-view-section'
 import { WhatMiraeeReplacesSection } from './sections/what-miraee-replaces-section'
 import { ClosingCallToActionSection } from './sections/closing-call-to-action-section'
+import { PromiseSection } from '@/pages/home/sections/promise-section'
 
 /** Route: /how-it-works */
 export function Component() {
@@ -17,6 +18,7 @@ export function Component() {
       <Seo meta={meta} />
       <main id="main">
         <HeroSection />
+        <PromiseSection />
         <SetUpSection />
         <BookSection />
         <ApproveSection />

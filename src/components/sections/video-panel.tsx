@@ -67,6 +67,7 @@ export function VideoPanel({ video, labelledBy, children, aside, wide }: VideoPa
         <video
           ref={clip}
           className={styles.video}
+          data-vp-video
           src={`/video/${video}.mp4`}
           poster={`/video/${video}.jpg`}
           muted

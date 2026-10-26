@@ -1,0 +1,201 @@
+.scene {
+  isolation: isolate;
+  overflow-x: clip;
+}
+.grid {
+  display: grid;
+  gap: clamp(36px, 6vw, 88px);
+  align-items: center;
+}
+.copy {
+  display: grid;
+  gap: 18px;
+  justify-items: start;
+  align-content: center;
+  min-width: 0;
+  max-width: 36em;
+}
+.copy > * {
+  margin-block: 0;
+}
+
+/* ---------- The stage ---------- */
+.stage {
+  position: relative;
+  isolation: isolate;
+  min-height: clamp(380px, 44vw, 560px);
+  margin-top: clamp(24px, 3vw, 40px);
+}
+.stagePhoto {
+  min-height: 0;
+  aspect-ratio: var(--stage-aspect, 4 / 3);
+  margin-top: 0;
+}
+.plate {
+  position: absolute;
+  inset: 14% 0 0 0;
+  z-index: -1;
+  border-radius: clamp(28px, 3.4vw, 44px);
+  box-shadow: 0 0 0 1px rgb(37 9 24 / 0.06);
+}
+.stagePhoto .plate {
+  display: none;
+}
+.plate-plum {
+  background:
+    radial-gradient(60% 50% at 80% 100%, rgb(229 86 2 / 0.32), transparent 70%),
+    radial-gradient(50% 60% at 10% 0%, rgb(150 70 125 / 0.5), transparent 70%),
+    linear-gradient(160deg, #5a1f43 0%, #2c0c20 100%);
+}
+.plate-light {
+  background:
+    radial-gradient(60% 60% at 90% 100%, rgb(229 86 2 / 0.16), transparent 70%),
+    var(--mr-paper-raised, #f9f5fc);
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.2);
+}
+.plate-mist {
+  background:
+    radial-gradient(70% 60% at 100% 100%, rgb(255 255 255 / 0.8), transparent 70%),
+    linear-gradient(160deg, #e8dbf0 0%, #decfe5 100%);
+}
+.plate-tangerine {
+  background: linear-gradient(160deg, #ffb185 0%, #e55602 100%);
+}
+
+.person {
+  position: absolute;
+  z-index: 1;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 32px rgb(37 9 24 / 0.28));
+}
+/* stack: the person occupies the top two thirds of the stage, so the product view rises over the lower body and never the face. */
+.layout-stack {
+  min-height: clamp(540px, 52vw, 700px);
+}
+.layout-stack .person {
+  inset: 0 0 auto 0;
+  width: 100%;
+  height: 68%;
+  transform: translateY(var(--lean, 0px));
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 74%, transparent 98%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 74%, transparent 98%);
+}
+.layout-stack .personLeft {
+  object-position: 8% 100%;
+}
+.layout-stack .personRight {
+  object-position: 92% 100%;
+}
+/* side: the person takes one side, a narrow product view the other. */
+.layout-side {
+  min-height: 0;
+  aspect-ratio: 1 / 1;
+  max-height: 600px;
+}
+.layout-side .person {
+  inset: 0 auto 0 auto;
+  width: 62%;
+  height: 100%;
+}
+.layout-side .personLeft {
+  left: 0;
+  object-position: left bottom;
+}
+.layout-side .personRight {
+  right: 0;
+  object-position: right bottom;
+}
+
+.photoWrap {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+.photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: clamp(28px, 3.4vw, 44px);
+  box-shadow: 0 30px 60px -30px rgb(37 9 24 / 0.5);
+}
+
+/* ---------- The product view overlapping the stage ---------- */
+.card {
+  position: absolute;
+  z-index: 2;
+  width: var(--aside-w, min(100%, 450px));
+}
+.at-bottom-right {
+  right: 0;
+  bottom: 3%;
+}
+.at-bottom-left {
+  left: 0;
+  bottom: 3%;
+}
+.at-top-right {
+  right: -2%;
+  top: 6%;
+}
+.at-top-left {
+  left: -2%;
+  top: 6%;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  }
+  .reverse .copy {
+    order: 2;
+  }
+}
+
+/* Phones and tablets: the stage shortens and the product view drops below the person, overlapping the plate's lower edge. */
+@media (max-width: 1023px) {
+  .stage {
+    min-height: 340px;
+    margin-bottom: 8px;
+  }
+  .stagePhoto {
+    min-height: 0;
+  }
+  .card {
+    position: relative;
+    inset: auto;
+    width: min(100%, 420px);
+    margin: -36px auto 0;
+  }
+  .stage:has(.card) {
+    display: grid;
+    min-height: 0;
+  }
+  .stage:has(.card) .plate {
+    inset: 14% 0 auto 0;
+    height: 300px;
+  }
+  .stage:has(.card) .person {
+    position: relative;
+    inset: auto;
+    left: auto;
+    right: auto;
+    width: auto;
+    max-width: 100%;
+    height: 340px;
+    justify-self: center;
+    object-position: center bottom;
+  }
+  .layout-stack,
+  .layout-side {
+    min-height: 0;
+  }
+}
+@media (max-width: 639px) {
+  .stage:has(.card) .person {
+    height: 300px;
+  }
+  .stage:has(.card) .plate {
+    height: 260px;
+  }
+}

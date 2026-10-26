@@ -1,10 +1,22 @@
-import { VideoPanel } from '@/components/sections/video-panel'
+import { PeopleScene } from '@/components/sections/people-scene'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 
 export function SecuritySection() {
   return (
-    <VideoPanel video="panel-security" labelledBy="sec-h">
+    <PeopleScene
+      labelledBy="sec-h"
+      tone="plum"
+      plate="plum"
+      reverse
+      photo={{
+        src: '/img/px8367824-desk.jpg',
+        webp: '/img/px8367824-desk.webp',
+        alt: 'A woman in a red blazer reviews a booking on her laptop.',
+        width: 1000,
+        height: 750,
+      }}
+    >
       <h2 className="mr-h2" id="sec-h">
         One approved travel tool for the whole company.
       </h2>
@@ -31,6 +43,6 @@ export function SecuritySection() {
           <Link to="/security">Read about security</Link>
         </Button>
       </p>
-    </VideoPanel>
+    </PeopleScene>
   )
 }

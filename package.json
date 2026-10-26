@@ -5,7 +5,8 @@
   "type": "module",
   "description": "Miraee marketing site: React + Vite + Tailwind CSS + shadcn/ui",
   "scripts": {
-    "dev": "vite",
+    "dev": "node scripts/dev-all.mjs",
+    "dev:v1": "vite --port 5173",
     "build": "tsc -b && vite-react-ssg build && node scripts/build-v2.mjs && node scripts/build-v3.mjs",
     "build:spa": "tsc -b && vite build",
     "preview": "vite preview",

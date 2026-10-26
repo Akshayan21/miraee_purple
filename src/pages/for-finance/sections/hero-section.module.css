@@ -34,7 +34,7 @@
 }
 .trip {
   padding: 6px 0;
-  border-top: 1px solid #DAD1E1;
+  border-top: 1px solid #dad1e1;
 }
 .tripTop,
 .tripMeta {
@@ -52,7 +52,7 @@
 }
 .tripMeta {
   font-size: 10px;
-  color: #68555D;
+  color: #68555d;
   margin-top: 3px;
 }
 .inPolicy {
@@ -63,7 +63,7 @@
 }
 .budget {
   font-size: 10px;
-  color: #68555D;
+  color: #68555d;
   margin: 2px 0 0;
 }
 .visual .card :global(.mr-ledger-wrap__title) {

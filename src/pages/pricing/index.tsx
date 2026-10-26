@@ -7,6 +7,7 @@ import { TheSpendReviewSection } from './sections/the-spend-review-section'
 import { BookingTermsSection } from './sections/booking-terms-section'
 import { QuestionsSection } from './sections/questions-section'
 import { ClosingSection } from './sections/closing-section'
+import { PromiseSection } from '@/pages/home/sections/promise-section'
 
 /** Route: /pricing */
 export function Component() {
@@ -15,6 +16,7 @@ export function Component() {
       <Seo meta={meta} />
       <main id="main">
         <HeroSection />
+        <PromiseSection />
         <WhatsFreeSection />
         <AnyHeadcountSection />
         <TheSpendReviewSection />

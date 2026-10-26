@@ -1,4 +1,4 @@
-import { VideoPanel } from '@/components/sections/video-panel'
+import { PeopleScene } from '@/components/sections/people-scene'
 import { ProductPhone } from '@/components/sections/product-preview'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
@@ -6,9 +6,23 @@ import { Badge } from '@/components/ui/badge'
 
 export function WhenPlansChangeSection() {
   return (
-    <VideoPanel
-      video="panel-plans"
+    <PeopleScene
       labelledBy="plans-h"
+      tone="plum"
+      plate="light"
+      reverse
+      person={{
+        src: '/img/px15959733-traveler-red-coat.png',
+        webp: '/img/px15959733-traveler-red-coat.webp',
+        alt: 'A traveler in a red coat smiles as she reads her trip alert.',
+        width: 880,
+        height: 1100,
+      }}
+      personSide="left"
+      asideAt="bottom-right"
+      layout="side"
+      asideWidth="auto"
+      asideZoom={0.82}
       aside={
         <ProductPhone className="phone phone--alert" aria-hidden="true">
           <div className="phone__screen mr-plum">
@@ -83,6 +97,6 @@ export function WhenPlansChangeSection() {
           <Link to="/when-plans-change">See what happens</Link>
         </Button>
       </p>
-    </VideoPanel>
+    </PeopleScene>
   )
 }

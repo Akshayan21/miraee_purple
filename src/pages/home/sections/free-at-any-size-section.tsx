@@ -1,12 +1,23 @@
 import { Link } from 'react-router-dom'
 
 import { DialogLink } from '@/components/forms/form-dialogs-context'
-import { VideoPanel } from '@/components/sections/video-panel'
+import { PeopleScene } from '@/components/sections/people-scene'
 import { Button } from '@/components/ui/button'
 
 export function FreeAtAnySizeSection() {
   return (
-    <VideoPanel video="panel-team" labelledBy="free-h">
+    <PeopleScene
+      labelledBy="free-h"
+      tone="paper"
+      plate="light"
+      photo={{
+        src: '/img/px4623080-team.jpg',
+        webp: '/img/px4623080-team.webp',
+        alt: 'Colleagues smile as they review work together at a desk.',
+        width: 1067,
+        height: 641,
+      }}
+    >
       <h2 className="mr-h2" id="free-h">
         Free to sign up and onboard, at any company size.
       </h2>
@@ -24,6 +35,6 @@ export function FreeAtAnySizeSection() {
           <Link to="/pricing">See pricing</Link>
         </Button>
       </div>
-    </VideoPanel>
+    </PeopleScene>
   )
 }
