@@ -1,4 +1,4 @@
-// Serves ./dist on one port, the way the deployed site is laid out: V1 at /, V2 at /v2/.
+// Serves ./dist on one port, the way the deployed site is laid out: V1 at /, V2 at /v2/, V3 at /v3/.
 //   npm run build && npm start        (PORT=8080 npm start to change the port; default 4000)
 import fs from 'node:fs'
 import http from 'node:http'
@@ -26,7 +26,8 @@ function find(rel) {
 }
 http.createServer((req, res) => {
   const url = new URL(req.url ?? '/', 'http://localhost')
-  if (url.pathname === '/v2') return res.writeHead(301, { Location: '/v2/' + url.search }).end()
+  if (url.pathname === '/v2' || url.pathname === '/v3')
+    return res.writeHead(301, { Location: url.pathname + '/' + url.search }).end()
   let file = find(url.pathname)
   let status = 200
   if (!file) { file = path.join(dist, '404.html'); status = 404 }
@@ -43,4 +44,5 @@ http.createServer((req, res) => {
   res.writeHead(status, { ...headers, 'Content-Length': size })
   if (req.method === 'HEAD') return res.end()
   fs.createReadStream(file).pipe(res)
-}).listen(port, () => console.log(`\nV1  http://localhost:${port}/\nV2  http://localhost:${port}/v2/\nUse the V1 | V2 toggle in the nav.`))
+}).listen(port, () => console.log(`\nV1  http://localhost:${port}/\nV2  http://localhost:${port}/v2/\nV3  http://localhost:${port}/v3/
+Use the V1 | V2 | V3 toggle in the nav.`))

@@ -72,3 +72,13 @@
 
 /* Scaled photographs must not widen the page's scrollable area (clip-path alone does not contain them) */
 .mo .closing__photo, .mo .free__img, .mo .lf-card__img { overflow: hidden; }
+
+/* ---- Home: "How it works" travels sideways on wide pointer screens ---- */
+.mo-h .steps { display: flex; flex-wrap: nowrap; width: max-content; max-width: none; gap: 32px; margin-top: 28px; }
+.mo-h .step { flex: 0 0 min(560px, 40vw); will-change: transform; }
+.mo-h .step__view { height: 340px; }
+.mo-hbar { height: 2px; margin-top: 24px; background: var(--mr-orange); will-change: transform; }
+
+/* ---- Inner pages: card rows travel sideways on wide pointer screens ---- */
+.mo-rail { display: flex !important; flex-wrap: nowrap; width: max-content; max-width: none; }
+.mo-rail > .lf-card { flex: 0 0 min(380px, 28vw); will-change: transform; }

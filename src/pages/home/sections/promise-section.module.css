@@ -1,0 +1,45 @@
+.strip {
+  position: relative;
+  overflow: clip;
+  border-top: 0 !important;
+  padding-block: clamp(20px, 3vw, 36px);
+  background: #250918;
+  color: #fff;
+  border-block: 1px solid rgb(255 255 255 / 0.1) !important;
+}
+.track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+.set {
+  display: flex;
+  flex: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.set li {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 3vw, 44px);
+  padding-right: clamp(20px, 3vw, 44px);
+  font-family: var(--font-display);
+  font-size: clamp(34px, 5.2vw, 76px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+}
+/* Every other promise is drawn as an outline, so the strip has a rhythm. */
+.outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgb(255 255 255 / 0.7);
+}
+.dot {
+  flex: none;
+  width: clamp(12px, 1.4vw, 20px);
+  height: clamp(12px, 1.4vw, 20px);
+  border-radius: 50%;
+  background: var(--mr-orange);
+}

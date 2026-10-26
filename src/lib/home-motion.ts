@@ -18,10 +18,6 @@ export interface Kit {
 
 type Handler = (sec: HTMLElement, k: Kit) => void
 
-const DESKTOP_STORY =
-  '(min-width: 1200px) and (min-height: 800px) and (hover: hover) and (pointer: fine)'
-const OTHERWISE = '(max-width: 1199px), (max-height: 799px), (hover: none), (pointer: coarse)'
-
 /** Fade-and-rise for a group, played once as each element enters, cascading when several arrive together. */
 /** Phones and tablets get shorter travel and gentler angles. */
 const isSmall = () => window.matchMedia('(max-width: 1199px)').matches
@@ -69,25 +65,162 @@ const SCRUB = (trigger: Element, start: string, end: string, scrub = 0.7) =>
 
 /* ------------------------------------------------------------------------------------------------ how it works */
 const how: Handler = (sec, k) => {
+  const { gsap, qa, mm, added, EASE } = k
   const steps = sec.querySelector<HTMLElement>('.steps')
   if (!steps) return
   revealWords(k, sec.querySelector<HTMLElement>('.mr-h2'))
-  k.mm.add('(min-width: 1200px)', () => rise(k, k.qa('.step', steps)))
-  k.mm.add('(max-width: 1199px)', () => {
+
+  /* Wide, tall, pointer screens: the three steps pin in the middle of the screen and travel sideways as you scroll. */
+  mm.add(
+    '(min-width: 1200px) and (min-height: 760px) and (hover: hover) and (pointer: fine)',
+    () => {
+      const items = qa('.step', steps)
+      if (items.length < 2) return
+      sec.classList.add('mo-h')
+      const bar = document.createElement('div')
+      bar.className = 'mo-hbar'
+      bar.setAttribute('aria-hidden', 'true')
+      steps.parentElement?.insertBefore(bar, steps)
+      added.push(bar)
+      gsap.set(bar, { scaleX: 0, transformOrigin: '0 50%' })
+
+      const dist = () => {
+        const box = steps.parentElement
+        const pad = box ? parseFloat(getComputedStyle(box).paddingLeft) || 0 : 0
+        const inner = (box?.clientWidth ?? window.innerWidth) - pad * 2
+        return Math.max(0, steps.scrollWidth - inner)
+      }
+      const inner = (item: HTMLElement) => qa('.step__view, .mr-h3, .mr-body', item)
+      items.forEach((item, i) => {
+        if (i > 0) gsap.set(inner(item), { opacity: 0, y: 28 })
+      })
+      const shown = new Set<number>([0])
+      gsap.to(items, {
+        x: () => -dist(),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: steps,
+          start: 'center center',
+          end: () => `+=${dist() + window.innerHeight * 0.25}`,
+          pin: true,
+          scrub: 0.7,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            gsap.set(bar, { scaleX: self.progress })
+            items.forEach((item, i) => {
+              if (shown.has(i) || self.progress < (i / items.length) * 0.78) return
+              shown.add(i)
+              gsap.to(inner(item), { opacity: 1, y: 0, duration: 0.8, ease: EASE, stagger: 0.08 })
+            })
+          },
+        },
+      })
+      return () => {
+        sec.classList.remove('mo-h')
+        bar.remove()
+      }
+    },
+  )
+
+  mm.add('(max-width: 1199px)', () => {
     sec.classList.add('mo-swipe')
     rise(k, [steps])
     return () => sec.classList.remove('mo-swipe')
   })
+  mm.add(
+    '(min-width: 1200px) and (max-height: 759px), (min-width: 1200px) and (hover: none)',
+    () => {
+      rise(k, qa('.step', steps))
+    },
+  )
 }
 
-/* ------------------------------------------------------------------------------------------------ spend review */
-const spend: Handler = (sec, k) => {
+/* ------------------------------------------------------------------------------------------------ hero */
+/** Parallax depth plus a pointer-following tilt: the photograph, the ledger and the approval sit at different depths. */
+const hero: Handler = (sec, k) => {
+  const { gsap, mm } = k
+  const photo = sec.querySelector<HTMLElement>('picture')
+  const stage = photo?.parentElement ?? null
+  const cards = sec.querySelector<HTMLElement>('[class*="cards"]')
+  const copy = sec.querySelector<HTMLElement>('[class*="copy"]')
+  if (!stage) return
+
+  mm.add('(min-width: 1024px) and (hover: hover) and (pointer: fine)', () => {
+    const scrub = { trigger: sec, start: 'top top', end: 'bottom top', scrub: 0.6 }
+    if (photo) gsap.to(photo, { yPercent: -5, ease: 'none', scrollTrigger: scrub })
+    if (cards) gsap.to(cards, { yPercent: -14, ease: 'none', scrollTrigger: scrub })
+    if (copy)
+      gsap.to(copy, {
+        y: -30,
+        opacity: 0.4,
+        ease: 'none',
+        scrollTrigger: { ...scrub, start: '30% top' },
+      })
+
+    gsap.set(stage, { transformPerspective: 1400 })
+    const rx = gsap.quickTo(stage, 'rotationX', { duration: 0.8, ease: 'power3.out' })
+    const ry = gsap.quickTo(stage, 'rotationY', { duration: 0.8, ease: 'power3.out' })
+    const move = (e: PointerEvent) => {
+      const r = sec.getBoundingClientRect()
+      ry(((e.clientX - r.left) / r.width - 0.5) * 6)
+      rx(-((e.clientY - r.top) / r.height - 0.5) * 4)
+    }
+    const leave = () => {
+      ry(0)
+      rx(0)
+    }
+    sec.addEventListener('pointermove', move)
+    sec.addEventListener('pointerleave', leave)
+    return () => {
+      sec.removeEventListener('pointermove', move)
+      sec.removeEventListener('pointerleave', leave)
+    }
+  })
+}
+
+/* ------------------------------------------------------------------------------------------------ promise marquee */
+/** A strip of the three promises that slides sideways as you scroll, left as you go down and back as you return. */
+const promise: Handler = (sec, k) => {
+  const { gsap, mm } = k
+  const track = sec.querySelector<HTMLElement>('[data-track]')
+  if (!track) return
+  mm.add('(prefers-reduced-motion: no-preference)', () => {
+    gsap.fromTo(
+      track,
+      { xPercent: 0 },
+      {
+        xPercent: -28,
+        ease: 'none',
+        scrollTrigger: { trigger: sec, start: 'top bottom', end: 'bottom top', scrub: 0.8 },
+      },
+    )
+  })
+}
+
+/* ------------------------------------------------------------------------------------------------ people scenes */
+/**
+ * One choreography for every "faces first" band (spend review, plans change, finance, security, free): the headline words
+ * rise out of a mask, the copy follows in sequence, the rounded stage grows in, the person slides up onto it and the product
+ * view swings in on its vertical axis and settles flat. Photographs get a slow scale instead of a person.
+ */
+const scene: Handler = (sec, k) => {
   const { gsap, qa } = k
-  const copy = sec.querySelector<HTMLElement>('.split__copy')
-  const host = sec.querySelector<HTMLElement>('.compose')
-  revealWords(k, sec.querySelector<HTMLElement>('.mr-h2'))
+  const copy = sec.querySelector<HTMLElement>('[data-sc-copy]')
+  const plate = sec.querySelector<HTMLElement>('[data-sc-plate]')
+  const person = sec.querySelector<HTMLElement>('[data-sc-person]')
+  const card = sec.querySelector<HTMLElement>('[data-sc-card]')
+  const stage = plate?.parentElement ?? null
+
+  revealWords(k, copy?.querySelector<HTMLElement>('.mr-h2') ?? null)
   if (copy) {
-    rise(k, qa('.context, .list-title, .mr-body, .mr-btn-row', copy))
+    rise(
+      k,
+      qa(
+        '.mr-eyebrow, .context, .mr-body, .list-title, .stat-line, .icon-row, .link-row, .mr-btn-row',
+        copy,
+      ),
+    )
     const list = copy.querySelector<HTMLElement>('.list')
     if (list) {
       const li = qa('li', list)
@@ -102,232 +235,132 @@ const spend: Handler = (sec, k) => {
       })
     }
   }
-  if (!host || host.matches('.mo-skip')) return
-  const person = host.querySelector<HTMLElement>('.compose__person')
-  const card = host.querySelector<HTMLElement>('.compose__card')
+  if (!stage) return
+
+  /* Depth: the person (or photograph) drifts against the page as it passes, and the product view tilts toward the pointer. */
   if (person) {
-    /* a curtain drawn across the photo from the left */
-    gsap.set(person, { clipPath: 'inset(0 100% 0 0)', xPercent: -10 })
-    gsap.to(person, {
-      clipPath: 'inset(0 0% 0 0)',
-      xPercent: 0,
-      ease: 'none',
-      scrollTrigger: SCRUB(host, 'top 85%', 'top 35%', 0.8),
+    k.mm.add('(min-width: 1024px) and (hover: hover) and (pointer: fine)', () => {
+      const isPhoto = person.matches('[class*="photoWrap"]')
+      if (isPhoto) {
+        const img = person.querySelector('img')
+        if (img)
+          gsap.fromTo(
+            img,
+            { scale: 1.12 },
+            {
+              scale: 1,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: stage,
+                start: 'top bottom',
+                end: 'center center',
+                scrub: 0.6,
+              },
+            },
+          )
+      } else {
+        gsap.fromTo(
+          person,
+          { yPercent: 4 },
+          {
+            yPercent: -4,
+            ease: 'none',
+            scrollTrigger: { trigger: stage, start: 'top bottom', end: 'bottom top', scrub: 0.6 },
+          },
+        )
+      }
     })
   }
   if (card) {
-    k.setupCard(card)
-    gsap.fromTo(
-      card,
-      {
-        x: isSmall() ? 16 : 40,
-        rotate: isSmall() ? 0 : 1.5,
-        transformPerspective: 1100,
-        rotationY: isSmall() ? 0 : -8,
-      },
-      {
-        x: 0,
-        rotate: 0,
-        rotationY: 0,
-        ease: 'none',
-        scrollTrigger: SCRUB(host, 'top 85%', 'top 30%', 0.9),
-      },
+    k.mm.add('(min-width: 1024px) and (hover: hover) and (pointer: fine)', () => {
+      const inner = card.firstElementChild as HTMLElement | null
+      if (!inner) return
+      gsap.set(inner, { transformPerspective: 900 })
+      const rx = gsap.quickTo(inner, 'rotationX', { duration: 0.6, ease: 'power3.out' })
+      const ry = gsap.quickTo(inner, 'rotationY', { duration: 0.6, ease: 'power3.out' })
+      const move = (e: PointerEvent) => {
+        const r = card.getBoundingClientRect()
+        ry(((e.clientX - r.left) / r.width - 0.5) * 8)
+        rx(-((e.clientY - r.top) / r.height - 0.5) * 6)
+      }
+      const leave = () => {
+        rx(0)
+        ry(0)
+      }
+      card.addEventListener('pointermove', move)
+      card.addEventListener('pointerleave', leave)
+      return () => {
+        card.removeEventListener('pointermove', move)
+        card.removeEventListener('pointerleave', leave)
+      }
+    })
+  }
+  /* Big percentages count up once they arrive. */
+  qa('.stat-line__fig', sec).forEach((fig) => {
+    const node = Array.from(fig.childNodes).find(
+      (n) => n.nodeType === 3 && /\d+%/.test(n.nodeValue ?? ''),
     )
-    qa<SVGElement>('.mr-circled > .mr-line', card).forEach((l) => k.setupCircle(l))
-  }
-}
-
-/* ------------------------------------------------------------------------------------------------ plans change */
-const plans: Handler = (sec, k) => {
-  const { gsap, qa, mm } = k
-  const host = sec.querySelector<HTMLElement>('.compose')
-  const person = host?.querySelector<HTMLElement>('.compose__person')
-  const phone = host?.querySelector<HTMLElement>('.phone--alert')
-  const copy = sec.querySelector<HTMLElement>('.split__copy')
-  if (!host || !phone || host.matches('.mo-skip')) return
-  const parts = {
-    alert: phone.querySelector<HTMLElement>('.mr-alert'),
-    opts: qa('.mr-option', phone),
-    tick: phone.querySelector<SVGElement>('.mr-option__tick'),
-    btn: phone.querySelector<HTMLElement>('.mr-btn'),
-    cap: phone.querySelector<HTMLElement>('.phone__cap'),
-  }
-  const hideInner = () => {
-    if (parts.alert) gsap.set(parts.alert, { opacity: 0, y: -24, animation: 'none' })
-    if (parts.opts.length) gsap.set(parts.opts, { opacity: 0, y: 24 })
-    if (parts.tick) gsap.set(parts.tick, { clipPath: 'inset(0 100% 0 0)' })
-    if (parts.btn) gsap.set(parts.btn, { opacity: 0, y: 16 })
-    if (parts.cap) gsap.set(parts.cap, { opacity: 0 })
-  }
-  const playInner = (tl: gsap.core.Timeline) => {
-    if (parts.alert) tl.to(parts.alert, { opacity: 1, y: 0, duration: 1 })
-    if (parts.opts.length)
-      tl.to(parts.opts, { opacity: 1, y: 0, duration: 0.5, stagger: 0.12 }, '>-0.3')
-    if (parts.tick) tl.to(parts.tick, { clipPath: 'inset(0 0% 0 0)', duration: 0.5 })
-    if (parts.btn) tl.to(parts.btn, { opacity: 1, y: 0, duration: 0.5 })
-    if (parts.cap) tl.to(parts.cap, { opacity: 1, duration: 0.6 })
-  }
-  const h2 = copy?.querySelector<HTMLElement>('.mr-h2') ?? null
-  revealWords(k, h2)
-  const copyBits = copy ? qa('.mr-eyebrow, .mr-body, .stat-line, .link-row', copy) : []
-
-  /* Desktop: play the story on entry without reserving extra page height. */
-  mm.add(DESKTOP_STORY, () => {
-    hideInner()
-    rise(k, copyBits)
-    if (person) gsap.set(person, { opacity: 0, x: -40 })
-    gsap.set(phone, { opacity: 0, y: 32 })
-    const tl = gsap.timeline({
-      defaults: { ease: 'power2.out' },
-      scrollTrigger: {
-        trigger: sec,
-        start: 'top 80%',
-        once: true,
+    const m = node?.nodeValue?.match(/(\d+)%/)
+    if (!node || !m) return
+    const target = Number(m[1])
+    const before = (node.nodeValue ?? '').slice(0, m.index)
+    const o = { v: 0 }
+    node.nodeValue = `${before}0%`
+    gsap.to(o, {
+      v: target,
+      duration: 1.4,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: fig, start: 'top 88%', once: true },
+      onUpdate: () => {
+        node.nodeValue = `${before}${Math.round(o.v)}%`
+      },
+      onComplete: () => {
+        node.nodeValue = `${before}${target}%`
       },
     })
-    if (person) tl.to(person, { opacity: 1, x: 0, duration: 0.65 }, 0)
-    gsap.set(phone, { transformPerspective: 1100, rotationY: -8 })
-    tl.to(phone, { opacity: 1, y: 0, rotationY: 0, duration: 1.4 }, 0.2)
-    playInner(tl)
   })
 
-  /* Smaller and shorter viewports: play the phone sequence once on entry. */
-  mm.add(OTHERWISE, () => {
-    hideInner()
-    rise(k, copyBits)
-    rise(k, [phone])
-    const tl = gsap.timeline({
-      defaults: { ease: 'power3.out' },
-      scrollTrigger: { trigger: phone, start: 'top 85%', once: true },
-    })
-    playInner(tl)
+  const tl = gsap.timeline({
+    defaults: { ease: 'power3.out' },
+    scrollTrigger: { trigger: stage, start: 'top 82%', once: true },
   })
-}
-
-/* ------------------------------------------------------------------------------------------------ finance */
-const fin: Handler = (sec, k) => {
-  const { gsap, qa } = k
-  const copy = sec.querySelector<HTMLElement>('.split__copy')
-  const host = sec.querySelector<HTMLElement>('.compose')
-  revealWords(k, sec.querySelector<HTMLElement>('.mr-h2'))
-  if (copy) {
-    const list = copy.querySelector<HTMLElement>('.list')
-    if (list) {
-      list.classList.add('mo-rules')
-      k.restore.push(() => list.classList.remove('mo-rules'))
-      const li = qa('li', list)
-      gsap.set(li, { opacity: 0, x: -20, '--p': 0 })
-      gsap.to(li, {
-        opacity: 1,
-        x: 0,
-        '--p': 1,
-        duration: 0.6,
-        stagger: 0.08,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: list, start: 'top 88%', once: true },
-      })
-    }
-    rise(k, qa('.stat-line, .link-row', copy))
+  if (plate) {
+    gsap.set(plate, { opacity: 0, scale: 0.94, transformOrigin: '50% 100%' })
+    tl.to(plate, { opacity: 1, scale: 1, duration: 0.9 }, 0)
   }
-  if (!host || host.matches('.mo-skip')) return
-  const person = host.querySelector<HTMLElement>('.compose__person')
-  const card = host.querySelector<HTMLElement>('.compose__card')
   if (person) {
-    /* wiped up from the floor */
-    gsap.set(person, { clipPath: 'inset(100% 0 0 0)' })
-    gsap.to(person, {
-      clipPath: 'inset(0% 0 0 0)',
-      ease: 'none',
-      scrollTrigger: SCRUB(host, 'top 85%', 'top 35%', 0.8),
-    })
+    const isPhoto = person.matches('[class*="photoWrap"]')
+    gsap.set(person, isPhoto ? { opacity: 0, scale: 1.06 } : { opacity: 0, y: 40 })
+    tl.to(person, { opacity: 1, y: 0, scale: 1, duration: 1 }, 0.15)
   }
   if (card) {
     k.setupCard(card)
-    /* The record tips up out of the page, and two earlier records fan out behind it in depth: every trip, one place. */
-    card.classList.add('mo-stack')
-    k.restore.push(() => card.classList.remove('mo-stack'))
-    gsap.set(card, {
-      transformPerspective: 1000,
-      transformOrigin: '50% 100%',
-      rotationX: isSmall() ? 0 : 8,
-      '--s': 0,
-    })
-    gsap.to(card, {
-      rotationX: 0,
-      '--s': 1,
-      ease: 'none',
-      scrollTrigger: SCRUB(host, 'top 80%', 'top 22%', 0.9),
-    })
+    gsap.set(card, { transformPerspective: 1100, rotationY: isSmall() ? 0 : -10 })
+    tl.to(card, { rotationY: 0, duration: 1.2 }, 0.35)
     qa<SVGElement>('.mr-circled > .mr-line', card).forEach((l) => k.setupCircle(l))
-  }
-}
-
-/* ------------------------------------------------------------------------------------------------ security */
-const security: Handler = (sec, k) => {
-  const { gsap, qa } = k
-  const h2 = sec.querySelector<HTMLElement>('.mr-h2')
-  const body = sec.querySelector<HTMLElement>('.security__body')
-  const icons = qa('.icon-row li', sec)
-  const row = sec.querySelector<HTMLElement>('.icon-row')
-  const w = h2 ? k.words(h2) : []
-  if (w.length) gsap.set(w, { yPercent: 115, x: -20, opacity: 0 })
-  if (body) gsap.set(body, { x: isSmall() ? 0 : 20, y: isSmall() ? 20 : 0, opacity: 0 })
-  gsap.set(icons, { scale: 0.92, rotate: 0, opacity: 0 })
-  row?.classList.add('mo-underline')
-  if (row) gsap.set(row, { '--p': 0 })
-  const tl = gsap.timeline({
-    defaults: { ease: 'power2.out' },
-    scrollTrigger: { trigger: sec, start: 'top 85%', once: true },
-  })
-  /* two halves converge from opposite sides */
-  if (w.length) tl.to(w, { yPercent: 0, x: 0, opacity: 1, duration: 0.65, stagger: 0.035 }, 0)
-  if (body) tl.to(body, { x: 0, y: 0, opacity: 1, duration: 0.65 }, 0)
-  tl.to(
-    icons,
-    { scale: 1, rotate: 0, opacity: 1, duration: 0.5, stagger: 0.08, ease: 'power3.out' },
-    0.25,
-  )
-  if (row) tl.to(row, { '--p': 1, duration: 0.6, ease: 'none' }, 0.3)
-  k.restore.push(() => row?.classList.remove('mo-underline'))
-  rise(k, qa('.link-row', sec))
-}
-
-/* ------------------------------------------------------------------------------------------------ free at any size */
-const free: Handler = (sec, k) => {
-  const { gsap, qa } = k
-  const fig = sec.querySelector<HTMLElement>('.free__img')
-  const img = fig?.querySelector('img')
-  const copy = sec.querySelector<HTMLElement>('.free__copy')
-  if (fig) {
-    /* the photograph opens from a framed inset to its full size while sliding in */
-    gsap.set(fig, { clipPath: 'inset(16% 16% 16% 16% round 40px)', x: isSmall() ? -16 : -32 })
-    gsap.to(fig, {
-      clipPath: 'inset(0% 0% 0% 0% round 20px)',
-      x: 0,
-      ease: 'none',
-      scrollTrigger: SCRUB(fig, 'top 95%', 'top 22%', 0.9),
-    })
-    if (img)
-      gsap.fromTo(
-        img,
-        { scale: 1.08 },
-        { scale: 1, ease: 'none', scrollTrigger: SCRUB(fig, 'top 95%', 'bottom 40%', 0.9) },
-      )
-  }
-  if (copy) {
-    const h2 = copy.querySelector<HTMLElement>('.mr-h2')
-    const w = h2 ? k.words(h2) : []
-    if (w.length) {
-      gsap.set(w, { yPercent: 115 })
-      gsap.to(w, {
-        yPercent: 0,
-        duration: 0.65,
-        stagger: 0.035,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: h2, start: 'top 90%', once: true },
+    const phone = card.querySelector<HTMLElement>('.phone--alert')
+    if (phone) {
+      const alert = phone.querySelector<HTMLElement>('.mr-alert')
+      const opts = qa('.mr-option', phone)
+      const tick = phone.querySelector<SVGElement>('.mr-option__tick')
+      const btn = phone.querySelector<HTMLElement>('.mr-btn')
+      const cap = phone.querySelector<HTMLElement>('.phone__cap')
+      if (alert) gsap.set(alert, { opacity: 0, y: -16, animation: 'none' })
+      if (opts.length) gsap.set(opts, { opacity: 0, y: 16 })
+      if (tick) gsap.set(tick, { clipPath: 'inset(0 100% 0 0)' })
+      if (btn) gsap.set(btn, { opacity: 0, y: 12 })
+      if (cap) gsap.set(cap, { opacity: 0 })
+      const seq = gsap.timeline({
+        defaults: { ease: 'power2.out' },
+        scrollTrigger: { trigger: phone, start: 'top 80%', once: true },
+        delay: 0.5,
       })
+      if (alert) seq.to(alert, { opacity: 1, y: 0, duration: 0.7 })
+      if (opts.length) seq.to(opts, { opacity: 1, y: 0, duration: 0.5, stagger: 0.12 }, '>-0.2')
+      if (tick) seq.to(tick, { clipPath: 'inset(0 0% 0 0)', duration: 0.5 })
+      if (btn) seq.to(btn, { opacity: 1, y: 0, duration: 0.5 })
+      if (cap) seq.to(cap, { opacity: 1, duration: 0.5 })
     }
-    rise(k, qa('.mr-body, .mr-btn-row', copy))
   }
 }
 
@@ -424,12 +457,14 @@ const sources: Handler = (sec, k) => {
 
 /** Keyed by each section's aria-labelledby id. */
 export const HOME_SECTIONS: Record<string, Handler> = {
+  'home-hero-h': hero,
+  'promise-h': promise,
   'how-h': how,
-  'spend-h': spend,
-  'plans-h': plans,
-  'fin-h': fin,
-  'sec-h': security,
-  'free-h': free,
+  'spend-h': scene,
+  'plans-h': scene,
+  'fin-h': scene,
+  'sec-h': scene,
+  'free-h': scene,
   'faq-h': faq,
   'close-h': closing,
   'src-h': sources,

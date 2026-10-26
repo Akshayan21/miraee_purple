@@ -1,75 +1,48 @@
-/* Full-screen looping video. Copy sits centred at the bottom, as on mindtrip.ai. */
+/* Home hero: copy left, a real traveler on a plum stage right, the ledger and an approval floating beside them. */
 .hero {
   position: relative;
   isolation: isolate;
   overflow: clip;
-  display: grid;
-  align-items: end;
-  justify-items: center;
-  min-height: 100svh;
   border-top: 0 !important;
-  padding: 120px clamp(20px, 5vw, 80px) 40px;
+  padding: clamp(112px, 12vw, 148px) 0 clamp(48px, 7vw, 96px);
   background: #250918;
   color: #fff;
-  text-align: center;
 }
-.video {
+.mesh {
   position: absolute;
-  inset: 0;
-  z-index: -2;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.tint {
-  position: absolute;
-  inset: 0;
+  inset: -20%;
   z-index: -1;
-  background: linear-gradient(
-    0deg,
-    rgb(37 9 24 / 0.94) 0%,
-    rgb(37 9 24 / 0.72) 38%,
-    rgb(67 22 46 / 0.2) 72%,
-    rgb(67 22 46 / 0.12) 100%
-  );
+  background:
+    radial-gradient(38% 46% at 82% 28%, rgb(226 120 190 / 0.32), transparent 70%),
+    radial-gradient(34% 40% at 96% 92%, rgb(229 86 2 / 0.22), transparent 70%),
+    radial-gradient(44% 50% at 6% 100%, rgb(130 60 170 / 0.32), transparent 70%);
+  filter: blur(8px);
 }
-.pause {
-  position: absolute;
-  top: 24px;
-  right: 24px;
+.grid {
+  position: relative;
   display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border: 0;
-  border-radius: 50%;
-  background: rgb(37 9 24 / 0.55);
-  color: #fff;
-  cursor: pointer;
-  backdrop-filter: blur(6px);
+  gap: clamp(36px, 5vw, 72px);
+  align-items: center;
 }
-.pause:hover {
-  background: rgb(37 9 24 / 0.8);
-}
-.content {
-  width: 100%;
-  max-width: 1100px;
+.copy {
   display: grid;
-  justify-items: center;
+  justify-items: start;
+  min-width: 0;
 }
 .eyebrow {
   margin: 0 0 18px;
   font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--mr-mist);
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mr-orange-light);
 }
 .heading {
-  margin: 0 0 20px;
+  margin: 0 0 22px;
   font-family: var(--font-display);
-  font-size: clamp(44px, 6.6vw, 100px);
-  line-height: 0.96;
-  letter-spacing: -0.05em;
+  font-size: clamp(44px, 6vw, 92px);
+  line-height: 0.97;
+  letter-spacing: -0.045em;
   font-weight: 700;
   color: #fff;
   text-wrap: balance;
@@ -79,36 +52,135 @@
 }
 .lead {
   margin: 0 0 28px;
-  max-width: 38em;
-  font-size: clamp(16px, 1.45vw, 20px);
-  line-height: 1.5;
-  color: #fff;
-  text-wrap: balance;
+  max-width: 32em;
+  font-size: clamp(17px, 1.45vw, 20px);
+  line-height: 1.55;
+  color: rgb(255 255 255 / 0.86);
 }
 .actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 14px;
 }
 .actions :global(.mr-btn) {
-  min-height: 60px;
-  padding-inline: 34px;
+  min-height: 56px;
+  padding-inline: 30px;
   border-radius: 999px;
-  font-size: 18px;
+  font-size: 17px;
 }
 .ghost:global(.mr-btn) {
-  background: rgb(37 9 24 / 0.3);
+  background: transparent;
   color: #fff;
   border-color: rgb(255 255 255 / 0.65);
-  backdrop-filter: blur(4px);
 }
 .note {
-  margin: 18px 0 0;
-  max-width: 52em;
+  margin: 22px 0 0;
+  max-width: 40em;
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.55;
   color: var(--mr-mist);
+}
+
+/* ---------- Stage: a photograph of real people, with the ledger hanging off its lower edge and the approval beneath ---------- */
+.stage {
+  position: relative;
+  display: grid;
+  min-width: 0;
+}
+.stage > picture {
+  display: block;
+}
+.photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: 66% 30%;
+  /* One large rounded corner, the rest tighter: the photograph reads as a panel, not a card. */
+  border-radius: clamp(72px, 9vw, 128px) 36px 36px 36px;
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 0.12),
+    0 40px 80px -30px rgb(0 0 0 / 0.65);
+}
+/* The two product views are one column pinned to the photograph's lower left, overlapping its edge, clear of the faces above. */
+.cards {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+  margin-top: -64px;
+}
+.ledger {
+  /* Product views are drawn at a comfortable size, then scaled so they sit lightly on the photograph. */
+  zoom: 0.76;
+  width: 500px;
+  max-width: 100%;
+  padding: 16px 18px 10px;
+  font-size: 14px;
+  overflow: visible;
+}
+.ledger :global(.mr-ledger) {
+  font-size: 14px;
+  line-height: 19px;
+}
+.ledger :global(.mr-ledger th),
+.ledger :global(.mr-ledger td) {
+  padding-right: 8px;
+}
+.ledger :global(.mr-ledger-wrap__title) {
+  font-size: 16px;
+}
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  zoom: 0.8;
+  width: 360px;
+  max-width: 100%;
+  margin-left: 14%;
+  padding: 12px 16px;
+  border-radius: var(--mr-r-lg);
+  color: var(--mr-ink);
+}
+.toastMark {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--mr-success)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E")
+    center / 14px no-repeat;
+}
+.toastText {
+  margin: 0;
+  display: grid;
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+.toastText span {
+  font-weight: 400;
+  color: var(--mr-slate);
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  /* Desktop: the cards sit over the photograph's lower left, hanging half outside its edge. */
+  .cards {
+    position: absolute;
+    left: -9%;
+    bottom: 5%;
+    width: 100%;
+    margin-top: 0;
+    pointer-events: none;
+  }
+  .cards > * {
+    pointer-events: auto;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -131,24 +203,19 @@
   .note {
     animation-delay: 270ms;
   }
+  .photo {
+    animation: rise 900ms cubic-bezier(0.2, 0, 0, 1) 200ms both;
+  }
+  .ledger {
+    animation: rise 800ms cubic-bezier(0.2, 0, 0, 1) 480ms both;
+  }
+  .toast {
+    animation: rise 800ms cubic-bezier(0.2, 0, 0, 1) 700ms both;
+  }
 }
 @keyframes rise {
   from {
     opacity: 0;
     transform: translateY(22px);
-  }
-}
-
-@media (max-width: 639px) {
-  .hero {
-    padding-inline: 18px;
-    padding-bottom: 32px;
-  }
-  .actions {
-    width: 100%;
-    flex-direction: column;
-  }
-  .actions :global(.mr-btn) {
-    width: 100%;
   }
 }

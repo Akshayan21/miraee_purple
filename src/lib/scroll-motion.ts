@@ -23,7 +23,7 @@ const qa = <T extends Element = HTMLElement>(sel: string, root: ParentNode = doc
 
 /** Dialogs, the FAQ accordion (own reveal) and sections with their own choreography (home-motion.ts) are left to their owners. */
 const skip = (el: Element) =>
-  !!el.closest('dialog, [role="dialog"], .mo-skip, .faq-acc__list, [data-mo-custom]')
+  !!el.closest('dialog, [role="dialog"], .mo-skip, .faq-acc__list, .lf-cards, [data-mo-custom]')
 
 /** Elements that nest inside another match are dropped, so a card and its rows are never both revealed. */
 const outermost = (els: HTMLElement[]) =>
@@ -58,11 +58,12 @@ export function initScrollMotion(): () => void {
 
     /* Home sections that get bespoke choreography are tagged first, so the generic passes below leave them alone. */
     const isHome = window.location.pathname === '/'
-    const customs = isHome
-      ? qa('section[aria-labelledby]').filter(
-          (sec) => HOME_SECTIONS[sec.getAttribute('aria-labelledby') ?? ''],
-        )
-      : []
+    /* The promise strip is shared; every other bespoke section is home-only. */
+    const SHARED = new Set(['promise-h'])
+    const customs = qa('section[aria-labelledby]').filter((sec) => {
+      const id = sec.getAttribute('aria-labelledby') ?? ''
+      return !!HOME_SECTIONS[id] && (isHome || SHARED.has(id))
+    })
     customs.forEach((sec) => sec.setAttribute('data-mo-custom', ''))
     restore.push(() => customs.forEach((sec) => sec.removeAttribute('data-mo-custom')))
 
@@ -609,6 +610,153 @@ export function initScrollMotion(): () => void {
           )
       })
     })
+
+    /* ---- 14. Shared motion for the inner pages: the effects the home page uses, applied by class ---- */
+    if (!isHome) {
+      const fine = '(min-width: 1024px) and (hover: hover) and (pointer: fine)'
+      const wide =
+        '(min-width: 1200px) and (min-height: 760px) and (hover: hover) and (pointer: fine)'
+
+      /* Product views lean toward the pointer. */
+      mm.add(fine, () => {
+        const tilts = outermost(
+          qa('.mr-ledger-wrap, .mr-trip-tag, .phone, .ui-card, .dash').filter((el) => !skip(el)),
+        )
+        const offs: Array<() => void> = []
+        tilts.forEach((el) => {
+          gsap.set(el, { transformPerspective: 900 })
+          const rx = gsap.quickTo(el, 'rotationX', { duration: 0.6, ease: 'power3.out' })
+          const ry = gsap.quickTo(el, 'rotationY', { duration: 0.6, ease: 'power3.out' })
+          const move = (e: PointerEvent) => {
+            const r = el.getBoundingClientRect()
+            ry(((e.clientX - r.left) / r.width - 0.5) * 8)
+            rx(-((e.clientY - r.top) / r.height - 0.5) * 6)
+          }
+          const leave = () => {
+            rx(0)
+            ry(0)
+          }
+          el.addEventListener('pointermove', move)
+          el.addEventListener('pointerleave', leave)
+          offs.push(() => {
+            el.removeEventListener('pointermove', move)
+            el.removeEventListener('pointerleave', leave)
+          })
+        })
+        return () => offs.forEach((f) => f())
+      })
+
+      /* Hero composition leans toward the pointer too. */
+      if (hero) {
+        const stage = hero.querySelector<HTMLElement>(
+          '.compose, .split__visual, .lf-hero__visual, .page-hero__visual',
+        )
+        if (stage) {
+          mm.add(fine, () => {
+            gsap.set(stage, { transformPerspective: 1400 })
+            const rx = gsap.quickTo(stage, 'rotationX', { duration: 0.8, ease: 'power3.out' })
+            const ry = gsap.quickTo(stage, 'rotationY', { duration: 0.8, ease: 'power3.out' })
+            const move = (e: PointerEvent) => {
+              const r = hero.getBoundingClientRect()
+              ry(((e.clientX - r.left) / r.width - 0.5) * 5)
+              rx(-((e.clientY - r.top) / r.height - 0.5) * 3)
+            }
+            const leave = () => {
+              rx(0)
+              ry(0)
+            }
+            hero.addEventListener('pointermove', move)
+            hero.addEventListener('pointerleave', leave)
+            return () => {
+              hero.removeEventListener('pointermove', move)
+              hero.removeEventListener('pointerleave', leave)
+            }
+          })
+        }
+      }
+
+      /* Video panels: the clip settles from a slight zoom as the panel arrives. */
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        qa('[data-vp-video]').forEach((v) => {
+          const panel = v.closest<HTMLElement>('section')
+          if (!panel || skip(panel)) return
+          gsap.fromTo(
+            v,
+            { scale: 1.14 },
+            {
+              scale: 1,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: panel,
+                start: 'top bottom',
+                end: 'center center',
+                scrub: 0.6,
+              },
+            },
+          )
+        })
+      })
+
+      /* Big percentages count up once they arrive. */
+      qa('.stat-line__fig').forEach((fig) => {
+        if (skip(fig)) return
+        const node = Array.from(fig.childNodes).find(
+          (n) => n.nodeType === Node.TEXT_NODE && /\d+%/.test(n.nodeValue ?? ''),
+        )
+        const m = node?.nodeValue?.match(/(\d+)%/)
+        if (!node || !m) return
+        const target = Number(m[1])
+        const before = (node.nodeValue ?? '').slice(0, m.index)
+        const o = { v: 0 }
+        node.nodeValue = `${before}0%`
+        restore.push(() => {
+          node.nodeValue = `${before}${target}%`
+        })
+        gsap.to(o, {
+          v: target,
+          duration: 1.4,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: fig, start: 'top 88%', once: true },
+          onUpdate: () => {
+            node.nodeValue = `${before}${Math.round(o.v)}%`
+          },
+          onComplete: () => {
+            node.nodeValue = `${before}${target}%`
+          },
+        })
+      })
+
+      /* Card rows (related guides, criteria, comparisons) become a rail that travels sideways on wide pointer screens. */
+      mm.add(wide, () => {
+        const offs: Array<() => void> = []
+        qa('.lf-cards').forEach((row) => {
+          const cards = qa('.lf-card', row)
+          if (cards.length < 3) return
+          row.classList.add('mo-rail')
+          const dist = () => {
+            const box = row.parentElement
+            const pad = box ? parseFloat(getComputedStyle(box).paddingLeft) || 0 : 0
+            const inner = (box?.clientWidth ?? window.innerWidth) - pad * 2
+            return Math.max(0, row.scrollWidth - inner)
+          }
+          gsap.to(cards, {
+            x: () => -dist(),
+            ease: 'none',
+            scrollTrigger: {
+              trigger: row,
+              start: 'center center',
+              end: () => `+=${dist() + window.innerHeight * 0.2}`,
+              pin: true,
+              scrub: 0.7,
+              anticipatePin: 1,
+              invalidateOnRefresh: true,
+            },
+          })
+          offs.push(() => row.classList.remove('mo-rail'))
+        })
+        return () => offs.forEach((f) => f())
+      })
+    }
 
     /* ---- 13. Bespoke choreography, one per home section ---- */
     const kit: Kit = {

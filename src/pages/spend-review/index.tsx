@@ -8,6 +8,7 @@ import { WhatYouSendSection } from './sections/what-you-send-section'
 import { WhatYouGetSection } from './sections/what-you-get-section'
 import { OptionalAlwaysSection } from './sections/optional-always-section'
 import { QuestionsSection } from './sections/questions-section'
+import { PromiseSection } from '@/pages/home/sections/promise-section'
 
 /** Route: /spend-review */
 export function Component() {
@@ -16,6 +17,7 @@ export function Component() {
       <Seo meta={meta} />
       <main id="main">
         <HeroSection />
+        <PromiseSection />
         <WhyLookBackSection />
         <WhatYouSendSection />
         <WhatYouGetSection />

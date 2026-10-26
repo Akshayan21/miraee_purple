@@ -1,14 +1,26 @@
-import { VideoPanel } from '@/components/sections/video-panel'
+import { PeopleScene } from '@/components/sections/people-scene'
 import { ProductCard, LedgerTable } from '@/components/sections/product-preview'
 import { Button } from '@/components/ui/button'
 import { DialogLink } from '@/components/forms/form-dialogs-context'
 
 export function SpendReviewSection() {
   return (
-    <VideoPanel
-      video="panel-spend"
+    <PeopleScene
       labelledBy="spend-h"
-      wide
+      tone="paper"
+      plate="plum"
+      person={{
+        src: '/img/px37409441-finance-leader.png',
+        webp: '/img/px37409441-finance-leader.webp',
+        alt: 'A finance leader in a tweed blazer smiles in the office.',
+        width: 977,
+        height: 1100,
+      }}
+      personSide="left"
+      asideAt="bottom-right"
+      layout="stack"
+      asideWidth="min(100%, 440px)"
+      lean="10%"
       aside={
         <ProductCard className="mr-paper mr-ledger-wrap card-shadow">
           <div className="mr-ledger-wrap__head">
@@ -66,7 +78,7 @@ export function SpendReviewSection() {
         </ProductCard>
       }
     >
-      <p className="mr-body" style={{ color: 'var(--mr-mist)', marginBottom: 16 }}>
+      <p className="context">
         Business travel spending is forecast to rise 7.2% in 2026, while the number of trips rises
         1.3%.
       </p>
@@ -96,6 +108,6 @@ export function SpendReviewSection() {
           </DialogLink>
         </Button>
       </div>
-    </VideoPanel>
+    </PeopleScene>
   )
 }

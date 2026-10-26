@@ -1,13 +1,25 @@
-import { VideoPanel } from '@/components/sections/video-panel'
+import { PeopleScene } from '@/components/sections/people-scene'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 
 export function ForFinanceSection() {
   return (
-    <VideoPanel
-      video="panel-finance"
+    <PeopleScene
       labelledBy="fin-h"
+      tone="paper"
+      plate="mist"
+      person={{
+        src: '/img/px5918389-controller.png',
+        webp: '/img/px5918389-controller.webp',
+        alt: 'A controller in a rust sweater holds a tablet in the office.',
+        width: 831,
+        height: 1100,
+      }}
+      personSide="right"
+      asideAt="bottom-left"
+      layout="stack"
+      asideWidth="min(92%, 360px)"
       aside={
         <div className="mr-trip-tag card-shadow">
           <div className="mr-trip-tag__head">
@@ -65,6 +77,6 @@ export function ForFinanceSection() {
           <Link to="/finance">See the finance view</Link>
         </Button>
       </p>
-    </VideoPanel>
+    </PeopleScene>
   )
 }
