@@ -7,17 +7,19 @@
   "scripts": {
     "dev": "node scripts/dev-all.mjs",
     "dev:v1": "vite --port 5173",
-    "build": "tsc -b && vite-react-ssg build && node scripts/build-v2.mjs && node scripts/build-v3.mjs",
+    "build": "tsc -b && vite-react-ssg build && node scripts/build-v2.mjs && node scripts/build-v3.mjs && node scripts/build-v4.mjs && node scripts/build-v5.mjs",
     "build:spa": "tsc -b && vite build",
     "preview": "vite preview",
-    "typecheck": "tsc -b --noEmit && tsc -p v2/tsconfig.app.json --noEmit && tsc -p v3/tsconfig.app.json --noEmit",
+    "typecheck": "tsc -b --noEmit && tsc -p v2/tsconfig.app.json --noEmit && tsc -p v3/tsconfig.app.json --noEmit && tsc -p v4/tsconfig.app.json --noEmit && tsc -p v5/tsconfig.app.json --noEmit",
     "lint": "eslint .",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\"",
     "build:v1": "tsc -b && vite-react-ssg build",
     "dev:v2": "vite v2 --port 5180",
     "start": "node scripts/serve-dist.mjs",
-    "dev:v3": "vite v3 --port 5190"
+    "dev:v3": "vite v3 --port 5190",
+    "dev:v4": "vite v4 --port 5200",
+    "dev:v5": "vite v5 --port 5210"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

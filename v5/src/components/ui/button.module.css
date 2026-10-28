@@ -1,0 +1,71 @@
+.button {
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 220ms ease,
+    translate 220ms ease,
+    box-shadow 220ms ease;
+}
+
+/* Solid and outline buttons: a fill wipes in from the left on hover and slides back out on leave. */
+.button:global(.mr-btn):not(:global(.mr-btn--tertiary)) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.button:global(.mr-btn):not(:global(.mr-btn--tertiary))::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  background: var(--sweep, var(--btn-bg-hover));
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* Outline buttons fill with the primary colour and flip their label to match. */
+.button:global(.mr-btn--secondary) {
+  --sweep: var(--btn-bg);
+}
+@media (hover: hover) and (pointer: fine) {
+  .button:global(.mr-btn):not(:global(.mr-btn--tertiary)):not(:disabled):not(
+      [aria-disabled='true']
+    ):hover::before {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+  .button:global(.mr-btn--secondary):not(:disabled):not([aria-disabled='true']):hover {
+    border-color: var(--btn-bg);
+    color: var(--btn-fg);
+    background-color: transparent;
+  }
+  .button:not(:disabled):not([aria-disabled='true']):hover {
+    translate: 0 -2px;
+    box-shadow: 0 8px 20px -12px var(--mr-orange);
+  }
+  .button:global(.mr-btn--tertiary)::after {
+    transition: translate 220ms ease;
+  }
+  .button:global(.mr-btn--tertiary):hover::after {
+    translate: 5px 0;
+  }
+}
+.button:not(:disabled):not([aria-disabled='true']):active {
+  translate: 0 1px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+  .button:hover,
+  .button:active {
+    translate: none !important;
+  }
+  .button:global(.mr-btn):not(:global(.mr-btn--tertiary))::before {
+    transition: none;
+  }
+  .button:global(.mr-btn--tertiary)::after {
+    transition: none;
+    translate: none !important;
+  }
+}

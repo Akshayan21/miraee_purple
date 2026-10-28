@@ -70,12 +70,12 @@ All forms validate natively and show their confirmation state. To deliver submis
 - The Open Graph image `/img/og/miraee-og-1200x630.jpg` is referenced in page metadata but is not in `public/img`.
 - `sitemap.xml` and `llms.txt` still list `/when-plans-change`.
 
-## Three versions: V1, V2 and V3
+## Five versions: V1 to V5
 
-This repo builds **three sites into one deploy**: V1 (`src/`) at `/`, V2 (`v2/`, a scroll-led redesign of the same content) at `/v2/`, and V3 (`v3/`, a minimal premium redesign with the baseline V1/V2 content) at `/v3/`. A `V1 | V2 | V3` toggle in each nav links to the same page in the other versions.
+This repo builds **five sites into one deploy**: V1 (`src/`) at `/`, V2 (`v2/`, a scroll-led redesign of the same content) at `/v2/`, and V3 (`v3/`, a minimal premium redesign with the baseline V1/V2 content) at `/v3/`; V4 (`v4/`, editorial paper-and-ink) at `/v4/` and V5 (`v5/`, glass bento on lilac) at `/v5/`, both built from the Tabhi-group copy in the Oct 2026 sitemap document (`v4/src/content/site.ts`, `v5/src/content/site.ts`). A `V1` to `V5` toggle in each nav links to the same page in the other versions.
 
-- `npm run build` builds V1, then V2, then V3, and copies V2 and V3 into `dist/v2` and `dist/v3`. Vercel needs no extra settings (build command `npm run build`, output `dist`).
-- `npm start` serves `dist` on one port (default 4000; `PORT=8080 npm start`): V1 at `/`, V2 at `/v2/`, V3 at `/v3/`.
-- `npm run dev` runs all three on **one port** (default 5173; `PORT=8080 npm run dev` or `npm run dev -- --port 8080`), laid out like the deploy: V1 at `/`, V2 at `/v2/`, V3 at `/v3/`, each with hot reload (`scripts/dev-all.mjs`). To work on one version alone: `npm run dev:v1` (:5173), `npm run dev:v2` (:5180/v2/), `npm run dev:v3` (:5190/v3/); in those, the toggle jumps between ports (`.env.development` files).
-- V2 and V3 reuse V1's `node_modules` and `public/` folder (images, video, icons). V2 and V3 pages are `noindex` through `vercel.json` while they are previews.
+- `npm run build` builds V1, then V2 to V5, and copies them into `dist/v2` to `dist/v5`. Vercel needs no extra settings (build command `npm run build`, output `dist`).
+- `npm start` serves `dist` on one port (default 4000; `PORT=8080 npm start`): V1 at `/`, V2 to V5 at `/v2/` to `/v5/`.
+- `npm run dev` runs all three on **one port** (default 5173; `PORT=8080 npm run dev` or `npm run dev -- --port 8080`), laid out like the deploy: V1 at `/`, V2 at `/v2/`, V3 at `/v3/`, each with hot reload (`scripts/dev-all.mjs`). To work on one version alone: `npm run dev:v1` (:5173), `npm run dev:v2` (:5180/v2/), `npm run dev:v3` (:5190/v3/), `npm run dev:v4` (:5200/v4/), `npm run dev:v5` (:5210/v5/); in those, the toggle jumps between ports (`.env.development` files).
+- V2 to V5 reuse V1's `node_modules` and `public/` folder (images, video, icons). V2 to V5 pages are `noindex` through `vercel.json` while they are previews.
 - V3 content: the home page and every inner page have their own V3 design, built from the shared page kit in `v3/src/components/page/` with copy taken verbatim from V1.

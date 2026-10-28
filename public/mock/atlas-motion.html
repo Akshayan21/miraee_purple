@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Miraee V5 concept: Atlas with Motion (mock)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet" />
+<style>
+  :root { --night:#250918; --plum:#43162e; --mist:#decfd4; --paper:#f0e5f8; --orange:#e55602; --orange-l:#ff9861; --ink:#1d1418; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; background:var(--night); color:#fff; font-family:'Archivo','Helvetica Neue',Arial,sans-serif; }
+  .track { position:relative; height:430vh; }
+  .stage { position:sticky; top:0; height:100vh; overflow:hidden; isolation:isolate; background:radial-gradient(120% 90% at 70% 40%, #5a2340 0%, var(--plum) 45%, var(--night) 100%); }
+  #map { position:absolute; inset:0; width:100%; height:100%; z-index:0; }
+  .shade { position:absolute; inset:0; z-index:1; pointer-events:none; transition:opacity .6s; background:linear-gradient(90deg, rgba(37,9,24,.9) 0%, rgba(37,9,24,.55) 28%, rgba(37,9,24,0) 50%), linear-gradient(0deg, rgba(37,9,24,.85) 0%, rgba(37,9,24,0) 22%); }
+  nav { position:absolute; z-index:6; left:clamp(16px,4vw,56px); right:clamp(16px,4vw,56px); top:20px; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:10px 12px 10px 22px; border-radius:999px; background:rgba(240,229,248,.1); border:1px solid rgba(240,229,248,.22); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+  nav img { height:26px; display:block; }
+  nav ul { display:flex; gap:26px; list-style:none; margin:0; padding:0; font-size:15px; }
+  nav a { color:var(--mist); text-decoration:none; } nav a:hover { color:#fff; }
+  @media (max-width:820px){ nav ul{display:none} }
+  .btn { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:0 22px; border-radius:999px; font:600 16px/1 'Archivo',sans-serif; text-decoration:none; cursor:pointer; border:1.5px solid transparent; will-change:transform; }
+  .btn--pri { background:#c24700; color:#fff; } .btn--pri:hover { background:#a63d00; }
+  .btn--sec { border-color:rgba(255,255,255,.55); color:#fff; } .btn--sec:hover { background:rgba(255,255,255,.1); }
+  nav .btn { min-height:42px; padding:0 18px; font-size:15px; }
+
+  .copy { position:absolute; z-index:4; left:clamp(16px,4vw,56px); top:50%; transform:translateY(-50%); max-width:640px; padding-top:40px; }
+  .eyebrow { display:inline-flex; align-items:center; gap:10px; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--orange-l); font-weight:600; }
+  .eyebrow i { width:8px; height:8px; border-radius:50%; background:var(--orange); box-shadow:0 0 0 4px rgba(229,86,2,.25); }
+  h1, h2.big { margin:18px 0 0; font-weight:760; font-stretch:78%; font-size:clamp(38px,5vw,76px); line-height:1; letter-spacing:-.02em; text-wrap:balance; }
+  .w { display:inline-block; overflow:hidden; vertical-align:top; padding-bottom:.08em; margin-bottom:-.08em; }
+  .w > span { display:inline-block; will-change:transform; }
+  em { font-style:normal; color:var(--orange-l); }
+  .sub { margin:22px 0 0; max-width:34em; font-size:clamp(17px,1.4vw,20px); line-height:1.5; color:var(--mist); }
+  .row { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+  .note { margin:16px 0 0; font-size:14px; color:#bfa9b3; max-width:34em; }
+  .closer { opacity:0; pointer-events:none; top:44%; }
+
+  .panel { position:absolute; z-index:5; right:clamp(16px,4vw,56px); top:50%; width:min(400px, 42vw); transform:translateY(-50%); opacity:0; pointer-events:none; perspective:900px; }
+  .card { background:var(--paper); color:var(--ink); border-radius:20px; padding:18px 20px 20px; box-shadow:0 30px 70px -20px rgba(0,0,0,.65); transform-style:preserve-3d; will-change:transform; }
+  .c-top { display:flex; align-items:center; justify-content:space-between; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#68555d; font-weight:600; }
+  .status { display:inline-flex; align-items:center; gap:7px; padding:4px 10px; border-radius:999px; font-size:11px; background:#e3f0e7; color:#1d7648; }
+  .status::before { content:''; width:7px; height:7px; border-radius:50%; background:currentColor; }
+  .status.warn { background:#f6ecd6; color:#855700; } .status.info { background:#e6edf4; color:#2e5c85; }
+  .route { display:flex; align-items:center; justify-content:space-between; margin:12px 0 4px; font-weight:760; font-stretch:78%; font-size:44px; letter-spacing:-.01em; }
+  .route svg { width:80px; height:16px; }
+  .meta { display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; font-size:13px; color:#3c2e34; padding:10px 0 12px; border-bottom:1.5px dashed #c9bbd2; }
+  .bodies { position:relative; min-height:150px; }
+  .body { position:absolute; inset:14px 0 0; }
+  .steps { list-style:none; margin:0; padding:0; display:grid; gap:12px; }
+  .steps li { display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; font-size:14.5px; line-height:1.35; }
+  .tick { width:22px; height:22px; border-radius:50%; background:#1d7648; display:grid; place-items:center; }
+  .tick svg { width:12px; height:12px; } .tick path { stroke:#fff; stroke-width:2.4; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+  .tick.warn { background:#b5750a; } .tick.info { background:#2e5c85; }
+  .steps b { display:block; font-weight:650; }
+  .steps span.d { color:#68555d; font-size:13px; }
+  .tag { margin:0 0 10px; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--orange-l); font-weight:600; }
+
+  .chip { position:absolute; z-index:3; left:0; top:0; margin:0; background:rgba(240,229,248,.14); border:1px solid rgba(240,229,248,.3); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); padding:9px 13px; border-radius:12px; font-size:13px; white-space:nowrap; opacity:0; will-change:transform; }
+  .chip b { color:var(--orange-l); font-weight:600; }
+
+  .strip { position:absolute; z-index:4; left:0; right:0; bottom:0; display:flex; flex-wrap:wrap; align-items:end; justify-content:space-between; gap:16px 32px; padding:0 clamp(16px,4vw,56px) 26px; }
+  .strip p { margin:0; max-width:22em; font-size:15px; color:var(--mist); }
+  .stats { display:flex; gap:clamp(20px,4vw,56px); }
+  .stat b { display:block; font-size:clamp(30px,3.4vw,50px); font-weight:760; font-stretch:62%; line-height:1; }
+  .stat > span { font-size:13px; color:var(--mist); } .stat sup { color:var(--orange-l); font-size:.5em; }
+
+  .rail { position:absolute; z-index:6; right:clamp(16px,4vw,56px); top:50%; transform:translateY(-50%); display:grid; gap:10px; }
+  .rail i { width:6px; height:26px; border-radius:3px; background:rgba(255,255,255,.25); transition:background .3s, height .3s; display:block; }
+  .rail i.on { background:var(--orange-l); height:44px; }
+  .hint { position:absolute; z-index:5; left:50%; bottom:96px; transform:translateX(-50%); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--mist); display:flex; flex-direction:column; align-items:center; gap:8px; }
+  .hint i { width:1.5px; height:34px; background:linear-gradient(var(--orange-l), transparent); display:block; transform-origin:top; animation:hint 1.8s ease-in-out infinite; }
+  @keyframes hint { 0%{transform:scaleY(0)} 60%{transform:scaleY(1)} 100%{transform:scaleY(1);opacity:0} }
+  @media (prefers-reduced-motion:reduce){ .hint i{animation:none} }
+  .mockbar { position:fixed; z-index:50; left:50%; transform:translateX(-50%); bottom:6px; font-size:12px; padding:5px 10px; border-radius:8px; background:rgba(0,0,0,.6); color:#fff; }
+  @media (max-width:900px){
+    .panel { top:auto; bottom:92px; transform:none; width:auto; left:16px; right:16px; }
+    .copy { top:96px; transform:none; padding-top:0; }
+    .chip, .rail, .hint { display:none; }
+    .route { font-size:34px; } .bodies { min-height:120px; }
+    .shade { background:linear-gradient(180deg, rgba(37,9,24,.9), rgba(37,9,24,.45) 55%, rgba(37,9,24,.9)); }
+  }
+</style>
+</head>
+<body>
+<div class="track" id="track">
+  <div class="stage" id="stage">
+    <canvas id="map" aria-hidden="true"></canvas>
+    <div class="shade" id="shade"></div>
+
+    <nav aria-label="Main">
+      <img src="/img/miraee-logo-orange.svg" alt="Miraee" />
+      <ul><li><a href="#">How it works</a></li><li><a href="#">For finance</a></li><li><a href="#">Spend review</a></li><li><a href="#">Pricing</a></li><li><a href="#">Resources</a></li></ul>
+      <a class="btn btn--pri magnet" href="#">Sign up free</a>
+    </nav>
+
+    <div class="copy" id="copy0">
+      <span class="eyebrow"><i></i>Business travel and expense software</span>
+      <h1 id="h1">See where your travel money goes, and where you can <em>spend less.</em></h1>
+      <p class="sub rev">Your people book flights and hotels inside company policy. Finance sees every trip and the budget it belongs to.</p>
+      <div class="row rev"><a class="btn btn--pri magnet" href="#">Sign up free</a><a class="btn btn--sec magnet" href="#">Get a spend review</a></div>
+      <p class="note rev">Free to sign up and onboard, at any company size. Keep the corporate cards you already use.</p>
+    </div>
+
+    <div class="copy closer" id="copy3">
+      <span class="eyebrow"><i></i>Every trip, one view</span>
+      <h2 class="big">Every trip, with the budget it belongs to.</h2>
+      <p class="sub">Finance sees the same trip, the same day, with every change recorded.</p>
+      <div class="row"><a class="btn btn--pri magnet" href="#">Sign up free</a><a class="btn btn--sec magnet" href="#">Get a spend review</a></div>
+    </div>
+
+    <div class="chip" id="chip-lon"><b>Hotel</b> booked inside your limit</div>
+    <div class="chip" id="chip-dxb"><b>Plan changed.</b> Rebooked, approver notified</div>
+
+    <div class="panel" id="panel">
+      <div class="card" id="card">
+        <div class="c-top"><span>Trip, sales team</span><span class="status" id="status">Approved</span></div>
+        <div class="route"><span>AUS</span><svg viewBox="0 0 80 16" fill="none"><path d="M2 8h68M62 2l8 6-8 6" stroke="#e55602" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>ORD</span></div>
+        <div class="meta"><span>Oct 6, round trip</span><span id="metaR">Within policy</span><span>Budget: Sales travel</span></div>
+        <div class="bodies">
+          <ol class="steps body" id="bodyA">
+            <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2 6.5l2.6 2.6L10 3.4"/></svg></span><div><b>Asked the assistant</b><span class="d">"Austin to Chicago, Oct 6."</span></div></li>
+            <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2 6.5l2.6 2.6L10 3.4"/></svg></span><div><b>Inside your rules</b><span class="d">Approved without a request.</span></div></li>
+            <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2 6.5l2.6 2.6L10 3.4"/></svg></span><div><b>Booked to the budget</b><span class="d">Finance sees it right away.</span></div></li>
+          </ol>
+          <ol class="steps body" id="bodyB" style="opacity:0">
+            <li><span class="tick warn"><svg viewBox="0 0 12 12"><path d="M6 2.5v4M6 9v.1"/></svg></span><div><b>Flight delayed</b><span class="d">The 6:40 a.m. departure moved.</span></div></li>
+            <li><span class="tick info"><svg viewBox="0 0 12 12"><path d="M2 6.5l2.6 2.6L10 3.4"/></svg></span><div><b>Rebooked on the next flight</b><span class="d">Your approver has been told.</span></div></li>
+            <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2 6.5l2.6 2.6L10 3.4"/></svg></span><div><b>Recorded</b><span class="d">Who, what and when, in the audit log.</span></div></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <div class="strip" id="strip">
+      <p>Your travelers book on the Mondee travel marketplace.</p>
+      <div class="stats">
+        <div class="stat"><b><span data-n="500">500</span>+<sup>1</sup></b><span>Airlines connected</span></div>
+        <div class="stat"><b><span data-n="1">1</span>M+<sup>2</sup></b><span>Hotels and vacation rentals</span></div>
+        <div class="stat"><b>Global</b><span>Flight and hotel coverage</span></div>
+      </div>
+    </div>
+
+    <div class="hint" id="hint">Scroll<i></i></div>
+    <div class="rail" id="rail" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+  </div>
+</div>
+<div class="mockbar">Mock: Atlas + Motion scroll story. Not wired to the site.</div>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script type="module">
+import { animate, scroll, stagger } from 'https://cdn.jsdelivr.net/npm/motion@11.11.17/+esm'
+
+const $ = (s, r = document) => r.querySelector(s)
+const $$ = (s, r = document) => [...r.querySelectorAll(s)]
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
+const SPRING = { type: 'spring', stiffness: 120, damping: 20 }
+
+// ---- split headline into word masks
+const h1 = $('#h1')
+function split(el) {
+  const out = []
+  const walk = (n, cls) => {
+    n.childNodes.forEach(c => {
+      if (c.nodeType === 3) {
+        c.textContent.split(/(\s+)/).forEach(t => {
+          if (!t) return
+          if (/^\s+$/.test(t)) { out.push(document.createTextNode(' ')); return }
+          const w = document.createElement('span'); w.className = 'w'
+          const i = document.createElement('span'); i.textContent = t; if (cls) i.className = cls
+          w.appendChild(i); out.push(w)
+        })
+      } else if (c.nodeName === 'EM') {
+        const w = document.createElement('em')
+        const tmp = []; const save = out.length
+        walk(c, 'em'); const kids = out.splice(save); kids.forEach(k => w.appendChild(k)); out.push(w)
+      }
+    })
+  }
+  walk(el)
+  el.textContent = ''; out.forEach(n => el.appendChild(n))
+}
+split(h1)
+$$('#h1 .w > span').forEach(s => { if (s.closest('em')) s.style.color = 'var(--orange-l)' })
+
+// ---- entrance (Motion)
+function intro() {
+  if (reduce) { $$('.rev').forEach(e => e.style.opacity = 1); return }
+  $$('#h1 .w > span').forEach(s => (s.style.transform = 'translateY(110%)'))
+  $$('.rev').forEach(e => (e.style.opacity = 0))
+  animate('#h1 .w > span', { transform: ['translateY(110%)', 'translateY(0%)'] }, { delay: stagger(0.06, { startDelay: 0.25 }), ...SPRING, stiffness: 90, damping: 18 })
+  animate('.rev', { opacity: [0, 1], transform: ['translateY(18px)', 'translateY(0px)'] }, { delay: stagger(0.12, { startDelay: 1.0 }), duration: 0.7, ease: 'easeOut' })
+  animate('nav', { opacity: [0, 1], transform: ['translateY(-14px)', 'translateY(0px)'] }, { duration: 0.7, ease: 'easeOut' })
+}
+intro()
+
+// ---- magnetic buttons (Motion springs)
+if (!reduce) $$('.magnet').forEach(b => {
+  b.addEventListener('pointermove', e => {
+    const r = b.getBoundingClientRect()
+    const x = (e.clientX - (r.left + r.width / 2)) * 0.22, y = (e.clientY - (r.top + r.height / 2)) * 0.3
+    animate(b, { transform: `translate(${x}px, ${y}px)` }, { type: 'spring', stiffness: 300, damping: 18 })
+  })
+  b.addEventListener('pointerleave', () => animate(b, { transform: 'translate(0px, 0px)' }, { type: 'spring', stiffness: 260, damping: 16 }))
+})
+
+// ---- card 3D tilt (Motion springs)
+const card = $('#card'), panel = $('#panel')
+if (!reduce) {
+  panel.addEventListener('pointermove', e => {
+    const r = card.getBoundingClientRect()
+    const rx = ((e.clientY - r.top) / r.height - 0.5) * -8, ry = ((e.clientX - r.left) / r.width - 0.5) * 10
+    animate(card, { transform: `rotateX(${rx}deg) rotateY(${ry}deg)` }, { type: 'spring', stiffness: 160, damping: 16 })
+  })
+  panel.addEventListener('pointerleave', () => animate(card, { transform: 'rotateX(0deg) rotateY(0deg)' }, { type: 'spring', stiffness: 120, damping: 14 }))
+}
+
+// ---- beats
+let beat = -1
+const rail = $$('#rail i')
+function setBeat(b) {
+  if (b === beat) return
+  const prev = beat; beat = b
+  rail.forEach((r, i) => r.classList.toggle('on', i === b))
+  const fade = (el, on, o = {}) => animate(el, { opacity: on ? 1 : 0, transform: on ? 'translateY(0px)' : `translateY(${o.y ?? -14}px)` }, on ? SPRING : { duration: 0.25 })
+  const copy0 = $('#copy0'), copy3 = $('#copy3'), strip = $('#strip')
+  const showCopy0 = b === 0, showCopy3 = b === 3, showPanel = b === 1 || b === 2
+  animate(copy0, { opacity: showCopy0 ? 1 : 0 }, { duration: 0.35 }); copy0.style.pointerEvents = showCopy0 ? '' : 'none'
+  animate(copy3, { opacity: showCopy3 ? 1 : 0, transform: showCopy3 ? 'translateY(0px)' : 'translateY(20px)' }, showCopy3 ? SPRING : { duration: 0.25 }); copy3.style.pointerEvents = showCopy3 ? '' : 'none'
+  animate(strip, { opacity: b === 0 || b === 3 ? 1 : 0, transform: b === 0 || b === 3 ? 'translateY(0px)' : 'translateY(18px)' }, { duration: 0.4 })
+  animate($('#hint'), { opacity: b === 0 ? 1 : 0 }, { duration: 0.3 })
+  animate($('#shade'), { opacity: b === 0 || b === 3 ? 1 : 0.5 }, { duration: 0.5 })
+  animate(panel, { opacity: showPanel ? 1 : 0, transform: showPanel ? 'translateY(-50%)' : 'translateY(-46%)' }, showPanel ? SPRING : { duration: 0.25 })
+  panel.style.pointerEvents = showPanel ? 'auto' : 'none'
+  chips.on = b === 0
+  if (b === 1) {
+    $('#status').className = 'status'; $('#status').textContent = 'Approved'; $('#metaR').textContent = 'Within policy'
+    animate('#bodyB', { opacity: 0 }, { duration: 0.2 }); animate('#bodyA', { opacity: 1 }, { duration: 0.3 })
+    animate('#bodyA li', { opacity: [0, 1], transform: ['translateX(-14px)', 'translateX(0px)'] }, { delay: stagger(0.16, { startDelay: 0.25 }), duration: 0.5, ease: 'easeOut' })
+    animate('#bodyA .tick', { transform: ['scale(0)', 'scale(1)'] }, { delay: stagger(0.16, { startDelay: 0.35 }), type: 'spring', stiffness: 400, damping: 14 })
+  }
+  if (b === 2) {
+    $('#status').className = 'status warn'; $('#status').textContent = 'Delayed'; $('#metaR').textContent = 'Plan changed'
+    animate('#bodyA', { opacity: 0 }, { duration: 0.2 }); animate('#bodyB', { opacity: 1 }, { duration: 0.3 })
+    animate('#bodyB li', { opacity: [0, 1], transform: ['translateX(-14px)', 'translateX(0px)'] }, { delay: stagger(0.16, { startDelay: 0.25 }), duration: 0.5, ease: 'easeOut' })
+    animate('#bodyB .tick', { transform: ['scale(0)', 'scale(1)'] }, { delay: stagger(0.16, { startDelay: 0.35 }), type: 'spring', stiffness: 400, damping: 14 })
+    setTimeout(() => { if (beat === 2) { $('#status').className = 'status info'; $('#status').textContent = 'Rebooked'; animate('#status', { transform: ['scale(.8)', 'scale(1)'] }, { type: 'spring', stiffness: 400, damping: 12 }) } }, 900)
+  }
+  if (b === 3 && prev !== 3) countUp()
+}
+function countUp() {
+  if (reduce) return
+  $$('[data-n]').forEach(el => { const to = +el.dataset.n; animate(0, to, { duration: 1.4, ease: 'easeOut', onUpdate: v => (el.textContent = Math.round(v)) }) })
+}
+const BEATS = [0, 0.2, 0.52, 0.8]
+const beatOf = p => (p >= BEATS[3] ? 3 : p >= BEATS[2] ? 2 : p >= BEATS[1] ? 1 : 0)
+
+// ---- map
+const cv = $('#map'), ctx = cv.getContext('2d'), stage = $('#stage')
+const world = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json').then(r => r.json())
+const land = topojson.feature(world, world.objects.land)
+const CITY = { AUS:[-97.74,30.27], ORD:[-87.63,41.88], NYC:[-74.0,40.71], LON:[-0.12,51.5], DXB:[55.3,25.2], BOM:[72.88,19.07], SIN:[103.82,1.35], SYD:[151.2,-33.87], GRU:[-46.63,-23.55] }
+const LABEL = { AUS:'Austin', ORD:'Chicago', LON:'London', DXB:'Dubai', SIN:'Singapore' }
+const ROUTES = [['AUS','ORD',1],['ORD','LON',0],['NYC','LON',0],['LON','DXB',0],['DXB','SIN',0],['BOM','SIN',0],['DXB','BOM',0],['SIN','SYD',0],['NYC','GRU',0]]
+
+// land dots on an equirectangular grid, sampled once
+const GW = 2000, GH = 1000, STEP = 3.5, STEPDEG = 360 / (GW / STEP)
+{
+  const off = document.createElement('canvas'); off.width = GW; off.height = GH
+  const o = off.getContext('2d'); o.fillStyle = '#fff'; o.beginPath(); d3.geoPath(d3.geoEquirectangular().fitSize([GW, GH], { type: 'Sphere' }), o)(land); o.fill()
+  const d = o.getImageData(0, 0, GW, GH).data, eq = d3.geoEquirectangular().fitSize([GW, GH], { type: 'Sphere' })
+  var DOTS = []
+  let iy = 0
+  for (let y = STEP / 2; y < GH; y += STEP, iy++) { let ix = 0; for (let x = STEP / 2; x < GW; x += STEP, ix++) if (d[((y | 0) * GW + (x | 0)) * 4 + 3] > 128) { const ll = eq.invert([x, y]); DOTS.push(ll[0], ll[1], Math.random(), ix, iy) } }
+}
+
+let W, H, DPR, proj = d3.geoEqualEarth(), baseScale = 1, mobile = false
+function layout() {
+  const r = stage.getBoundingClientRect(); if (r.width < 2) return
+  DPR = Math.min(devicePixelRatio || 1, 2); W = r.width; H = r.height; mobile = W < 900
+  cv.width = W * DPR; cv.height = H * DPR
+  proj.scale(1).translate([0, 0]); const b = d3.geoPath(proj).bounds({ type: 'Sphere' })
+  baseScale = (W * (mobile ? 1.6 : 0.86)) / (b[1][0] - b[0][0])
+}
+new ResizeObserver(layout).observe(stage); layout()
+
+// camera keyframes: [progress, lon, lat, zoom, screenX, screenY]
+const KF = [
+  [0.00, 20, 22, 1.0, 0.60, 0.50],
+  [0.14, 20, 22, 1.0, 0.60, 0.50],
+  [0.26, -93, 36, 3.4, 0.36, 0.50],
+  [0.72, -93, 36, 3.8, 0.36, 0.50],
+  [0.88, 20, 22, 1.0, 0.50, 0.50],
+  [1.00, 20, 22, 1.0, 0.50, 0.50],
+]
+const ease = t => t * t * (3 - 2 * t)
+function cam(p) {
+  let i = 0; while (i < KF.length - 2 && p > KF[i + 1][0]) i++
+  const a = KF[i], b = KF[i + 1], t = ease(Math.min(1, Math.max(0, (p - a[0]) / (b[0] - a[0] || 1))))
+  return a.slice(1).map((v, k) => v + (b[k + 1] - v) * t)
+}
+
+let target = 0, sp = 0, routesIn = reduce ? 1 : 0, mx = 0, my = 0, tx = 0, ty = 0
+scroll(prog => { target = prog }, { target: $('#track'), offset: ['start start', 'end end'] })
+stage.addEventListener('pointermove', e => { const r = stage.getBoundingClientRect(); tx = (e.clientX - r.left) / r.width - 0.5; ty = (e.clientY - r.top) / r.height - 0.5 })
+if (!reduce) animate(0, 1, { delay: 0.7, type: 'spring', stiffness: 22, damping: 12, onUpdate: v => (routesIn = Math.min(1, v)) });
+
+const chips = { on: false, lon: $('#chip-lon'), dxb: $('#chip-dxb') }
+const chipShow = {}
+function chipVis(el, on) { if (chipShow[el.id] === on) return; chipShow[el.id] = on; animate(el, { opacity: on ? 1 : 0 }, { duration: 0.5 }) }
+
+setTimeout(() => setBeat(0), 0)
+const t0 = performance.now()
+const arcCache = new Map()
+function frame(now) {
+  if (!W) { layout(); requestAnimationFrame(frame); return }
+  const t = reduce ? 9999 : (now - t0) / 1000
+  sp += (target - sp) * (reduce ? 1 : 0.1); mx += (tx - mx) * 0.05; my += (ty - my) * 0.05
+  const b = beatOf(target); if (b !== beat) setBeat(b)
+  const [lon, lat, z, sx, sy0] = cam(sp)
+  const sxp = mobile ? 0.5 : sx, syp = mobile ? (z > 1.5 ? 0.36 : 0.62) : sy0
+  proj.scale(baseScale * z).translate([0, 0]); const c0 = proj([lon, lat]); proj.translate([W * sxp - c0[0], H * syp - c0[1]])
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0); ctx.clearRect(0, 0, W, H)
+  ctx.save(); ctx.translate(-mx * 10, -my * 8)
+  const stride = z < 1.6 ? 4 : z < 2.8 ? 2 : 1
+  const ds = Math.max(1.3, Math.min(3.2, 0.5 * STEPDEG * stride * (W * 0.86 / 360) * z))
+  for (let i = 0; i < DOTS.length; i += 5) {
+    if (DOTS[i + 3] % stride || DOTS[i + 4] % stride) continue
+    const p = proj([DOTS[i], DOTS[i + 1]]); if (!p) continue
+    const x = p[0], y = p[1]; if (x < -10 || x > W + 10 || y < -10 || y > H + 10) continue
+    const tw = reduce ? 0.5 : 0.5 + 0.5 * Math.sin(t * 0.8 + DOTS[i + 2] * 40)
+    ctx.fillStyle = `rgba(222,206,212,${0.26 + tw * 0.2})`; ctx.fillRect(x - ds / 2, y - ds / 2, ds, ds)
+  }
+  const pts = {}; for (const k in CITY) pts[k] = proj(CITY[k])
+  ROUTES.forEach(([a, bb, hot], idx) => {
+    const prog = Math.min(1, Math.max(0, (routesIn - idx * 0.06) / 0.7)); const key = a + bb
+    const i = d3.geoInterpolate(CITY[a], CITY[bb]); const n = 72, P = []
+    const dist = Math.hypot(pts[a][0] - pts[bb][0], pts[a][1] - pts[bb][1]), lift = Math.min(46 * Math.sqrt(z), dist * 0.2)
+    for (let s = 0; s <= n; s++) { const q = proj(i(s / n)); P.push([q[0], q[1] - Math.sin(Math.PI * s / n) * lift]) }
+    const m = Math.floor(prog * n); if (m < 1) return
+    ctx.beginPath(); ctx.moveTo(P[0][0], P[0][1]); for (let s = 1; s <= m; s++) ctx.lineTo(P[s][0], P[s][1]); ctx.lineCap = 'round'
+    const focus = z > 2 ? (hot ? 1 : 0.35) : 1
+    if (hot) { ctx.strokeStyle = `rgba(255,152,97,${0.35 * focus})`; ctx.lineWidth = 7; ctx.stroke(); ctx.strokeStyle = '#ff9861'; ctx.lineWidth = 2.6 }
+    else { ctx.strokeStyle = `rgba(255,152,97,${0.5 * focus})`; ctx.lineWidth = 1.3 }
+    ctx.stroke()
+    if (prog >= 1) { const k2 = (t * (hot ? 0.22 : 0.12) + idx * 0.31) % 1, q = P[Math.floor(k2 * n)]; ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(q[0], q[1], hot ? 3.8 : 2.2, 0, 6.3); ctx.fill(); ctx.fillStyle = 'rgba(255,255,255,.18)'; ctx.beginPath(); ctx.arc(q[0], q[1], hot ? 10 : 6, 0, 6.3); ctx.fill() }
+  })
+  for (const k in pts) {
+    const [x, y] = pts[k]; const hot = k === 'AUS' || k === 'ORD'; const pulse = reduce ? 0.5 : (t * 0.6 + x * 0.003) % 1
+    ctx.strokeStyle = `rgba(255,152,97,${0.55 * (1 - pulse)})`; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.arc(x, y, 4 + pulse * (hot ? 22 : 14), 0, 6.3); ctx.stroke()
+    ctx.fillStyle = hot ? '#ff9861' : '#e55602'; ctx.beginPath(); ctx.arc(x, y, hot ? 5.5 : 3.6, 0, 6.3); ctx.fill(); ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(x, y, 1.7, 0, 6.3); ctx.fill()
+    if (LABEL[k] && (z > 2 ? hot : z < 1.4 && (k === 'LON' || k === 'DXB' || k === 'SIN'))) { ctx.font = '600 13px Archivo, sans-serif'; ctx.fillStyle = 'rgba(255,255,255,.92)'; ctx.textAlign = 'center'; ctx.fillText(LABEL[k], x, y - 16) }
+  }
+  ctx.restore()
+  // chips follow cities
+  const vis = chips.on && !mobile
+  chipVis(chips.lon, vis); chipVis(chips.dxb, vis)
+  if (vis) {
+    chips.lon.style.transform = `translate(${pts.LON[0] - chips.lon.offsetWidth / 2 - mx * 10}px, ${pts.LON[1] - 74 - my * 8}px)`
+    chips.dxb.style.transform = `translate(${pts.DXB[0] - chips.dxb.offsetWidth / 2 - mx * 10}px, ${pts.DXB[1] + 26 - my * 8}px)`
+  }
+  requestAnimationFrame(frame)
+}
+requestAnimationFrame(frame)
+</script>
+</body>
+</html>
