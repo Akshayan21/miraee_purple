@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Miraee V5 concept 13: Sideways film strip (mock)</title>
+<link rel="icon" href="/img/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet" />
+<style>
+  :root { --paper:#f0e5f8; --raised:#f9f5fc; --rule:#c9bbd2; --plum:#43162e; --ink:#1d1418; --slate:#45333c; --orange:#e55602; --btn:#c24700; --otext:#a03e00; --ok:#1d7648; --okbg:#e3f0e7; --warn:#855700; --warnbg:#f6ecd6; --info:#2e5c85; --infobg:#e6edf4; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; background:var(--paper); color:var(--plum); font-family:'Archivo','Helvetica Neue',Arial,sans-serif; }
+  body::before { content:''; position:fixed; inset:-20% -10% auto auto; width:60vw; height:60vw; border-radius:50%; background:radial-gradient(closest-side, rgba(255,152,97,.35), transparent); pointer-events:none; }
+  body::after { content:''; position:fixed; inset:auto auto -25% -15%; width:60vw; height:60vw; border-radius:50%; background:radial-gradient(closest-side, rgba(170,120,230,.28), transparent); pointer-events:none; }
+  nav { position:sticky; top:16px; z-index:50; margin:16px clamp(16px,4vw,56px) 0; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:10px 12px 10px 22px; border-radius:999px; background:rgba(249,245,252,.72); border:1px solid rgba(67,22,46,.1); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+  nav img { height:26px; display:block; }
+  nav ul { display:flex; gap:26px; list-style:none; margin:0; padding:0; font-size:15px; }
+  nav a { color:var(--plum); text-decoration:none; } nav ul a:hover { color:var(--otext); }
+  @media (max-width:820px){ nav ul{display:none} }
+  .btn { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:0 24px; border-radius:999px; font:600 16px/1 'Archivo',sans-serif; text-decoration:none; border:1.5px solid transparent; }
+  .btn--pri { background:var(--btn); color:#fff; } .btn--pri:hover { background:#a63d00; }
+  .btn--sec { border-color:var(--plum); color:var(--plum); } .btn--sec:hover { background:rgba(67,22,46,.07); }
+  nav .btn { min-height:42px; padding:0 18px; font-size:15px; }
+
+  .hero { position:relative; z-index:3; padding:clamp(36px,7vh,80px) clamp(16px,4vw,56px) 0; max-width:1100px; }
+  .eyebrow { display:inline-block; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--otext); font-weight:600; margin-bottom:16px; }
+  h1 { margin:0; font-weight:760; font-stretch:78%; font-size:clamp(42px,6.2vw,92px); line-height:.98; letter-spacing:-.02em; text-wrap:balance; }
+  h1 em { font-style:normal; color:var(--btn); }
+  .sub { margin:20px 0 0; font-size:clamp(17px,1.4vw,20px); line-height:1.5; color:var(--slate); max-width:34em; }
+  .row { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; align-items:center; }
+  .hint { font-size:14px; color:var(--slate); display:inline-flex; align-items:center; gap:8px; margin-left:8px; }
+  .hint::after { content:'→'; color:var(--btn); font-size:18px; animation:nudge 1.6s ease-in-out infinite; }
+  @keyframes nudge { 50% { transform:translateX(6px); } }
+
+  .track { position:relative; z-index:2; margin-top:-24vh; }
+  .stage { pointer-events:none; } .belt, .bar { pointer-events:auto; }
+  .stage { position:sticky; top:0; height:100vh; display:flex; flex-direction:column; justify-content:flex-end; overflow:hidden; padding-bottom:clamp(20px,4vh,40px); }
+  .belt { display:flex; gap:clamp(16px,2vw,28px); padding:0 clamp(16px,4vw,56px); will-change:transform; width:max-content; align-items:stretch; }
+  .tk { position:relative; width:clamp(300px,28vw,400px); height:min(62vh,500px); flex:none; background:var(--raised); border-radius:26px; color:var(--ink); display:grid; grid-template-rows:auto 1fr auto; border:1px solid rgba(67,22,46,.1); box-shadow:0 30px 60px -34px rgba(67,22,46,.5); -webkit-mask:radial-gradient(circle 14px at 0 66%, transparent 98%, #000) left/51% 100% no-repeat, radial-gradient(circle 14px at 100% 66%, transparent 98%, #000) right/51% 100% no-repeat; mask:radial-gradient(circle 14px at 0 66%, transparent 98%, #000) left/51% 100% no-repeat, radial-gradient(circle 14px at 100% 66%, transparent 98%, #000) right/51% 100% no-repeat; transition:transform .35s cubic-bezier(.2,.8,.2,1); }
+  .tk:hover { transform:translateY(-8px); }
+  .tk .top { padding:20px 22px 0; display:flex; justify-content:space-between; font-size:11px; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:#54424a; }
+  .tk .top b { color:var(--otext); font-weight:600; }
+  .tk .mid { padding:10px 22px 0; }
+  .tk h2 { margin:0; font-weight:760; font-stretch:78%; font-size:clamp(30px,3vw,44px); line-height:1; letter-spacing:-.02em; color:var(--plum); }
+  .tk p { margin:12px 0 0; font-size:15.5px; line-height:1.45; color:var(--slate); }
+  .tk .ui { margin:0 14px 0; padding:16px 18px 18px; border-top:2px dashed var(--rule); display:grid; gap:8px; font-size:13.5px; align-content:start; }
+  .rr { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:9px 11px; border-radius:11px; background:#fff; }
+  .rr span { color:#54424a; font-size:12.5px; }
+  .tag { display:inline-flex; padding:3px 9px; border-radius:999px; font-size:12px; font-weight:600; background:var(--okbg); color:var(--ok); }
+  .tag.w { background:var(--warnbg); color:var(--warn); } .tag.i { background:var(--infobg); color:var(--info); }
+  .route { display:flex; align-items:center; justify-content:space-between; font-weight:760; font-stretch:78%; font-size:28px; padding:2px 2px 4px; }
+  .route i { color:var(--orange); font-style:normal; }
+  .tk .foot { padding:0 22px 16px; font-size:11px; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:#54424a; display:flex; justify-content:space-between; }
+  .tk.end { background:var(--plum); color:#fff; } .tk.end h2 { color:#fff; } .tk.end p { color:#decfd4; } .tk.end .top, .tk.end .foot { color:#decfd4; } .tk.end .top b { color:#ff9861; } .tk.end .ui { border-color:rgba(255,255,255,.25); }
+  .tk.end .btn { width:100%; margin-top:6px; } .tk.end .btn--sec { border-color:#fff; color:#fff; }
+  .bar { margin:clamp(14px,2.4vh,24px) clamp(16px,4vw,56px) 0; display:flex; align-items:center; gap:16px; font-size:12px; letter-spacing:.12em; text-transform:uppercase; font-weight:600; color:#54424a; }
+  .bar .rail { flex:1; height:4px; border-radius:2px; background:rgba(67,22,46,.15); overflow:hidden; } .bar .fill { height:100%; width:0; background:var(--btn); }
+  .mockbar { position:fixed; z-index:99; left:50%; transform:translateX(-50%); bottom:8px; font-size:12px; padding:5px 10px; border-radius:8px; background:rgba(37,9,24,.85); color:#fff; }
+
+  @media (max-width:900px) {
+    .track { height:auto !important; margin-top:0; } .stage { position:relative; height:auto; overflow:visible; padding:28px 16px 70px; }
+    .belt { flex-direction:column; width:auto; transform:none !important; padding:0; } .tk { width:100%; height:auto; min-height:380px; } .bar { display:none; } .hint { display:none; }
+  }
+  @media (prefers-reduced-motion:reduce){ .hint::after{animation:none} }
+</style>
+</head>
+<body>
+<nav aria-label="Main">
+  <img src="/img/miraee-logo-orange.svg" alt="Miraee" />
+  <ul><li><a href="#">How it works</a></li><li><a href="#">For finance</a></li><li><a href="#">Spend review</a></li><li><a href="#">Pricing</a></li><li><a href="#">Resources</a></li></ul>
+  <a class="btn btn--pri" href="#">Sign up free</a>
+</nav>
+
+<header class="hero">
+  <span class="eyebrow">Business travel and expense software</span>
+  <h1>See where your travel money goes, and where you can <em>spend less.</em></h1>
+  <p class="sub">Your people book flights and hotels inside company policy. Finance sees every trip and the budget it belongs to.</p>
+  <div class="row"><a class="btn btn--pri" href="#">Sign up free</a><a class="btn btn--sec" href="#">Get a spend review</a><span class="hint">Follow one trip</span></div>
+</header>
+
+<div class="track" id="track">
+  <div class="stage" id="stage">
+    <div class="belt" id="belt">
+      <article class="tk"><div class="top"><span>Step <b>01</b></span><span>Policy</span></div>
+        <div class="mid"><h2>Set your rules once.</h2><p>Hotel limits, cabin class, fare caps and who approves.</p></div>
+        <div class="ui"><div class="rr"><b>Hotel limit per night</b><span>By city</span></div><div class="rr"><b>Cabin class</b><span>Economy, short flights</span></div><div class="rr"><b>Approver</b><span>Team lead</span></div></div>
+        <div class="foot"><span>Austin</span><span>Gate A1</span></div></article>
+
+      <article class="tk"><div class="top"><span>Step <b>02</b></span><span>Booking</span></div>
+        <div class="mid"><h2>Your people just ask.</h2><p>They tell the assistant the trip and pick from options inside your rules.</p></div>
+        <div class="ui"><div class="route"><span>AUS</span><i>→</i><span>ORD</span></div><div class="rr"><b>Morning nonstop</b><span class="tag">In policy</span></div><div class="rr"><b>Midday, one stop</b><span class="tag">In policy</span></div></div>
+        <div class="foot"><span>Oct 6</span><span>Gate B2</span></div></article>
+
+      <article class="tk"><div class="top"><span>Step <b>03</b></span><span>Approval</span></div>
+        <div class="mid"><h2>Approvals, only when needed.</h2><p>Anything outside your rules goes to an approver. The rest books at once.</p></div>
+        <div class="ui"><div class="rr"><b>Business class</b><span class="tag w">Waiting</span></div><div class="rr"><b>Hotel over the limit</b><span class="tag w">Waiting</span></div><div class="rr"><b>Everything else</b><span class="tag">Booked</span></div></div>
+        <div class="foot"><span>Approver</span><span>Gate C3</span></div></article>
+
+      <article class="tk"><div class="top"><span>Step <b>04</b></span><span>Changes</span></div>
+        <div class="mid"><h2>Plans change. We handle it.</h2><p>A delay means a new flight, and your approver is told.</p></div>
+        <div class="ui"><div class="rr"><b>Flight delayed</b><span class="tag w">Delayed</span></div><div class="rr"><b>Rebooked, next flight</b><span class="tag i">Rebooked</span></div><div class="rr"><b>Audit log updated</b><span class="tag">Logged</span></div></div>
+        <div class="foot"><span>Chicago</span><span>Gate D4</span></div></article>
+
+      <article class="tk"><div class="top"><span>Step <b>05</b></span><span>Finance</span></div>
+        <div class="mid"><h2>Finance sees every trip.</h2><p>Each trip arrives with the budget it belongs to.</p></div>
+        <div class="ui"><div class="rr"><b>Austin to Chicago</b><span>Sales travel</span></div><div class="rr"><b>London visit</b><span>Customer success</span></div><div class="rr"><b>Dubai meeting</b><span>Partnerships</span></div></div>
+        <div class="foot"><span>Month end</span><span>Gate E5</span></div></article>
+
+      <article class="tk end"><div class="top"><span>Arrived</span><span><b>Your turn</b></span></div>
+        <div class="mid"><h2>Start with a spend review.</h2><p>See where your travel money went. Free to sign up, at any company size.</p></div>
+        <div class="ui"><a class="btn btn--pri" href="#">Sign up free</a><a class="btn btn--sec" href="#">Get a spend review</a></div>
+        <div class="foot"><span>Miraee</span><span>Welcome</span></div></article>
+    </div>
+    <div class="bar"><span id="lbl">Step 1 of 6</span><div class="rail"><div class="fill" id="fill"></div></div></div>
+  </div>
+</div>
+<div class="mockbar">Mock: concept 13, sideways film strip, Lilac dusk. Not wired to the site.</div>
+
+<script>
+const track = document.getElementById('track'), belt = document.getElementById('belt'), fill = document.getElementById('fill'), lbl = document.getElementById('lbl')
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
+function size() { if (innerWidth > 900) track.style.height = (belt.scrollWidth - innerWidth + innerHeight + 40) + 'px'; else track.style.height = '' }
+addEventListener('resize', size); size(); addEventListener('load', size)
+let cur = 0
+function tick() {
+  if (innerWidth > 900) {
+    const r = track.getBoundingClientRect(), max = belt.scrollWidth - innerWidth + 40, p = Math.min(1, Math.max(0, -r.top / (track.offsetHeight - innerHeight)))
+    cur += (p - cur) * (reduce ? 1 : 0.12)
+    belt.style.transform = `translateX(${-cur * max}px)`; fill.style.width = (cur * 100) + '%'
+    lbl.textContent = 'Step ' + (Math.min(6, Math.floor(cur * 6) + 1)) + ' of 6'
+  }
+  requestAnimationFrame(tick)
+}
+requestAnimationFrame(tick)
+</script>
+</body>
+</html>

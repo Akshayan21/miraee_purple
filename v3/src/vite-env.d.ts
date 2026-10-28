@@ -6,4 +6,6 @@ interface ImportMetaEnv {
   readonly VITE_V1_ORIGIN?: string
   readonly VITE_V2_ORIGIN?: string
   readonly VITE_V3_ORIGIN?: string
+  readonly VITE_V4_ORIGIN?: string
+  readonly VITE_V5_ORIGIN?: string
 }
