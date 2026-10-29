@@ -289,10 +289,10 @@ function Plans() {
             <div className="pl__person" aria-hidden="false">
               <span className="pl__disc" aria-hidden="true" />
               <img
-                src="/img/px4173228-traveler-suitcase.webp"
+                src="/img/px3932459-traveler-phone.webp"
                 width="1100"
-                height="957"
-                alt="The traveler from the hero, on a call beside her suitcase"
+                height="964"
+                alt="A traveler checking her phone"
                 loading="lazy"
               />
             </div>

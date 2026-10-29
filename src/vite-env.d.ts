@@ -8,4 +8,5 @@ interface ImportMetaEnv {
   readonly VITE_V3_ORIGIN?: string
   readonly VITE_V4_ORIGIN?: string
   readonly VITE_V5_ORIGIN?: string
+  readonly VITE_V6_ORIGIN?: string
 }

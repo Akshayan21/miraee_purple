@@ -383,7 +383,7 @@ function Constellation() {
         </g>
         <g className="cn__node">
           <rect x="44" y="72" width="92" height="38" rx="19" />
-          <image href="/img/logo-mondee.png" x="58" y="82" width="64" height="14" />
+          <image href="/img/logo-mondee.svg" x="58" y="82" width="64" height="14" />
         </g>
         <g className="cn__node">
           <rect x="332" y="92" width="92" height="38" rx="19" />
@@ -503,10 +503,10 @@ export function PageArt({ page }: { page: InnerPage }) {
         <div className="pa__phone">
           <img
             className="pa__person"
-            src="/img/px15959733-traveler-red-coat.webp"
-            width="880"
-            height="1100"
-            alt="A traveler in a red coat, laughing"
+            src="/img/px8367824-finance-lead.webp"
+            width="591"
+            height="638"
+            alt="A colleague smiling at her phone"
           />
           <ChatSim />
         </div>

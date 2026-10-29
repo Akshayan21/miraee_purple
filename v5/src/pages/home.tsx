@@ -1,7 +1,13 @@
 import { Seo, type SeoMeta } from '@/components/common/seo'
 import { HeroBento } from '@/components/art/hero'
 import { HowScene } from '@/components/art/how'
-import { FaqSection, ProofStrip, RolesSection, SecuritySection, SpendingSection } from '@/components/art/home-sections'
+import {
+  FaqSection,
+  ProofStrip,
+  RolesSection,
+  SecuritySection,
+  SpendingSection,
+} from '@/components/art/home-sections'
 import { GroupSection } from '@/components/art/group'
 import { PlansSection } from '@/components/art/plans'
 import { SpendReviewHome } from '@/components/art/report'
@@ -16,7 +22,12 @@ const meta: SeoMeta = {
   jsonLd: [
     {
       '@context': 'https://schema.org',
-      '@graph': [faqPageJsonLd('/#faq', HOME.faq.map((f) => ({ question: f.q, answer: f.a })))],
+      '@graph': [
+        faqPageJsonLd(
+          '/#faq',
+          HOME.faq.map((f) => ({ question: f.q, answer: f.a })),
+        ),
+      ],
     },
   ],
 }

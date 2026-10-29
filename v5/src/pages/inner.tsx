@@ -2,16 +2,10 @@ import * as React from 'react'
 import { Link } from 'react-router-dom'
 
 import { Seo, type SeoMeta } from '@/components/common/seo'
-import { PageArt } from '@/components/art/scenes'
+import { PageVisual } from '@/components/glass/page-photo'
 import { FaqSection } from '@/components/art/home-sections'
 import { ReportTile } from '@/components/art/report'
-import {
-  ClosingCta,
-  Fn,
-  GButton,
-  ReviewButton,
-  SignupButton,
-} from '@/components/glass/ui'
+import { ClosingCta, Fn, GButton, ReviewButton, SignupButton } from '@/components/glass/ui'
 import { ExtraBlocks } from '@/components/glass/extra-blocks'
 import { EXTRAS, GUIDES } from '@/content/extras'
 import { ExtraForm } from '@/pages/extras'
@@ -120,6 +114,10 @@ function Sections({ page }: { page: InnerPage }) {
 
 export function InnerPageView({ page }: { page: InnerPage }) {
   const isReview = page.path === '/spend-review'
+  // The video library is the highlight of its page: it sits right under the hero, not at the bottom.
+  const blocks = EXTRAS[page.path] ?? []
+  const featured = blocks.filter((b) => b.kind === 'videos')
+  const rest = blocks.filter((b) => b.kind !== 'videos')
   const meta: SeoMeta = {
     title: `${page.title} | Miraee`,
     description: page.sub,
@@ -173,11 +171,13 @@ export function InnerPageView({ page }: { page: InnerPage }) {
                 ) : null}
               </div>
               <div className="s5 ihero-art" data-reveal>
-                <PageArt page={page} />
+                <PageVisual page={page} />
               </div>
             </div>
           </div>
         </section>
+
+        {featured.length ? <ExtraBlocks blocks={featured} idPrefix="f" featured /> : null}
 
         <Sections page={page} />
 
@@ -191,7 +191,7 @@ export function InnerPageView({ page }: { page: InnerPage }) {
           </section>
         ) : null}
 
-        {EXTRAS[page.path] ? <ExtraBlocks blocks={EXTRAS[page.path]} /> : null}
+        {rest.length ? <ExtraBlocks blocks={rest} /> : null}
 
         <ExtraForm path={page.path} />
 
@@ -270,7 +270,7 @@ export function guideComponent(slug: string) {
                   </div>
                 </div>
                 <div className="s5 ihero-art" data-reveal>
-                  <PageArt page={page} />
+                  <PageVisual page={page} />
                 </div>
               </div>
             </div>

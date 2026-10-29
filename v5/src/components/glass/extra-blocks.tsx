@@ -6,7 +6,15 @@ import type { Block } from '@/content/extras'
 import type { VideoGroup } from '@/content/videos'
 
 /** Renders a page's extra sections (see content/extras.ts) as V5 glass bento tiles. */
-export function ExtraBlocks({ blocks, idPrefix = 'x' }: { blocks: Block[]; idPrefix?: string }) {
+export function ExtraBlocks({
+  blocks,
+  idPrefix = 'x',
+  featured = false,
+}: {
+  blocks: Block[]
+  idPrefix?: string
+  featured?: boolean
+}) {
   return (
     <>
       {blocks.map((b, i) => {
@@ -19,6 +27,22 @@ export function ExtraBlocks({ blocks, idPrefix = 'x' }: { blocks: Block[]; idPre
               title={b.heading}
               id={`${id}-h`}
             />
+          )
+        }
+        if (featured && b.kind === 'videos') {
+          return (
+            <section key={id} className="sec sec--tight" aria-labelledby={`${id}-h`}>
+              <div className="wrap">
+                <div className="tile tile--plum xp-feat" data-reveal>
+                  <p className="eyebrow">{b.eyebrow ?? 'Video library'}</p>
+                  <h2 className="disp h-lg" id={`${id}-h`}>
+                    {b.heading}
+                  </h2>
+                  {b.intro ? <p className="lead xp-feat__lead">{b.intro}</p> : null}
+                  <VideoLibrary groups={b.groups} id={id} dark />
+                </div>
+              </div>
+            </section>
           )
         }
         return (
@@ -160,7 +184,15 @@ function body(b: Exclude<Block, { kind: 'faq' }>, id: string) {
 }
 
 /** Role tabs, a featured player and the track list. The YouTube player only mounts after Play (privacy-enhanced domain). */
-function VideoLibrary({ groups, id }: { groups: VideoGroup[]; id: string }) {
+function VideoLibrary({
+  groups,
+  id,
+  dark = false,
+}: {
+  groups: VideoGroup[]
+  id: string
+  dark?: boolean
+}) {
   const [role, setRole] = useState(groups[0].role)
   const [index, setIndex] = useState(0)
   const [playing, setPlaying] = useState(false)
@@ -172,7 +204,7 @@ function VideoLibrary({ groups, id }: { groups: VideoGroup[]; id: string }) {
     setPlaying(false)
   }
   return (
-    <div className="xp-vl">
+    <div className={`xp-vl${dark ? ' xp-vl--dark' : ''}`}>
       <div className="xp-vl__tabs" role="tablist" aria-label="Video library roles">
         {groups.map((g) => (
           <button

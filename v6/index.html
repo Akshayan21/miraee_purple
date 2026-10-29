@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      if (location.pathname.replace(/\/$/, '') === '/v6') document.documentElement.setAttribute('data-intro', '');
+    </script>
+    <meta name="theme-color" content="#FFFFFF" />
+    <script>
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('mo-pre')
+    </script>
+    <link rel="icon" href="/src/assets/favicon/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/src/assets/favicon/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/src/assets/favicon/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="/src/assets/favicon/favicon-192.png" sizes="192x192" type="image/png" />
+    <link rel="apple-touch-icon" href="/src/assets/favicon/favicon-180.png" />
+  </head>
+  <body class="mr-root">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
