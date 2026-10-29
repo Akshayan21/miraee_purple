@@ -34,7 +34,11 @@ export function FormTile({
     <div className={`tile form-tile ${className}`} id={id} data-reveal>
       <h2 className="disp h-md">{title}</h2>
       {intro ? <p className="p">{intro}</p> : null}
-      <LeadForm action={action} done={done ?? <FormDoneMessage action={action} />} className={`gform gform--${cols}`}>
+      <LeadForm
+        action={action}
+        done={done ?? <FormDoneMessage action={action} />}
+        className={`gform gform--${cols}`}
+      >
         {children}
         <div className="gform-submit">
           <Button type="submit" className="gform-btn">
@@ -55,13 +59,59 @@ export function ExtraForm({ path }: { path: string }) {
       <section className="sec sec--tight" aria-label="Request a spend review">
         <div className="wrap">
           <div className="bento">
-            <FormTile id="request" className="s12" action="/spend-review" title="Request your spend review" intro="Optional. You can sign up without one." button={FORM_PAGES.review.button} cols={2}>
-              <TextField fieldClassName={F} id="rv-name" name="name" label="Name" autoComplete="name" required />
-              <TextField fieldClassName={F} id="rv-email" name="email" label="Work email" type="email" autoComplete="email" required />
-              <TextField fieldClassName={F} id="rv-co" name="company" label="Company" autoComplete="organization" required />
-              <TextField fieldClassName={F} id="rv-size" name="size" label="Headcount" type="number" inputMode="numeric" min={1} required />
+            <FormTile
+              id="request"
+              className="s12"
+              action="/spend-review"
+              title="Request your spend review"
+              intro="Optional. You can sign up without one."
+              button={FORM_PAGES.review.button}
+              cols={2}
+            >
+              <TextField
+                fieldClassName={F}
+                id="rv-name"
+                name="name"
+                label="Name"
+                autoComplete="name"
+                required
+              />
+              <TextField
+                fieldClassName={F}
+                id="rv-email"
+                name="email"
+                label="Work email"
+                type="email"
+                autoComplete="email"
+                required
+              />
+              <TextField
+                fieldClassName={F}
+                id="rv-co"
+                name="company"
+                label="Company"
+                autoComplete="organization"
+                required
+              />
+              <TextField
+                fieldClassName={F}
+                id="rv-size"
+                name="size"
+                label="Headcount"
+                type="number"
+                inputMode="numeric"
+                min={1}
+                required
+              />
               <TextField fieldClassName={F} id="rv-tool" name="tool" label="Current booking tool" />
-              <TextField fieldClassName={F} id="rv-file" name="file" label="File upload" type="file" hint="We email you to sign an NDA first. Please hold your file until then." />
+              <TextField
+                fieldClassName={F}
+                id="rv-file"
+                name="file"
+                label="File upload"
+                type="file"
+                hint="We email you to sign an NDA first. Please hold your file until then."
+              />
             </FormTile>
           </div>
         </div>
@@ -72,11 +122,51 @@ export function ExtraForm({ path }: { path: string }) {
       <section className="sec sec--tight" aria-label="Request the security pack">
         <div className="wrap">
           <div className="bento">
-            <FormTile id="pack" className="s12" action="/security/pack" title="Request the security pack" intro="We send the pack to your work email." button="Send me the pack" cols={2}>
-              <TextField fieldClassName={F} id="sp-email" name="email" label="Work email" type="email" autoComplete="email" required />
-              <TextField fieldClassName={F} id="sp-co" name="company" label="Company name" autoComplete="organization" required />
-              <TextField fieldClassName={F} id="sp-size" name="size" label="Company size" type="number" inputMode="numeric" min={1} required hint="Add the number of employees." />
-              <TextField fieldClassName={F} id="sp-role" name="role" label="Your role" autoComplete="organization-title" required />
+            <FormTile
+              id="pack"
+              className="s12"
+              action="/security/pack"
+              title="Request the security pack"
+              intro="We send the pack to your work email."
+              button="Send me the pack"
+              cols={2}
+            >
+              <TextField
+                fieldClassName={F}
+                id="sp-email"
+                name="email"
+                label="Work email"
+                type="email"
+                autoComplete="email"
+                required
+              />
+              <TextField
+                fieldClassName={F}
+                id="sp-co"
+                name="company"
+                label="Company name"
+                autoComplete="organization"
+                required
+              />
+              <TextField
+                fieldClassName={F}
+                id="sp-size"
+                name="size"
+                label="Company size"
+                type="number"
+                inputMode="numeric"
+                min={1}
+                required
+                hint="Add the number of employees."
+              />
+              <TextField
+                fieldClassName={F}
+                id="sp-role"
+                name="role"
+                label="Your role"
+                autoComplete="organization-title"
+                required
+              />
             </FormTile>
           </div>
         </div>
@@ -97,8 +187,12 @@ export function ExtraForm({ path }: { path: string }) {
               cols={2}
               done={
                 <>
-                  <h2 className="disp h-md">{FORM_DONE['/resources/business-travel-policy-template'].title}</h2>
-                  <p className="p">{FORM_DONE['/resources/business-travel-policy-template'].body}</p>
+                  <h2 className="disp h-md">
+                    {FORM_DONE['/resources/business-travel-policy-template'].title}
+                  </h2>
+                  <p className="p">
+                    {FORM_DONE['/resources/business-travel-policy-template'].body}
+                  </p>
                   <div className="row">
                     <Button asChild>
                       <a href="/downloads/Miraee_Business_Travel_Policy_Template.docx" download>
@@ -114,9 +208,35 @@ export function ExtraForm({ path }: { path: string }) {
                 </>
               }
             >
-              <TextField fieldClassName={F} id="tp-email" name="email" label="Work email" type="email" autoComplete="email" required hint="We send a copy of the files here too." />
-              <TextField fieldClassName={F} id="tp-co" name="company" label="Company name" autoComplete="organization" required />
-              <TextField fieldClassName={F} id="tp-size" name="size" label="Company size" type="number" inputMode="numeric" min={1} required hint="Add the number of employees." />
+              <TextField
+                fieldClassName={F}
+                id="tp-email"
+                name="email"
+                label="Work email"
+                type="email"
+                autoComplete="email"
+                required
+                hint="We send a copy of the files here too."
+              />
+              <TextField
+                fieldClassName={F}
+                id="tp-co"
+                name="company"
+                label="Company name"
+                autoComplete="organization"
+                required
+              />
+              <TextField
+                fieldClassName={F}
+                id="tp-size"
+                name="size"
+                label="Company size"
+                type="number"
+                inputMode="numeric"
+                min={1}
+                required
+                hint="Add the number of employees."
+              />
             </FormTile>
           </div>
         </div>

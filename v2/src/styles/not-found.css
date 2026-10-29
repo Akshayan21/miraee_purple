@@ -1,0 +1,67 @@
+/* 404: "Missed connection". Plum route-map scene with a boarding-pass card. */
+.nf { position: relative; overflow: hidden; isolation: isolate; min-height: 100svh; padding: 132px 0 var(--mr-s-8); --px: 0; --py: 0; }
+.nf__map { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
+.nf__layer { transition: transform 0.25s ease-out; }
+.nf__layer--far { transform: translate(calc(var(--px) * -10px), calc(var(--py) * -8px)); }
+.nf__layer--near { transform: translate(calc(var(--px) * -26px), calc(var(--py) * -18px)); }
+.nf__layer--far line { stroke: var(--mr-plum-rule); stroke-width: 1; opacity: 0.35; }
+.nf__arc { fill: none; stroke: var(--mr-orange-light); stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 2 12; opacity: 0.85; }
+.nf__hub { fill: var(--mr-mist); }
+.nf__hub-ring { fill: none; stroke: var(--mr-plum-edge); stroke-width: 1.5; }
+.nf__unknown { fill: var(--mr-plum); stroke: var(--mr-orange); stroke-width: 2.5; }
+.nf__pulse { fill: none; stroke: var(--mr-orange); stroke-width: 2; opacity: 0.5; transform-box: fill-box; transform-origin: center; }
+.nf__q { fill: var(--mr-orange-light); font: 720 28px var(--mr-font-display); }
+.nf__plane { fill: var(--mr-white); offset-rotate: auto; offset-distance: 62%; }
+
+.nf__inner { display: grid; gap: var(--mr-s-7); justify-items: center; }
+.nf__pass { --stub: 220px; --notch: 14px; display: grid; grid-template-columns: minmax(0, 1fr) var(--stub); width: 100%; max-width: 920px; border-radius: 20px; color: var(--mr-ink); box-shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.55);
+  -webkit-mask: radial-gradient(circle var(--notch) at calc(100% - var(--stub)) 0, #0000 97%, #000), radial-gradient(circle var(--notch) at calc(100% - var(--stub)) 100%, #0000 97%, #000);
+  -webkit-mask-composite: source-in;
+  mask: radial-gradient(circle var(--notch) at calc(100% - var(--stub)) 0, #0000 97%, #000), radial-gradient(circle var(--notch) at calc(100% - var(--stub)) 100%, #0000 97%, #000);
+  mask-composite: intersect; }
+.nf__main { padding: var(--mr-s-6); }
+.nf__brand { margin: 0 0 var(--mr-s-4); font-size: var(--mr-fs-small); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mr-slate); }
+.nf__title { margin: 0 0 var(--mr-s-3); font-family: var(--mr-font-display); font-weight: var(--mr-display-weight); font-stretch: var(--mr-display-width); font-size: clamp(34px, 6vw, 56px); line-height: 1.04; letter-spacing: var(--mr-display-tracking); color: var(--mr-ink); }
+.nf__lead { margin: 0 0 var(--mr-s-5); max-width: 46ch; font-size: var(--mr-fs-lead); line-height: var(--mr-lh-lead); color: var(--mr-ink-hover); }
+.nf__fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: var(--mr-s-4); margin: 0 0 var(--mr-s-5); padding: var(--mr-s-4) 0; border-block: 1px dashed var(--mr-paper-edge); }
+.nf__fields dt { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mr-slate); }
+.nf__fields dd { margin: 2px 0 0; font-weight: 700; font-size: var(--mr-fs-card-title); }
+.nf__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--mr-s-4) var(--mr-s-5); }
+.nf__suggest { margin: 0; color: var(--mr-ink-hover); }
+.nf__suggest a { color: var(--mr-orange-text); font-weight: 700; }
+.nf__stub { display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: var(--mr-s-4); padding: var(--mr-s-6) var(--mr-s-5); border-left: 2px dashed var(--mr-paper-edge); background: var(--mr-paper-raised); }
+.nf__code { font-family: var(--mr-font-display); font-weight: var(--mr-display-weight); font-stretch: var(--mr-display-width); font-size: 72px; line-height: 1; color: var(--mr-plum); }
+.nf__barcode { display: flex; align-items: stretch; gap: 2px; height: 64px; }
+.nf__barcode i { display: block; background: var(--mr-ink); }
+
+.nf__connect-h { margin: 0 0 var(--mr-s-3); font-size: var(--mr-fs-small); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mr-mist); text-align: center; }
+.nf__flights { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--mr-s-3); width: min(920px, 100%); }
+.nf__flight { display: flex; align-items: center; gap: 10px; min-height: var(--mr-touch-min); padding: 12px 16px; border: 1px solid var(--mr-plum-rule); border-radius: 12px; background: rgba(37, 9, 24, 0.45); color: var(--mr-white); font-weight: 600; text-decoration: none; transition: border-color 0.15s, background-color 0.15s; }
+.nf__flight:hover { border-color: var(--mr-orange-light); background: var(--mr-twilight); }
+.nf__flight:focus-visible { outline: var(--mr-focus-width) solid var(--mr-orange-light); outline-offset: var(--mr-focus-offset); }
+.nf__flight-no { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: var(--mr-plum-edge); }
+.nf__flight-name { flex: 1; }
+
+@media (max-width: 899px) { .nf__flights { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 719px) {
+  .nf { padding-top: 104px; }
+  .nf__pass { --stubh: 150px; grid-template-columns: 1fr; border-radius: 16px;
+    -webkit-mask: radial-gradient(circle var(--notch) at 0 calc(100% - var(--stubh)), #0000 97%, #000), radial-gradient(circle var(--notch) at 100% calc(100% - var(--stubh)), #0000 97%, #000);
+    -webkit-mask-composite: source-in;
+    mask: radial-gradient(circle var(--notch) at 0 calc(100% - var(--stubh)), #0000 97%, #000), radial-gradient(circle var(--notch) at 100% calc(100% - var(--stubh)), #0000 97%, #000);
+    mask-composite: intersect; }
+  .nf__main { padding: var(--mr-s-5) var(--mr-s-4); }
+  .nf__stub { flex-direction: row; height: var(--stubh); padding: var(--mr-s-4); border-left: 0; border-top: 2px dashed var(--mr-paper-edge); }
+  .nf__code { font-size: 56px; }
+}
+@media (max-width: 479px) { .nf__flights { grid-template-columns: 1fr; } .nf__barcode { height: 48px; } .nf__code { font-size: 48px; } }
+
+@media (prefers-reduced-motion: no-preference) {
+  .nf__plane { animation: nf-fly 9s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
+  .nf__pulse { animation: nf-pulse 2.4s ease-out infinite; }
+  .nf__arc { animation: nf-march 3s linear infinite; }
+}
+@media (prefers-reduced-motion: reduce) { .nf__layer { transition: none; } }
+@keyframes nf-fly { 0% { offset-distance: 0%; opacity: 0; } 8% { opacity: 1; } 88% { offset-distance: 100%; opacity: 1; } 100% { offset-distance: 100%; opacity: 0; } }
+@keyframes nf-pulse { from { transform: scale(1); opacity: 0.55; } to { transform: scale(2); opacity: 0; } }
+@keyframes nf-march { to { stroke-dashoffset: -28; } }

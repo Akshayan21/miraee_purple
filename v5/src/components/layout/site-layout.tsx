@@ -95,38 +95,6 @@ function Footer() {
               <p className="p" style={{ maxWidth: 300 }}>
                 {HOME.hero.trust}
               </p>
-              <ul className="ftr-group" aria-label="The Tabhi group">
-                <li>
-                  <img
-                    src="/img/logo-tabhi.png"
-                    width="219"
-                    height="131"
-                    alt="Tabhi"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </li>
-                <li>
-                  <img
-                    src="/img/logo-mondee.png"
-                    width="160"
-                    height="35"
-                    alt="Mondee"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </li>
-                <li>
-                  <img
-                    src="/img/logo-abhee.webp"
-                    width="640"
-                    height="162"
-                    alt="Abhee"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </li>
-              </ul>
             </div>
             {FOOTER_GROUPS.map((g) => (
               <nav key={g.title} aria-label={g.title}>

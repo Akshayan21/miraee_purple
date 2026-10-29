@@ -14,10 +14,20 @@ import {
   PageSeo,
 } from '@/components/page/kit'
 import { ExtraBlocks } from '@/components/page/extra-blocks'
+import { HorizontalSteps } from '@/components/page/horizontal-steps'
+import { PagePhoto } from '@/components/page/page-photo'
 import { Button } from '@/components/ui/button'
 import { Kinetic } from '@/components/motion/kinetic'
 import { EXTRAS } from '@/content/extras'
+import { photoFor } from '@/content/photos'
 import type { InnerPage } from '@/content/site'
+
+/** The group logos shown in place of the names on the About Tabhi page. */
+const GROUP_LOGOS: Record<string, { src: string; w: number; h: number }> = {
+  Mondee: { src: '/img/logo-mondee.svg', w: 144, h: 30 },
+  Abhee: { src: '/img/logo-abhee.webp', w: 640, h: 162 },
+  Miraee: { src: '/img/miraee-logo-orange.svg', w: 338, h: 84 },
+}
 
 type PageButton = NonNullable<InnerPage['buttons']>[number]
 
@@ -79,7 +89,9 @@ export function PageHero({
               ))}
           </div>
         </div>
-        <div className="ed-phero__art">{art ?? <PageArt page={page} />}</div>
+        <div className="ed-phero__art">
+          {art ?? (photoFor(page.path) ? <PagePhoto path={page.path} /> : <PageArt page={page} />)}
+        </div>
       </div>
     </section>
   )
@@ -99,7 +111,21 @@ export function NumberedList({ page }: { page: InnerPage }) {
           {page.sections.map((s, i) => (
             <li key={s.title} className="ed-row" data-rv="stagger">
               <span className="ed-row__n ed-stat">{String(i + 1).padStart(2, '0')}</span>
-              <h3 className="ed-row__t">{s.title}</h3>
+              <h3 className="ed-row__t">
+                {page.path === '/company' && GROUP_LOGOS[s.title] ? (
+                  <img
+                    className={`ed-row__logo ed-row__logo--${s.title.toLowerCase()}`}
+                    src={GROUP_LOGOS[s.title].src}
+                    width={GROUP_LOGOS[s.title].w}
+                    height={GROUP_LOGOS[s.title].h}
+                    alt={s.title}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  s.title
+                )}
+              </h3>
               <p className="ed-row__b">
                 {page.path === '/company' && s.title === 'Mondee' ? (
                   <>
@@ -158,13 +184,22 @@ export function InnerPageView({
   extra?: React.ReactNode
   hero?: React.ReactNode
 }) {
+  // The video library is the highlight of its page: it sits right under the hero, not at the bottom.
+  const blocks = EXTRAS[page.path] ?? []
+  const featured = blocks.filter((b) => b.kind === 'videos')
+  const rest = blocks.filter((b) => b.kind !== 'videos')
   return (
     <>
       <PageSeo title={page.title} description={page.sub} />
       <main id="main" className="ed-main ed-inner">
         <PageHero page={page} art={hero} />
-        <NumberedList page={page} />
-        {EXTRAS[page.path] ? <ExtraBlocks blocks={EXTRAS[page.path]} /> : null}
+        {featured.length ? <ExtraBlocks blocks={featured} idPrefix="f" featured /> : null}
+        {page.path === '/how-it-works' ? (
+          <HorizontalSteps page={page} fallback={<NumberedList page={page} />} />
+        ) : (
+          <NumberedList page={page} />
+        )}
+        {rest.length ? <ExtraBlocks blocks={rest} /> : null}
         {extra}
         <PageEnd page={page} />
         {page.path === '/company' ? <Footnotes /> : null}

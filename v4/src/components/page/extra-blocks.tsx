@@ -12,20 +12,34 @@ import type { Block } from '@/content/extras'
 import type { VideoGroup } from '@/content/videos'
 
 /** Renders a page's extra sections (see content/extras.ts) in the V4 editorial style, alternating paper and sand bands. */
-export function ExtraBlocks({ blocks, idPrefix = 'x' }: { blocks: Block[]; idPrefix?: string }) {
+export function ExtraBlocks({
+  blocks,
+  idPrefix = 'x',
+  featured = false,
+}: {
+  blocks: Block[]
+  idPrefix?: string
+  featured?: boolean
+}) {
   return (
     <>
       {blocks.map((b, i) => {
         const id = `${idPrefix}${i}`
         return (
-          <Chapter key={id} id={id} tone={i % 2 === 1 ? 'sand' : 'paper'} labelledBy={`${id}-h`}>
+          <Chapter
+            key={id}
+            id={id}
+            tone={featured ? 'plum' : i % 2 === 1 ? 'sand' : 'paper'}
+            className={featured ? 'ed-xp--featured' : undefined}
+            labelledBy={`${id}-h`}
+          >
             <div className="ed-wrap">
               <ChapterHead label={b.eyebrow ?? b.heading} />
               <div className="ed-xp">
                 <Heading id={`${id}-h`} className="ed-h--xl">
                   {b.heading}
                 </Heading>
-                <div className="ed-xp__body">{renderBody(b, id)}</div>
+                <div className="ed-xp__body">{renderBody(b, id, featured)}</div>
               </div>
             </div>
           </Chapter>
@@ -35,7 +49,7 @@ export function ExtraBlocks({ blocks, idPrefix = 'x' }: { blocks: Block[]; idPre
   )
 }
 
-function renderBody(b: Block, id: string) {
+function renderBody(b: Block, id: string, featured = false) {
   switch (b.kind) {
     case 'prose':
       return (
@@ -76,7 +90,7 @@ function renderBody(b: Block, id: string) {
       return (
         <div>
           {b.intro ? <p className="ed-xp__p">{b.intro}</p> : null}
-          <VideoLibrary groups={b.groups} id={id} />
+          <VideoLibrary groups={b.groups} id={id} dark={featured} />
         </div>
       )
     case 'links':
@@ -162,7 +176,15 @@ function renderBody(b: Block, id: string) {
 }
 
 /** Role tabs, a featured player and the track list. The YouTube player only mounts after Play (privacy-enhanced domain). */
-function VideoLibrary({ groups, id }: { groups: VideoGroup[]; id: string }) {
+function VideoLibrary({
+  groups,
+  id,
+  dark = false,
+}: {
+  groups: VideoGroup[]
+  id: string
+  dark?: boolean
+}) {
   const [role, setRole] = useState(groups[0].role)
   const [index, setIndex] = useState(0)
   const [playing, setPlaying] = useState(false)
@@ -174,7 +196,7 @@ function VideoLibrary({ groups, id }: { groups: VideoGroup[]; id: string }) {
     setPlaying(false)
   }
   return (
-    <div className="ed-vl">
+    <div className={`ed-vl${dark ? ' ed-vl--dark' : ''}`}>
       <div className="ed-vl__tabs" role="tablist" aria-label="Video library roles">
         {groups.map((g) => (
           <button

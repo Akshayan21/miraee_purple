@@ -3,7 +3,7 @@ import { gsap, playWhen, useMotion } from '@/lib/motion'
 
 const LOGOS: Record<string, { src: string; w: number; h: number }> = {
   Tabhi: { src: '/img/logo-tabhi.png', w: 219, h: 131 },
-  Mondee: { src: '/img/logo-mondee.png', w: 160, h: 35 },
+  Mondee: { src: '/img/logo-mondee.svg', w: 144, h: 30 },
   Abhee: { src: '/img/logo-abhee.webp', w: 640, h: 162 },
 }
 

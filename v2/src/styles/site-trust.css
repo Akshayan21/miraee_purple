@@ -153,15 +153,6 @@
 .ledger-card { max-width: 520px; }
 .ledger-card .mr-circled > .mr-line { left: -14%; top: -62%; width: 128%; height: 224%; }
 
-/* 404 */
-.nf { padding: var(--mr-s-9) 0; }
-.nf .mr-display { margin-bottom: var(--mr-s-5); }
-.nf__links { list-style: none; margin: var(--mr-s-6) 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 260px)); gap: 12px 24px; }
-.nf__links a { display: flex; align-items: center; min-height: var(--mr-touch-min); font-weight: 600; font-size: var(--mr-fs-card-title); }
-.nf__route { position: relative; height: 140px; margin-top: var(--mr-s-8); }
-.nf__route .mr-line { left: 0; top: 0; width: 100%; height: 100%; }
-@media (max-width: 639px) { .nf__links { grid-template-columns: 1fr; } .nf__route { height: 90px; } }
-
 /* Section helpers */
 .section-tight { padding: var(--mr-s-8) 0; }
 .center-cta { max-width: 760px; }
@@ -182,7 +173,6 @@
 .mr-plum .link-list a { color: var(--mr-mist); }
 .ledger-card .mr-ledger th.mr-num, .ledger-card .mr-ledger td.mr-num { padding-right: 22px; } .ledger-card .mr-ledger th:last-child, .ledger-card .mr-ledger td:last-child { padding-right: 0; }
 @media (max-width: 639px) { .ledger-card { padding: 16px 14px 10px; } .ledger-card .mr-ledger th.mr-num, .ledger-card .mr-ledger td.mr-num { padding-right: 14px; } .ledger-card .mr-ledger td:first-child { padding-right: 8px; } .ledger-card .mr-ledger th:last-child, .ledger-card .mr-ledger td:last-child { padding-right: 0; } }
-.nf__links a.mr-btn { justify-content: flex-start; padding-left: 0; }
 
 /* Paid LP hero with a full-frame photo (lp-concur-alternative, story 9 face ph25) */
 .lp-plum-hero--photo { padding-bottom: 32px; }

@@ -7,10 +7,10 @@
   "scripts": {
     "dev": "node scripts/dev-all.mjs",
     "dev:v1": "vite --port 5173",
-    "build": "tsc -b && vite-react-ssg build && node scripts/build-v2.mjs && node scripts/build-v3.mjs && node scripts/build-v4.mjs && node scripts/build-v5.mjs",
+    "build": "tsc -b && vite-react-ssg build && node scripts/build-v2.mjs && node scripts/build-v3.mjs && node scripts/build-v4.mjs && node scripts/build-v5.mjs && node scripts/build-v6.mjs",
     "build:spa": "tsc -b && vite build",
     "preview": "vite preview",
-    "typecheck": "tsc -b --noEmit && tsc -p v2/tsconfig.app.json --noEmit && tsc -p v3/tsconfig.app.json --noEmit && tsc -p v4/tsconfig.app.json --noEmit && tsc -p v5/tsconfig.app.json --noEmit",
+    "typecheck": "tsc -b --noEmit && tsc -p v2/tsconfig.app.json --noEmit && tsc -p v3/tsconfig.app.json --noEmit && tsc -p v4/tsconfig.app.json --noEmit && tsc -p v5/tsconfig.app.json --noEmit && tsc -p v6/tsconfig.app.json --noEmit",
     "lint": "eslint .",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\"",
@@ -19,13 +19,15 @@
     "start": "node scripts/serve-dist.mjs",
     "dev:v3": "vite v3 --port 5190",
     "dev:v4": "vite v4 --port 5200",
-    "dev:v5": "vite v5 --port 5210"
+    "dev:v5": "vite v5 --port 5210",
+    "dev:v6": "vite v6 --port 5220"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "gsap": "^3.15.0",
     "lucide-react": "^1.52.0",
+    "motion": "^14.7.1",
     "radix-ui": "^1.7.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
